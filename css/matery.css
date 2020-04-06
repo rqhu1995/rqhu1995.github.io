@@ -1244,6 +1244,10 @@ thead {
     color: #fff;
 }
 
+#toc-content .is-active-link::before {
+    background-color: #ffffff;
+}
+
 /* archive page. */
 #cd-timeline .year {
     position: relative;

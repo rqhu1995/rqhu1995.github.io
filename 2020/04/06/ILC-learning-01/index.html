@@ -371,9 +371,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/clingo/">
+                                <span class="chip bg-color">clingo</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -461,12 +465,12 @@ q <span class="token operator">:-</span> <span class="token operator">not</span>
 <span class="token function">p</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token operator">.</span>
 <span class="token function">q</span><span class="token punctuation">(</span>a<span class="token operator">;</span>b<span class="token punctuation">)</span><span class="token operator">.</span>
 <span class="token function">r</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">)</span> <span class="token operator">:-</span> <span class="token variable">X</span> <span class="token operator">=</span> #count<span class="token punctuation">{</span><span class="token variable">U</span><span class="token punctuation">,</span><span class="token variable">V</span> <span class="token operator">:</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">U</span><span class="token punctuation">,</span><span class="token variable">V</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">q</span><span class="token punctuation">(</span><span class="token variable">V</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre>
-<h2 id="座位分配问题"><a href="#座位分配问题" class="headerlink" title="座位分配问题"></a>座位分配问题</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><ul>
+<h1 id="座位分配问题"><a href="#座位分配问题" class="headerlink" title="座位分配问题"></a>座位分配问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
 <li>n个座位</li>
 <li>互相不喜欢的人不能连着坐</li>
 <li>互相喜欢的人坐在一起</li>
 </ul>
-<h3 id="个人解法"><a href="#个人解法" class="headerlink" title="个人解法"></a>个人解法</h3><pre class=" language-prolog"><code class="language-prolog"><span class="token comment" spellcheck="true">% prg: seats_arrange.lp</span>
+<h2 id="个人解法"><a href="#个人解法" class="headerlink" title="个人解法"></a>个人解法</h2><pre class=" language-prolog"><code class="language-prolog"><span class="token comment" spellcheck="true">% prg: seats_arrange.lp</span>
 <span class="token function">seat</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>n<span class="token punctuation">)</span><span class="token operator">.</span>
 <span class="token function">person</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>n<span class="token punctuation">)</span><span class="token operator">.</span>
 
@@ -476,18 +480,18 @@ q <span class="token operator">:-</span> <span class="token operator">not</span>
 
 <span class="token comment" spellcheck="true">% 喜欢坐一起的两种情况</span>
 <span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">|</span>  <span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">:-</span>  <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                                                                         <span class="token function">likes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                                                                         <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
+                                       <span class="token function">likes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                                       <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
 <span class="token comment" spellcheck="true">% 不喜欢不坐一起的两种情况之（1）</span>
 <span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">!=</span> <span class="token number">1</span> <span class="token operator">:-</span>  <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                                 <span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                                 <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
+                   <span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                   <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
 
 <span class="token comment" spellcheck="true">% 不喜欢不坐一起的两种情况之（2）</span>
 <span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">!=</span> <span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">:-</span>  <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                                             <span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                                             <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
+                       <span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                       <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
 <span class="token comment" spellcheck="true">% 喜欢具有交换性（错误）</span>
 <span class="token comment" spellcheck="true">% likes(P2, P1) :- likes(P1, P2).</span>
@@ -500,26 +504,20 @@ q <span class="token operator">:-</span> <span class="token operator">not</span>
 #show <span class="token function">sit/2</span><span class="token operator">.</span></code></pre>
 <p>执行命令</p>
 <pre class=" language-bash"><code class="language-bash">clingo 0 -c n<span class="token operator">=</span>6 seats_arrange.lp</code></pre>
-<h3 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h3><ul>
-<li>关于一人一座的所有情况生成</li>
-</ul>
-<pre class=" language-prolog"><code class="language-prolog"><span class="token comment" spellcheck="true">% 一人一座</span>
+<h2 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h2><h3 id="关于一人一座的所有情况生成"><a href="#关于一人一座的所有情况生成" class="headerlink" title="关于一人一座的所有情况生成"></a>关于一人一座的所有情况生成</h3><pre class=" language-prolog"><code class="language-prolog"><span class="token comment" spellcheck="true">% 一人一座</span>
 <span class="token number">1</span><span class="token punctuation">{</span><span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">,</span> <span class="token variable">S</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">seat</span><span class="token punctuation">(</span><span class="token variable">S</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token number">1</span> <span class="token operator">:-</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">)</span><span class="token operator">.</span>
 <span class="token variable">P1</span> <span class="token operator">=</span> <span class="token variable">P2</span> <span class="token operator">:-</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span><span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token operator">.</span>
 <span class="token comment" spellcheck="true">% 1{sit(P, S) : person(P)}1 :- seat(S).</span></code></pre>
 <p>除了声明1个person有一个seat之外，还需要限定同一个座位只能有一个person做，即所谓有且仅有。</p>
 <p>其实，这是一个相等空位的双射问题（<strong>bijection</strong>），<code>1{sit(P, S) : seat(S)}1 :- person(P).</code>是<strong>为人分配座位</strong>，如果按照相同的方式，考虑<strong>为座位分配</strong>人，应该写成<code>1{sit(P, S) : person(P)}1 :- seat(S).</code>使用这种写法，同样可以达到<code>P1 = P2 :- sit(P1,S1), sit(P2, S1).</code>的效果，双射问题应当对两个方向都进行描述。</p>
-<ul>
-<li>对于邻座的考虑</li>
-</ul>
-<p>邻座的定义实际上是一个简单的分段函数，本来想通过取余等方式使用一个式子定义，但是比较困难。通过定义<code>adj/2</code>，表达两个位置的相邻关系，程序会更简洁。</p>
+<h3 id="对于邻座的考虑"><a href="#对于邻座的考虑" class="headerlink" title="对于邻座的考虑"></a>对于邻座的考虑</h3><p>邻座的定义实际上是一个简单的分段函数，本来想通过取余等方式使用一个式子定义，但是比较困难。通过定义<code>adj/2</code>，表达两个位置的相邻关系，程序会更简洁。</p>
 <ul>
 <li>对于like/dislike的对称性考虑是否多余？</li>
 </ul>
 <p>是的，而且可能是错误的。</p>
 <p>考虑违背传递性的极端情况：</p>
 <p>P喜欢Q，此时P和Q相邻，Q和P必然也相邻，<strong>但是我们依然不能说Q喜欢P，或不喜欢P。</strong></p>
-<h3 id="扩展：如果有m个桌子"><a href="#扩展：如果有m个桌子" class="headerlink" title="扩展：如果有m个桌子"></a>扩展：如果有m个桌子</h3><p>人数相应变为$m*n$，只需要把<code>sit/2</code>扩展为<code>sit/3</code>，然后对每个桌子进行一次判定即可。</p>
+<h2 id="扩展：如果有m个桌子"><a href="#扩展：如果有m个桌子" class="headerlink" title="扩展：如果有m个桌子"></a>扩展：如果有m个桌子</h2><p>人数相应变为$m*n$，只需要把<code>sit/2</code>扩展为<code>sit/3</code>，然后对每个桌子进行一次判定即可。</p>
 <pre class=" language-prolog"><code class="language-prolog"><span class="token comment" spellcheck="true">% prg: seats_arrange_ntable.lp</span>
 <span class="token function">seat</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>n<span class="token punctuation">)</span><span class="token operator">.</span>
 <span class="token function">table</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>m<span class="token punctuation">)</span><span class="token operator">.</span>
@@ -614,7 +612,11 @@ q <span class="token operator">:-</span> <span class="token operator">not</span>
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/clingo/">
+                                    <span class="chip bg-color">clingo</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -696,6 +698,14 @@ q <span class="token operator">:-</span> <span class="token operator">not</span>
                 </div>
 
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/clingo/">
+                        <span class="chip bg-color">clingo</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
@@ -742,6 +752,14 @@ q <span class="token operator">:-</span> <span class="token operator">not</span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/clingo/">
+                        <span class="chip bg-color">clingo</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
