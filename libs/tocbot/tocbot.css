@@ -40,3 +40,6 @@ a.toc-link {
   position: absolute;
   width: 2px;
 }
+.is-active-link::before {
+  background-color: #54bc4b;
+}
