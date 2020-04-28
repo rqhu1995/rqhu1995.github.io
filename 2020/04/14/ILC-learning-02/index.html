@@ -471,6 +471,99 @@
 <p>$$<br>\begin{equation}<br>r \rightarrow  q, q \rightarrow  p \iff (\lnot r \lor q) \land (\lnot q \lor p) \iff (\lnot r \land \lnot q) \lor (\lnot r \land p) \lor (p \land q) \tag{1}<br>\end{equation}<br>$$</p>
 <p>$$<br>\begin{equation}<br>r \rightarrow p \iff \lnot r \lor p \tag{2}<br>\end{equation}<br>$$</p>
 <p>观察真值表可以发现，$I \models \{q \leftarrow p, q \leftarrow r\}$能保证$I \models p \leftarrow r$，但反之不可以。从析取的两个化简结果(1)和(2)看，（2）</p>
+<h2 id="最小模型（minimal-model）"><a href="#最小模型（minimal-model）" class="headerlink" title="最小模型（minimal model）"></a>最小模型（minimal model）</h2><p>集合S是Model，且没有真子集S’是Model，那么S是minimal model。</p>
+<p>最小不取决于元素数量，取决于包含关系。</p>
+<p>例题：程序P: {} 的模型和最小模型？</p>
+<p>答案：模型 – 所有解释均是模型</p>
+<p>​        （对任意一条规则r，解释都满足r）由于没有任何规则，因此任何解释都满足。</p>
+<p>​            最小模型 – 空集是唯一最小模型</p>
+<p>在开放vocabulary的情况下，最小模型一定是整个程序中出现过的原子公式的子集，而模型可能是无限的。</p>
+<p>例题：程序$\Gamma$包含的均是原子公式，求$\Gamma$的模型和最小模型：</p>
+<p>答案：记$\Gamma$中的原子公式集合为$F$，则$\forall T \supseteq F$，$T$是模型；$F$本身是唯一的最小模型。</p>
+<p>等价的公式集合具有相同的minimal model，反之不成立，反例：</p>
+<p>$\{ p \leftarrow q, q \leftarrow r \}$和$p \leftarrow r$，minimal model为空集，但不等价。</p>
+<p>definite program/rule：（1）体部不含否定，（2）头部为原子的合取。</p>
+<blockquote>
+<p>定理：definite program有一个唯一的minimal mode。</p>
+</blockquote>
+<p>definite program的两个要求保证该定理成立，缺一就不能保证了。</p>
+<p>反例：</p>
+<ul>
+<li>缺（1） $p \lor q$，两个最小模型；</li>
+<li>缺（2）$p \leftarrow \lnot q$，两个最小模型（p和q），注意此处和回答集不同，$p \leftarrow not\ q$ 在回答集语义下，稳定模型为p。（逆否命题自动成立在回答集语义下不存在）</li>
+</ul>
+<p>对于positive程序而言，最小模型就是稳定模型。</p>
+<ul>
+<li>算术运算</li>
+<li>intervals(1..5)</li>
+<li>pooling(2;3;4;5)</li>
+<li>placeholders(1..n, n=3)</li>
+<li>匿名变量</li>
+</ul>
+<p>满足上述要求的positive program $\Pi$</p>
+<ul>
+<li>先映射为一个positive image</li>
+<li>此image是一个positive propositional program</li>
+<li>positive propositional program的稳定模型就是最小模型</li>
+<li>这个稳定模型就是$\Pi $的稳定模型</li>
+</ul>
+<p>关于ground的propositional转换：</p>
+<ul>
+<li><p>$p(t_1,…t_k)$在头部，image转换为全部可能$p(v_1,…v_k)$的合取，$v_i$是$t_i$<strong>一个</strong>值。</p>
+<p>例：$p(1..3, 5..8)$在规则头部，此时t是有两个<code>t1=1..3, t2=5..8</code>，根据term的计算，$t_1$的值集合为{1,2,3}，$t_2$值的集合为{5,6,7,8}。此时$v_1$就可以为1或2或3，$v_2$就可以为5或6或7或8，全部可能的$p(v_1, v_2)$就有：</p>
+<p>$\{p(1,5),…,p(1,8),p(2,5),…,p(2,8),p(3,5),…p(3,8)\}$</p>
+<p>转换结果为上述公式的合取。</p>
+</li>
+<li><p>$p(t_1,…t_k)$在体部，image转换为$p(v_1,…v_k)$的析取，$v_i$是$t_i$<strong>一个</strong>值。</p>
+</li>
+<li><p>头部是t1和t2的比较，当所有t1的值和t2的值两两之间都满足比较，判定为$\top$，否则$\bot$</p>
+</li>
+<li><p>体部是t1和t2的比较，当存在t1的值和t2的值两两之间都满足比较，判定为$\top$，否则$\bot$</p>
+</li>
+</ul>
+<p>atom之间的逗号和分号无区别，在头部时为或，体部时为且；</p>
+<p>term之间的分号 – 头部为且，体部为或；</p>
+<p>term之间的逗号：</p>
+<p>p(X, Y, Z…)，X和Y和Z有多个取值时，无论如何每次XYZ都只取一个值，这样就会有多种term组合$C_i$</p>
+<ul>
+<li>头部：展开成多个 $C_i$ 的且</li>
+<li>体部：展开成多个$C_i$的或</li>
+</ul>
+<p>例：<code>p(X, Y) :- X = 1..2, Y = 4..6</code></p>
+<p>头部时候，展开为且，组合为1个回答集包含6个元素。</p>
+<p>例：<code>r :- p(1;2, 4;5;6).</code></p>
+<p>体部时候，展开为或，组合为6个回答集，每个回答集包含1个元素</p>
+<p>注意，结合时逗号的优先级高于分号，p(X, Y;Z;V)会结合成为p(X,Y) p(Z) p(V) ，同样适用于term之间的分号规则， 头部为且，体部为或。</p>
+<p>例如：</p>
+<pre class=" language-prolog"><code class="language-prolog"><span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token operator">;</span> <span class="token variable">Z</span><span class="token operator">;</span> <span class="token variable">V</span><span class="token punctuation">)</span> <span class="token operator">:-</span> <span class="token variable">X</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token variable">Y</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token variable">Z</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable">V</span> <span class="token operator">=</span> <span class="token number">2.</span><span class="token operator">.</span><span class="token number">3.</span></code></pre>
+<p>头部为且：</p>
+<ul>
+<li>p(X, Y)在头部，组合6种，关系为且</li>
+<li>p(Z)在头部，组合1种，关系为且</li>
+<li>p(V)在头部，组合2种，关系为且</li>
+</ul>
+<p>最终回答集M，1个，6+1+1=8个元素</p>
+<p>p(1,1), p(1,2), p(1,3), p(2,1), p(2,2), p(2,3) – 6</p>
+<p>p(1) – 1</p>
+<p>p(2), p(3) – 1</p>
+<pre class=" language-prolog"><code class="language-prolog">r <span class="token operator">:-</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token operator">;</span> <span class="token variable">Z</span><span class="token operator">;</span> <span class="token variable">V</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">X</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token variable">Y</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token variable">Z</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable">V</span> <span class="token operator">=</span> <span class="token number">2.</span><span class="token operator">.</span><span class="token number">3.</span></code></pre>
+<p>体部为或：</p>
+<ul>
+<li>p(X, Y)在体部，组合6种，关系为或</li>
+<li>p(Z)在体部，组合1种，关系为或</li>
+<li>p(V)在体部，组合1种，关系为或</li>
+</ul>
+<p>补充事实$F \subseteq M$，一定能推出r。</p>
+<p>变化一下：</p>
+<pre><code>r :- p(X, Y; Z; V), X = 1..3, Y = 1..2, Z = 1, q(V), V = 2..3.</code></pre><p>此时，必须有q在事实中，因为体部atom之间的逗号，还表示的是且，同时此处的q(V)，依然处理为q(2)或q(3)，但选定的V也会影响到<code>p(X, Y; Z; V)</code>中的V。</p>
+<pre><code>r :- p(X, Y; Z; V), X = 1..3, Y = 1..2, Z = 1, q(V), V = 2..3.
+p(3).
+q(2).</code></pre><p>上述程序推不出r。原因：</p>
+<p>规则镜像（省略带入值的排列组合）：<br>$$<br>r \leftarrow p(X, Y), q(V). \\\<br>r \leftarrow p(Z), q(V). \\\<br>r \leftarrow p(V), q(V). \\\<br>$$<br>注意：对于空而言（例如(a+1..a), (6..5))，其直接被替换为一个empty集合，empty集合的或为$\bot$，empty集合的且为$\top$</p>
+<p>空在头部为$\top$，体部为 $\bot$</p>
+<p>再注意：此处的空，和约束无关，约束就是头部$\bot$，不是头部空集。</p>
+<p>Reasoning found in mathematical proofs is monotonic: when a theorem is derived from a set of axioms, adding more axioms will not invalidate the proof. (This is so even if extending the set of axioms makes it inconsistent: in this case, every proposition becomes a theorem, including the theorems proved earlier.) </p>
+<p>But commonsense reasoning, practiced in everyday life, is often nonmonotonic. For example, we often deal with lists that are presumed to be complete. Conclusions based on such an assumption may need to be retracted when we get additional information. Something like this happened when Prolog and CLINGO told us, in response to rules (1.1), (1.2), that in 2015 there were two countries in Europe populated by more people than the United Kingdom. We realized that the number of such countries is actually three when we took into account the fact that Russia is a European country (Exercise 2.1 on page 7).</p>
 
             </div>
             <hr/>
