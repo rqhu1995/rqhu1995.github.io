@@ -563,6 +563,7 @@ q(2).</code></pre><p>上述程序推不出r。原因：</p>
 <p>再注意：此处的空，和约束无关，约束就是头部$\bot$，不是头部空集。</p>
 <p>Reasoning found in mathematical proofs is monotonic: when a theorem is derived from a set of axioms, adding more axioms will not invalidate the proof. (This is so even if extending the set of axioms makes it inconsistent: in this case, every proposition becomes a theorem, including the theorems proved earlier.) </p>
 <p>But commonsense reasoning, practiced in everyday life, is often nonmonotonic. For example, we often deal with lists that are presumed to be complete. Conclusions based on such an assumption may need to be retracted when we get additional information. Something like this happened when Prolog and CLINGO told us, in response to rules (1.1), (1.2), that in 2015 there were two countries in Europe populated by more people than the United Kingdom. We realized that the number of such countries is actually three when we took into account the fact that Russia is a European country (Exercise 2.1 on page 7).</p>
+<p>p(N,N * N+N+41) :- N = 0..3.</p>
 
             </div>
             <hr/>
