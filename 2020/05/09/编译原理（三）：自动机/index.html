@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ILC阅读（三）, Bonjour">
+    <meta name="keywords" content="编译原理（三）：自动机, Bonjour">
     <meta name="description" content="Logic &amp; Skills &amp; Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ILC阅读（三） | Bonjour</title>
+    <title>编译原理（三）：自动机 | Bonjour</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ILC阅读（三）</h1>
+                    <h1 class="description center-align post-title">编译原理（三）：自动机</h1>
                 </div>
             </div>
         </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-03
+                    2020-05-09
                 </div>
                 
 
@@ -398,231 +398,106 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>不含否定的命题逻辑程序的stable model的定义：</p>
+                <h1 id="编译原理（三）自动机"><a href="#编译原理（三）自动机" class="headerlink" title="编译原理（三）自动机"></a>编译原理（三）自动机</h1><p>给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)</p>
+<p>Lexical Specification</p>
 <ul>
-<li>对于不含否定的命题逻辑程序而言，minimal model就是stable model。</li>
-<li>minimal model：不存在更小的集合$S’ \subset S$（包含关系），$S’$是程序P的模型。</li>
-<li>model：能够满足程序中的每一个formula</li>
-<li>满足一个formula的定义：基本formula的（或且非蕴含）</li>
+<li><p>为每一个token类都写一个正则</p>
+<ul>
+<li>R1（number）：digits+</li>
+<li>R2（letter）：[a-z]</li>
+<li>…</li>
 </ul>
-</blockquote>
-<p>命题逻辑程序 《== 镜像 ==》 回答集程序</p>
-<p>命题逻辑程序稳定模型 《== 镜像 ==》 回答集程序稳定模型</p>
-<p>转换表：</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gef9cv7qhpj30fy09q74w.jpg" alt="image-20200503144417745" style="zoom: 50%;" />
+</li>
+<li><p>构造一个R，能够将每一个lexeme对应到各个token(s)上<br>$$<br>R = R_1+R_2+…<br>$$</p>
+</li>
+<li><p>输入：$X_1,..,X_n$，对$i \in [1,n]$，检查：$X_1, X_2,…,X_i$是否属于$L(R)$</p>
+<p>若成功：$X_1, X_2,…,X_i \in L(R_j)$，说明这一字符串在某个token的正则中；</p>
+</li>
+<li><p>剔除$X_1, X_2,…,X_i$，然后回到上一个步骤</p>
+<p>上述算法可能出现的问题：</p>
+<ul>
+<li><p>每次选择的子序列可能不唯一。</p>
+<p>对于字符串==，可以选=，也可以选择==。选择哪一个？</p>
+<p>目前的做法：Maximal Munch – 最长匹配</p>
+</li>
+<li><p>应该选择哪一种token呢？</p>
+<p>多个token的定义可能重叠：if/else – 关键词；也可匹配到identifier([a-z][a-z]*)</p>
+<p>此时需要设置优先级。关键词的优先级高于标识符</p>
+</li>
+<li><p>没有找到匹配呢？</p>
+<p>$X_1,…,X_i \not \in L(R)$ – 不允许发生</p>
+<p>定义一个表达错误的正则表达式语法Error，来接受这样的匹配，放在优先级的最后（Error甚至可以包含前述的正确语法，因为优先级最低，不会误判）</p>
+</li>
+</ul>
+<p>总结：</p>
+</li>
+<li><p>正则表达式是字符串模式的清晰表达符号</p>
+</li>
+<li><p>在词法分析中使用正则表达式，需要一些小的扩展</p>
+<ul>
+<li>解决歧义：选最长 + 优先级</li>
+<li>处理不匹配：定义Error接收错误输入，优先级最低</li>
+</ul>
+</li>
+<li><p>著名的相关算法</p>
+<ul>
+<li>只需要对输入进行单程扫描</li>
+<li>每个字符都进行一些操作（查表）</li>
+</ul>
+</li>
+</ul>
+<p>自动机</p>
+<p>正则表达式 = 表达层</p>
+<p>有限自动机 = 实现层</p>
+<p>一个有限自动机由下列元素组成：</p>
+<ul>
+<li><p>输入字母表$\Sigma$</p>
+</li>
+<li><p>有限状态集$S$</p>
+</li>
+<li><p>起始状态n</p>
+</li>
+<li><p>接受状态集$F \subseteq S$</p>
+</li>
+<li><p>转移集 $state \rightarrow^{input} state$</p>
+<p>如果输入到达最后，且到达了接受状态 ==》接收</p>
+<p>否则 –》拒绝</p>
+<ul>
+<li>在一个非接收状态结束</li>
+<li>卡住 – &gt;找不到下一个可以转移的方向</li>
+</ul>
+</li>
+</ul>
+<p>FA的语言定义为 $\equiv$ 接收字符串的集合</p>
+<p>DFA：</p>
+<ul>
+<li>一个输入，一个状态，一个转移</li>
+<li>没有$\varepsilon$移动</li>
+</ul>
+<p>NFA：</p>
+<ul>
+<li>一个输入，一个状态，可能有多个转移方向</li>
+<li>可以有$\varepsilon$移动</li>
+</ul>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemnhei3cjj30jc0cywjt.jpg" alt="NFA" style="zoom:33%;" />
+$$
+\downarrow
+$$
 
-<p>本节考虑含有否定的程序。</p>
-<pre class=" language-prolog"><code class="language-prolog">p<span class="token operator">.</span>
-q<span class="token operator">.</span>
-r <span class="token operator">:-</span> p<span class="token punctuation">,</span> <span class="token operator">not</span> s<span class="token operator">.</span>
-s <span class="token operator">:-</span> q<span class="token operator">.</span></code></pre>
-<p>对于含有否定的程序，ASP如何理解「稳定」的概念？</p>
-<p>对稳定的理解基于一种self-verifying conjecture（自我验证假设）。</p>
-<p>首先对上述程序提出一个conjecture：$\{p,q,s\}$</p>
-<p>将conjecture带入程序，得到：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow p \land \bot,\\&amp;s \leftarrow q.\\\end{align}<br>$$<br>上述程序是确定的（definite），最小模型为{p,q,s}，与假设一致，因此程序最终的稳定模型就是{p,q,s}.</p>
-<p>对于确定程序（不含not），最小模型和稳定模型是一致的；对于含有not的程序，要先通过假设A进行规约，在自我验证之后，如果规约后的程序（一定是确定程序）的最小模型/稳定模型就是假设A，那么这个假设A就是原来程序的稳定模型（不谈最小了）。所以对非确定性程序而言，假设的大小并不影响他是不是回答集。</p>
-<p>一个命题公式F的关键部分定义：F的子公式，满足：</p>
-<ul>
-<li>形式为$\lnot G$</li>
-<li>不包含于一个更大的这样的形式</li>
-</ul>
-<p>例子：$p \leftarrow \lnot \lnot p$</p>
-<p>关键部分备选：$\lnot p$或$\lnot \lnot p$。</p>
-<p>如果是$\lnot p$，它包含于$\lnot \lnot p$，是更大的这样的形式，所以只能是$\lnot \lnot p$。</p>
-<p>规则R对I的规约：将一条规则的关键部分进行替换，原则：</p>
-<ul>
-<li>$I$满足规则R的关键部分，替换为$\top$</li>
-<li>$I$不满足规则R的关键部分，替换为$\bot$</li>
-</ul>
-<p>手工求解稳定模型的一个例子：<br>$$<br>\begin{align}<br>&amp;p \lor q, \<br>&amp;r \leftarrow \lnot p. \<br>\end{align}<br>$$<br>找到关键部分：$\lnot p$. 讨论关键部分是否在稳定模型中（影响规约结果的唯一要素）。</p>
-<ul>
-<li><p>Case 1: p在稳定模型中。规约结果A为：<br>$$<br>\begin{align}<br>&amp;p \lor q, \<br>&amp;r \leftarrow \bot. \<br>\end{align}<br>$$<br>A的稳定模型包含：</p>
-<ul>
-<li>\{p\}</li>
-<li>\{q\}</li>
-</ul>
-<p>第一个稳定模型与假设（case）不矛盾（包含p），因此{p}是原程序的一个稳定模型；</p>
-</li>
-<li><p>Case 2: p不在稳定模型中。规约结果B为：<br>$$<br>\begin{align}&amp;p \lor q, \\&amp;r \leftarrow \top. \\\end{align}<br>$$<br>B的稳定模型包含：</p>
-<ul>
-<li>\{p, r\}</li>
-<li>\{q, r\}</li>
-</ul>
-<p>第一个稳定模型与假设（case）不矛盾（不包含p），因此{q, r}是原程序的一个稳定模型；</p>
-</li>
-</ul>
-<p>综上，原程序的稳定模型为：{p}, {q, r}</p>
-<p>双否定：<br>$$<br>\begin{align}<br>&amp;p \leftarrow \lnot \lnot q, \<br>&amp;q \leftarrow \lnot \lnot p. \<br>\end{align}<br>$$<br>关键部分$\lnot \lnot q$与$\lnot \lnot p$，讨论情况4种：</p>
-<ul>
-<li><p>$\lnot q$在，$\lnot p$不在</p>
-<p>规约：<br>$$<br>\begin{align}<br>&amp;p \leftarrow \bot, \<br>&amp;q \leftarrow \top. \<br>\end{align}<br>$$<br>规约后唯一稳定模型{q}，不符合假设</p>
-</li>
-<li><p>$\lnot p$在，$\lnot q$不在</p>
-<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \top, \\&amp;q \leftarrow \bot. \\\end{align}<br>$$<br>规约后唯一稳定模型{p}，不符合假设</p>
-</li>
-<li><p>$\lnot q$在，$\lnot p$在</p>
-<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \bot, \\&amp;q \leftarrow \bot. \\\end{align}<br>$$<br>规约后唯一稳定模型{}，符合假设（空集表示$\lnot p$与$\lnot q$都成立）</p>
-</li>
-<li><p>$\lnot p$不在，$\lnot q$不在</p>
-<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \top, \\&amp;q \leftarrow \top. \\\end{align}<br>$$<br>规约后唯一稳定模型{p, q}，符合假设</p>
-</li>
-</ul>
-<p>综上，回答集有两个{p,q}和{}（要么都不对，要么都对）</p>
-<p>not not不能直接转换为正，转为正后就变为确定程序，稳定模型即最小模型就只包含{}</p>
-<p>按照上述方式求解稳定模型，有时候会非常复杂。因为关键部分（否定）太多的时候，排列组合的情况就会相应很多。 </p>
-<blockquote>
-<p>关于规约的一个定理：一个解释I满足一个命题逻辑程序$\Pi$，当且仅当它满足$\Pi^I$。</p>
-</blockquote>
-<p>根据这个定理，求解稳定模型就变为：</p>
-<p>I是一个程序的稳定模型，当且仅当：</p>
-<ul>
-<li>I是程序的模型</li>
-<li>I是$\Pi^I$的最小模型（再次强调：最小是规约完后最小，不是所有的规约下比大小）</li>
-</ul>
-<p>命题程序的化简：</p>
-<p>将原程序替换为一些稳定模型相同的程序。但是等价公式的替换，未必会带来相同的稳定模型。<br>$$<br>p \lor q, p \leftarrow \lnot q, q \leftarrow \lnot p.<br>$$<br>上述三个公式是相互等价的，但是稳定模型分别是$\{\{p\}, \{q\}\}, \{\{p\}\}, \{\{q\}\}$.</p>
-<p>类似的，双重否定即是肯定，这也是不正确的等价。$p \leftarrow \lnot \lnot p$的稳定模型有两个{}和{p}</p>
-<blockquote>
-<p> 关于事实的定理：将程序$\Pi$规则中属于事实集合A的元素全部替换为$\top$，记为$\Pi^A_{\top}$，$\Pi^A_{\top} \cup A$和$\Pi \cup A$稳定模型相同</p>
-</blockquote>
-<p>利用这一定理和上述的等价转换，有时候可以不需要规约。<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow p \land \lnot s,\\&amp;s \leftarrow q.\\\end{align}<br>$$<br>A={p, q}，那么$\Pi_\top^A \cup A=$<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \top \land \lnot s,\\&amp;s \leftarrow \top.\\\end{align}<br>$$<br>进行一次等价的化简：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \lnot s,(\top \land F = F)\\&amp;s.(F \leftarrow \top = F)\\\end{align}<br>$$<br>再进行一次事实定理的使用：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \lnot \top,\\&amp;s.\\\end{align}<br>$$<br>再进行一次等价化简<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \bot,\\&amp;s.\\\end{align}<br>$$<br>==&gt;<br>$$<br>\begin{align}<br>&amp;p, \<br>&amp;q, \<br>&amp;\top, \<br>&amp;s.\<br>\end{align}<br>$$</p>
-<p>稳定模型：p,q,s.</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gejmyqxfp0j30oc0dkta5.jpg" alt="image-20200507093718117" style="zoom:50%;" />
 
-<p>根据表4.1，头$\top$或体$\bot$的规则可以直接drop掉，不影响稳定模型。</p>
-<p>针对一个原子公式，如果它仅仅在体部出现过，那么这个原子公式是不相关的。我们可以使用$\Pi_\bot^A$来对应表示这些原子公式出现过的规则。</p>
-<p>empty conjunction as ⊤ and the empty disjunction as ⊥：</p>
-<p>理解的方式：在数学求和$\Sigma_i$、求积$ \Pi_i$中，我们会出现对i=0时候的特殊处理。一般情况下，我们将其定义为该运算符的幺元，即0个数求和为0，0个数求积为1，0的阶乘为1，$n^0=1$…。因此，对于合取，幺元为$\bot$；析取为$\top$，空合取就定义为真，空析取就定义为假。</p>
-<p><code>not p(X) :- q.</code>– q成立，所有p(X)都不成立；</p>
-<p>$==》X可取值为1..8$</p>
-<p><code>not p\(1\) $\land$ not p\(2\) $\land$ not p\(3\) ... $\land$ not p\(8\) :- q.</code></p>
-<p>$q \leftarrow not\ p(X).$ – 有一个p(X)不成立，q就不成立</p>
-<p>$==》X可取值为1..8$</p>
-<p><code>q :- not p(1) $\lor$ not p(2) ... $\lor$ not p(8)</code>. – 有一个$p(X)$不成立，q就不成立</p>
-<p>Clingo的全序：S &gt;= Z！任何符号比所有整数都要大。</p>
-<p>求下面程序的命题程序镜像：<br>$$<br>\mathrm{composite(N) \text{ :- } N = 1..5, I = 2..N-1, N \setminus I = 0.}<br>$$<br><code>composite(1) :- 1 = 1..5, 2 = 2..1, 1 \ 1 = 0</code></p>
-<h2 id="N-1，I-2"><a href="#N-1，I-2" class="headerlink" title="(N=1，I=2)"></a>(N=1，I=2)</h2><h3 id="1-1-5的值："><a href="#1-1-5的值：" class="headerlink" title="1=1..5的值："></a>1=1..5的值：</h3><ul>
-<li><p>体部</p>
-</li>
-<li><p>1与{1,2,3,4,5}比较，其中1=1满足比较</p>
-</li>
-<li><p>结果为$\top$ </p>
-<p>2=2..1的值：</p>
-</li>
-<li><p>体部</p>
-</li>
-<li><p>1与$\phi$，任意数字与1都不满足比较</p>
-</li>
-<li><p>结果为$\bot$</p>
-</li>
-</ul>
-<h3 id="2-2-1的值："><a href="#2-2-1的值：" class="headerlink" title="2=2..1的值："></a>2=2..1的值：</h3><ul>
-<li>体部</li>
-<li>1与$\phi$，任意数字与1都不满足比较</li>
-<li>结果为$\bot$</li>
-</ul>
-<h3 id="1-1-0"><a href="#1-1-0" class="headerlink" title="1 \ 1 = 0"></a>1 \ 1 = 0</h3><ul>
-<li>直接计算，结果为$\top$</li>
-</ul>
-<h3 id="…（继续枚举N和I，然后根据规则进行值的替换）"><a href="#…（继续枚举N和I，然后根据规则进行值的替换）" class="headerlink" title="…（继续枚举N和I，然后根据规则进行值的替换）"></a>…（继续枚举N和I，然后根据规则进行值的替换）</h3><p>总结：</p>
-<p>clingo到命题逻辑的替换原则：</p>
-<ul>
-<li><p>符号根据表格进行等价替换</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gek7f68r35j30cw084q3e.jpg" alt="image-20200507212515798" style="zoom:50%;" />
-</li>
-<li><p>比较运算符按照相应方法替换为$\top/\bot$，方法为：</p>
-<ul>
-<li>$t_1 \prec t_2$，如果在头部，每个$t_1$和$t_2$的值都满足$\prec$时为$\top$，否则为$\bot$；（且）</li>
-<li>$t_1 \prec t_2$，如果在体部，至少有一组$t_1$和$t_2$满足$\prec$时为$\top$，否则为$\bot$；（或）</li>
-<li>每个原子都按照相应方法替换为$\top/\bot$，方法为（含有not时，p换为$\lnot p$；not not时，换为$\lnot \lnot p$）</li>
-<li>$p(t_1,t_2,…,t_n)$在头部，替换为$t_i$的排列组合的合取（且）</li>
-<li>$p(t_1,t_2,…,t_n)$在体部，替换为$t_i$的排列组合的析取（或）</li>
-</ul>
-</li>
-<li><p>如果原子本身就是空，那么头部换为$\bot$，体部换为$\top$</p>
-<p>（头部原子间是或，幺元为$\bot$；体部原子间是且，幺元为$\top$）</p>
-<p>头部原子之间是或，头部单原子内部term值组合是且（体部一满足，会有多个头部同时成立）；</p>
-<p>体部原子之间是且，体部单原子内部term值组合是或（体部满足某一个，即可使得对应头部成立）；</p>
-</li>
-</ul>
-<p>例子：找命题程序镜像</p>
-<pre><code>p(5..7).
-q(X) :- X = 1..5, not p(X).</code></pre><p>$$<br>p(5).\<br>p(6).\<br>p(7).\<br>$$</p>
-<p>没有问题，三个事实。</p>
-<p>规则部分按照X的取值进行：</p>
-<table>
-<thead>
-<tr>
-<th align="center">X取值</th>
-<th align="center">q(X)</th>
-<th align="center">X=1..5</th>
-<th align="center">not p(X)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1<br /> q(1) :- 1 = 1..5, not p(1).</td>
-<td align="center">q(1)，atom，值就是自己:q(1)</td>
-<td align="center">1=1..5，体部，1=1:值为$\top$</td>
-<td align="center">not p(1)，值$\lnot q(1)$</td>
-</tr>
-<tr>
-<td align="center">2<br /> q(2) :- 2 = 1..5, not p(2).</td>
-<td align="center">q(2)，atom，值就是自己:q(2)</td>
-<td align="center">2=1..5，体部，2=2:值为$\top$</td>
-<td align="center">not p(2)，值$\lnot p(2)$</td>
-</tr>
-<tr>
-<td align="center">。。。一直到5</td>
-<td align="center">。。。一直到5</td>
-<td align="center">。。。一直到5</td>
-<td align="center">。。。一直到5</td>
-</tr>
-<tr>
-<td align="center">6<br /> q(6) :- 6 = 1..5, not p(6).</td>
-<td align="center">q(6)，atom，值就是自己:q(6)</td>
-<td align="center">6=1..5，体部，无法满足，值为$\bot$</td>
-<td align="center">not p(6)，值$\lnot p(6)$</td>
-</tr>
-<tr>
-<td align="center">。。。</td>
-<td align="center">。。。</td>
-<td align="center">。。。</td>
-<td align="center">。。。</td>
-</tr>
-</tbody></table>
-<p>汇总上表：</p>
-<p>$$<br>p(5) \land p(6) \land p(7)\\\<br>\begin{cases}<br>&amp;q(u) \leftarrow \top \land \lnot\ p(u). \ \ \ u \in \{1,2,3,4,5\} \\\<br>&amp;q(u) \leftarrow \bot \land \lnot\ p(u). \ \ \ u \in \mathbf{S\cup Z} \setminus\{1,2,3,4,5\}<br>\end{cases}<br>$$</p>
-<p>关于exclusive law（排中律）：</p>
-<p>$p \lor \lnot p$是个永真式，有两个稳定模型：$\{\},\{p\}$，在clingo中，这样的程序写为<code>p, not p.</code></p>
-<blockquote>
-<p>关于排中律的定理：一个命题程序$\Pi$的解释是这个程序的模型，当且仅当$I$是将$\Pi$中获取到的通过将每个原子p命题增加$p \lor \lnot p$，$I$仍然是模型。</p>
-</blockquote>
-<p>实际上就是把每个原子p都增加一个选择规则{p}。</p>
-<p>想要通过clingo求出程序的所有模型，可以通过上述定理，使得所有的atom都进行选择。</p>
-<p>choice rule的命题程序镜像：将大括号去掉，改为排中律的析取永真式</p>
-<p>例如：</p>
-<ul>
-<li>p(3..1). 3..1是空集，因此p(3..1)变换为多个空集的合取（这是term值的排列组合），即$\top$，回答集为空集；</li>
-<li>$:-.$程序唯一一条规则，且头部和体部都为空。atom是空集了，且在头部析取，结果为$\bot$，无回答集。</li>
-</ul>
-<p>关于约束：</p>
-<p>程序$P$中的约束$\Sigma$和其余部分$\Pi$拆成两个子程序，定理：</p>
-<blockquote>
-<p>I是P的稳定模型，当且仅当I是$\Sigma$的<strong>模型</strong>，且是$\Pi$的稳定模型。</p>
-</blockquote>
-<p>即满足非约束部分后，又能够保证不满足剩余约束的体部。</p>
-<p>目前为止的程序类型：</p>
-<p>positive（体部不含否定） – 最小模型就是稳定模型；</p>
-<p>definite （头部不含析取的positive）– 有且仅有一个稳定模型</p>
-<p>其他（含有否定、头部包含析取）– 无确定结论</p>
-<p>缺省逻辑：<br>$$<br>\frac{F:\mathrm{M\ }G_1,\ldots,\mathrm{M\ }G_n}{H}.<br>$$<br>$F$为假设，$\mathrm{M}$表示：「假设$G_i$这件事情」是不会产生矛盾的，$H$是结论，$G_i$代表推出$F$的证据。整个公式读作：</p>
-<p>在$F$的条件下，如果所有的证据都能够不矛盾地被假设为正确，那么可以得到结论$H$。如果用缺省逻辑的视角看规则：<br>$$<br>A_0 \leftarrow A_1 \land \ldots \land A_m \land \lnot A_{m + 1} \land \ldots ∧ \lnot A_n.<br>$$<br>应该表示为：<br>$$<br>\frac{A_1 \land \ldots \land A_m:\mathrm{M\ }\lnot A_{m+1}\land \ldots,\mathrm{M\ } \land \lnot A_n}{A_0}.<br>$$<br>自认知逻辑：除了命题逻辑的连接词，还会有$\text{L}$，$\text{L}F$表示：$F$被相信，NAF和$\lnot L$是对应的（$F$不被相信）</p>
-<p>选择规则带有基数限制：</p>
-<p>1 {A 1; . . . ;A n}. 可以通过约束进行变换。</p>
-<p>对每个元素$A_i$进行永真变换：$A_i \lor \lnot A_i$，然后增加约束：<br>$$<br>\bot \leftarrow \lnot A_1, \lnot A_2, \ldots, \lnot A_n.<br>$$<br>如果涉及到本地变量，问题会变得更复杂.</p>
-<p>$1 \{q(X) : p(X)\}$，不考虑基数1，可以转化为：$q(v) \lor \lnot q(v) \leftarrow p(v), v \in \mathbf{S \cup Z}$</p>
-<p>考虑基数1，则需要去掉所有的p和q完全没有交集的情况（p(v)和q(v)没有任何一个v能够同时成立)，增加约束(infinite)：<br>$$<br>\bot \leftarrow \bigwedge_\limits{v \in \mathbf{S \cup Z}} \lnot(p(v) \land q(v))<br>$$</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemni549rcj30ia08ugpu.jpg" alt="DFA" style="zoom:33%;" />
+
+<p>上述都是NFA，第一个是多个转移；第二个是存在$\varepsilon$</p>
+<p>DFA对于一个输入字符串，只会在状态转移图中使用一条路径（确定）</p>
+<p>NFA可能会有多个路径</p>
+<p>NFA最终接受，如果其中存在路径是接受的；</p>
+<p>DFA较NFA执行更快（选择的不确定性更少）</p>
+<p>对同一语言，NFA却可能比DFA小的多。（时间折中空间的折中）</p>
+<p>到此为止，</p>
+<p>首先定义了词法声明（lexical specification）– 一个token使用一个正则表示语法（RE）</p>
+<p>后面将进行RE转换到NFA，NFA在转换到DFA，最后由DFA找到DFA的表驱动实现的工作</p>
+<img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20200511105731905.png" alt="image-20200511105731905" style="zoom:33%;" />
+
 
             </div>
             <hr/>
@@ -648,7 +523,7 @@ q(X) :- X = 1..5, not p(X).</code></pre><p>$$<br>p(5).\<br>p(6).\<br>p(7).\<br>$
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://rqhu1995.github.io/2020/05/03/ILC%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%89%EF%BC%89/">https://rqhu1995.github.io/2020/05/03/ILC%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%89%EF%BC%89/</a>
+                    <a href="https://rqhu1995.github.io/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">https://rqhu1995.github.io/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -724,9 +599,10 @@ q(X) :- X = 1..5, not p(X).</code></pre><p>$$<br>p(5).\<br>p(6).\<br>p(7).\<br>$
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">
                     <div class="card-image">
@@ -749,9 +625,9 @@ R1（numbe
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -760,6 +636,7 @@ R1（numbe
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -770,27 +647,23 @@ R1（numbe
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">
+                <a href="/2020/05/03/ILC%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%89%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="编译原理（二）：词法分析">
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="ILC阅读（三）">
                         
-                        <span class="card-title">编译原理（二）：词法分析</span>
+                        <span class="card-title">ILC阅读（三）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Token – 一些字符串的集合（可以理解为分词）
+                            
+不含否定的命题逻辑程序的stable model的定义：
 
-英语中：名词、动词、形：
-
-编程语言中：token class（看作一类）
-
-编程语言中：
-
-Identifier（标识符）：由字母或数字起始，字母或数字组成的一串字符串：A1，Foo，
+对于不含否定的命题逻辑程序而言，minimal model就是stable model。
+minimal model：不存在更小的集合$S’ \subset S$（包含关系），$
                         
                     </div>
                     <div class="publish-info">
@@ -939,13 +812,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
     <footer class="page-footer bg-color">
