@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="编译原理（三）自动机, Bonjour">
+    <meta name="keywords" content="写给小马的💻使用指南, Bonjour">
     <meta name="description" content="Logic &amp; Skills &amp; Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>编译原理（三）自动机 | Bonjour</title>
+    <title>写给小马的💻使用指南 | Bonjour</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">编译原理（三）自动机</h1>
+                    <h1 class="description center-align post-title">写给小马的💻使用指南</h1>
                 </div>
             </div>
         </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-09
+                    2020-05-31
                 </div>
                 
 
@@ -398,140 +398,48 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="编译原理（三）自动机"><a href="#编译原理（三）自动机" class="headerlink" title="编译原理（三）自动机"></a>编译原理（三）自动机</h1><p>给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)</p>
-<p>Lexical Specification</p>
+                <h1 id="重新安装操作系统"><a href="#重新安装操作系统" class="headerlink" title="重新安装操作系统"></a>重新安装操作系统</h1><h2 id="重新安装Windows-操作系统"><a href="#重新安装Windows-操作系统" class="headerlink" title="重新安装Windows 操作系统"></a>重新安装Windows 操作系统</h2><p>Windows操作系统的安装，有如下几种常用的方式：</p>
 <ul>
-<li><p>为每一个token类都写一个正则</p>
-<ul>
-<li>R1（number）：digits+</li>
-<li>R2（letter）：[a-z]</li>
-<li>…</li>
+<li>通过U盘安装</li>
+<li>通过操作系统安装程序直接安装</li>
 </ul>
-</li>
-<li><p>构造一个R，能够将每一个lexeme对应到各个token(s)上<br>$$<br>R = R_1+R_2+…<br>$$</p>
-</li>
-<li><p>输入：$X_1,..,X_n$，对$i \in [1,n]$，检查：$X_1, X_2,…,X_i$是否属于$L(R)$</p>
-<p>若成功：$X_1, X_2,…,X_i \in L(R_j)$，说明这一字符串在某个token的正则中；</p>
-</li>
-<li><p>剔除$X_1, X_2,…,X_i$，然后回到上一个步骤</p>
-<p>上述算法可能出现的问题：</p>
-<ul>
-<li><p>每次选择的子序列可能不唯一。</p>
-<p>对于字符串==，可以选=，也可以选择==。选择哪一个？</p>
-<p>目前的做法：Maximal Munch – 最长匹配</p>
-</li>
-<li><p>应该选择哪一种token呢？</p>
-<p>多个token的定义可能重叠：if/else – 关键词；也可匹配到identifier([a-z][a-z]*)</p>
-<p>此时需要设置优先级。关键词的优先级高于标识符</p>
-</li>
-<li><p>没有找到匹配呢？</p>
-<p>$X_1,…,X_i \not \in L(R)$ – 不允许发生</p>
-<p>定义一个表达错误的正则表达式语法Error，来接受这样的匹配，放在优先级的最后（Error甚至可以包含前述的正确语法，因为优先级最低，不会误判）</p>
+<h3 id="通过U盘安装"><a href="#通过U盘安装" class="headerlink" title="通过U盘安装"></a>通过U盘安装</h3><p>在微软的<a href="https://support.microsoft.com/zh-cn/help/15088/windows-10-create-installation-media" target="_blank" rel="noopener">创建适用于Windows的安装介质</a>中，可以下载到各个版本Windows安装工具。所谓安装介质，主要是指U盘和光盘，这是在他人电脑没有办法上网的情况下，或者没有办法开机进入系统操作时最有效的安装方式。手中有一个装有Windows系统的U盘，随时随地都可以重新安装操作系统，是很有必要的一个储备。</p>
+<h4 id="U盘安装的执行步骤"><a href="#U盘安装的执行步骤" class="headerlink" title="U盘安装的执行步骤"></a>U盘安装的执行步骤</h4><ul>
+<li><p>下载安装工具</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfaybbbwwcj30vm0eamzz.jpg" alt="安装工具下载界面" style="zoom:50%;" />
+
 </li>
 </ul>
-<p>总结：</p>
-</li>
-<li><p>正则表达式是字符串模式的清晰表达符号</p>
-</li>
-<li><p>在词法分析中使用正则表达式，需要一些小的扩展</p>
+<p>在红色框中选择对应的操作系统版本。</p>
 <ul>
-<li>解决歧义：选最长 + 优先级</li>
-<li>处理不匹配：定义Error接收错误输入，优先级最低</li>
-</ul>
+<li><p>插入U盘，注意U盘的大小至少需要8GB，不需要是空盘，但最好建议使用之前进行一次U盘的格式化，格式化的方法：「计算机-&gt;右键点击U盘-&gt;格式化」</p>
 </li>
-<li><p>著名的相关算法</p>
+<li><p>接下来的流程，打开下载好的安装工具。之后的步骤请参考<a href="https://zhuanlan.zhihu.com/p/49181786" target="_blank" rel="noopener">win10系统安装教程（官方工具）</a>，实际上没啥好参考的，接受条款，各种下一步，各种确认。<img src="https://pic2.zhimg.com/80/v2-222ae207df5f6fda06cf569b302bb4a5_1440w.jpg" alt="耐心等待"></p>
+</li>
+<li><p>创建完成后，U盘里的界面类似于：</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfayb28yawj30980b40v0.jpg" alt="创建完成后的U盘内部" style="zoom:50%;" />
+</li>
+<li><p>下面的内容，分两种情况：</p>
 <ul>
-<li>只需要对输入进行单程扫描</li>
-<li>每个字符都进行一些操作（查表）</li>
+<li><p>清空计算机重装，clean install（C、D、E、F盘等等数据全部清空）</p>
+<p>此处继续参考<a href="https://zhuanlan.zhihu.com/p/49181786" target="_blank" rel="noopener">win10系统安装教程（官方工具）</a>中的「系统重装教程」部分；当然也可以像我们之前发现的那样，双击setup.exe，然后选择不保留任何文件；</p>
+</li>
+<li><p>仅仅清空C盘和已经安装的软件</p>
+<p>双击setup.exe，选择保留个人的文件。</p>
+</li>
 </ul>
 </li>
 </ul>
-<p>自动机</p>
-<p>正则表达式 = 表达层</p>
-<p>有限自动机 = 实现层</p>
-<p>一个有限自动机由下列元素组成：</p>
+<h3 id="通过操作系统安装程序安装"><a href="#通过操作系统安装程序安装" class="headerlink" title="通过操作系统安装程序安装"></a>通过操作系统安装程序安装</h3><p>操作系统的安装程序，指的就是这个setup.exe。获取到它有两种方式，一种就像上面这样，用U盘直接创建；</p>
+<p>另一种，是去操作系统的网站上下载整个操作系统文件，这样即使手边没有U盘，也可以在计算机上直接进行重装。下载地址：</p>
 <ul>
-<li><p>输入字母表$\Sigma$</p>
-</li>
-<li><p>有限状态集$S$</p>
-</li>
-<li><p>起始状态n</p>
-</li>
-<li><p>接受状态集$F \subseteq S$</p>
-</li>
-<li><p>转移集 $state \rightarrow^{input} state$</p>
-<p>如果输入到达最后，且到达了接受状态 ==》接收</p>
-<p>否则 –》拒绝</p>
-<ul>
-<li>在一个非接收状态结束</li>
-<li>卡住 – &gt;找不到下一个可以转移的方向</li>
+<li><a href="http://nic.seu.edu.cn" target="_blank" rel="noopener">学校的软件中心</a></li>
+<li><a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">ITELLYOU</a>（此链接作为毕业后临时使用下载的渠道，下载下来的系统是未激活的，需要去寻找激活码激活）</li>
+<li>新的单位/学校基本会有信息中心，询问这些正版软件的下载渠道。</li>
 </ul>
-</li>
-</ul>
-<p>FA的语言定义为 $\equiv$ 接收字符串的集合</p>
-<p>DFA：</p>
-<ul>
-<li>一个输入，一个状态，一个转移</li>
-<li>没有$\varepsilon$移动</li>
-</ul>
-<p>NFA：</p>
-<ul>
-<li>一个输入，一个状态，可能有多个转移方向</li>
-<li>可以有$\varepsilon$移动</li>
-</ul>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemnhei3cjj30jc0cywjt.jpg" alt="NFA" style="zoom:33%;" />
-$$
-\downarrow
-$$
-
-
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemni549rcj30ia08ugpu.jpg" alt="DFA" style="zoom:33%;" />
-
-<p>上述都是NFA，第一个是多个转移；第二个是存在$\varepsilon$</p>
-<p>DFA对于一个输入字符串，只会在状态转移图中使用一条路径（确定）</p>
-<p>NFA可能会有多个路径</p>
-<p>NFA最终接受，如果其中存在路径是接受的；</p>
-<p>DFA较NFA执行更快（选择的不确定性更少）</p>
-<p>对同一语言，NFA却可能比DFA小的多。（时间折中空间的折中）</p>
-<p>到此为止，</p>
-<p>首先定义了词法声明（lexical specification）– 一个token使用一个正则表示语法（RE）</p>
-<p>后面将进行RE转换到NFA，NFA在转换到DFA，最后由DFA找到DFA的表驱动实现的工作</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoceqgy0lj31aq0le464.jpg" alt="image-20200511105731905" style="zoom:33%;" />
-
-<ul>
-<li>RE -&gt; DFA</li>
-</ul>
-<p>递归方式：AB拼接</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geocetnghkj319u0aaq8f.jpg" alt="image-20200511111946981" style="zoom:33%;" />
-
-<p>A或B</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geocfi6gtuj31520deqa0.jpg" alt="image-20200511112046044" style="zoom:33%;" />
-
-<p>A*</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geochc4g19j31520iwdos.jpg" alt="image-20200511112227393" style="zoom:33%;" />
-
-<p>$\varepsilon$闭包</p>
-<p>从某个状态$\cup$ 只经过$\varepsilon$能够到达的所有状态集合</p>
-<p>NFA每个时刻可停留的状态可能有许多个</p>
-<p>NFA –&gt; DFA<br>$$<br>a(X) = \{y \mid x \in X \land x \rightarrow^a y\}<br>$$<br>从X内元素出发，经过a能够到达的所有的状态y的集合</p>
-<p>DFA</p>
-<p>状态：NFA状态的非空子集</p>
-<p>起始状态（一个元素）：NFA起始状态的$\varepsilon$闭包</p>
-<p>终止状态（一个集合）：与NFA终止状态交集非空的全部状态集的集合</p>
-<p>$X \rightarrow^a Y$, if $Y = a(X)$的$\varepsilon$闭包</p>
- <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geodvu01mgj31nm0rq7wh.jpg" alt="image-20200511121105259" style="zoom: 33%;" />
-
-<p>A为NFA的起始状态，空闭包为ABCDHI，作为DFA的起始状态</p>
-<p>从起始状态开始，找每个元素的a(X)，递归下去</p>
-<p>表驱动方式：二维表，行为状态，列为输入符号</p>
-<p>实现伪代码：</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoegdttfuj31ns0rctsr.jpg" alt="image-20200511123044581" style="zoom:33%;" />
-
-<p>上表的每行元素都一样，可以进一步简化存储，更紧凑（邻接表形式）</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoei7do0qj30lu09igqd.jpg" alt="image-20200511123234052" style="zoom:25%;" />
-
-<p>对N个状态的NFA，DFA可能有最多$2^N-1$个状态，但通常情况下不是最差情况。</p>
-
+<p>在这种方式下载下来的文件，基本上是iso程序。这个iso程序的加载方式，Windows 10以上的系统，可以直接双击打开，Windows 8请参考学校官方提供的<a href="https://nic.seu.edu.cn/2015/0122/c23555a265057/page.psp" target="_blank" rel="noopener">软件的安装方法</a>。</p>
+<p>TIPS：计算机类的文档/说明书，通常会按照选择分支的结构进行设计，所以不要嫌弃太长，其实只是在罗列所有的情况，如果你已经确定自己进入了何种分支，其他的内容实际上是和你无关的。因此一定要注意最开始选择阅读的分支。比如这里，实际上提供了三种安装方式，你只要认定一种，另外两个就不需要看了。</p>
+<h2 id="安装MacOS操作系统"><a href="#安装MacOS操作系统" class="headerlink" title="安装MacOS操作系统"></a>安装MacOS操作系统</h2>
             </div>
             <hr/>
 
@@ -556,7 +464,7 @@ $$
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://rqhu1995.github.io/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">https://rqhu1995.github.io/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/</a>
+                    <a href="https://rqhu1995.github.io/2020/05/31/%E5%86%99%E7%BB%99%E5%B0%8F%E9%A9%AC%E7%9A%84%F0%9F%92%BB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">https://rqhu1995.github.io/2020/05/31/%E5%86%99%E7%BB%99%E5%B0%8F%E9%A9%AC%E7%9A%84%F0%9F%92%BB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -632,9 +540,10 @@ $$
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/05/31/%E5%86%99%E7%BB%99%E5%B0%8F%E9%A9%AC%E7%9A%84%F0%9F%92%BB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
                     <div class="card-image">
@@ -657,9 +566,9 @@ $$
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -668,6 +577,7 @@ $$
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -678,28 +588,29 @@ $$
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/03/ILC%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%89%EF%BC%89/">
+                <a href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="ILC阅读（三）">
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="编译原理（三）自动机">
                         
-                        <span class="card-title">ILC阅读（三）</span>
+                        <span class="card-title">编译原理（三）自动机</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-不含否定的命题逻辑程序的stable model的定义：
+                            编译原理（三）自动机给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)
+Lexical Specification
 
-对于不含否定的命题逻辑程序而言，minimal model就是stable model。
-minimal model：不存在更小的集合$S’ \subset S$（包含关系），$
+为每一个token类都写一个正则
+
+R1（numbe
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
                             </span>
                         <span class="publish-author">
                             
