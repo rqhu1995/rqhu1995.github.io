@@ -398,7 +398,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h1><h2 id="概率密度"><a href="#概率密度" class="headerlink" title="概率密度"></a>概率密度</h2><p>$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}$</p>
+                <h1 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h1><h2 id="概率密度"><a href="#概率密度" class="headerlink" title="概率密度"></a>概率密度</h2><p>假设$p$为研究的维度，$\mu$为均值向量，</p>
+<p>$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}$</p>
 <p>当$p=1$时，$p(X=x)=\dfrac{e^{-\frac{(x-\mu)^2}{2\Sigma}}}{\sqrt{2\pi\Sigma}}$</p>
 <p>首先求最大似然估计(MLE)，$\theta_{MLE}=\underset{\theta=\{\mu, \Sigma\}}{\mathrm{argmax}} \prod\limits_{i=1}^n p(X=x_i)=\underset{\theta=\{\mu, \Sigma\}}{\mathrm{argmax}}\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma}})-nlog(\sqrt{2\pi\Sigma})$</p>
 <p>先求$\mu_{MLE}$，$f(\mu)=\sum\limits_{i=1}^n (x_i-\mu)^2$</p>
@@ -410,7 +411,7 @@
 <p>$\Sigma=\dfrac{1}{n}\sum\limits_{i=1}^n (x_i-\mu_{MLE})^2=\Sigma_{MLE}$</p>
 <p>计算$E(\mu_{MLE})=E(\dfrac{1}{n}\sum\limits_{i=1}^n x_i)=\dfrac{1}{n}\sum\limits_{i=1}^nE(x_i)=\dfrac{1}{n} n \mu=\mu$</p>
 <p>$\Sigma_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+ \dfrac{1}{n}\sum\limits_{i=1}^n\mu_{MLE}^2-2\dfrac{1}{n}\sum\limits_{i=1}^n x_i\mu_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+\mu^2_{MLE}-2\mu_{MLE}^2 = \dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE})$<br>$$<br>\begin{align}<br>E(\Sigma_{MLE})&amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE}))\\\<br>                            &amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n [x_i^2 - \mu^2 -( \mu^2_{MLE} - \mu^2)])\\\<br>                            &amp;=(\dfrac{1}{n}\sum\limits_{i=1}^n E(x_i^2)-E^2(x_i)-E(\mu^2_{MLE})+E(\mu^2)))\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) + (E^2(\mu_{MLE})-E(\mu^2_{MLE})) \\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) - D(\mu_{MLE}) \\\<br>                            &amp;=\Sigma-D(\mu_{MLE})\\\<br>                            &amp;=\Sigma - D(\dfrac{1}{n}\sum\limits_{i=1}^n x_i) \\\<br>                            &amp;=\Sigma-\dfrac{1}{n^2}nD(x_i)\\\<br>                            &amp;=\Sigma- \dfrac{1}{n}\Sigma \\\<br>                            &amp;=\dfrac{n-1}{n}\Sigma<br>\end{align}<br>$$<br>发现$E(\mu_{MLE})=\mu, E(\Sigma_{MLE}) \neq \Sigma$，因此$\mu_{MLE}$作为$\mu$的估计是无偏的，$\Sigma_{MLE}$作为$\Sigma$的估计是有偏的。</p>
-
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
             </div>
             <hr/>
 
@@ -528,7 +529,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            高斯分布概率密度$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1
+                            高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，
+$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}exp^{-\frac{
                         
                     </div>
                     <div class="publish-info">
@@ -759,24 +761,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
             
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
             <br>
             
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
+        <div class="col s12 m4 l4 social-link ">
     <a href="https://github.com/rqhu1995" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -866,8 +856,6 @@ $(function () {
 </script>
 
     
-    
-    <script async src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/others/busuanzi.pure.mini.js"></script>
     
 
     
