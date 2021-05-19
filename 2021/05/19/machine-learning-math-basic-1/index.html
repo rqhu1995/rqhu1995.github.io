@@ -398,19 +398,30 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h1><h2 id="概率密度"><a href="#概率密度" class="headerlink" title="概率密度"></a>概率密度</h2><p>假设$p$为研究的维度，$\mu$为均值向量，</p>
-<p>$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}$</p>
-<p>当$p=1$时，$p(X=x)=\dfrac{e^{-\frac{(x-\mu)^2}{2\Sigma}}}{\sqrt{2\pi\Sigma}}$</p>
-<p>首先求最大似然估计(MLE)，$\theta_{MLE}=\underset{\theta=\{\mu, \Sigma\}}{\mathrm{argmax}} \prod\limits_{i=1}^n p(X=x_i)=\underset{\theta=\{\mu, \Sigma\}}{\mathrm{argmax}}\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma}})-nlog(\sqrt{2\pi\Sigma})$</p>
-<p>先求$\mu_{MLE}$，$f(\mu)=\sum\limits_{i=1}^n (x_i-\mu)^2$</p>
-<p>$f’(\mu)=\sum\limits_{i=1}^n -2(x_i-\mu)=2\mu n-2\sum\limits_{i=1}^nx_i$</p>
-<p>令$f’(\mu)=0$，则$\mu=\dfrac{1}{n}\sum\limits_{i=1}^nx_i=\mu_{MLE}$</p>
-<p>接着求$\Sigma_{MLE}$，$f(\Sigma)=\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma}})-nlog(\sqrt{2\pi\Sigma})$，</p>
-<p>$f’(\Sigma)=\dfrac{\sum\limits_{i=1}^n (x_i-\mu)^2}{2\Sigma^2}-\dfrac{n}{2\Sigma}=0$</p>
-<p>$\sum\limits_{i=1}^n (x_i-\mu)^2=n\Sigma$</p>
-<p>$\Sigma=\dfrac{1}{n}\sum\limits_{i=1}^n (x_i-\mu_{MLE})^2=\Sigma_{MLE}$</p>
-<p>计算$E(\mu_{MLE})=E(\dfrac{1}{n}\sum\limits_{i=1}^n x_i)=\dfrac{1}{n}\sum\limits_{i=1}^nE(x_i)=\dfrac{1}{n} n \mu=\mu$</p>
-<p>$\Sigma_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+ \dfrac{1}{n}\sum\limits_{i=1}^n\mu_{MLE}^2-2\dfrac{1}{n}\sum\limits_{i=1}^n x_i\mu_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+\mu^2_{MLE}-2\mu_{MLE}^2 = \dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE})$<br>$$<br>\begin{align}<br>E(\Sigma_{MLE})&amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE}))\\\<br>                            &amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n [x_i^2 - \mu^2 -( \mu^2_{MLE} - \mu^2)])\\\<br>                            &amp;=(\dfrac{1}{n}\sum\limits_{i=1}^n E(x_i^2)-E^2(x_i)-E(\mu^2_{MLE})+E(\mu^2)))\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) + (E^2(\mu_{MLE})-E(\mu^2_{MLE})) \\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) - D(\mu_{MLE}) \\\<br>                            &amp;=\Sigma-D(\mu_{MLE})\\\<br>                            &amp;=\Sigma - D(\dfrac{1}{n}\sum\limits_{i=1}^n x_i) \\\<br>                            &amp;=\Sigma-\dfrac{1}{n^2}nD(x_i)\\\<br>                            &amp;=\Sigma- \dfrac{1}{n}\Sigma \\\<br>                            &amp;=\dfrac{n-1}{n}\Sigma<br>\end{align}<br>$$<br>发现$E(\mu_{MLE})=\mu, E(\Sigma_{MLE}) \neq \Sigma$，因此$\mu_{MLE}$作为$\mu$的估计是无偏的，$\Sigma_{MLE}$作为$\Sigma$的估计是有偏的。</p>
+                <h1 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h1><h2 id="概率密度"><a href="#概率密度" class="headerlink" title="概率密度"></a>概率密度</h2><p>假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）<br>$$<br>X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}<br>$$</p>
+<h2 id="一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）"><a href="#一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）" class="headerlink" title="一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）"></a>一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）</h2><p>当$p=1$时，$p(X=x)=\dfrac{e^{-\frac{(x-\mu)^2}{2\Sigma}}}{\sqrt{2\pi\Sigma}}$<br>$$<br>\theta_{MLE}=\underset{\theta=\{\mu, \Sigma\}}{\mathrm{argmax}} \prod\limits_{i=1}^n p(X=x_i)=\underset{\theta=\{\mu, \Sigma\}}{\mathrm{argmax}}\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma}})-nlog(\sqrt{2\pi\Sigma})<br>$$</p>
+<ul>
+<li>先求$\mu_{MLE}$，<br>$$<br>f(\mu)=\sum\limits_{i=1}^n (x_i-\mu)^2<br>$$</li>
+</ul>
+<p>$$<br>f’(\mu)=\sum\limits_{i=1}^n -2(x_i-\mu)=2\mu n-2\sum\limits_{i=1}^nx_i​<br>$$</p>
+<p>令$f’(\mu)=0$，则<br>$$<br>\mu_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^nx_i<br>$$</p>
+<ul>
+<li>接着求$\Sigma_{MLE}$，<br>$$<br>f(\Sigma)=\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma}})-nlog(\sqrt{2\pi\Sigma})<br>$$</li>
+</ul>
+<p>$$<br>f’(\Sigma)=\dfrac{\sum\limits_{i=1}^n (x_i-\mu)^2}{2\Sigma^2}-\dfrac{n}{2\Sigma}$<br>$$</p>
+<p>令$f’(\mu)=0$，则<br>$$<br>\sum\limits_{i=1}^n (x_i-\mu)^2=n\Sigma \<br>\Sigma_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^n (x_i-\mu_{MLE})^2<br>$$</p>
+<h2 id="关于两个估计的无偏性"><a href="#关于两个估计的无偏性" class="headerlink" title="关于两个估计的无偏性"></a>关于两个估计的无偏性</h2><ul>
+<li><p>计算$E(\mu_{MLE})$：<br>$$<br>E(\dfrac{1}{n}\sum\limits_{i=1}^n x_i)=\dfrac{1}{n}\sum\limits_{i=1}^nE(x_i)=\dfrac{1}{n} n \mu=\mu<br>$$</p>
+</li>
+<li><p>计算$E(\Sigma_{MLE})$：</p>
+<p>首先对$\Sigma_{MLE}$做一个化简：<br>$$<br>\begin{align}<br>\Sigma_{MLE} &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+ \dfrac{1}{n}\sum\limits_{i=1}^n\mu_{MLE}^2-2\dfrac{1}{n}\sum\limits_{i=1}^n x_i\mu_{MLE}\quad [note:\dfrac{1}{n}\sum\limits_{i=1}^n x_i=\mu_{MLE}]\\\<br>&amp;=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+\mu^2_{MLE}-2\mu_{MLE}^2\\\<br>&amp;= \dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE})<br>\end{align}<br>$$</p>
+</li>
+</ul>
+<p>  接着求其期望：</p>
+<p>$$<br>\begin{align}<br>E(\Sigma_{MLE})&amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE}))\\\<br>                            &amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n [x_i^2 - \mu^2 -( \mu^2_{MLE} - \mu^2)]) –&gt;恒等变形\\\<br>                            &amp;=(\dfrac{1}{n}\sum\limits_{i=1}^n E(x_i^2)-E^2(x_i)-E(\mu^2_{MLE})+E(\mu^2)))–&gt;\mu^2看作常数，\mu^2=E(\mu^2)\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) + (E^2(\mu_{MLE})-E(\mu^2_{MLE})) –&gt;方差与概率间的公示转化\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) - D(\mu_{MLE})–&gt;方差与概率间的公示转化 \\\<br>                            &amp;=\Sigma-D(\mu_{MLE})\\\<br>                            &amp;=\Sigma - D(\dfrac{1}{n}\sum\limits_{i=1}^n x_i) \\\<br>                            &amp;=\Sigma-\dfrac{1}{n^2}nD(x_i)\\\<br>                            &amp;=\Sigma- \dfrac{1}{n}\Sigma \\\<br>                            &amp;=\dfrac{n-1}{n}\Sigma<br>\end{align}<br>$$</p>
+<ul>
+<li>发现$E(\mu_{MLE})=\mu, E(\Sigma_{MLE}) \neq \Sigma$，因此$\mu_{MLE}$作为$\mu$的估计是无偏的，$\Sigma_{MLE}$作为$\Sigma$的估计是有偏的。</li>
+</ul>
 <h1 id=""><a href="#" class="headerlink" title=""></a></h1>
             </div>
             <hr/>
@@ -529,8 +540,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，
-$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}exp^{-\frac{
+                            高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|
                         
                     </div>
                     <div class="publish-info">
