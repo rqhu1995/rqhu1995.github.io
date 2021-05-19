@@ -1,0 +1,1035 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ILC-learning-02, Bonjour">
+    <meta name="description" content="Logic &amp; Skills &amp; Life">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>ILC-learning-02 | Bonjour</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Bonjour</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Bonjour</div>
+        <div class="logo-desc">
+            
+            Logic &amp; Skills &amp; Life
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">ILC-learning-02</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+        
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-14
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="从命题逻辑到回答集程序"><a href="#从命题逻辑到回答集程序" class="headerlink" title="从命题逻辑到回答集程序"></a>从命题逻辑到回答集程序</h1><h2 id="vocabulary"><a href="#vocabulary" class="headerlink" title="vocabulary"></a>vocabulary</h2><p>命题逻辑的vocabulary：原子公式（p,q,r…)</p>
+<p>命题逻辑的公式：原子公式+连接词</p>
+<p>命题逻辑的解释（interpretation）：一个集合，集合元素表示正确的原子公式</p>
+<p>例1：找到一个命题公式，能够被解释{p}满足，{q}满足，但不能被{p,q}满足</p>
+<p>$(p \land \neg q) \lor (q \land \neg p)$</p>
+<p>例2：vocabulary为$\{p_0, p_1, …\}$，求下列无限集合的模型</p>
+<p>2.1: $ \{p_1, \neg p_2, p_3, \neg p_4,…\}$</p>
+<p>答案：$\{p_0, p_1, p_3, …\}$和$\{p_1, p_3, …\}$</p>
+<p>2.2: $\{p_0 \leftarrow p_1, p_1 \leftarrow p_2,…\} \cup \{\neg p_2\}.$</p>
+<p>答案：$\{p_0, p_1\}$和$\{p_0\}$和$\{ \}$</p>
+<p>$p_3$后的一堆规则一通百通，要保证$\lnot p_2$，即推不出$p_2$，就必须使得2后全部错误。</p>
+<p>等价</p>
+<p>当两组命题公式具有相同的模型时，他们是等价的。</p>
+<p>例：判断下列公式是否等价</p>
+<p>a. $\{ p \leftarrow q, q \leftarrow r \}$ and $p \leftarrow r$.</p>
+<p>b. $p \land q \leftarrow r$ and $\{ p \leftarrow r, q \leftarrow r \}$ .</p>
+<p>c. $p \leftarrow q \lor r$ and $\{ p \leftarrow q, p \leftarrow r \}$ .</p>
+<p>d. $p \leftarrow p$ and $q \lor \lnot q$.</p>
+<p>e. $p \leftarrow \lnot q$ and $q \leftarrow \lnot p$.</p>
+<p>答案：(a)不等价，其余均等价</p>
+<table>
+<thead>
+<tr>
+<th align="center">Interp</th>
+<th align="center">$\{ p \leftarrow q, q \leftarrow r \}$</th>
+<th align="center">$p \leftarrow r$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">{}</td>
+<td align="center">model</td>
+<td align="center">model</td>
+</tr>
+<tr>
+<td align="center">{p}</td>
+<td align="center">model</td>
+<td align="center">model</td>
+</tr>
+<tr>
+<td align="center">{q}</td>
+<td align="center">non-model</td>
+<td align="center">model</td>
+</tr>
+<tr>
+<td align="center">{r}</td>
+<td align="center">non-model</td>
+<td align="center">non-model</td>
+</tr>
+<tr>
+<td align="center">{p,q}</td>
+<td align="center">model</td>
+<td align="center">model</td>
+</tr>
+<tr>
+<td align="center">{p,r}</td>
+<td align="center">non-model</td>
+<td align="center">model</td>
+</tr>
+<tr>
+<td align="center">{q,r}</td>
+<td align="center">non-model</td>
+<td align="center">non-model</td>
+</tr>
+<tr>
+<td align="center">{p,q,r}</td>
+<td align="center">model</td>
+<td align="center">model</td>
+</tr>
+</tbody></table>
+<p>$$<br>\begin{equation}<br>r \rightarrow  q, q \rightarrow  p \iff (\lnot r \lor q) \land (\lnot q \lor p) \iff (\lnot r \land \lnot q) \lor (\lnot r \land p) \lor (p \land q) \tag{1}<br>\end{equation}<br>$$</p>
+<p>$$<br>\begin{equation}<br>r \rightarrow p \iff \lnot r \lor p \tag{2}<br>\end{equation}<br>$$</p>
+<p>观察真值表可以发现，$I \models \{q \leftarrow p, q \leftarrow r\}$能保证$I \models p \leftarrow r$，但反之不可以。从析取的两个化简结果(1)和(2)看，（2）</p>
+<h2 id="最小模型（minimal-model）"><a href="#最小模型（minimal-model）" class="headerlink" title="最小模型（minimal model）"></a>最小模型（minimal model）</h2><p>集合S是Model，且没有真子集S’是Model，那么S是minimal model。</p>
+<p>最小不取决于元素数量，取决于包含关系。</p>
+<p>例题：程序P: {} 的模型和最小模型？</p>
+<p>答案：模型 – 所有解释均是模型</p>
+<p>​        （对任意一条规则r，解释都满足r）由于没有任何规则，因此任何解释都满足。</p>
+<p>​            最小模型 – 空集是唯一最小模型</p>
+<p>在开放vocabulary的情况下，最小模型一定是整个程序中出现过的原子公式的子集，而模型可能是无限的。</p>
+<p>例题：程序$\Gamma$包含的均是原子公式，求$\Gamma$的模型和最小模型：</p>
+<p>答案：记$\Gamma$中的原子公式集合为$F$，则$\forall T \supseteq F$，$T$是模型；$F$本身是唯一的最小模型。</p>
+<p>等价的公式集合具有相同的minimal model，反之不成立，反例：</p>
+<p>$\{ p \leftarrow q, q \leftarrow r \}$和$p \leftarrow r$，minimal model为空集，但不等价。</p>
+<p>definite program/rule：（1）体部不含否定，（2）头部为原子的合取。</p>
+<blockquote>
+<p>定理：definite program有一个唯一的minimal mode。</p>
+</blockquote>
+<p>definite program的两个要求保证该定理成立，缺一就不能保证了。</p>
+<p>反例：</p>
+<ul>
+<li>缺（1） $p \lor q$，两个最小模型；</li>
+<li>缺（2）$p \leftarrow \lnot q$，两个最小模型（p和q），注意此处和回答集不同，$p \leftarrow not\ q$ 在回答集语义下，稳定模型为p。（逆否命题自动成立在回答集语义下不存在）</li>
+</ul>
+<p>对于positive程序而言，最小模型就是稳定模型。</p>
+<ul>
+<li>算术运算</li>
+<li>intervals(1..5)</li>
+<li>pooling(2;3;4;5)</li>
+<li>placeholders(1..n, n=3)</li>
+<li>匿名变量</li>
+</ul>
+<p>满足上述要求的positive program $\Pi$</p>
+<ul>
+<li>先映射为一个positive image</li>
+<li>此image是一个positive propositional program</li>
+<li>positive propositional program的稳定模型就是最小模型</li>
+<li>这个稳定模型就是$\Pi $的稳定模型</li>
+</ul>
+<p>关于ground的propositional转换：</p>
+<ul>
+<li><p>$p(t_1,…t_k)$在头部，image转换为全部可能$p(v_1,…v_k)$的合取，$v_i$是$t_i$<strong>一个</strong>值。</p>
+<p>例：$p(1..3, 5..8)$在规则头部，此时t是有两个<code>t1=1..3, t2=5..8</code>，根据term的计算，$t_1$的值集合为{1,2,3}，$t_2$值的集合为{5,6,7,8}。此时$v_1$就可以为1或2或3，$v_2$就可以为5或6或7或8，全部可能的$p(v_1, v_2)$就有：</p>
+<p>$\{p(1,5),…,p(1,8),p(2,5),…,p(2,8),p(3,5),…p(3,8)\}$</p>
+<p>转换结果为上述公式的合取。</p>
+</li>
+<li><p>$p(t_1,…t_k)$在体部，image转换为$p(v_1,…v_k)$的析取，$v_i$是$t_i$<strong>一个</strong>值。</p>
+</li>
+<li><p>头部是t1和t2的比较，当所有t1的值和t2的值两两之间都满足比较，判定为$\top$，否则$\bot$</p>
+</li>
+<li><p>体部是t1和t2的比较，当存在t1的值和t2的值两两之间都满足比较，判定为$\top$，否则$\bot$</p>
+</li>
+</ul>
+<p>atom之间的逗号和分号无区别，在头部时为或，体部时为且；</p>
+<p>term之间的分号 – 头部为且，体部为或；</p>
+<p>term之间的逗号：</p>
+<p>p(X, Y, Z…)，X和Y和Z有多个取值时，无论如何每次XYZ都只取一个值，这样就会有多种term组合$C_i$</p>
+<ul>
+<li>头部：展开成多个 $C_i$ 的且</li>
+<li>体部：展开成多个$C_i$的或</li>
+</ul>
+<p>例：<code>p(X, Y) :- X = 1..2, Y = 4..6</code></p>
+<p>头部时候，展开为且，组合为1个回答集包含6个元素。</p>
+<p>例：<code>r :- p(1;2, 4;5;6).</code></p>
+<p>体部时候，展开为或，组合为6个回答集，每个回答集包含1个元素</p>
+<p>注意，结合时逗号的优先级高于分号，p(X, Y;Z;V)会结合成为p(X,Y) p(Z) p(V) ，同样适用于term之间的分号规则， 头部为且，体部为或。</p>
+<p>例如：</p>
+<pre class=" language-prolog"><code class="language-prolog"><span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token operator">;</span> <span class="token variable">Z</span><span class="token operator">;</span> <span class="token variable">V</span><span class="token punctuation">)</span> <span class="token operator">:-</span> <span class="token variable">X</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token variable">Y</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token variable">Z</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable">V</span> <span class="token operator">=</span> <span class="token number">2.</span><span class="token operator">.</span><span class="token number">3.</span></code></pre>
+<p>头部为且：</p>
+<ul>
+<li>p(X, Y)在头部，组合6种，关系为且</li>
+<li>p(Z)在头部，组合1种，关系为且</li>
+<li>p(V)在头部，组合2种，关系为且</li>
+</ul>
+<p>最终回答集M，1个，6+1+1=8个元素</p>
+<p>p(1,1), p(1,2), p(1,3), p(2,1), p(2,2), p(2,3) – 6</p>
+<p>p(1) – 1</p>
+<p>p(2), p(3) – 1</p>
+<pre class=" language-prolog"><code class="language-prolog">r <span class="token operator">:-</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token operator">;</span> <span class="token variable">Z</span><span class="token operator">;</span> <span class="token variable">V</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">X</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token variable">Y</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token variable">Z</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable">V</span> <span class="token operator">=</span> <span class="token number">2.</span><span class="token operator">.</span><span class="token number">3.</span></code></pre>
+<p>体部为或：</p>
+<ul>
+<li>p(X, Y)在体部，组合6种，关系为或</li>
+<li>p(Z)在体部，组合1种，关系为或</li>
+<li>p(V)在体部，组合1种，关系为或</li>
+</ul>
+<p>补充事实$F \subseteq M$，一定能推出r。</p>
+<p>变化一下：</p>
+<pre><code>r :- p(X, Y; Z; V), X = 1..3, Y = 1..2, Z = 1, q(V), V = 2..3.</code></pre><p>此时，必须有q在事实中，因为体部atom之间的逗号，还表示的是且，同时此处的q(V)，依然处理为q(2)或q(3)，但选定的V也会影响到<code>p(X, Y; Z; V)</code>中的V。</p>
+<pre><code>r :- p(X, Y; Z; V), X = 1..3, Y = 1..2, Z = 1, q(V), V = 2..3.
+p(3).
+q(2).</code></pre><p>上述程序推不出r。原因：</p>
+<p>规则镜像（省略带入值的排列组合）：<br>$$<br>r \leftarrow p(X, Y), q(V). \\\<br>r \leftarrow p(Z), q(V). \\\<br>r \leftarrow p(V), q(V). \\\<br>$$<br>注意：对于空而言（例如(a+1..a), (6..5))，其直接被替换为一个empty集合，empty集合的或为$\bot$，empty集合的且为$\top$</p>
+<p>空在头部为$\top$，体部为 $\bot$</p>
+<p>再注意：此处的空，和约束无关，约束就是头部$\bot$，不是头部空集。</p>
+<p>Reasoning found in mathematical proofs is monotonic: when a theorem is derived from a set of axioms, adding more axioms will not invalidate the proof. (This is so even if extending the set of axioms makes it inconsistent: in this case, every proposition becomes a theorem, including the theorems proved earlier.) </p>
+<p>But commonsense reasoning, practiced in everyday life, is often nonmonotonic. For example, we often deal with lists that are presumed to be complete. Conclusions based on such an assumption may need to be retracted when we get additional information. Something like this happened when Prolog and CLINGO told us, in response to rules (1.1), (1.2), that in 2015 there were two countries in Europe populated by more people than the United Kingdom. We realized that the number of such countries is actually three when we took into account the fact that Russia is a European country (Exercise 2.1 on page 7).</p>
+<p>p(N,N * N+N+41) :- N = 0..3.</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://rqhu1995.github.io" rel="external nofollow noreferrer">Bob Hu</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://rqhu1995.github.io/2020/04/14/ILC-learning-02/">https://rqhu1995.github.io/2020/04/14/ILC-learning-02/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://rqhu1995.github.io" target="_blank">Bob Hu</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/05/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="编译原理（一）">
+                        
+                        <span class="card-title">编译原理（一）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            编译原理（一）解释器和编译器
+编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）
+解释器：输入是程序代码、数据data，输出是程序执行结果
+
+所以python可以一行一行执行，C语言必须编译
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Bob Hu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/06/ILC-learning-01/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="Input Language of Clingo 学习笔记（1）">
+                        
+                        <span class="card-title">Input Language of Clingo 学习笔记（1）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            变量、集合、约束、选择
+集合划分
+
+{p(X) ; q(X)} = 1 :- X = 1..n.
+将数字1到n，划分进入两个集合之中。
+
+局部变量与全局变量
+
+仅仅出现在大括号内的变量是局部变量，否则是全局变量；
+局部变量的规则实例仅仅是他
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Bob Hu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/clingo/">
+                        <span class="chip bg-color">clingo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://rqhu1995.github.io" target="_blank">Bob Hu</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/rqhu1995" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:hurunqiu@live.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/BobHuNanjing" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/BobHuNanjing" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1086 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ILC阅读（三）, Bonjour">
+    <meta name="description" content="Logic &amp; Skills &amp; Life">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>ILC阅读（三） | Bonjour</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Bonjour</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Bonjour</div>
+        <div class="logo-desc">
+            
+            Logic &amp; Skills &amp; Life
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">ILC阅读（三）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+        
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-03
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>不含否定的命题逻辑程序的stable model的定义：</p>
+<ul>
+<li>对于不含否定的命题逻辑程序而言，minimal model就是stable model。</li>
+<li>minimal model：不存在更小的集合$S’ \subset S$（包含关系），$S’$是程序P的模型。</li>
+<li>model：能够满足程序中的每一个formula</li>
+<li>满足一个formula的定义：基本formula的（或且非蕴含）</li>
+</ul>
+</blockquote>
+<p>命题逻辑程序 《== 镜像 ==》 回答集程序</p>
+<p>命题逻辑程序稳定模型 《== 镜像 ==》 回答集程序稳定模型</p>
+<p>转换表：</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gef9cv7qhpj30fy09q74w.jpg" alt="image-20200503144417745" style="zoom: 50%;" />
+
+<p>本节考虑含有否定的程序。</p>
+<pre class=" language-prolog"><code class="language-prolog">p<span class="token operator">.</span>
+q<span class="token operator">.</span>
+r <span class="token operator">:-</span> p<span class="token punctuation">,</span> <span class="token operator">not</span> s<span class="token operator">.</span>
+s <span class="token operator">:-</span> q<span class="token operator">.</span></code></pre>
+<p>对于含有否定的程序，ASP如何理解「稳定」的概念？</p>
+<p>对稳定的理解基于一种self-verifying conjecture（自我验证假设）。</p>
+<p>首先对上述程序提出一个conjecture：$\{p,q,s\}$</p>
+<p>将conjecture带入程序，得到：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow p \land \bot,\\&amp;s \leftarrow q.\\\end{align}<br>$$<br>上述程序是确定的（definite），最小模型为{p,q,s}，与假设一致，因此程序最终的稳定模型就是{p,q,s}.</p>
+<p>对于确定程序（不含not），最小模型和稳定模型是一致的；对于含有not的程序，要先通过假设A进行规约，在自我验证之后，如果规约后的程序（一定是确定程序）的最小模型/稳定模型就是假设A，那么这个假设A就是原来程序的稳定模型（不谈最小了）。所以对非确定性程序而言，假设的大小并不影响他是不是回答集。</p>
+<p>一个命题公式F的关键部分定义：F的子公式，满足：</p>
+<ul>
+<li>形式为$\lnot G$</li>
+<li>不包含于一个更大的这样的形式</li>
+</ul>
+<p>例子：$p \leftarrow \lnot \lnot p$</p>
+<p>关键部分备选：$\lnot p$或$\lnot \lnot p$。</p>
+<p>如果是$\lnot p$，它包含于$\lnot \lnot p$，是更大的这样的形式，所以只能是$\lnot \lnot p$。</p>
+<p>规则R对I的规约：将一条规则的关键部分进行替换，原则：</p>
+<ul>
+<li>$I$满足规则R的关键部分，替换为$\top$</li>
+<li>$I$不满足规则R的关键部分，替换为$\bot$</li>
+</ul>
+<p>手工求解稳定模型的一个例子：<br>$$<br>\begin{align}<br>&amp;p \lor q, \<br>&amp;r \leftarrow \lnot p. \<br>\end{align}<br>$$<br>找到关键部分：$\lnot p$. 讨论关键部分是否在稳定模型中（影响规约结果的唯一要素）。</p>
+<ul>
+<li><p>Case 1: p在稳定模型中。规约结果A为：<br>$$<br>\begin{align}<br>&amp;p \lor q, \<br>&amp;r \leftarrow \bot. \<br>\end{align}<br>$$<br>A的稳定模型包含：</p>
+<ul>
+<li>\{p\}</li>
+<li>\{q\}</li>
+</ul>
+<p>第一个稳定模型与假设（case）不矛盾（包含p），因此{p}是原程序的一个稳定模型；</p>
+</li>
+<li><p>Case 2: p不在稳定模型中。规约结果B为：<br>$$<br>\begin{align}&amp;p \lor q, \\&amp;r \leftarrow \top. \\\end{align}<br>$$<br>B的稳定模型包含：</p>
+<ul>
+<li>\{p, r\}</li>
+<li>\{q, r\}</li>
+</ul>
+<p>第一个稳定模型与假设（case）不矛盾（不包含p），因此{q, r}是原程序的一个稳定模型；</p>
+</li>
+</ul>
+<p>综上，原程序的稳定模型为：{p}, {q, r}</p>
+<p>双否定：<br>$$<br>\begin{align}<br>&amp;p \leftarrow \lnot \lnot q, \<br>&amp;q \leftarrow \lnot \lnot p. \<br>\end{align}<br>$$<br>关键部分$\lnot \lnot q$与$\lnot \lnot p$，讨论情况4种：</p>
+<ul>
+<li><p>$\lnot q$在，$\lnot p$不在</p>
+<p>规约：<br>$$<br>\begin{align}<br>&amp;p \leftarrow \bot, \<br>&amp;q \leftarrow \top. \<br>\end{align}<br>$$<br>规约后唯一稳定模型{q}，不符合假设</p>
+</li>
+<li><p>$\lnot p$在，$\lnot q$不在</p>
+<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \top, \\&amp;q \leftarrow \bot. \\\end{align}<br>$$<br>规约后唯一稳定模型{p}，不符合假设</p>
+</li>
+<li><p>$\lnot q$在，$\lnot p$在</p>
+<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \bot, \\&amp;q \leftarrow \bot. \\\end{align}<br>$$<br>规约后唯一稳定模型{}，符合假设（空集表示$\lnot p$与$\lnot q$都成立）</p>
+</li>
+<li><p>$\lnot p$不在，$\lnot q$不在</p>
+<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \top, \\&amp;q \leftarrow \top. \\\end{align}<br>$$<br>规约后唯一稳定模型{p, q}，符合假设</p>
+</li>
+</ul>
+<p>综上，回答集有两个{p,q}和{}（要么都不对，要么都对）</p>
+<p>not not不能直接转换为正，转为正后就变为确定程序，稳定模型即最小模型就只包含{}</p>
+<p>按照上述方式求解稳定模型，有时候会非常复杂。因为关键部分（否定）太多的时候，排列组合的情况就会相应很多。 </p>
+<blockquote>
+<p>关于规约的一个定理：一个解释I满足一个命题逻辑程序$\Pi$，当且仅当它满足$\Pi^I$。</p>
+</blockquote>
+<p>根据这个定理，求解稳定模型就变为：</p>
+<p>I是一个程序的稳定模型，当且仅当：</p>
+<ul>
+<li>I是程序的模型</li>
+<li>I是$\Pi^I$的最小模型（再次强调：最小是规约完后最小，不是所有的规约下比大小）</li>
+</ul>
+<p>命题程序的化简：</p>
+<p>将原程序替换为一些稳定模型相同的程序。但是等价公式的替换，未必会带来相同的稳定模型。<br>$$<br>p \lor q, p \leftarrow \lnot q, q \leftarrow \lnot p.<br>$$<br>上述三个公式是相互等价的，但是稳定模型分别是$\{\{p\}, \{q\}\}, \{\{p\}\}, \{\{q\}\}$.</p>
+<p>类似的，双重否定即是肯定，这也是不正确的等价。$p \leftarrow \lnot \lnot p$的稳定模型有两个{}和{p}</p>
+<blockquote>
+<p> 关于事实的定理：将程序$\Pi$规则中属于事实集合A的元素全部替换为$\top$，记为$\Pi^A_{\top}$，$\Pi^A_{\top} \cup A$和$\Pi \cup A$稳定模型相同</p>
+</blockquote>
+<p>利用这一定理和上述的等价转换，有时候可以不需要规约。<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow p \land \lnot s,\\&amp;s \leftarrow q.\\\end{align}<br>$$<br>A={p, q}，那么$\Pi_\top^A \cup A=$<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \top \land \lnot s,\\&amp;s \leftarrow \top.\\\end{align}<br>$$<br>进行一次等价的化简：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \lnot s,(\top \land F = F)\\&amp;s.(F \leftarrow \top = F)\\\end{align}<br>$$<br>再进行一次事实定理的使用：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \lnot \top,\\&amp;s.\\\end{align}<br>$$<br>再进行一次等价化简<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \bot,\\&amp;s.\\\end{align}<br>$$<br>==&gt;<br>$$<br>\begin{align}<br>&amp;p, \<br>&amp;q, \<br>&amp;\top, \<br>&amp;s.\<br>\end{align}<br>$$</p>
+<p>稳定模型：p,q,s.</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gejmyqxfp0j30oc0dkta5.jpg" alt="image-20200507093718117" style="zoom:50%;" />
+
+<p>根据表4.1，头$\top$或体$\bot$的规则可以直接drop掉，不影响稳定模型。</p>
+<p>针对一个原子公式，如果它仅仅在体部出现过，那么这个原子公式是不相关的。我们可以使用$\Pi_\bot^A$来对应表示这些原子公式出现过的规则。</p>
+<p>empty conjunction as ⊤ and the empty disjunction as ⊥：</p>
+<p>理解的方式：在数学求和$\Sigma_i$、求积$ \Pi_i$中，我们会出现对i=0时候的特殊处理。一般情况下，我们将其定义为该运算符的幺元，即0个数求和为0，0个数求积为1，0的阶乘为1，$n^0=1$…。因此，对于合取，幺元为$\bot$；析取为$\top$，空合取就定义为真，空析取就定义为假。</p>
+<p><code>not p(X) :- q.</code>– q成立，所有p(X)都不成立；</p>
+<p>$==》X可取值为1..8$</p>
+<p><code>not p\(1\) $\land$ not p\(2\) $\land$ not p\(3\) ... $\land$ not p\(8\) :- q.</code></p>
+<p>$q \leftarrow not\ p(X).$ – 有一个p(X)不成立，q就不成立</p>
+<p>$==》X可取值为1..8$</p>
+<p><code>q :- not p(1) $\lor$ not p(2) ... $\lor$ not p(8)</code>. – 有一个$p(X)$不成立，q就不成立</p>
+<p>Clingo的全序：S &gt;= Z！任何符号比所有整数都要大。</p>
+<p>求下面程序的命题程序镜像：<br>$$<br>\mathrm{composite(N) \text{ :- } N = 1..5, I = 2..N-1, N \setminus I = 0.}<br>$$<br><code>composite(1) :- 1 = 1..5, 2 = 2..1, 1 \ 1 = 0</code></p>
+<h2 id="N-1，I-2"><a href="#N-1，I-2" class="headerlink" title="(N=1，I=2)"></a>(N=1，I=2)</h2><h3 id="1-1-5的值："><a href="#1-1-5的值：" class="headerlink" title="1=1..5的值："></a>1=1..5的值：</h3><ul>
+<li><p>体部</p>
+</li>
+<li><p>1与{1,2,3,4,5}比较，其中1=1满足比较</p>
+</li>
+<li><p>结果为$\top$ </p>
+<p>2=2..1的值：</p>
+</li>
+<li><p>体部</p>
+</li>
+<li><p>1与$\phi$，任意数字与1都不满足比较</p>
+</li>
+<li><p>结果为$\bot$</p>
+</li>
+</ul>
+<h3 id="2-2-1的值："><a href="#2-2-1的值：" class="headerlink" title="2=2..1的值："></a>2=2..1的值：</h3><ul>
+<li>体部</li>
+<li>1与$\phi$，任意数字与1都不满足比较</li>
+<li>结果为$\bot$</li>
+</ul>
+<h3 id="1-1-0"><a href="#1-1-0" class="headerlink" title="1 \ 1 = 0"></a>1 \ 1 = 0</h3><ul>
+<li>直接计算，结果为$\top$</li>
+</ul>
+<h3 id="…（继续枚举N和I，然后根据规则进行值的替换）"><a href="#…（继续枚举N和I，然后根据规则进行值的替换）" class="headerlink" title="…（继续枚举N和I，然后根据规则进行值的替换）"></a>…（继续枚举N和I，然后根据规则进行值的替换）</h3><p>总结：</p>
+<p>clingo到命题逻辑的替换原则：</p>
+<ul>
+<li><p>符号根据表格进行等价替换</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gek7f68r35j30cw084q3e.jpg" alt="image-20200507212515798" style="zoom:50%;" />
+</li>
+<li><p>比较运算符按照相应方法替换为$\top/\bot$，方法为：</p>
+<ul>
+<li>$t_1 \prec t_2$，如果在头部，每个$t_1$和$t_2$的值都满足$\prec$时为$\top$，否则为$\bot$；（且）</li>
+<li>$t_1 \prec t_2$，如果在体部，至少有一组$t_1$和$t_2$满足$\prec$时为$\top$，否则为$\bot$；（或）</li>
+<li>每个原子都按照相应方法替换为$\top/\bot$，方法为（含有not时，p换为$\lnot p$；not not时，换为$\lnot \lnot p$）</li>
+<li>$p(t_1,t_2,…,t_n)$在头部，替换为$t_i$的排列组合的合取（且）</li>
+<li>$p(t_1,t_2,…,t_n)$在体部，替换为$t_i$的排列组合的析取（或）</li>
+</ul>
+</li>
+<li><p>如果原子本身就是空，那么头部换为$\bot$，体部换为$\top$</p>
+<p>（头部原子间是或，幺元为$\bot$；体部原子间是且，幺元为$\top$）</p>
+<p>头部原子之间是或，头部单原子内部term值组合是且（体部一满足，会有多个头部同时成立）；</p>
+<p>体部原子之间是且，体部单原子内部term值组合是或（体部满足某一个，即可使得对应头部成立）；</p>
+</li>
+</ul>
+<p>例子：找命题程序镜像</p>
+<pre><code>p(5..7).
+q(X) :- X = 1..5, not p(X).</code></pre><p>$$<br>p(5).\<br>p(6).\<br>p(7).\<br>$$</p>
+<p>没有问题，三个事实。</p>
+<p>规则部分按照X的取值进行：</p>
+<table>
+<thead>
+<tr>
+<th align="center">X取值</th>
+<th align="center">q(X)</th>
+<th align="center">X=1..5</th>
+<th align="center">not p(X)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1<br /> q(1) :- 1 = 1..5, not p(1).</td>
+<td align="center">q(1)，atom，值就是自己:q(1)</td>
+<td align="center">1=1..5，体部，1=1:值为$\top$</td>
+<td align="center">not p(1)，值$\lnot q(1)$</td>
+</tr>
+<tr>
+<td align="center">2<br /> q(2) :- 2 = 1..5, not p(2).</td>
+<td align="center">q(2)，atom，值就是自己:q(2)</td>
+<td align="center">2=1..5，体部，2=2:值为$\top$</td>
+<td align="center">not p(2)，值$\lnot p(2)$</td>
+</tr>
+<tr>
+<td align="center">。。。一直到5</td>
+<td align="center">。。。一直到5</td>
+<td align="center">。。。一直到5</td>
+<td align="center">。。。一直到5</td>
+</tr>
+<tr>
+<td align="center">6<br /> q(6) :- 6 = 1..5, not p(6).</td>
+<td align="center">q(6)，atom，值就是自己:q(6)</td>
+<td align="center">6=1..5，体部，无法满足，值为$\bot$</td>
+<td align="center">not p(6)，值$\lnot p(6)$</td>
+</tr>
+<tr>
+<td align="center">。。。</td>
+<td align="center">。。。</td>
+<td align="center">。。。</td>
+<td align="center">。。。</td>
+</tr>
+</tbody></table>
+<p>汇总上表：</p>
+<p>$$<br>p(5) \land p(6) \land p(7)\\\<br>\begin{cases}<br>&amp;q(u) \leftarrow \top \land \lnot\ p(u). \ \ \ u \in \{1,2,3,4,5\} \\\<br>&amp;q(u) \leftarrow \bot \land \lnot\ p(u). \ \ \ u \in \mathbf{S\cup Z} \setminus\{1,2,3,4,5\}<br>\end{cases}<br>$$</p>
+<p>关于exclusive law（排中律）：</p>
+<p>$p \lor \lnot p$是个永真式，有两个稳定模型：$\{\},\{p\}$，在clingo中，这样的程序写为<code>p, not p.</code></p>
+<blockquote>
+<p>关于排中律的定理：一个命题程序$\Pi$的解释是这个程序的模型，当且仅当$I$是将$\Pi$中获取到的通过将每个原子p命题增加$p \lor \lnot p$，$I$仍然是模型。</p>
+</blockquote>
+<p>实际上就是把每个原子p都增加一个选择规则{p}。</p>
+<p>想要通过clingo求出程序的所有模型，可以通过上述定理，使得所有的atom都进行选择。</p>
+<p>choice rule的命题程序镜像：将大括号去掉，改为排中律的析取永真式</p>
+<p>例如：</p>
+<ul>
+<li>p(3..1). 3..1是空集，因此p(3..1)变换为多个空集的合取（这是term值的排列组合），即$\top$，回答集为空集；</li>
+<li>$:-.$程序唯一一条规则，且头部和体部都为空。atom是空集了，且在头部析取，结果为$\bot$，无回答集。</li>
+</ul>
+<p>关于约束：</p>
+<p>程序$P$中的约束$\Sigma$和其余部分$\Pi$拆成两个子程序，定理：</p>
+<blockquote>
+<p>I是P的稳定模型，当且仅当I是$\Sigma$的<strong>模型</strong>，且是$\Pi$的稳定模型。</p>
+</blockquote>
+<p>即满足非约束部分后，又能够保证不满足剩余约束的体部。</p>
+<p>目前为止的程序类型：</p>
+<p>positive（体部不含否定） – 最小模型就是稳定模型；</p>
+<p>definite （头部不含析取的positive）– 有且仅有一个稳定模型</p>
+<p>其他（含有否定、头部包含析取）– 无确定结论</p>
+<p>缺省逻辑：<br>$$<br>\frac{F:\mathrm{M\ }G_1,\ldots,\mathrm{M\ }G_n}{H}.<br>$$<br>$F$为假设，$\mathrm{M}$表示：「假设$G_i$这件事情」是不会产生矛盾的，$H$是结论，$G_i$代表推出$F$的证据。整个公式读作：</p>
+<p>在$F$的条件下，如果所有的证据都能够不矛盾地被假设为正确，那么可以得到结论$H$。如果用缺省逻辑的视角看规则：<br>$$<br>A_0 \leftarrow A_1 \land \ldots \land A_m \land \lnot A_{m + 1} \land \ldots ∧ \lnot A_n.<br>$$<br>应该表示为：<br>$$<br>\frac{A_1 \land \ldots \land A_m:\mathrm{M\ }\lnot A_{m+1}\land \ldots,\mathrm{M\ } \land \lnot A_n}{A_0}.<br>$$<br>自认知逻辑：除了命题逻辑的连接词，还会有$\text{L}$，$\text{L}F$表示：$F$被相信，NAF和$\lnot L$是对应的（$F$不被相信）</p>
+<p>选择规则带有基数限制：</p>
+<p>1 {A 1; . . . ;A n}. 可以通过约束进行变换。</p>
+<p>对每个元素$A_i$进行永真变换：$A_i \lor \lnot A_i$，然后增加约束：<br>$$<br>\bot \leftarrow \lnot A_1, \lnot A_2, \ldots, \lnot A_n.<br>$$<br>如果涉及到本地变量，问题会变得更复杂.</p>
+<p>$1 \{q(X) : p(X)\}$，不考虑基数1，可以转化为：$q(v) \lor \lnot q(v) \leftarrow p(v), v \in \mathbf{S \cup Z}$</p>
+<p>考虑基数1，则需要去掉所有的p和q完全没有交集的情况（p(v)和q(v)没有任何一个v能够同时成立)，增加约束(infinite)：<br>$$<br>\bot \leftarrow \bigwedge_\limits{v \in \mathbf{S \cup Z}} \lnot(p(v) \land q(v))<br>$$</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://rqhu1995.github.io" rel="external nofollow noreferrer">Bob Hu</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://rqhu1995.github.io/2020/05/03/ILC%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%89%EF%BC%89/">https://rqhu1995.github.io/2020/05/03/ILC%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%89%EF%BC%89/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://rqhu1995.github.io" target="_blank">Bob Hu</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="编译原理（三）自动机">
+                        
+                        <span class="card-title">编译原理（三）自动机</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            编译原理（三）自动机给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)
+Lexical Specification
+
+为每一个token类都写一个正则
+
+R1（numbe
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Bob Hu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="编译原理（二）：词法分析">
+                        
+                        <span class="card-title">编译原理（二）：词法分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Token – 一些字符串的集合（可以理解为分词）
+
+英语中：名词、动词、形：
+
+编程语言中：token class（看作一类）
+
+编程语言中：
+
+Identifier（标识符）：由字母或数字起始，字母或数字组成的一串字符串：A1，Foo，
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Bob Hu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://rqhu1995.github.io" target="_blank">Bob Hu</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/rqhu1995" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:hurunqiu@live.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/BobHuNanjing" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/BobHuNanjing" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,989 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="编译原理（三）自动机, Bonjour">
+    <meta name="description" content="Logic &amp; Skills &amp; Life">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>编译原理（三）自动机 | Bonjour</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Bonjour</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Bonjour</div>
+        <div class="logo-desc">
+            
+            Logic &amp; Skills &amp; Life
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">编译原理（三）自动机</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+        
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-09
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="编译原理（三）自动机"><a href="#编译原理（三）自动机" class="headerlink" title="编译原理（三）自动机"></a>编译原理（三）自动机</h1><p>给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)</p>
+<p>Lexical Specification</p>
+<ul>
+<li><p>为每一个token类都写一个正则</p>
+<ul>
+<li>R1（number）：digits+</li>
+<li>R2（letter）：[a-z]</li>
+<li>…</li>
+</ul>
+</li>
+<li><p>构造一个R，能够将每一个lexeme对应到各个token(s)上<br>$$<br>R = R_1+R_2+…<br>$$</p>
+</li>
+<li><p>输入：$X_1,..,X_n$，对$i \in [1,n]$，检查：$X_1, X_2,…,X_i$是否属于$L(R)$</p>
+<p>若成功：$X_1, X_2,…,X_i \in L(R_j)$，说明这一字符串在某个token的正则中；</p>
+</li>
+<li><p>剔除$X_1, X_2,…,X_i$，然后回到上一个步骤</p>
+<p>上述算法可能出现的问题：</p>
+<ul>
+<li><p>每次选择的子序列可能不唯一。</p>
+<p>对于字符串==，可以选=，也可以选择==。选择哪一个？</p>
+<p>目前的做法：Maximal Munch – 最长匹配</p>
+</li>
+<li><p>应该选择哪一种token呢？</p>
+<p>多个token的定义可能重叠：if/else – 关键词；也可匹配到identifier([a-z][a-z]*)</p>
+<p>此时需要设置优先级。关键词的优先级高于标识符</p>
+</li>
+<li><p>没有找到匹配呢？</p>
+<p>$X_1,…,X_i \not \in L(R)$ – 不允许发生</p>
+<p>定义一个表达错误的正则表达式语法Error，来接受这样的匹配，放在优先级的最后（Error甚至可以包含前述的正确语法，因为优先级最低，不会误判）</p>
+</li>
+</ul>
+<p>总结：</p>
+</li>
+<li><p>正则表达式是字符串模式的清晰表达符号</p>
+</li>
+<li><p>在词法分析中使用正则表达式，需要一些小的扩展</p>
+<ul>
+<li>解决歧义：选最长 + 优先级</li>
+<li>处理不匹配：定义Error接收错误输入，优先级最低</li>
+</ul>
+</li>
+<li><p>著名的相关算法</p>
+<ul>
+<li>只需要对输入进行单程扫描</li>
+<li>每个字符都进行一些操作（查表）</li>
+</ul>
+</li>
+</ul>
+<p>自动机</p>
+<p>正则表达式 = 表达层</p>
+<p>有限自动机 = 实现层</p>
+<p>一个有限自动机由下列元素组成：</p>
+<ul>
+<li><p>输入字母表$\Sigma$</p>
+</li>
+<li><p>有限状态集$S$</p>
+</li>
+<li><p>起始状态n</p>
+</li>
+<li><p>接受状态集$F \subseteq S$</p>
+</li>
+<li><p>转移集 $state \rightarrow^{input} state$</p>
+<p>如果输入到达最后，且到达了接受状态 ==》接收</p>
+<p>否则 –》拒绝</p>
+<ul>
+<li>在一个非接收状态结束</li>
+<li>卡住 – &gt;找不到下一个可以转移的方向</li>
+</ul>
+</li>
+</ul>
+<p>FA的语言定义为 $\equiv$ 接收字符串的集合</p>
+<p>DFA：</p>
+<ul>
+<li>一个输入，一个状态，一个转移</li>
+<li>没有$\varepsilon$移动</li>
+</ul>
+<p>NFA：</p>
+<ul>
+<li>一个输入，一个状态，可能有多个转移方向</li>
+<li>可以有$\varepsilon$移动</li>
+</ul>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemnhei3cjj30jc0cywjt.jpg" alt="NFA" style="zoom:33%;" />
+$$
+\downarrow
+$$
+
+
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemni549rcj30ia08ugpu.jpg" alt="DFA" style="zoom:33%;" />
+
+<p>上述都是NFA，第一个是多个转移；第二个是存在$\varepsilon$</p>
+<p>DFA对于一个输入字符串，只会在状态转移图中使用一条路径（确定）</p>
+<p>NFA可能会有多个路径</p>
+<p>NFA最终接受，如果其中存在路径是接受的；</p>
+<p>DFA较NFA执行更快（选择的不确定性更少）</p>
+<p>对同一语言，NFA却可能比DFA小的多。（时间折中空间的折中）</p>
+<p>到此为止，</p>
+<p>首先定义了词法声明（lexical specification）– 一个token使用一个正则表示语法（RE）</p>
+<p>后面将进行RE转换到NFA，NFA在转换到DFA，最后由DFA找到DFA的表驱动实现的工作</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoceqgy0lj31aq0le464.jpg" alt="image-20200511105731905" style="zoom:33%;" />
+
+<ul>
+<li>RE -&gt; DFA</li>
+</ul>
+<p>递归方式：AB拼接</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geocetnghkj319u0aaq8f.jpg" alt="image-20200511111946981" style="zoom:33%;" />
+
+<p>A或B</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geocfi6gtuj31520deqa0.jpg" alt="image-20200511112046044" style="zoom:33%;" />
+
+<p>A*</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geochc4g19j31520iwdos.jpg" alt="image-20200511112227393" style="zoom:33%;" />
+
+<p>$\varepsilon$闭包</p>
+<p>从某个状态$\cup$ 只经过$\varepsilon$能够到达的所有状态集合</p>
+<p>NFA每个时刻可停留的状态可能有许多个</p>
+<p>NFA –&gt; DFA<br>$$<br>a(X) = \{y \mid x \in X \land x \rightarrow^a y\}<br>$$<br>从X内元素出发，经过a能够到达的所有的状态y的集合</p>
+<p>DFA</p>
+<p>状态：NFA状态的非空子集</p>
+<p>起始状态（一个元素）：NFA起始状态的$\varepsilon$闭包</p>
+<p>终止状态（一个集合）：与NFA终止状态交集非空的全部状态集的集合</p>
+<p>$X \rightarrow^a Y$, if $Y = a(X)$的$\varepsilon$闭包</p>
+ <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geodvu01mgj31nm0rq7wh.jpg" alt="image-20200511121105259" style="zoom: 33%;" />
+
+<p>A为NFA的起始状态，空闭包为ABCDHI，作为DFA的起始状态</p>
+<p>从起始状态开始，找每个元素的a(X)，递归下去</p>
+<p>表驱动方式：二维表，行为状态，列为输入符号</p>
+<p>实现伪代码：</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoegdttfuj31ns0rctsr.jpg" alt="image-20200511123044581" style="zoom:33%;" />
+
+<p>上表的每行元素都一样，可以进一步简化存储，更紧凑（邻接表形式）</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoei7do0qj30lu09igqd.jpg" alt="image-20200511123234052" style="zoom:25%;" />
+
+<p>对N个状态的NFA，DFA可能有最多$2^N-1$个状态，但通常情况下不是最差情况。</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://rqhu1995.github.io" rel="external nofollow noreferrer">Bob Hu</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://rqhu1995.github.io/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">https://rqhu1995.github.io/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://rqhu1995.github.io" target="_blank">Bob Hu</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/05/31/%E5%86%99%E7%BB%99%E5%B0%8F%E9%A9%AC%E7%9A%84%F0%9F%92%BB%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+                    <div class="card-image">
+                        
+                        <img src="https://hrqnanjing-1256948370.cos.ap-shanghai.myqcloud.com/2020-05-30-171414.jpg" class="responsive-img" alt="写给小马同学的💻使用指南">
+                        
+                        <span class="card-title">写给小马同学的💻使用指南</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            重新安装操作系统重新安装Windows 操作系统Windows操作系统的安装，有如下几种常用的方式：
+
+通过U盘安装
+通过操作系统安装程序直接安装
+
+通过U盘安装在微软的创建适用于Windows的安装介质中，可以下载到各个版本Windows
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Bob Hu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/03/ILC%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%89%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="ILC阅读（三）">
+                        
+                        <span class="card-title">ILC阅读（三）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+不含否定的命题逻辑程序的stable model的定义：
+
+对于不含否定的命题逻辑程序而言，minimal model就是stable model。
+minimal model：不存在更小的集合$S’ \subset S$（包含关系），$
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Bob Hu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://rqhu1995.github.io" target="_blank">Bob Hu</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/rqhu1995" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:hurunqiu@live.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/BobHuNanjing" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/BobHuNanjing" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
