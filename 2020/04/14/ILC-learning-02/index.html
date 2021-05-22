@@ -367,9 +367,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/clingo/">
+                                <span class="chip bg-color">clingo</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -398,89 +402,92 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="从命题逻辑到回答集程序"><a href="#从命题逻辑到回答集程序" class="headerlink" title="从命题逻辑到回答集程序"></a>从命题逻辑到回答集程序</h1><h2 id="vocabulary"><a href="#vocabulary" class="headerlink" title="vocabulary"></a>vocabulary</h2><p>命题逻辑的vocabulary：原子公式（p,q,r…)</p>
+                <h1>从命题逻辑到回答集程序</h1>
+<h2 id="vocabulary">vocabulary</h2>
+<p>命题逻辑的vocabulary：原子公式（p,q,r…)</p>
 <p>命题逻辑的公式：原子公式+连接词</p>
 <p>命题逻辑的解释（interpretation）：一个集合，集合元素表示正确的原子公式</p>
 <p>例1：找到一个命题公式，能够被解释{p}满足，{q}满足，但不能被{p,q}满足</p>
-<p>$(p \land \neg q) \lor (q \land \neg p)$</p>
-<p>例2：vocabulary为$\{p_0, p_1, …\}$，求下列无限集合的模型</p>
-<p>2.1: $ \{p_1, \neg p_2, p_3, \neg p_4,…\}$</p>
-<p>答案：$\{p_0, p_1, p_3, …\}$和$\{p_1, p_3, …\}$</p>
-<p>2.2: $\{p_0 \leftarrow p_1, p_1 \leftarrow p_2,…\} \cup \{\neg p_2\}.$</p>
-<p>答案：$\{p_0, p_1\}$和$\{p_0\}$和$\{ \}$</p>
-<p>$p_3$后的一堆规则一通百通，要保证$\lnot p_2$，即推不出$p_2$，就必须使得2后全部错误。</p>
+<p><img src="https://math.now.sh?inline=%28p%20%5Cland%20%5Cneg%20q%29%20%5Clor%20(q%20%5Cland%20%5Cneg%20p)" style="display:inline-block;margin: 0;"/></p>
+<p>例2：vocabulary为<img src="https://math.now.sh?inline=%5C%7Bp_0%2C%20p_1%2C%20...%5C%7D" style="display:inline-block;margin: 0;"/>，求下列无限集合的模型</p>
+<p>2.1: $ {p_1, \neg p_2, p_3, \neg p_4,…}$</p>
+<p>答案：<img src="https://math.now.sh?inline=%5C%7Bp_0%2C%20p_1%2C%20p_3%2C%20...%5C%7D" style="display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=%5C%7Bp_1%2C%20p_3%2C%20...%5C%7D" style="display:inline-block;margin: 0;"/></p>
+<p>2.2: <img src="https://math.now.sh?inline=%5C%7Bp_0%20%5Cleftarrow%20p_1%2C%20p_1%20%5Cleftarrow%20p_2%2C...%5C%7D%20%5Ccup%20%5C%7B%5Cneg%20p_2%5C%7D." style="display:inline-block;margin: 0;"/></p>
+<p>答案：<img src="https://math.now.sh?inline=%5C%7Bp_0%2C%20p_1%5C%7D" style="display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=%5C%7Bp_0%5C%7D" style="display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=%5C%7B%20%5C%7D" style="display:inline-block;margin: 0;"/></p>
+<p><img src="https://math.now.sh?inline=p_3" style="display:inline-block;margin: 0;"/>后的一堆规则一通百通，要保证<img src="https://math.now.sh?inline=%5Clnot%20p_2" style="display:inline-block;margin: 0;"/>，即推不出<img src="https://math.now.sh?inline=p_2" style="display:inline-block;margin: 0;"/>，就必须使得2后全部错误。</p>
 <p>等价</p>
 <p>当两组命题公式具有相同的模型时，他们是等价的。</p>
 <p>例：判断下列公式是否等价</p>
-<p>a. $\{ p \leftarrow q, q \leftarrow r \}$ and $p \leftarrow r$.</p>
-<p>b. $p \land q \leftarrow r$ and $\{ p \leftarrow r, q \leftarrow r \}$ .</p>
-<p>c. $p \leftarrow q \lor r$ and $\{ p \leftarrow q, p \leftarrow r \}$ .</p>
-<p>d. $p \leftarrow p$ and $q \lor \lnot q$.</p>
-<p>e. $p \leftarrow \lnot q$ and $q \leftarrow \lnot p$.</p>
+<p>a. <img src="https://math.now.sh?inline=%5C%7B%20p%20%5Cleftarrow%20q%2C%20q%20%5Cleftarrow%20r%20%5C%7D" style="display:inline-block;margin: 0;"/> and <img src="https://math.now.sh?inline=p%20%5Cleftarrow%20r" style="display:inline-block;margin: 0;"/>.</p>
+<p>b. <img src="https://math.now.sh?inline=p%20%5Cland%20q%20%5Cleftarrow%20r" style="display:inline-block;margin: 0;"/> and <img src="https://math.now.sh?inline=%5C%7B%20p%20%5Cleftarrow%20r%2C%20q%20%5Cleftarrow%20r%20%5C%7D" style="display:inline-block;margin: 0;"/> .</p>
+<p>c. <img src="https://math.now.sh?inline=p%20%5Cleftarrow%20q%20%5Clor%20r" style="display:inline-block;margin: 0;"/> and <img src="https://math.now.sh?inline=%5C%7B%20p%20%5Cleftarrow%20q%2C%20p%20%5Cleftarrow%20r%20%5C%7D" style="display:inline-block;margin: 0;"/> .</p>
+<p>d. <img src="https://math.now.sh?inline=p%20%5Cleftarrow%20p" style="display:inline-block;margin: 0;"/> and <img src="https://math.now.sh?inline=q%20%5Clor%20%5Clnot%20q" style="display:inline-block;margin: 0;"/>.</p>
+<p>e. <img src="https://math.now.sh?inline=p%20%5Cleftarrow%20%5Clnot%20q" style="display:inline-block;margin: 0;"/> and <img src="https://math.now.sh?inline=q%20%5Cleftarrow%20%5Clnot%20p" style="display:inline-block;margin: 0;"/>.</p>
 <p>答案：(a)不等价，其余均等价</p>
 <table>
 <thead>
 <tr>
-<th align="center">Interp</th>
-<th align="center">$\{ p \leftarrow q, q \leftarrow r \}$</th>
-<th align="center">$p \leftarrow r$</th>
+<th style="text-align:center">Interp</th>
+<th style="text-align:center"><img src="https://math.now.sh?inline=%5C%7B%20p%20%5Cleftarrow%20q%2C%20q%20%5Cleftarrow%20r%20%5C%7D" style="display:inline-block;margin: 0;"/></th>
+<th style="text-align:center"><img src="https://math.now.sh?inline=p%20%5Cleftarrow%20r" style="display:inline-block;margin: 0;"/></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">{}</td>
-<td align="center">model</td>
-<td align="center">model</td>
+<tbody>
+<tr>
+<td style="text-align:center">{}</td>
+<td style="text-align:center">model</td>
+<td style="text-align:center">model</td>
 </tr>
 <tr>
-<td align="center">{p}</td>
-<td align="center">model</td>
-<td align="center">model</td>
+<td style="text-align:center">{p}</td>
+<td style="text-align:center">model</td>
+<td style="text-align:center">model</td>
 </tr>
 <tr>
-<td align="center">{q}</td>
-<td align="center">non-model</td>
-<td align="center">model</td>
+<td style="text-align:center">{q}</td>
+<td style="text-align:center">non-model</td>
+<td style="text-align:center">model</td>
 </tr>
 <tr>
-<td align="center">{r}</td>
-<td align="center">non-model</td>
-<td align="center">non-model</td>
+<td style="text-align:center">{r}</td>
+<td style="text-align:center">non-model</td>
+<td style="text-align:center">non-model</td>
 </tr>
 <tr>
-<td align="center">{p,q}</td>
-<td align="center">model</td>
-<td align="center">model</td>
+<td style="text-align:center">{p,q}</td>
+<td style="text-align:center">model</td>
+<td style="text-align:center">model</td>
 </tr>
 <tr>
-<td align="center">{p,r}</td>
-<td align="center">non-model</td>
-<td align="center">model</td>
+<td style="text-align:center">{p,r}</td>
+<td style="text-align:center">non-model</td>
+<td style="text-align:center">model</td>
 </tr>
 <tr>
-<td align="center">{q,r}</td>
-<td align="center">non-model</td>
-<td align="center">non-model</td>
+<td style="text-align:center">{q,r}</td>
+<td style="text-align:center">non-model</td>
+<td style="text-align:center">non-model</td>
 </tr>
 <tr>
-<td align="center">{p,q,r}</td>
-<td align="center">model</td>
-<td align="center">model</td>
+<td style="text-align:center">{p,q,r}</td>
+<td style="text-align:center">model</td>
+<td style="text-align:center">model</td>
 </tr>
-</tbody></table>
-<p>$$<br>\begin{equation}<br>r \rightarrow  q, q \rightarrow  p \iff (\lnot r \lor q) \land (\lnot q \lor p) \iff (\lnot r \land \lnot q) \lor (\lnot r \land p) \lor (p \land q) \tag{1}<br>\end{equation}<br>$$</p>
-<p>$$<br>\begin{equation}<br>r \rightarrow p \iff \lnot r \lor p \tag{2}<br>\end{equation}<br>$$</p>
-<p>观察真值表可以发现，$I \models \{q \leftarrow p, q \leftarrow r\}$能保证$I \models p \leftarrow r$，但反之不可以。从析取的两个化简结果(1)和(2)看，（2）</p>
-<h2 id="最小模型（minimal-model）"><a href="#最小模型（minimal-model）" class="headerlink" title="最小模型（minimal model）"></a>最小模型（minimal model）</h2><p>集合S是Model，且没有真子集S’是Model，那么S是minimal model。</p>
+</tbody>
+</table>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Bequation%7D%0Ar%20%5Crightarrow%20%20q%2C%20q%20%5Crightarrow%20%20p%20%5Ciff%20%28%5Clnot%20r%20%5Clor%20q%29%20%5Cland%20(%5Clnot%20q%20%5Clor%20p)%20%5Ciff%20(%5Clnot%20r%20%5Cland%20%5Clnot%20q)%20%5Clor%20(%5Clnot%20r%20%5Cland%20p)%20%5Clor%20(p%20%5Cland%20q)%20%5Ctag%7B1%7D%0A%5Cend%7Bequation%7D%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Cbegin%7Bequation%7D%0Ar%20%5Crightarrow%20p%20%5Ciff%20%5Clnot%20r%20%5Clor%20p%20%5Ctag%7B2%7D%0A%5Cend%7Bequation%7D%0A" /></p><p>观察真值表可以发现，<img src="https://math.now.sh?inline=I%20%5Cmodels%20%5C%7Bq%20%5Cleftarrow%20p%2C%20q%20%5Cleftarrow%20r%5C%7D" style="display:inline-block;margin: 0;"/>能保证<img src="https://math.now.sh?inline=I%20%5Cmodels%20p%20%5Cleftarrow%20r" style="display:inline-block;margin: 0;"/>，但反之不可以。从析取的两个化简结果(1)和(2)看，（2）</p>
+<h2 id="最小模型（minimal-model）">最小模型（minimal model）</h2>
+<p>集合S是Model，且没有真子集S’是Model，那么S是minimal model。</p>
 <p>最小不取决于元素数量，取决于包含关系。</p>
 <p>例题：程序P: {} 的模型和最小模型？</p>
 <p>答案：模型 – 所有解释均是模型</p>
-<p>​        （对任意一条规则r，解释都满足r）由于没有任何规则，因此任何解释都满足。</p>
-<p>​            最小模型 – 空集是唯一最小模型</p>
+<p>​		（对任意一条规则r，解释都满足r）由于没有任何规则，因此任何解释都满足。</p>
+<p>​			最小模型 – 空集是唯一最小模型</p>
 <p>在开放vocabulary的情况下，最小模型一定是整个程序中出现过的原子公式的子集，而模型可能是无限的。</p>
-<p>例题：程序$\Gamma$包含的均是原子公式，求$\Gamma$的模型和最小模型：</p>
-<p>答案：记$\Gamma$中的原子公式集合为$F$，则$\forall T \supseteq F$，$T$是模型；$F$本身是唯一的最小模型。</p>
+<p>例题：程序<img src="https://math.now.sh?inline=%5CGamma" style="display:inline-block;margin: 0;"/>包含的均是原子公式，求<img src="https://math.now.sh?inline=%5CGamma" style="display:inline-block;margin: 0;"/>的模型和最小模型：</p>
+<p>答案：记<img src="https://math.now.sh?inline=%5CGamma" style="display:inline-block;margin: 0;"/>中的原子公式集合为<img src="https://math.now.sh?inline=F" style="display:inline-block;margin: 0;"/>，则<img src="https://math.now.sh?inline=%5Cforall%20T%20%5Csupseteq%20F" style="display:inline-block;margin: 0;"/>，<img src="https://math.now.sh?inline=T" style="display:inline-block;margin: 0;"/>是模型；<img src="https://math.now.sh?inline=F" style="display:inline-block;margin: 0;"/>本身是唯一的最小模型。</p>
 <p>等价的公式集合具有相同的minimal model，反之不成立，反例：</p>
-<p>$\{ p \leftarrow q, q \leftarrow r \}$和$p \leftarrow r$，minimal model为空集，但不等价。</p>
+<p><img src="https://math.now.sh?inline=%5C%7B%20p%20%5Cleftarrow%20q%2C%20q%20%5Cleftarrow%20r%20%5C%7D" style="display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=p%20%5Cleftarrow%20r" style="display:inline-block;margin: 0;"/>，minimal model为空集，但不等价。</p>
 <p>definite program/rule：（1）体部不含否定，（2）头部为原子的合取。</p>
 <blockquote>
 <p>定理：definite program有一个唯一的minimal mode。</p>
@@ -488,18 +495,18 @@
 <p>definite program的两个要求保证该定理成立，缺一就不能保证了。</p>
 <p>反例：</p>
 <ul>
-<li>缺（1） $p \lor q$，两个最小模型；</li>
-<li>缺（2）$p \leftarrow \lnot q$，两个最小模型（p和q），注意此处和回答集不同，$p \leftarrow not\ q$ 在回答集语义下，稳定模型为p。（逆否命题自动成立在回答集语义下不存在）</li>
+<li>缺（1） <img src="https://math.now.sh?inline=p%20%5Clor%20q" style="display:inline-block;margin: 0;"/>，两个最小模型；</li>
+<li>缺（2）<img src="https://math.now.sh?inline=p%20%5Cleftarrow%20%5Clnot%20q" style="display:inline-block;margin: 0;"/>，两个最小模型（p和q），注意此处和回答集不同，<img src="https://math.now.sh?inline=p%20%5Cleftarrow%20not%5C%20q" style="display:inline-block;margin: 0;"/> 在回答集语义下，稳定模型为p。（逆否命题自动成立在回答集语义下不存在）</li>
 </ul>
 <p>对于positive程序而言，最小模型就是稳定模型。</p>
 <ul>
 <li>算术运算</li>
-<li>intervals(1..5)</li>
+<li>intervals(1…5)</li>
 <li>pooling(2;3;4;5)</li>
-<li>placeholders(1..n, n=3)</li>
+<li>placeholders(1…n, n=3)</li>
 <li>匿名变量</li>
 </ul>
-<p>满足上述要求的positive program $\Pi$</p>
+<p>满足上述要求的positive program <img src="https://math.now.sh?inline=%5CPi" style="display:inline-block;margin: 0;"/></p>
 <ul>
 <li>先映射为一个positive image</li>
 <li>此image是一个positive propositional program</li>
@@ -508,25 +515,29 @@
 </ul>
 <p>关于ground的propositional转换：</p>
 <ul>
-<li><p>$p(t_1,…t_k)$在头部，image转换为全部可能$p(v_1,…v_k)$的合取，$v_i$是$t_i$<strong>一个</strong>值。</p>
-<p>例：$p(1..3, 5..8)$在规则头部，此时t是有两个<code>t1=1..3, t2=5..8</code>，根据term的计算，$t_1$的值集合为{1,2,3}，$t_2$值的集合为{5,6,7,8}。此时$v_1$就可以为1或2或3，$v_2$就可以为5或6或7或8，全部可能的$p(v_1, v_2)$就有：</p>
-<p>$\{p(1,5),…,p(1,8),p(2,5),…,p(2,8),p(3,5),…p(3,8)\}$</p>
+<li>
+<p><img src="https://math.now.sh?inline=p%28t_1%2C...t_k%29" style="display:inline-block;margin: 0;"/>在头部，image转换为全部可能<img src="https://math.now.sh?inline=p%28v_1%2C...v_k%29" style="display:inline-block;margin: 0;"/>的合取，<img src="https://math.now.sh?inline=v_i" style="display:inline-block;margin: 0;"/>是<img src="https://math.now.sh?inline=t_i" style="display:inline-block;margin: 0;"/><strong>一个</strong>值。</p>
+<p>例：<img src="https://math.now.sh?inline=p%281..3%2C%205..8%29" style="display:inline-block;margin: 0;"/>在规则头部，此时t是有两个<code>t1=1..3, t2=5..8</code>，根据term的计算，<img src="https://math.now.sh?inline=t_1" style="display:inline-block;margin: 0;"/>的值集合为{1,2,3}，<img src="https://math.now.sh?inline=t_2" style="display:inline-block;margin: 0;"/>值的集合为{5,6,7,8}。此时<img src="https://math.now.sh?inline=v_1" style="display:inline-block;margin: 0;"/>就可以为1或2或3，<img src="https://math.now.sh?inline=v_2" style="display:inline-block;margin: 0;"/>就可以为5或6或7或8，全部可能的<img src="https://math.now.sh?inline=p%28v_1%2C%20v_2%29" style="display:inline-block;margin: 0;"/>就有：</p>
+<p><img src="https://math.now.sh?inline=%5C%7Bp%281%2C5%29%2C...%2Cp(1%2C8)%2Cp(2%2C5)%2C...%2Cp(2%2C8)%2Cp(3%2C5)%2C...p(3%2C8)%5C%7D" style="display:inline-block;margin: 0;"/></p>
 <p>转换结果为上述公式的合取。</p>
 </li>
-<li><p>$p(t_1,…t_k)$在体部，image转换为$p(v_1,…v_k)$的析取，$v_i$是$t_i$<strong>一个</strong>值。</p>
+<li>
+<p><img src="https://math.now.sh?inline=p%28t_1%2C...t_k%29" style="display:inline-block;margin: 0;"/>在体部，image转换为<img src="https://math.now.sh?inline=p%28v_1%2C...v_k%29" style="display:inline-block;margin: 0;"/>的析取，<img src="https://math.now.sh?inline=v_i" style="display:inline-block;margin: 0;"/>是<img src="https://math.now.sh?inline=t_i" style="display:inline-block;margin: 0;"/><strong>一个</strong>值。</p>
 </li>
-<li><p>头部是t1和t2的比较，当所有t1的值和t2的值两两之间都满足比较，判定为$\top$，否则$\bot$</p>
+<li>
+<p>头部是t1和t2的比较，当所有t1的值和t2的值两两之间都满足比较，判定为<img src="https://math.now.sh?inline=%5Ctop" style="display:inline-block;margin: 0;"/>，否则<img src="https://math.now.sh?inline=%5Cbot" style="display:inline-block;margin: 0;"/></p>
 </li>
-<li><p>体部是t1和t2的比较，当存在t1的值和t2的值两两之间都满足比较，判定为$\top$，否则$\bot$</p>
+<li>
+<p>体部是t1和t2的比较，当存在t1的值和t2的值两两之间都满足比较，判定为<img src="https://math.now.sh?inline=%5Ctop" style="display:inline-block;margin: 0;"/>，否则<img src="https://math.now.sh?inline=%5Cbot" style="display:inline-block;margin: 0;"/></p>
 </li>
 </ul>
 <p>atom之间的逗号和分号无区别，在头部时为或，体部时为且；</p>
 <p>term之间的分号 – 头部为且，体部为或；</p>
 <p>term之间的逗号：</p>
-<p>p(X, Y, Z…)，X和Y和Z有多个取值时，无论如何每次XYZ都只取一个值，这样就会有多种term组合$C_i$</p>
+<p>p(X, Y, Z…)，X和Y和Z有多个取值时，无论如何每次XYZ都只取一个值，这样就会有多种term组合<img src="https://math.now.sh?inline=C_i" style="display:inline-block;margin: 0;"/></p>
 <ul>
-<li>头部：展开成多个 $C_i$ 的且</li>
-<li>体部：展开成多个$C_i$的或</li>
+<li>头部：展开成多个 <img src="https://math.now.sh?inline=C_i" style="display:inline-block;margin: 0;"/> 的且</li>
+<li>体部：展开成多个<img src="https://math.now.sh?inline=C_i" style="display:inline-block;margin: 0;"/>的或</li>
 </ul>
 <p>例：<code>p(X, Y) :- X = 1..2, Y = 4..6</code></p>
 <p>头部时候，展开为且，组合为1个回答集包含6个元素。</p>
@@ -534,7 +545,8 @@
 <p>体部时候，展开为或，组合为6个回答集，每个回答集包含1个元素</p>
 <p>注意，结合时逗号的优先级高于分号，p(X, Y;Z;V)会结合成为p(X,Y) p(Z) p(V) ，同样适用于term之间的分号规则， 头部为且，体部为或。</p>
 <p>例如：</p>
-<pre class=" language-prolog"><code class="language-prolog"><span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token operator">;</span> <span class="token variable">Z</span><span class="token operator">;</span> <span class="token variable">V</span><span class="token punctuation">)</span> <span class="token operator">:-</span> <span class="token variable">X</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token variable">Y</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token variable">Z</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable">V</span> <span class="token operator">=</span> <span class="token number">2.</span><span class="token operator">.</span><span class="token number">3.</span></code></pre>
+<pre class=" language-language-prolog"><code class="language-language-prolog">p(X, Y; Z; V) :- X = 1..3, Y = 1..2, Z = 1, V = 2..3.
+</code></pre>
 <p>头部为且：</p>
 <ul>
 <li>p(X, Y)在头部，组合6种，关系为且</li>
@@ -545,25 +557,31 @@
 <p>p(1,1), p(1,2), p(1,3), p(2,1), p(2,2), p(2,3) – 6</p>
 <p>p(1) – 1</p>
 <p>p(2), p(3) – 1</p>
-<pre class=" language-prolog"><code class="language-prolog">r <span class="token operator">:-</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token operator">;</span> <span class="token variable">Z</span><span class="token operator">;</span> <span class="token variable">V</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">X</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token variable">Y</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token variable">Z</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token variable">V</span> <span class="token operator">=</span> <span class="token number">2.</span><span class="token operator">.</span><span class="token number">3.</span></code></pre>
+<pre class=" language-language-prolog"><code class="language-language-prolog">r :- p(X, Y; Z; V), X = 1..3, Y = 1..2, Z = 1, V = 2..3.
+</code></pre>
 <p>体部为或：</p>
 <ul>
 <li>p(X, Y)在体部，组合6种，关系为或</li>
 <li>p(Z)在体部，组合1种，关系为或</li>
 <li>p(V)在体部，组合1种，关系为或</li>
 </ul>
-<p>补充事实$F \subseteq M$，一定能推出r。</p>
+<p>补充事实<img src="https://math.now.sh?inline=F%20%5Csubseteq%20M" style="display:inline-block;margin: 0;"/>，一定能推出r。</p>
 <p>变化一下：</p>
-<pre><code>r :- p(X, Y; Z; V), X = 1..3, Y = 1..2, Z = 1, q(V), V = 2..3.</code></pre><p>此时，必须有q在事实中，因为体部atom之间的逗号，还表示的是且，同时此处的q(V)，依然处理为q(2)或q(3)，但选定的V也会影响到<code>p(X, Y; Z; V)</code>中的V。</p>
+<pre><code>r :- p(X, Y; Z; V), X = 1..3, Y = 1..2, Z = 1, q(V), V = 2..3.
+</code></pre>
+<p>此时，必须有q在事实中，因为体部atom之间的逗号，还表示的是且，同时此处的q(V)，依然处理为q(2)或q(3)，但选定的V也会影响到<code>p(X, Y; Z; V)</code>中的V。</p>
 <pre><code>r :- p(X, Y; Z; V), X = 1..3, Y = 1..2, Z = 1, q(V), V = 2..3.
 p(3).
-q(2).</code></pre><p>上述程序推不出r。原因：</p>
-<p>规则镜像（省略带入值的排列组合）：<br>$$<br>r \leftarrow p(X, Y), q(V). \\\<br>r \leftarrow p(Z), q(V). \\\<br>r \leftarrow p(V), q(V). \\\<br>$$<br>注意：对于空而言（例如(a+1..a), (6..5))，其直接被替换为一个empty集合，empty集合的或为$\bot$，empty集合的且为$\top$</p>
-<p>空在头部为$\top$，体部为 $\bot$</p>
-<p>再注意：此处的空，和约束无关，约束就是头部$\bot$，不是头部空集。</p>
-<p>Reasoning found in mathematical proofs is monotonic: when a theorem is derived from a set of axioms, adding more axioms will not invalidate the proof. (This is so even if extending the set of axioms makes it inconsistent: in this case, every proposition becomes a theorem, including the theorems proved earlier.) </p>
+q(2).
+</code></pre>
+<p>上述程序推不出r。原因：</p>
+<p>规则镜像（省略带入值的排列组合）：</p>
+<p style=""><img src="https://math.now.sh?from=r%20%5Cleftarrow%20p%28X%2C%20Y%29%2C%20q(V).%20%5C%5C%5C%5C%0Ar%20%5Cleftarrow%20p(Z)%2C%20q(V).%20%5C%5C%5C%5C%0Ar%20%5Cleftarrow%20p(V)%2C%20q(V).%20%5C%5C%5C%5C%0A" /></p><p>注意：对于空而言（例如(a+1…a), (6…5))，其直接被替换为一个empty集合，empty集合的或为<img src="https://math.now.sh?inline=%5Cbot" style="display:inline-block;margin: 0;"/>，empty集合的且为<img src="https://math.now.sh?inline=%5Ctop" style="display:inline-block;margin: 0;"/></p>
+<p>空在头部为<img src="https://math.now.sh?inline=%5Ctop" style="display:inline-block;margin: 0;"/>，体部为 <img src="https://math.now.sh?inline=%5Cbot" style="display:inline-block;margin: 0;"/></p>
+<p>再注意：此处的空，和约束无关，约束就是头部<img src="https://math.now.sh?inline=%5Cbot" style="display:inline-block;margin: 0;"/>，不是头部空集。</p>
+<p>Reasoning found in mathematical proofs is monotonic: when a theorem is derived from a set of axioms, adding more axioms will not invalidate the proof. (This is so even if extending the set of axioms makes it inconsistent: in this case, every proposition becomes a theorem, including the theorems proved earlier.)</p>
 <p>But commonsense reasoning, practiced in everyday life, is often nonmonotonic. For example, we often deal with lists that are presumed to be complete. Conclusions based on such an assumption may need to be retracted when we get additional information. Something like this happened when Prolog and CLINGO told us, in response to rules (1.1), (1.2), that in 2015 there were two countries in Europe populated by more people than the United Kingdom. We realized that the number of such countries is actually three when we took into account the fact that Russia is a European country (Exercise 2.1 on page 7).</p>
-<p>p(N,N * N+N+41) :- N = 0..3.</p>
+<p>p(N,N * N+N+41) :- N = 0…3.</p>
 
             </div>
             <hr/>
@@ -626,7 +644,11 @@ q(2).</code></pre><p>上述程序推不出r。原因：</p>
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/clingo/">
+                                    <span class="chip bg-color">clingo</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -669,28 +691,35 @@ q(2).</code></pre><p>上述程序推不出r。原因：</p>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/05/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/">
+                <a href="/2020/05/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="编译原理（一）">
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="编译原理（二）：词法分析">
                         
-                        <span class="card-title">编译原理（一）</span>
+                        <span class="card-title">编译原理（二）：词法分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            编译原理（一）解释器和编译器
-编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）
-解释器：输入是程序代码、数据data，输出是程序执行结果
+                            Token – 一些字符串的集合（可以理解为分词）
 
-所以python可以一行一行执行，C语言必须编译
+
+英语中：名词、动词、形：
+
+
+编程语言中：token class（看作一类）
+
+
+编程语言中：
+
+Identifier（标识符）：由字母或数字起始，字母或数字组成的一串字符串：A1，F
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-03
                         </span>
                         <span class="publish-author">
                             
@@ -723,15 +752,17 @@ q(2).</code></pre><p>上述程序推不出r。原因：</p>
                     <div class="summary block-with-text">
                         
                             变量、集合、约束、选择
+
 集合划分
 
 {p(X) ; q(X)} = 1 :- X = 1..n.
+
 将数字1到n，划分进入两个集合之中。
 
 局部变量与全局变量
 
 仅仅出现在大括号内的变量是局部变量，否则是全局变量；
-局部变量的规则实例仅仅是他
+局部变量的规则实例仅仅
                         
                     </div>
                     <div class="publish-info">

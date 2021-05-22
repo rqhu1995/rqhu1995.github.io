@@ -409,7 +409,6 @@
 <p>检查方法：从最高级向下找，找到第一个不一样的惩罚。</p>
 <p>不存在被支配者的stable model就是最优化model</p>
 <img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20200612144346398.png" alt="image-20200612144346398" style="zoom:50%;" />
-
 <p>冒号后成立的前提下，第一个计算结果和为3，第二个为6；原因，成立后，集合变为{3;3}和{3,1,2; 3,2,3}，对前者，实际上是单元素集合（重复不考虑）；后者是双元素集合。计算和的时候，计算的是权重，权重就是第一位数字。</p>
 
             </div>
@@ -530,15 +529,17 @@
                         
                             
 N：网络
+
 V，E：网络节点和边
 R：资源
-m：映射：（边到时间）– 一条边通过的最短时间
-a：映射：（资源到边集）– 一个资源分配给的边
-b：映射：（资源到时间）– 一个资源占用需要等待的时间
+m：映射：（边到时间）-- 一条边通过的最短时间
+a：映射：（资源到边集）-- 一个资源分配给的边
+b：映射：（资源到时间）-- 一个资源占用需要等待的时间
 
 
 T：火车
-S，L：V，E的一个无环子图–
+
+S，L：V，E的一个
                         
                     </div>
                     <div class="publish-info">
@@ -563,26 +564,32 @@ S，L：V，E的一个无环子图–
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/11/stepping/">
+                <a href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/14.jpg" class="responsive-img" alt="stepping">
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="编译原理（三）自动机">
                         
-                        <span class="card-title">stepping</span>
+                        <span class="card-title">编译原理（三）自动机</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Why, Why-not, What-if, How-to
-abstract constraint logic program
-一个atom：$\langle D, C \rangle$，$C \subseteq 2^D$. domain和
+                            编译原理（三）自动机
+给定一个字符串s，判定，即是否是一个正则表达式的语言。(L将正则表达式映射到语义上)
+Lexical Specification
+
+
+为每一个token类都写一个正则
+
+R1（number）：digits+
+R2（le
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
                             </span>
                         <span class="publish-author">
                             
@@ -591,6 +598,14 @@ abstract constraint logic program
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">编译原理</span>
+                    </a>
+                    
                 </div>
                 
             </div>

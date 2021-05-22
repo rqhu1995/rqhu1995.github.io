@@ -367,9 +367,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">白板推导学习笔记</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -398,40 +402,42 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h1><h2 id="概率密度"><a href="#概率密度" class="headerlink" title="概率密度"></a>概率密度</h2><p>假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）<br>$$<br>X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}<br>$$</p>
-<h2 id="一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）"><a href="#一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）" class="headerlink" title="一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）"></a>一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）</h2><p>当$p=1$时，$p(X=x)=\dfrac{e^{-\frac{(x-\mu)^2}{2\Sigma}}}{\sqrt{2\pi\Sigma}}$<br>$$<br>\theta_{MLE}=\underset{\theta=\{\mu, \Sigma\}}{\mathrm{argmax}} \prod\limits_{i=1}^n p(X=x_i)=\underset{\theta=\{\mu, \Sigma\}}{\mathrm{argmax}}\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma}})-nlog(\sqrt{2\pi\Sigma})<br>$$</p>
-<ul>
-<li>先求$\mu_{MLE}$，<br>$$<br>f(\mu)=\sum\limits_{i=1}^n (x_i-\mu)^2<br>$$</li>
+                <h1>高斯分布</h1>
+<h2 id="概率密度">概率密度</h2>
+<p>假设<img src="https://math.now.sh?inline=p" style="display:inline-block;margin: 0;"/>为研究的维度，<img src="https://math.now.sh?inline=%5Cmu" style="display:inline-block;margin: 0;"/>为均值向量，<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>为协方差矩阵（<img src="https://math.now.sh?inline=p%5Ctimes%20p" style="display:inline-block;margin: 0;"/>）</p>
+<p style=""><img src="https://math.now.sh?from=X%20%5Csim%20N%28%5Cmu%2C%20%5CSigma%29%3D%5Cdfrac%7B1%7D%7B(2%5Cpi)%5E%7B%5Cfrac%7Bp%7D%7B2%7D%7D%7C%5CSigma%7C%5E%7B%5Cfrac%7B1%7D%7B2%7D%7D%7Dexp%5E%7B-%5Cfrac%7B1%7D%7B2%7D(x-%5Cmu)%5ET%5CSigma%5E%7B-1%7D(x-%5Cmu)%7D%0A" /></p><h2 id="一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）">一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）</h2>
+<p>当<img src="https://math.now.sh?inline=p%3D1" style="display:inline-block;margin: 0;"/>时，<img src="https://math.now.sh?inline=p%28X%3Dx%29%3D%5Cdfrac%7Be%5E%7B-%5Cfrac%7B(x-%5Cmu)%5E2%7D%7B2%5CSigma%7D%7D%7D%7B%5Csqrt%7B2%5Cpi%5CSigma%7D%7D" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=%5Ctheta_%7BMLE%7D%3D%5Cunderset%7B%5Ctheta%3D%5C%7B%5Cmu%2C%20%5CSigma%5C%7D%7D%7B%5Cmathrm%7Bargmax%7D%7D%20%5Cprod%5Climits_%7Bi%3D1%7D%5En%20p%28X%3Dx_i%29%3D%5Cunderset%7B%5Ctheta%3D%5C%7B%5Cmu%2C%20%5CSigma%5C%7D%7D%7B%5Cmathrm%7Bargmax%7D%7D%5Csum%5Climits_%7Bi%3D1%7D%5En(%7B-%5Cfrac%7B(x_i-%5Cmu)%5E2%7D%7B2%5CSigma%7D%7D)-nlog(%5Csqrt%7B2%5Cpi%5CSigma%7D)%0A" /></p><ul>
+<li>先求<img src="https://math.now.sh?inline=%5Cmu_%7BMLE%7D" style="display:inline-block;margin: 0;"/>，<p style=""><img src="https://math.now.sh?from=f%28%5Cmu%29%3D%5Csum%5Climits_%7Bi%3D1%7D%5En%20(x_i-%5Cmu)%5E2%0A" /></p></li>
 </ul>
-<p>$$<br>f’(\mu)=\sum\limits_{i=1}^n -2(x_i-\mu)=2\mu n-2\sum\limits_{i=1}^nx_i​<br>$$</p>
-<p>令$f’(\mu)=0$，则</p>
-<p>$$<br>\mu_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^nx_i<br>$$</p>
-<ul>
-<li>接着求$\Sigma_{MLE}$，<br>$$<br>f(\Sigma)=\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma}})-nlog(\sqrt{2\pi\Sigma})<br>$$</li>
+<p style=""><img src="https://math.now.sh?from=f'%28%5Cmu%29%3D%5Csum%5Climits_%7Bi%3D1%7D%5En%20-2(x_i-%5Cmu)%3D2%5Cmu%20n-2%5Csum%5Climits_%7Bi%3D1%7D%5Enx_i%E2%80%8B%0A" /></p><p>令<img src="https://math.now.sh?inline=f'%28%5Cmu%29%3D0" style="display:inline-block;margin: 0;"/>，则</p>
+<p style=""><img src="https://math.now.sh?from=%5Cmu_%7BMLE%7D%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5Enx_i%0A" /></p><ul>
+<li>接着求<img src="https://math.now.sh?inline=%5CSigma_%7BMLE%7D" style="display:inline-block;margin: 0;"/>，<p style=""><img src="https://math.now.sh?from=f%28%5CSigma%29%3D%5Csum%5Climits_%7Bi%3D1%7D%5En(%7B-%5Cfrac%7B(x_i-%5Cmu)%5E2%7D%7B2%5CSigma%7D%7D)-nlog(%5Csqrt%7B2%5Cpi%5CSigma%7D)%0A" /></p></li>
 </ul>
-<p>$$<br>f’(\Sigma)=\dfrac{\sum\limits_{i=1}^n (x_i-\mu)^2}{2\Sigma^2}-\dfrac{n}{2\Sigma}$<br>$$</p>
-<p>令$f’(\mu)=0$，则<br>$$<br>\sum\limits_{i=1}^n (x_i-\mu)^2=n\Sigma \<br>\Sigma_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^n (x_i-\mu_{MLE})^2<br>$$</p>
-<h2 id="关于两个估计的无偏性"><a href="#关于两个估计的无偏性" class="headerlink" title="关于两个估计的无偏性"></a>关于两个估计的无偏性</h2><ul>
-<li><p>计算$E(\mu_{MLE})$：<br>$$<br>E(\dfrac{1}{n}\sum\limits_{i=1}^n x_i)=\dfrac{1}{n}\sum\limits_{i=1}^nE(x_i)=\dfrac{1}{n} n \mu=\mu<br>$$</p>
-</li>
-<li><p>计算$E(\Sigma_{MLE})$：</p>
+<p style=""><img src="https://math.now.sh?from=f'%28%5CSigma%29%3D%5Cdfrac%7B%5Csum%5Climits_%7Bi%3D1%7D%5En%20(x_i-%5Cmu)%5E2%7D%7B2%5CSigma%5E2%7D-%5Cdfrac%7Bn%7D%7B2%5CSigma%7D%24%0A" /></p><p>令<img src="https://math.now.sh?inline=f'%28%5Cmu%29%3D0" style="display:inline-block;margin: 0;"/>，则</p>
+<p style=""><img src="https://math.now.sh?from=%5Csum%5Climits_%7Bi%3D1%7D%5En%20%28x_i-%5Cmu%29%5E2%3Dn%5CSigma%20%5C%5C%0A%5CSigma_%7BMLE%7D%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20(x_i-%5Cmu_%7BMLE%7D)%5E2%0A" /></p><h2 id="关于两个估计的无偏性">关于两个估计的无偏性</h2>
 <ul>
-<li>首先对$\Sigma_{MLE}$做一个化简：</li>
-</ul>
-<p>$$<br>\begin{align}<br>\Sigma_{MLE} &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+ \dfrac{1}{n}\sum\limits_{i=1}^n\mu_{MLE}^2-2\dfrac{1}{n}\sum\limits_{i=1}^n x_i\mu_{MLE}\quad [note:\dfrac{1}{n}\sum\limits_{i=1}^n x_i=\mu_{MLE}]\\\<br>&amp;=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+\mu^2_{MLE}-2\mu_{MLE}^2\\\<br>&amp;= \dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE})<br>\end{align}<br>$$</p>
-</li>
-</ul>
+<li>
+<p>计算<img src="https://math.now.sh?inline=E%28%5Cmu_%7BMLE%7D%29" style="display:inline-block;margin: 0;"/>：</p>
+<p style=""><img src="https://math.now.sh?from=E%28%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%29%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5EnE(x_i)%3D%5Cdfrac%7B1%7D%7Bn%7D%20n%20%5Cmu%3D%5Cmu%0A" /></p></li>
+<li>
+<p>计算<img src="https://math.now.sh?inline=E%28%5CSigma_%7BMLE%7D%29" style="display:inline-block;margin: 0;"/>：</p>
 <ul>
+<li>首先对<img src="https://math.now.sh?inline=%5CSigma_%7BMLE%7D" style="display:inline-block;margin: 0;"/>做一个化简：</li>
+</ul>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5CSigma_%7BMLE%7D%20%26%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%5E2%2B%20%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%5Cmu_%7BMLE%7D%5E2-2%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%5Cmu_%7BMLE%7D%5Cquad%20%5Bnote%3A%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%3D%5Cmu_%7BMLE%7D%5D%5C%5C%5C%5C%0A%26%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%5E2%2B%5Cmu%5E2_%7BMLE%7D-2%5Cmu_%7BMLE%7D%5E2%5C%5C%5C%5C%0A%26%3D%20%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20%28x_i%5E2%20-%20%5Cmu%5E2_%7BMLE%7D%29%0A%5Cend%7Balign%7D%0A" /></p><ul>
 <li>接着求其期望：</li>
 </ul>
-<p>$$<br>\begin{align}<br>E(\Sigma_{MLE})&amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE}))\\\<br>                            &amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n [x_i^2 - \mu^2 -( \mu^2_{MLE} - \mu^2)]) \quad –&gt;恒等变形\\\<br>                            &amp;=(\dfrac{1}{n}\sum\limits_{i=1}^n E(x_i^2)-E^2(x_i)-E(\mu^2_{MLE})+E(\mu^2)))\quad–&gt;\mu^2看作常数，\mu^2=E(\mu^2)\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) + (E^2(\mu_{MLE})-E(\mu^2_{MLE}))\quad –&gt;方差与概率间的公式转化\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) - D(\mu_{MLE})\quad –&gt;方差与概率间的公式转化 \\\<br>                            &amp;=\Sigma-D(\mu_{MLE})\\\<br>                            &amp;=\Sigma - D(\dfrac{1}{n}\sum\limits_{i=1}^n x_i) \\\<br>                            &amp;=\Sigma-\dfrac{1}{n^2}nD(x_i)\\\<br>                            &amp;=\Sigma- \dfrac{1}{n}\Sigma \\\<br>                            &amp;=\dfrac{n-1}{n}\Sigma<br>\end{align}<br>$$</p>
-<ul>
-<li>发现$E(\mu_{MLE})=\mu, E(\Sigma_{MLE}) \neq \Sigma$，因此$\mu_{MLE}$作为$\mu$的估计是无偏的，$\Sigma_{MLE}$作为$\Sigma$的估计是有偏的。</li>
+</li>
 </ul>
-<h2 id="多维度的情况"><a href="#多维度的情况" class="headerlink" title="多维度的情况"></a>多维度的情况</h2><p>观察指数部分，记为D：$(x-\mu)^T\Sigma^{-1}(x-\mu)$</p>
-<p>$x$是一个样本向量：$x =\left(x_1,x_2,\ldots,x_n \right)^T$。</p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AE%28%5CSigma_%7BMLE%7D%29%26%3DE(%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20(x_i%5E2%20-%20%5Cmu%5E2_%7BMLE%7D))%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3DE(%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20%5Bx_i%5E2%20-%20%5Cmu%5E2%20-(%20%5Cmu%5E2_%7BMLE%7D%20-%20%5Cmu%5E2)%5D)%20%5Cquad%20--%3E%E6%81%92%E7%AD%89%E5%8F%98%E5%BD%A2%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D(%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20E(x_i%5E2)-E%5E2(x_i)-E(%5Cmu%5E2_%7BMLE%7D)%2BE(%5Cmu%5E2)))%5Cquad--%3E%5Cmu%5E2%E7%9C%8B%E4%BD%9C%E5%B8%B8%E6%95%B0%EF%BC%8C%5Cmu%5E2%3DE(%5Cmu%5E2)%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20D(x_i)%20%2B%20(E%5E2(%5Cmu_%7BMLE%7D)-E(%5Cmu%5E2_%7BMLE%7D))%5Cquad%20--%3E%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%A6%82%E7%8E%87%E9%97%B4%E7%9A%84%E5%85%AC%E5%BC%8F%E8%BD%AC%E5%8C%96%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20D(x_i)%20-%20D(%5Cmu_%7BMLE%7D)%5Cquad%20--%3E%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%A6%82%E7%8E%87%E9%97%B4%E7%9A%84%E5%85%AC%E5%BC%8F%E8%BD%AC%E5%8C%96%20%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5CSigma-D(%5Cmu_%7BMLE%7D)%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5CSigma%20-%20D(%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i)%20%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5CSigma-%5Cdfrac%7B1%7D%7Bn%5E2%7DnD(x_i)%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5CSigma-%20%5Cdfrac%7B1%7D%7Bn%7D%5CSigma%20%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5Cdfrac%7Bn-1%7D%7Bn%7D%5CSigma%0A%5Cend%7Balign%7D%0A" /></p><ul>
+<li>发现<img src="https://math.now.sh?inline=E%28%5Cmu_%7BMLE%7D%29%3D%5Cmu%2C%20E(%5CSigma_%7BMLE%7D)%20%5Cneq%20%5CSigma" style="display:inline-block;margin: 0;"/>，因此<img src="https://math.now.sh?inline=%5Cmu_%7BMLE%7D" style="display:inline-block;margin: 0;"/>作为<img src="https://math.now.sh?inline=%5Cmu" style="display:inline-block;margin: 0;"/>的估计是无偏的，<img src="https://math.now.sh?inline=%5CSigma_%7BMLE%7D" style="display:inline-block;margin: 0;"/>作为<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>的估计是有偏的。</li>
+</ul>
+<h2 id="多维度的情况">多维度的情况</h2>
+<p>观察指数部分，记为D：<img src="https://math.now.sh?inline=%28x-%5Cmu%29%5ET%5CSigma%5E%7B-1%7D(x-%5Cmu)" style="display:inline-block;margin: 0;"/></p>
+<p><img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/>是一个样本向量：<img src="https://math.now.sh?inline=x%20%3D%5Cleft%28x_1%2Cx_2%2C%5Cldots%2Cx_n%20%5Cright%29%5ET" style="display:inline-block;margin: 0;"/>。</p>
 <p>注意这部分的结果是一个标量（维度：（1,p)-(p,p)-(p,1)-&gt;(1,1)）</p>
-<p>实际上，D是一个马氏距离，是向量$x$与向量$\mu$之间的马氏距离。</p>
+<p>实际上，D是一个马氏距离，是向量<img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/>与向量<img src="https://math.now.sh?inline=%5Cmu" style="display:inline-block;margin: 0;"/>之间的马氏距离。</p>
 <p>而$\Sigma=U \Lambda U^T=(u_1, u_2, \dots,u_p) $</p>
 
             </div>
@@ -495,7 +501,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">白板推导学习笔记</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -551,7 +561,20 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|
+                            高斯分布
+概率密度
+假设为研究的维度，为均值向量，为协方差矩阵（）
+一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）
+当时，
+
+先求，
+
+令，则
+
+接着求，
+
+令，则
+关于两个估计的无偏性
                         
                     </div>
                     <div class="publish-info">
@@ -567,6 +590,14 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">白板推导学习笔记</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -591,15 +622,17 @@
                         
                             
 N：网络
+
 V，E：网络节点和边
 R：资源
-m：映射：（边到时间）– 一条边通过的最短时间
-a：映射：（资源到边集）– 一个资源分配给的边
-b：映射：（资源到时间）– 一个资源占用需要等待的时间
+m：映射：（边到时间）-- 一条边通过的最短时间
+a：映射：（资源到边集）-- 一个资源分配给的边
+b：映射：（资源到时间）-- 一个资源占用需要等待的时间
 
 
 T：火车
-S，L：V，E的一个无环子图–
+
+S，L：V，E的一个
                         
                     </div>
                     <div class="publish-info">
