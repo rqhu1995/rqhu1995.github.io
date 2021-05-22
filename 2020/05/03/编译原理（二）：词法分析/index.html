@@ -400,14 +400,11 @@
             <div id="articleContent">
                 <p>Token – 一些字符串的集合（可以理解为分词）</p>
 <ul>
-<li>
-<p>英语中：名词、动词、形：</p>
+<li><p>英语中：名词、动词、形：</p>
 </li>
-<li>
-<p>编程语言中：token class（看作一类）</p>
+<li><p>编程语言中：token class（看作一类）</p>
 </li>
-<li>
-<p>编程语言中：</p>
+<li><p>编程语言中：</p>
 <ul>
 <li>Identifier（标识符）：由字母或数字起始，字母或数字组成的一串字符串：A1，Foo，8a</li>
 <li>Integer（整数）：非空数位字符串集合</li>
@@ -416,63 +413,54 @@
 <li>标点符号每个都自成一类（操作符除外）</li>
 </ul>
 </li>
-<li>
-<p>词法分析的任务：</p>
+<li><p>词法分析的任务：</p>
 <ul>
 <li>将程序（看作一个长长的字符串）按照他们的角色分成一个个小的串</li>
 <li>将这些子串与解析部分通信</li>
 </ul>
-<p>foo = 42 – [Lexical Analysis] --&gt; &lt;Id, “foo”&gt;, &lt;op, “=”&gt;, &lt;Int, “42”&gt;</p>
+<p>foo = 42 – [Lexical Analysis] –&gt; &lt;Id, “foo”&gt;, &lt;op, “=”&gt;, &lt;Int, “42”&gt;</p>
 <p>把这些集合再送入解析器</p>
 </li>
-<li>
-<p>词法分析实现的要点：</p>
+<li><p>词法分析实现的要点：</p>
 <ul>
 <li>识别出一个个子串（称为lexeme）</li>
 <li>将每个lexeme在识别到对应的token类</li>
 </ul>
 <p>最终的一个Map实例如&lt;Int, 20&gt;，就是一个token</p>
 </li>
-<li>
-<p>lookahead：向前看</p>
+<li><p>lookahead：向前看</p>
 <p>DO 5 I = 1,25</p>
 <p>DO 5 I = 1.25</p>
 <p>FORTRAN忽略whitespeace，因此前者是25次循环；后者是为变量DO5I赋值为1.25。</p>
 <p>从左向右划线找，识别到DO，并不能确定真的是DO，向前看，看到了“,“后就能够确定是DO而不是某个叫DO5I的变量中的一部分。</p>
 <p>这样的不断向前看（可能会看一个之后还是不确定）使得词法分析变得非常复杂，因而词法分析的一个目标就是尽可能地减少向前看的次数。</p>
 </li>
-<li>
-<p>C++嵌套类型：<code>Foo&lt;Bar&lt;Bar&gt;&gt;</code>中的&quot;&gt;&gt;“和输入流的”&gt;&gt;&quot;的区分（目前的解决方法是在Bar&gt;后的&gt;前面加一个空格：<code>Foo&lt;Bar&lt;Bar&gt; &gt;</code></p>
+<li><p>C++嵌套类型：<code>Foo&lt;Bar&lt;Bar&gt;&gt;</code>中的”&gt;&gt;”和输入流的”&gt;&gt;”的区分（目前的解决方法是在Bar&gt;后的&gt;前面加一个空格：<code>Foo&lt;Bar&lt;Bar&gt; &gt;</code></p>
 </li>
-<li>
-<p>正则表达式的定义：一个作用在<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>上的正则表达式，是一个最小的表达式集合，包含：</p>
+<li><p>正则表达式的定义：一个作用在$\Sigma$上的正则表达式，是一个最小的表达式集合，包含：</p>
 <ul>
-<li><img src="https://math.now.sh?inline=R%20%3D%20%5Cvarepsilon" style="display:inline-block;margin: 0;"/></li>
-<li><img src="https://math.now.sh?inline=R%20%3D%20%60%60c%22%2C%20c%20%5Cin%20%5CSigma" style="display:inline-block;margin: 0;"/></li>
-<li><img src="https://math.now.sh?inline=R%20%3D%20R%20%2B%20R" style="display:inline-block;margin: 0;"/></li>
-<li><img src="https://math.now.sh?inline=R%20%3D%20RR" style="display:inline-block;margin: 0;"/></li>
-<li><img src="https://math.now.sh?inline=R%20%3D%20R%5E*" style="display:inline-block;margin: 0;"/></li>
+<li>$R = \varepsilon$</li>
+<li>$R = ``c”, c \in \Sigma$</li>
+<li>$R = R + R$</li>
+<li>$R = RR$</li>
+<li>$R = R^*$</li>
 </ul>
 <p>（+：并集；RR：拼接；*：闭包）</p>
-<p>上述定义称为在一个alphabet（字母表）<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>上的grammar语法。</p>
+<p>上述定义称为在一个alphabet（字母表）$\Sigma$上的grammar语法。</p>
 </li>
-<li>
-<p>形式语言：Formal Languages</p>
-<p>定义：<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>是字母的集合，从<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>中抽取的字符集合称为一个<strong>语言（Language）</strong></p>
+<li><p>形式语言：Formal Languages</p>
+<p>定义：$\Sigma$是字母的集合，从$\Sigma$中抽取的字符集合称为一个<strong>语言（Language）</strong></p>
 <p>英语字母（Alphabet） – 英语句子（Language）</p>
 <p>ASCII码 – C语言程序</p>
 <p>Meaning function L：将句法符号（language）映射到语义上</p>
 <p>L((0+ 1)*) = set of 0’s and 1’s</p>
 <p>这一映射的意义：</p>
 <ul>
-<li>
-<p>区分syntax和semantics</p>
+<li><p>区分syntax和semantics</p>
 </li>
-<li>
-<p>允许我们单独考虑符号表达的问题（在不同场景下选用不同的表达方法）</p>
+<li><p>允许我们单独考虑符号表达的问题（在不同场景下选用不同的表达方法）</p>
 </li>
-<li>
-<p>表达式和含义不是1-1对应的（多个syntax对应同一个semantics，可以通过等价尝试优化）</p>
+<li><p>表达式和含义不是1-1对应的（多个syntax对应同一个semantics，可以通过等价尝试优化）</p>
 <p>！！注意是多对一，而不是一对多。也不允许一对多，<strong>一对多背后就是歧义</strong>。</p>
 </li>
 </ul>
@@ -599,8 +587,7 @@
 不含否定的命题逻辑程序的stable model的定义：
 
 对于不含否定的命题逻辑程序而言，minimal model就是stable model。
-minimal model：不存在更小的集合（包含关系），是程序P的模型。
-model：
+minimal model：不存在更小的集合$S’ \subset S$（包含关系），$
                         
                     </div>
                     <div class="publish-info">
@@ -637,12 +624,10 @@ model：
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            从命题逻辑到回答集程序
-vocabulary
-命题逻辑的vocabulary：原子公式（p,q,r…)
+                            从命题逻辑到回答集程序vocabulary命题逻辑的vocabulary：原子公式（p,q,r…)
 命题逻辑的公式：原子公式+连接词
 命题逻辑的解释（interpretation）：一个集合，集合元素表示正确的原子公式
-例1：找到一个命
+例1：找到一个命题公
                         
                     </div>
                     <div class="publish-info">
