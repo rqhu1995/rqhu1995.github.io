@@ -2050,3 +2050,7 @@ footer .copy-right {
     padding: 0px;
     margin: 0px;
 }
+
+.reprint__type&nbsp;.reprint-info{
+    &nbsp;&nbsp;&nbsp;&nbsp;word-wrap:&nbsp;break-word;
+    }

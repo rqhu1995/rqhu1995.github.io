@@ -404,7 +404,8 @@
 <li>先求$\mu_{MLE}$，<br>$$<br>f(\mu)=\sum\limits_{i=1}^n (x_i-\mu)^2<br>$$</li>
 </ul>
 <p>$$<br>f’(\mu)=\sum\limits_{i=1}^n -2(x_i-\mu)=2\mu n-2\sum\limits_{i=1}^nx_i​<br>$$</p>
-<p>令$f’(\mu)=0$，则<br>$$<br>\mu_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^nx_i<br>$$</p>
+<p>令$f’(\mu)=0$，则</p>
+<p>$$<br>\mu_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^nx_i<br>$$</p>
 <ul>
 <li>接着求$\Sigma_{MLE}$，<br>$$<br>f(\Sigma)=\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma}})-nlog(\sqrt{2\pi\Sigma})<br>$$</li>
 </ul>
@@ -427,7 +428,12 @@
 <ul>
 <li>发现$E(\mu_{MLE})=\mu, E(\Sigma_{MLE}) \neq \Sigma$，因此$\mu_{MLE}$作为$\mu$的估计是无偏的，$\Sigma_{MLE}$作为$\Sigma$的估计是有偏的。</li>
 </ul>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+<h2 id="多维度的情况"><a href="#多维度的情况" class="headerlink" title="多维度的情况"></a>多维度的情况</h2><p>观察指数部分，记为D：$(x-\mu)^T\Sigma^{-1}(x-\mu)$</p>
+<p>$x$是一个样本向量：$x =\left(x_1,x_2,\ldots,x_n \right)^T$。</p>
+<p>注意这部分的结果是一个标量（维度：（1,p)-(p,p)-(p,1)-&gt;(1,1)）</p>
+<p>实际上，D是一个马氏距离，是向量$x$与向量$\mu$之间的马氏距离。</p>
+<p>而$\Sigma=U \Lambda U^T=(u_1, u_2, \dots,u_p) $</p>
+
             </div>
             <hr/>
 
@@ -446,14 +452,14 @@
                 </span>
             </div>
             <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
+                <!-- <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-link">
-                        文章链接:
+                        Link:
                     </i>
-                </span>
-                <span class="reprint-info">
+                </span> -->
+                <!-- <span class="reprint-info">
                     <a href="https://rqhu1995.github.io/2021/05/19/machine-learning-math-basic-1/">https://rqhu1995.github.io/2021/05/19/machine-learning-math-basic-1/</a>
-                </span>
+                </span> -->
             </div>
             <div class="reprint__notice">
                 <span class="reprint-meta" style="font-weight: bold;">
