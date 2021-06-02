@@ -436,7 +436,29 @@
 <p>$x$是一个样本向量：$x =\left(x_1,x_2,\ldots,x_n \right)^T$。</p>
 <p>注意这部分的结果是一个标量（维度：（1,p)-(p,p)-(p,1)-&gt;(1,1)）</p>
 <p>实际上，D是一个马氏距离，是向量$x$与向量$\mu$之间的马氏距离。</p>
-<p>而$\Sigma=U \Lambda U^T=(u_1, u_2, \dots,u_p) $</p>
+<p>而$\Sigma=U \Lambda U^T=[u_1, u_2, \dots,u_p] \begin{bmatrix}<br>    \lambda_{1} &amp; &amp; \<br>    &amp; \ddots &amp; \<br>    &amp; &amp; \lambda_{r}<br>  \end{bmatrix} \begin{bmatrix}<br>    u_{1}^T  \<br>    u_2^T \<br>    \ldots \\ u_p^T<br>  \end{bmatrix}=\sum\limits_{i=1}^{p}u_i\lambda_iu_i^T$</p>
+<p>($U$与$U^T$互逆)</p>
+<p>求逆：${(U^T)}^{-1}\Lambda^{-1}U^{-1}=\sum\limits_{i=1}^pu_i \dfrac{1}{\lambda_i}u_i^T$</p>
+<p>马氏距离表示为：<br>$$<br>(x-\mu)^T \Sigma^{-1}(x-\mu)=<br>(x-\mu)^T \left(\sum\limits_{i=1}^pu_i \dfrac{1}{\lambda_i}u_i^T \right)(x-\mu)=<br>\sum\limits_{i=1}^{p}(x-\mu)^T u_i \dfrac{1}{\lambda_i}u_i^T(x-\mu)<br>$$<br><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr2qy9seaaj311a06gmxr.jpg" alt="image-20210601142450162"></p>
+<p>得到马氏距离为：$\sum\limits_{i=1}^{p}y_i^2/\lambda_i$</p>
+<p>当维度为2时，可以看作是一个以$u_1$和$u_2$为直角坐标系下的椭圆（$y$的方向与$u$一致，因为$(x-\mu)^Tu_i$是在$u_i$上的投影）：</p>
+<img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210601160052158.png" alt="image-20210601160052158" style="zoom:50%;" />
+
+<p>于是，高斯分布的概率可以理解为</p>
+<img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210601164545379.png" alt="image-20210601164545379" style="zoom:50%;" />
+
+<p>马氏距离为n的时候，形成等概率线（椭圆上的点），如果把n算作第三维，实际上就是椭圆曲面的一个切面</p>
+<h2 id="高斯分布的局限性"><a href="#高斯分布的局限性" class="headerlink" title="高斯分布的局限性"></a>高斯分布的局限性</h2><p>$\Sigma$参数数量：对一个$p$维的高斯分布，参数数量过多</p>
+<p>边缘概率分布$p$。$\def\vector#1.{\begin{pmatrix} #1 \end{pmatrix}}$</p>
+<p>$X \sim (\mu, \Sigma)$</p>
+<p>$$<br>X=\vector{x_1\\x_2\\\ldots\\x_p}.=\vector{x_a\\x_b}., \mu=\vector{\mu_a\\\mu_b}.,\Sigma=\begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix}<br>$$<br>$x_a$，m维；$x_b$，n维，$m+n=p$</p>
+<p>求$p(x_a), p(x_b \mid x_a)$</p>
+<p>先给一个定理：$X \sim (\mu, \Sigma)$，$AX+B \sim (A\mu+B, A\Sigma A^T)$</p>
+<p>$x_a =(I_m \ \ \ \ 0) \vector{x_a\\x_b}.$</p>
+<p>$\therefore x_a \sim \left((I_m\ \ \ \ 0)\vector{\mu_a\\\mu_b}.=\mu_a,  (I_m\ \ \ \ 0) \begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix} \vector{I_m\\0}.=\Sigma_{aa}\right)$</p>
+<p>Schur Complement:</p>
+<p>$$<br>\begin{cases}<br>x_{b \cdot a}=x_b - \Sigma_{ba}\Sigma^{-1}_{aa}x_a \<br>\mu_{b \cdot a}=\mu_b - \Sigma_{ba}\Sigma^{-1}_{aa}\mu_a \<br>\Sigma_{bb \cdot a}=\Sigma_{bb} - \Sigma_{ba}\Sigma^{-1}_{aa}\Sigma_{ab}<br>\end{cases}<br>$$<br>矩阵表示：<br>$$<br>\begin{align}<br>x_{b \cdot a}&amp;=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}\<br>E[x_{b \cdot a}]&amp;=E[\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}]=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix}\begin{pmatrix}   \mu_a \\ \mu_b \end{pmatrix}=-\Sigma_{ba}\Sigma^{-1}_{aa}\mu_a+\mu_b=\mu_{b \cdot a}\<br>Var[x_{b \cdot a}]&amp;=Var[\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}]=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix} \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.<br>\\ &amp; =(-\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{aa}+\Sigma_{ba} \quad -\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}) \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.\<br>&amp;=(0 \quad -\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}) \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.\<br>&amp;=-\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}=\Sigma_{bb \cdot a}<br>\end{align}<br>$$</p>
+<p>$x_b=x_{b\cdot a}+\Sigma_{ba}\Sigma^{-1}_{aa}x_a$<br>$$<br>E(x_b)=E(x_{b \cdot a}+\Sigma_{ba}\Sigma^{-1}_{aa}x_a)=\mu_{b \cdot a} + \Sigma_{ba}\Sigma^{-1}_{aa}x_a<br>$$</p>
 
             </div>
             <hr/>
