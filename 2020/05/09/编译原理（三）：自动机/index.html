@@ -402,48 +402,59 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="编译原理（三）自动机"><a href="#编译原理（三）自动机" class="headerlink" title="编译原理（三）自动机"></a>编译原理（三）自动机</h1><p>给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)</p>
+                <h1>编译原理（三）自动机</h1>
+<p>给定一个字符串s，判定<img src="https://math.now.sh?inline=s%20%5Cin%20L%28R%29" style="display:inline-block;margin: 0;"/>，即<img src="https://math.now.sh?inline=s" style="display:inline-block;margin: 0;"/>是否是一个正则表达式<img src="https://math.now.sh?inline=R" style="display:inline-block;margin: 0;"/>的语言。(L将正则表达式映射到语义上)</p>
 <p>Lexical Specification</p>
 <ul>
-<li><p>为每一个token类都写一个正则</p>
+<li>
+<p>为每一个token类都写一个正则</p>
 <ul>
 <li>R1（number）：digits+</li>
 <li>R2（letter）：[a-z]</li>
 <li>…</li>
 </ul>
 </li>
-<li><p>构造一个R，能够将每一个lexeme对应到各个token(s)上<br>$$<br>R = R_1+R_2+…<br>$$</p>
+<li>
+<p>构造一个R，能够将每一个lexeme对应到各个token(s)上</p>
+<p style=""><img src="https://math.now.sh?from=R%20%3D%20R_1%2BR_2%2B...%0A" /></p></li>
+<li>
+<p>输入：<img src="https://math.now.sh?inline=X_1%2C..%2CX_n" style="display:inline-block;margin: 0;"/>，对<img src="https://math.now.sh?inline=i%20%5Cin%20%5B1%2Cn%5D" style="display:inline-block;margin: 0;"/>，检查：<img src="https://math.now.sh?inline=X_1%2C%20X_2%2C...%2CX_i" style="display:inline-block;margin: 0;"/>是否属于<img src="https://math.now.sh?inline=L%28R%29" style="display:inline-block;margin: 0;"/></p>
+<p>若成功：<img src="https://math.now.sh?inline=X_1%2C%20X_2%2C...%2CX_i%20%5Cin%20L%28R_j%29" style="display:inline-block;margin: 0;"/>，说明这一字符串在某个token的正则中；</p>
 </li>
-<li><p>输入：$X_1,..,X_n$，对$i \in [1,n]$，检查：$X_1, X_2,…,X_i$是否属于$L(R)$</p>
-<p>若成功：$X_1, X_2,…,X_i \in L(R_j)$，说明这一字符串在某个token的正则中；</p>
-</li>
-<li><p>剔除$X_1, X_2,…,X_i$，然后回到上一个步骤</p>
+<li>
+<p>剔除<img src="https://math.now.sh?inline=X_1%2C%20X_2%2C...%2CX_i" style="display:inline-block;margin: 0;"/>，然后回到上一个步骤</p>
 <p>上述算法可能出现的问题：</p>
 <ul>
-<li><p>每次选择的子序列可能不唯一。</p>
+<li>
+<p>每次选择的子序列可能不唯一。</p>
 <p>对于字符串==，可以选=，也可以选择==。选择哪一个？</p>
 <p>目前的做法：Maximal Munch – 最长匹配</p>
 </li>
-<li><p>应该选择哪一种token呢？</p>
+<li>
+<p>应该选择哪一种token呢？</p>
 <p>多个token的定义可能重叠：if/else – 关键词；也可匹配到identifier([a-z][a-z]*)</p>
 <p>此时需要设置优先级。关键词的优先级高于标识符</p>
 </li>
-<li><p>没有找到匹配呢？</p>
-<p>$X_1,…,X_i \not \in L(R)$ – 不允许发生</p>
+<li>
+<p>没有找到匹配呢？</p>
+<p><img src="https://math.now.sh?inline=X_1%2C...%2CX_i%20%5Cnot%20%5Cin%20L%28R%29" style="display:inline-block;margin: 0;"/> – 不允许发生</p>
 <p>定义一个表达错误的正则表达式语法Error，来接受这样的匹配，放在优先级的最后（Error甚至可以包含前述的正确语法，因为优先级最低，不会误判）</p>
 </li>
 </ul>
 <p>总结：</p>
 </li>
-<li><p>正则表达式是字符串模式的清晰表达符号</p>
+<li>
+<p>正则表达式是字符串模式的清晰表达符号</p>
 </li>
-<li><p>在词法分析中使用正则表达式，需要一些小的扩展</p>
+<li>
+<p>在词法分析中使用正则表达式，需要一些小的扩展</p>
 <ul>
 <li>解决歧义：选最长 + 优先级</li>
 <li>处理不匹配：定义Error接收错误输入，优先级最低</li>
 </ul>
 </li>
-<li><p>著名的相关算法</p>
+<li>
+<p>著名的相关算法</p>
 <ul>
 <li>只需要对输入进行单程扫描</li>
 <li>每个字符都进行一些操作（查表）</li>
@@ -455,86 +466,82 @@
 <p>有限自动机 = 实现层</p>
 <p>一个有限自动机由下列元素组成：</p>
 <ul>
-<li><p>输入字母表$\Sigma$</p>
+<li>
+<p>输入字母表<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/></p>
 </li>
-<li><p>有限状态集$S$</p>
+<li>
+<p>有限状态集<img src="https://math.now.sh?inline=S" style="display:inline-block;margin: 0;"/></p>
 </li>
-<li><p>起始状态n</p>
+<li>
+<p>起始状态n</p>
 </li>
-<li><p>接受状态集$F \subseteq S$</p>
+<li>
+<p>接受状态集<img src="https://math.now.sh?inline=F%20%5Csubseteq%20S" style="display:inline-block;margin: 0;"/></p>
 </li>
-<li><p>转移集 $state \rightarrow^{input} state$</p>
+<li>
+<p>转移集 <img src="https://math.now.sh?inline=state%20%5Crightarrow%5E%7Binput%7D%20state" style="display:inline-block;margin: 0;"/></p>
 <p>如果输入到达最后，且到达了接受状态 ==》接收</p>
-<p>否则 –》拒绝</p>
+<p>否则 --》拒绝</p>
 <ul>
 <li>在一个非接收状态结束</li>
 <li>卡住 – &gt;找不到下一个可以转移的方向</li>
 </ul>
 </li>
 </ul>
-<p>FA的语言定义为 $\equiv$ 接收字符串的集合</p>
+<p>FA的语言定义为 <img src="https://math.now.sh?inline=%5Cequiv" style="display:inline-block;margin: 0;"/> 接收字符串的集合</p>
 <p>DFA：</p>
 <ul>
 <li>一个输入，一个状态，一个转移</li>
-<li>没有$\varepsilon$移动</li>
+<li>没有<img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/>移动</li>
 </ul>
 <p>NFA：</p>
 <ul>
 <li>一个输入，一个状态，可能有多个转移方向</li>
-<li>可以有$\varepsilon$移动</li>
+<li>可以有<img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/>移动</li>
 </ul>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemnhei3cjj30jc0cywjt.jpg" alt="NFA" style="zoom:33%;" />
 $$
 \downarrow
 $$
-
-
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemni549rcj30ia08ugpu.jpg" alt="DFA" style="zoom:33%;" />
-
-<p>上述都是NFA，第一个是多个转移；第二个是存在$\varepsilon$</p>
+<p>上述都是NFA，第一个是多个转移；第二个是存在<img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/></p>
 <p>DFA对于一个输入字符串，只会在状态转移图中使用一条路径（确定）</p>
 <p>NFA可能会有多个路径</p>
 <p>NFA最终接受，如果其中存在路径是接受的；</p>
 <p>DFA较NFA执行更快（选择的不确定性更少）</p>
 <p>对同一语言，NFA却可能比DFA小的多。（时间折中空间的折中）</p>
 <p>到此为止，</p>
-<p>首先定义了词法声明（lexical specification）– 一个token使用一个正则表示语法（RE）</p>
+<p>首先定义了词法声明（lexical specification）-- 一个token使用一个正则表示语法（RE）</p>
 <p>后面将进行RE转换到NFA，NFA在转换到DFA，最后由DFA找到DFA的表驱动实现的工作</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoceqgy0lj31aq0le464.jpg" alt="image-20200511105731905" style="zoom:33%;" />
-
 <ul>
 <li>RE -&gt; DFA</li>
 </ul>
 <p>递归方式：AB拼接</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geocetnghkj319u0aaq8f.jpg" alt="image-20200511111946981" style="zoom:33%;" />
-
 <p>A或B</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geocfi6gtuj31520deqa0.jpg" alt="image-20200511112046044" style="zoom:33%;" />
-
 <p>A*</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geochc4g19j31520iwdos.jpg" alt="image-20200511112227393" style="zoom:33%;" />
-
-<p>$\varepsilon$闭包</p>
-<p>从某个状态$\cup$ 只经过$\varepsilon$能够到达的所有状态集合</p>
+<p><img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/>闭包</p>
+<p>从某个状态<img src="https://math.now.sh?inline=%5Ccup" style="display:inline-block;margin: 0;"/> 只经过<img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/>能够到达的所有状态集合</p>
 <p>NFA每个时刻可停留的状态可能有许多个</p>
-<p>NFA –&gt; DFA<br>$$<br>a(X) = \{y \mid x \in X \land x \rightarrow^a y\}<br>$$<br>从X内元素出发，经过a能够到达的所有的状态y的集合</p>
+<p>NFA --&gt; DFA</p>
+<p style=""><img src="https://math.now.sh?from=a%28X%29%20%3D%20%5C%7By%20%5Cmid%20x%20%5Cin%20X%20%5Cland%20x%20%5Crightarrow%5Ea%20y%5C%7D%0A" /></p><p>从X内元素出发，经过a能够到达的所有的状态y的集合</p>
 <p>DFA</p>
 <p>状态：NFA状态的非空子集</p>
-<p>起始状态（一个元素）：NFA起始状态的$\varepsilon$闭包</p>
+<p>起始状态（一个元素）：NFA起始状态的<img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/>闭包</p>
 <p>终止状态（一个集合）：与NFA终止状态交集非空的全部状态集的集合</p>
-<p>$X \rightarrow^a Y$, if $Y = a(X)$的$\varepsilon$闭包</p>
+<p><img src="https://math.now.sh?inline=X%20%5Crightarrow%5Ea%20Y" style="display:inline-block;margin: 0;"/>, if <img src="https://math.now.sh?inline=Y%20%3D%20a%28X%29" style="display:inline-block;margin: 0;"/>的<img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/>闭包</p>
  <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geodvu01mgj31nm0rq7wh.jpg" alt="image-20200511121105259" style="zoom: 33%;" />
-
 <p>A为NFA的起始状态，空闭包为ABCDHI，作为DFA的起始状态</p>
 <p>从起始状态开始，找每个元素的a(X)，递归下去</p>
 <p>表驱动方式：二维表，行为状态，列为输入符号</p>
 <p>实现伪代码：</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoegdttfuj31ns0rctsr.jpg" alt="image-20200511123044581" style="zoom:33%;" />
-
 <p>上表的每行元素都一样，可以进一步简化存储，更紧凑（邻接表形式）</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geoei7do0qj30lu09igqd.jpg" alt="image-20200511123234052" style="zoom:25%;" />
-
-<p>对N个状态的NFA，DFA可能有最多$2^N-1$个状态，但通常情况下不是最差情况。</p>
+<p>对N个状态的NFA，DFA可能有最多<img src="https://math.now.sh?inline=2%5EN-1" style="display:inline-block;margin: 0;"/>个状态，但通常情况下不是最差情况。</p>
 
             </div>
             <hr/>
@@ -703,7 +710,8 @@ I 被 I’ 支配（dominated），if：
 不含否定的命题逻辑程序的stable model的定义：
 
 对于不含否定的命题逻辑程序而言，minimal model就是stable model。
-minimal model：不存在更小的集合$S’ \subset S$（包含关系），$
+minimal model：不存在更小的集合（包含关系），是程序P的模型。
+model：
                         
                     </div>
                     <div class="publish-info">
