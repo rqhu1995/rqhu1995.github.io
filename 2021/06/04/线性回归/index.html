@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="machine-learning-math-basic-1, Bonjour">
+    <meta name="keywords" content="线性回归, Bonjour">
     <meta name="description" content="Logic &amp; Skills &amp; Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>machine-learning-math-basic-1 | Bonjour</title>
+    <title>线性回归 | Bonjour</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">machine-learning-math-basic-1</h1>
+                    <h1 class="description center-align post-title">线性回归</h1>
                 </div>
             </div>
         </div>
@@ -367,13 +367,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">白板推导学习笔记</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-19
+                    2021-06-04
                 </div>
                 
 
@@ -402,69 +398,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h1><h2 id="概率密度"><a href="#概率密度" class="headerlink" title="概率密度"></a>概率密度</h2><p>假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）<br>$$<br>X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma|^{\frac{1}{2} }}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}<br>$$</p>
-<h2 id="一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）"><a href="#一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）" class="headerlink" title="一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）"></a>一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）</h2><p>当$p=1$时，$p(X=x)=\dfrac{e^{-\frac{(x-\mu)^2}{2\Sigma} }}{\sqrt{2\pi\Sigma} }$<br>$$<br>\theta_{MLE}=\underset{\theta=\{\mu, \Sigma\} }{\mathrm{argmax} } \prod\limits_{i=1}^n p(X=x_i)=\underset{\theta=\{\mu, \Sigma\} }{\mathrm{argmax} }\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma} })-nlog(\sqrt{2\pi\Sigma})<br>$$</p>
-<ul>
-<li>先求$\mu_{MLE}$，<br>$$<br>f(\mu)=\sum\limits_{i=1}^n (x_i-\mu)^2<br>$$</li>
+                <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><h2 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h2><ul>
+<li>$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$<br>$$<br>\newcommand{\bm}[1]{\begin{bmatrix} #1 \end{bmatrix}}<br>$$</li>
 </ul>
-<p>$$<br>f’(\mu)=\sum\limits_{i=1}^n -2(x_i-\mu)=2\mu n-2\sum\limits_{i=1}^nx_i​<br>$$</p>
-<p>令$f’(\mu)=0$，则</p>
-<p>$$<br>\mu_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^nx_i<br>$$</p>
-<ul>
-<li>接着求$\Sigma_{MLE}$，<br>$$<br>f(\Sigma)=\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma} })-nlog(\sqrt{2\pi\Sigma})<br>$$</li>
-</ul>
-<p>$$<br>f’(\Sigma)=\dfrac{\sum\limits_{i=1}^n (x_i-\mu)^2}{2\Sigma^2}-\dfrac{n}{2\Sigma}$<br>$$</p>
-<p>令$f’(\mu)=0$，则<br>$$<br>\sum\limits_{i=1}^n (x_i-\mu)^2=n\Sigma \<br>\Sigma_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^n (x_i-\mu_{MLE})^2<br>$$</p>
-<h2 id="关于两个估计的无偏性"><a href="#关于两个估计的无偏性" class="headerlink" title="关于两个估计的无偏性"></a>关于两个估计的无偏性</h2><ul>
-<li><p>计算$E(\mu_{MLE})$：<br>$$<br>E(\dfrac{1}{n}\sum\limits_{i=1}^n x_i)=\dfrac{1}{n}\sum\limits_{i=1}^nE(x_i)=\dfrac{1}{n} n \mu=\mu<br>$$</p>
-</li>
-<li><p>计算$E(\Sigma_{MLE})$：</p>
-<ul>
-<li>首先对$\Sigma_{MLE}$做一个化简：</li>
-</ul>
-<p>$$<br>\begin{align}<br>\Sigma_{MLE} &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+ \dfrac{1}{n}\sum\limits_{i=1}^n\mu_{MLE}^2-2\dfrac{1}{n}\sum\limits_{i=1}^n x_i\mu_{MLE}\quad [note:\dfrac{1}{n}\sum\limits_{i=1}^n x_i=\mu_{MLE}]\\\<br>&amp;=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+\mu^2_{MLE}-2\mu_{MLE}^2\\\<br>&amp;= \dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE})<br>\end{align}<br>$$</p>
-</li>
-</ul>
-<ul>
-<li>接着求其期望：</li>
-</ul>
-<p>$$<br>\begin{align}<br>E(\Sigma_{MLE})&amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE}))\\\<br>                            &amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n [x_i^2 - \mu^2 -( \mu^2_{MLE} - \mu^2)]) \quad –&gt;恒等变形\\\<br>                            &amp;=(\dfrac{1}{n}\sum\limits_{i=1}^n E(x_i^2)-E^2(x_i)-E(\mu^2_{MLE})+E(\mu^2)))\quad–&gt;\mu^2看作常数，\mu^2=E(\mu^2)\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) + (E^2(\mu_{MLE})-E(\mu^2_{MLE}))\quad –&gt;方差与概率间的公式转化\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) - D(\mu_{MLE})\quad –&gt;方差与概率间的公式转化 \\\<br>                            &amp;=\Sigma-D(\mu_{MLE})\\\<br>                            &amp;=\Sigma - D(\dfrac{1}{n}\sum\limits_{i=1}^n x_i) \\\<br>                            &amp;=\Sigma-\dfrac{1}{n^2}nD(x_i)\\\<br>                            &amp;=\Sigma- \dfrac{1}{n}\Sigma \\\<br>                            &amp;=\dfrac{n-1}{n}\Sigma<br>\end{align}<br>$$</p>
-<ul>
-<li>发现$E(\mu_{MLE})=\mu, E(\Sigma_{MLE}) \neq \Sigma$，因此$\mu_{MLE}$作为$\mu$的估计是无偏的，$\Sigma_{MLE}$作为$\Sigma$的估计是有偏的。</li>
-</ul>
-<h2 id="多维度的情况"><a href="#多维度的情况" class="headerlink" title="多维度的情况"></a>多维度的情况</h2><p>观察指数部分，记为D：$(x-\mu)^T\Sigma^{-1}(x-\mu)$</p>
-<p>$x$是一个样本向量：$x =\left(x_1,x_2,\ldots,x_n \right)^T$。</p>
-<p>注意这部分的结果是一个标量（维度：（1,p)-(p,p)-(p,1)-&gt;(1,1)）</p>
-<p>实际上，D是一个马氏距离，是向量$x$与向量$\mu$之间的马氏距离。</p>
-<p>而$\Sigma=U \Lambda U^T=[u_1, u_2, \dots,u_p] \begin{bmatrix}<br>    \lambda_{1} &amp; &amp; \<br>    &amp; \ddots &amp; \<br>    &amp; &amp; \lambda_{r}<br>  \end{bmatrix} \begin{bmatrix}<br>    u_{1}^T  \<br>    u_2^T \<br>    \ldots \\ u_p^T<br>  \end{bmatrix}=\sum\limits_{i=1}^{p}u_i\lambda_iu_i^T$</p>
-<p>($U$与$U^T$互逆)</p>
-<p>求逆：${(U^T)}^{-1}\Lambda^{-1}U^{-1}=\sum\limits_{i=1}^pu_i \dfrac{1}{\lambda_i}u_i^T$</p>
-<p>马氏距离表示为：<br>$$<br>(x-\mu)^T \Sigma^{-1}(x-\mu)=<br>(x-\mu)^T \left(\sum\limits_{i=1}^pu_i \dfrac{1}{\lambda_i}u_i^T \right)(x-\mu)=<br>\sum\limits_{i=1}^{p}(x-\mu)^T u_i \dfrac{1}{\lambda_i}u_i^T(x-\mu)<br>$$<br><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr2qy9seaaj311a06gmxr.jpg" alt="image-20210601142450162"></p>
-<p>得到马氏距离为：$\sum\limits_{i=1}^{p}y_i^2/\lambda_i$</p>
-<p>当维度为2时，可以看作是一个以$u_1$和$u_2$为直角坐标系下的椭圆（$y$的方向与$u$一致，因为$(x-\mu)^Tu_i$是在$u_i$上的投影）：</p>
-<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr4b6bq7g5j30km0dymy7.jpg" alt="image-20210601160052158" style="zoom:50%;" />
+<p>  矩阵表示：<br>  $$<br>  \begin{align}<br>  X&amp;=\bm{x_1, x_2, \ldots, x_n}^T=\bm{x_1^T\\ x_2^T\\ x_3^T\\ \ldots \\ x_n^T} –&gt; \text{一行一个样本，各维度横着摊开}\\\<br>  Y&amp;=\bm{y_1\\ y_2\\ y_3\\ \ldots \\ y_n}<br>  \end{align}<br>  $$</p>
+<p>最小二乘估计：<br>$$<br>\begin{align}<br>L(w)&amp;=\sum\limits_{i=1}^{N}||w^Tx_i-y_i||^2\\\<br>&amp;=\sum\limits_{i=1}^{N}(w^Tx_i-y_i)^2\\\<br>&amp;=[(w^Tx_1\quad w^Tx_2 \ldots \quad w^Tx_n) - (y_1\quad y_2 \ldots \quad y_n)] \bm{w^Tx_1-y_1\\\\w^Tx_2-y_2\\\\ \ldots \\\\w^Tx_n-y_n}\\\<br>&amp;=(w^TX^T-Y^T)(w^TX^T-Y^T)^T \\\<br>&amp;=(w^TX^T-Y^T)(XW-Y)\\\<br>&amp;=w^TX^TXW-w^TX^TY-Y^TXW+Y^TY\\\<br>&amp;=w^TX^TXW-2w^TX^TY+Y^TY<br>\end{align}<br>$$<br>$\therefore \dfrac{\partial L(w)}{\partial w}=2X^TXw-2x^TY=0, w=(X^TX)^{-1}X^TY$</p>
+<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr6lohd4r9j31l60u0whw.jpg" alt="最小二乘其他理解" style="zoom:25%;" />
+$$
+X^TY-X^TX\beta=0, \beta=(X^TX)^{-1}X^TY
+$$
+各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，（$N$维向量），要使得这向量与标签向量$Y$之间的距离最近，则这个向量应当是标签值向量在该面上的投影，误差被分散到各个维度上。
 
-<p>于是，高斯分布的概率可以理解为</p>
-<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr4b69y49lj30ma08cdga.jpg" alt="image-20210601164545379" style="zoom:50%;" />
-
-<p>马氏距离为n的时候，形成等概率线（椭圆上的点），如果把n算作第三维，实际上就是椭圆曲面的一个切面</p>
-<h2 id="高斯分布的局限性"><a href="#高斯分布的局限性" class="headerlink" title="高斯分布的局限性"></a>高斯分布的局限性</h2><p>$\Sigma$参数数量：对一个$p$维的高斯分布，参数数量过多</p>
-<p>边缘概率分布$p$。$\def\vector#1.{\begin{pmatrix} #1 \end{pmatrix} }$</p>
-<p>$X \sim (\mu, \Sigma)$</p>
-<p>$$<br>X=\vector{x_1\\x_2\\\ldots\\x_p}.=\vector{x_a\\x_b}., \mu=\vector{\mu_a\\\mu_b}.,\Sigma=\begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix}<br>$$<br>$x_a$，m维；$x_b$，n维，$m+n=p$</p>
-<p>求$p(x_a), p(x_b \mid x_a)$</p>
-<p>先给一个定理：$X \sim (\mu, \Sigma)$，$AX+B \sim (A\mu+B, A\Sigma A^T)$</p>
-<p>$x_a =(I_m \ \ \ \ 0) \vector{x_a\\x_b}.$</p>
-<p>$\therefore x_a \sim \left((I_m\ \ \ \ 0)\vector{\mu_a\\\mu_b}.=\mu_a,  (I_m\ \ \ \ 0) \begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix} \vector{I_m\\0}.=\Sigma_{aa}\right)$</p>
-<p>Schur Complement:</p>
-<p>$$<br>\begin{cases}<br>x_{b \cdot a}=x_b - \Sigma_{ba}\Sigma^{-1}_{aa}x_a \\\<br>\mu_{b \cdot a}=\mu_b - \Sigma_{ba}\Sigma^{-1}_{aa}\mu_a \\\<br>\Sigma_{bb \cdot a}=\Sigma_{bb} - \Sigma_{ba}\Sigma^{-1}_{aa}\Sigma_{ab}<br>\end{cases}<br>$$<br>矩阵表示：<br>$$<br>\begin{align}<br>x_{b \cdot a}&amp;=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}\\\<br>E[x_{b \cdot a}]&amp;=E[\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}]=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix}\begin{pmatrix}   \mu_a \\ \mu_b \end{pmatrix}=-\Sigma_{ba}\Sigma^{-1}_{aa}\mu_a+\mu_b=\mu_{b \cdot a}\\\<br>Var[x_{b \cdot a}]&amp;=Var[\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}]=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix} \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.<br>\\\\ &amp; =(-\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{aa}+\Sigma_{ba} \quad -\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}) \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.\\\<br>&amp;=(0 \quad -\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}) \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.\\\<br>&amp;=-\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}=\Sigma_{bb \cdot a}<br>\end{align}<br>$$</p>
-<p>$x_b=x_{b\cdot a}+\Sigma_{ba}\Sigma^{-1}_{aa}x_a$<br>$$<br>\begin{align}<br>E(x_b \mid x_a)&amp;=E(x_{b \cdot a}+\Sigma_{ba}\Sigma^{-1}_{aa}x_a)=\mu_{b \cdot a} + \Sigma_{ba}\Sigma^{-1}_{aa}x_a\\\<br>Var(x_b \mid x_a)&amp;=Var(x_{b\cdot a})=\Sigma_{bb \cdot a}<br>\end{align}<br>$$</p>
-<p>$p(x)\sim N(x \mid \mu, \Lambda^{-1}), p(y \mid x) \sim N(y \mid Ax + b, L^{-1})$<br>$$<br>y=Ax+b+\varepsilon, \varepsilon \sim N(0, L^{-1})<br>$$<br>$E(y)=E(Ax+b+\varepsilon)=AE(x)+b+E(\varepsilon)=A\mu+b\\\\Var(y)=Var(Ax+b+\varepsilon)=A\Lambda^{-1}A^T+L^{-1}\\\\y \sim N(A\mu +b, A\Lambda^{-1}A^T+L^{-1})$</p>
-<p>$z=\vector{x \\ y}. \sim N \left(\begin{bmatrix} \mu \\ A\mu +b \end{bmatrix}, \begin{bmatrix} \Lambda^{-1} &amp; \Delta \\ \Delta &amp; A\Lambda^{-1}A^T+L^{-1} \end{bmatrix} \right)$</p>
-<p>$\Delta=Cov(x, y) = E[(x-E(x))(y-E(y))^T]$<br>$$<br>\begin{align}<br>E[(x-E(x))(y-E(y))^T]&amp;=E[(x-\mu)(Ax+b+\varepsilon-A\mu-b)^T]\\\<br>&amp;=E[(x-\mu)(Ax-A\mu+\varepsilon)^T]\\\<br>&amp;=E[(x-\mu)(x-\mu)^TA^T+(x-\mu)\varepsilon^T]\\\<br>&amp;=Var(x)A^T+E[(x-\mu)\varepsilon^T]\\\<br>&amp;=\Lambda^{-1}A^T + E(x-\mu)E(\varepsilon^T)\\\<br>&amp;=\Lambda^{-1}A^T<br>\end{align}<br>$$<br>根据<br>$$<br>\begin{align}<br>E(x_b \mid x_a)&amp;=E(x_{b \cdot a}+\Sigma_{ba}\Sigma^{-1}_{aa}x_a)=\mu_{b \cdot a} + \Sigma_{ba}\Sigma^{-1}_{aa}x_a\\\<br>Var(x_b \mid x_a)&amp;=Var(x_{b\cdot a})=\Sigma_{bb \cdot a}<br>\end{align}<br>$$</p>
-<p>$\therefore E(x \mid y) = \mu_{x\cdot y} + \Sigma_{xy}\Sigma^{-1}_{yy}y=\mu_x-\Sigma_{xy}\Sigma^{-1}_{yy}\mu_y+ \Sigma_{xy}\Sigma^{-1}_{yy}y= \mu-\Sigma_{xy}\Sigma^{-1}_{yy}(\mu_y-y)=\mu-\Sigma_{xy}\Sigma^{-1}_{yy}(A\mu+b-Ax-b)$</p>
-<p>$$<br>\begin{align}<br>\therefore E(x \mid y) &amp;= \mu_{x\cdot y} + \Sigma_{xy}\Sigma^{-1}_{yy}y\\\<br>&amp;=\mu_x-\Sigma_{xy}\Sigma^{-1}_{yy}\mu_y+ \Sigma_{xy}\Sigma^{-1}_{yy}y \\\<br>&amp;= \mu-\Sigma_{xy}\Sigma^{-1}_{yy}(\mu_y-y) \\\<br>&amp;=\mu-\Sigma_{xy}\Sigma^{-1}_{yy}(A\mu+b-Ax-b)\\\<br>&amp;=\mu-\Sigma_{xy}\Sigma^{-1}_{yy}A(\mu-x)\\\<br>&amp;=\mu-\Lambda^{-1}A^T(A\Lambda^{-1}A^T+L^{-1})A(\mu-x)<br>\end{align}<br>$$</p>
-<p>$$<br>\begin{align}<br>\therefore Var(x \mid y) &amp; = \Sigma_{xx \cdot y}=\Sigma_{xx}-\Sigma_{xy}\Sigma^{-1}_{yy}\Sigma_{yx}=\Lambda^{-1}-\Lambda^{-1}A^T(A\Lambda^{-1}A^T+L^{-1})^{-1}A\Lambda^{ {-1}^{T} }<br>\end{align}<br>$$</p>
 
             </div>
             <hr/>
@@ -490,7 +434,7 @@
                     </i>
                 </span> -->
                 <!-- <span class="reprint-info">
-                    <a href="https://rqhu1995.github.io/2021/05/19/machine-learning-math-basic-1/">https://rqhu1995.github.io/2021/05/19/machine-learning-math-basic-1/</a>
+                    <a href="https://rqhu1995.github.io/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">https://rqhu1995.github.io/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</a>
                 </span> -->
             </div>
             <div class="reprint__notice">
@@ -527,11 +471,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">白板推导学习笔记</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -570,9 +510,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
                     <div class="card-image">
@@ -591,9 +532,9 @@ $N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -602,6 +543,7 @@ $N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -612,34 +554,24 @@ $N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/14/train_scheduling/">
+                <a href="/2021/05/19/machine-learning-math-basic-1/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/11.jpg" class="responsive-img" alt="train_scheduling">
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/18.jpg" class="responsive-img" alt="machine-learning-math-basic-1">
                         
-                        <span class="card-title">train_scheduling</span>
+                        <span class="card-title">machine-learning-math-basic-1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-N：网络
-V，E：网络节点和边
-R：资源
-m：映射：（边到时间）– 一条边通过的最短时间
-a：映射：（资源到边集）– 一个资源分配给的边
-b：映射：（资源到时间）– 一个资源占用需要等待的时间
-
-
-T：火车
-S，L：V，E的一个无环子图–
+                            高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-19
                             </span>
                         <span class="publish-author">
                             
@@ -648,6 +580,14 @@ S，L：V，E的一个无环子图–
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">白板推导学习笔记</span>
+                    </a>
+                    
                 </div>
                 
             </div>
