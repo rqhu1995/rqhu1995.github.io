@@ -410,6 +410,11 @@ $$
 各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，（$N$维向量），要使得这向量与标签向量$Y$之间的距离最近，则这个向量应当是标签值向量在该面上的投影，误差被分散到各个维度上。
 
 
+
+<p>概率视角下的线性回归。</p>
+<p>假设样本在拟合的方程下的值的偏差存在噪声$\varepsilon$，即和真实值存在的偏差，服从正态分布$N(0, \sigma^2)$，则</p>
+<p>$y\mid x_iw \sim N(w^Tx, \sigma^2)$</p>
+
             </div>
             <hr/>
 
@@ -739,7 +744,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
              }
          });
      </script>
-     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     <script type="text/javascript" src="http://mathjax.josephjctang.com/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 
 
     <footer class="page-footer bg-color">
