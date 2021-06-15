@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="线性回归, Bonjour">
+    <meta name="keywords" content="matrix-math-cheatsheet, Bonjour">
     <meta name="description" content="Logic &amp; Skills &amp; Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>线性回归 | Bonjour</title>
+    <title>matrix-math-cheatsheet | Bonjour</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">线性回归</h1>
+                    <h1 class="description center-align post-title">matrix-math-cheatsheet</h1>
                 </div>
             </div>
         </div>
@@ -367,13 +367,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E7%99%BD%E6%9D%BF%E7%AC%94%E8%AE%B0%E6%8E%A8%E5%AF%BC/">
-                                <span class="chip bg-color">白板笔记推导</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-04
+                    2021-06-15
                 </div>
                 
 
@@ -402,52 +398,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><h2 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h2><ul>
-<li>$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$<br>$$<br>\newcommand{\bm}[1]{\begin{bmatrix} #1 \end{bmatrix}}<br>$$</li>
-</ul>
-<p>  矩阵表示：<br>  $$<br>  \begin{align}<br>  X&amp;=\bm{x_1, x_2, \ldots, x_n}^T=\bm{x_1^T\\ x_2^T\\ x_3^T\\ \ldots \\ x_n^T} –&gt; \text{一行一个样本，各维度横着摊开}\\\<br>  Y&amp;=\bm{y_1\\ y_2\\ y_3\\ \ldots \\ y_n}<br>  \end{align}<br>  $$</p>
-<p>最小二乘估计：<br>$$<br>\begin{align}<br>L(w)&amp;=\sum\limits_{i=1}^{N}||w^Tx_i-y_i||^2\\\<br>&amp;=\sum\limits_{i=1}^{N}(w^Tx_i-y_i)^2\\\<br>&amp;=[(w^Tx_1\quad w^Tx_2 \ldots \quad w^Tx_n) - (y_1\quad y_2 \ldots \quad y_n)] \bm{w^Tx_1-y_1\\\\w^Tx_2-y_2\\\\ \ldots \\\\w^Tx_n-y_n}\\\<br>&amp;=(w^TX^T-Y^T)(w^TX^T-Y^T)^T \\\<br>&amp;=(w^TX^T-Y^T)(XW-Y)\\\<br>&amp;=w^TX^TXW-w^TX^TY-Y^TXW+Y^TY\\\<br>&amp;=w^TX^TXW-2w^TX^TY+Y^TY<br>\end{align}<br>$$<br>$\therefore \dfrac{\partial L(w)}{\partial w}=2X^TXw-2x^TY=0, w=(X^TX)^{-1}X^TY$</p>
-<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr6lohd4r9j31l60u0whw.jpg" alt="最小二乘其他理解" style="zoom:25%;" />
-$$
-X^TY-X^TX\beta=0, \beta=(X^TX)^{-1}X^TY
-$$
-各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，（$N$维向量），要使得这向量与标签向量$Y$之间的距离最近，则这个向量应当是标签值向量在该面上的投影，误差被分散到各个维度上。
-
-
-
-<h2 id="概率视角下的线性回归"><a href="#概率视角下的线性回归" class="headerlink" title="概率视角下的线性回归"></a>概率视角下的线性回归</h2><p>假设样本在拟合的方程下的值的偏差存在噪声$\varepsilon$，即和真实值存在的偏差，服从正态分布$\varepsilon \sim N(0, \sigma^2)$，则</p>
-<p>$y=f(w)+\varepsilon$</p>
-<p>此处把$w^Tx$看成常数，噪声是随机变量，所以：</p>
-<p>$y\mid x;w \sim N(w^Tx, \sigma^2)$</p>
-<p>从极大似然估计的角度来估计这个参数（常数）：<br>$$<br>\begin{align}<br>\mathcal{L}(w)&amp;=log(\prod\limits_{i=1}^{N}p(y_i)) \\\<br>&amp;=log \left(\prod\limits_{i=1}^{N}\dfrac{1}{\sqrt{2\pi}\sigma}e^{-\dfrac{(y_i-w^Tx)^2}{2\sigma^2}}\right)\\\<br>&amp;=\sum\limits_{i=1}^{N}log\dfrac{1}{\sqrt{2\pi}\sigma}-\sum\limits_{i=1}^{N}\dfrac{(y_i-w^Tx)^2}{2\sigma^2}<br>\end{align}<br>$$</p>
-<p>$$<br>\begin{align}<br>\hat{w}&amp;=\underset{w}{\arg\max}\sum\limits_{i=1}^{N}log\dfrac{1}{\sqrt{2\pi}\sigma}-\sum\limits_{i=1}^{N}\dfrac{(y_i-w^Tx)^2}{2\sigma^2}\\\<br>&amp;=\underset{w}{\arg\min}\sum\limits_{i=1}^{N}\dfrac{(y_i-w^Tx)^2}{2\sigma^2}\\\<br>&amp;=\underset{w}{\arg\min}\sum\limits_{i=1}^{N}(y_i-w^Tx)^2<br>\end{align}<br>$$<br>这与上面的最小二乘法推导出的结论相同，即最小二乘法求出的$w$就是噪声服从于高斯分布的极大似然估计下的$\hat{w}$</p>
-<blockquote>
-<p>结论：最小二乘估计 $\leftrightarrow$ 数据噪声服从于高斯分布的极大似然估计</p>
-</blockquote>
-<h2 id="岭回归"><a href="#岭回归" class="headerlink" title="岭回归"></a>岭回归</h2><p>当有N个p维样本时，若数据量较小时（行少列多），线性回归的最小二乘估计$\hat{w}=(X^TX)^{-1}X^TY$中，$X^TX$（$p$阶方阵）可能会出现不可逆的情况。例如，只有一个二维的样本时，拟合出的曲线很容易过拟合。</p>
-<p>解决过拟合的方案：</p>
-<ul>
-<li>加数据</li>
-<li>特征选择/特征提取</li>
-<li>正则化</li>
-</ul>
-<p>正则化的框架：<br>$$<br>\underset{w}{\arg\min}[\underset{\underset{Loss}{\downarrow}}{L(w)}+\underset{\underset{Penalty}{\downarrow}}{\lambda P(w)}]<br>$$<br>Penalty的类型：</p>
-<ul>
-<li>L1，Lasso，一范数，$||w||_1$</li>
-<li>L2，Ridge，二范数，$||w||_2$–又叫岭回归</li>
-</ul>
-<p>对最小二乘估计使用岭回归：</p>
-<img src="https://tva1.sinaimg.cn/large/008i3skNgy1grj02k3t83j30ym0u0n5g.jpg" alt="岭回归推导过程" style="zoom:50%;" />
-
-<h2 id="从概率视角看岭回归"><a href="#从概率视角看岭回归" class="headerlink" title="从概率视角看岭回归"></a>从概率视角看岭回归</h2><p>假设噪声$\varepsilon$服从高斯分布，w也服从高斯分布，为简便起见，设定这两个分布的均值为0，方差分别是$\sigma$与$\sigma_0$。即：</p>
-<p>$\varepsilon \sim N(0, \sigma)，w \sim N(0, \sigma_0)$</p>
-<p>对每一个样本$x_i$而言，$wx_i$是拟合的曲线计算出的y，$f(w)=wx_i+ \varepsilon$是添加了噪声之后的实际标签结果，因此</p>
-<p>$f(w) \sim N(w^Tx_i, \sigma)$</p>
-<p>从贝叶斯的视角，将参数也看成服从某种概率分布的情形，讨论后验概率，即样本$y_i$给定之后，$w$的值<br>$$<br>p(w \mid y_i)=\dfrac{p(y_i\mid w)p(w)}{p(y_i)}=\dfrac{p(y_i\mid w)p(w)}{\int_w p(y_i\mid w)p(w)}<br>$$<br>分母与$y_i$无关，是所有情况的总和。</p>
-<p>因此，考察最大后验概率（MAP）：<br>$$<br>\underset{w}{\arg\max}\prod\limits_{i=1}^{N}p(w\mid y_i)=\underset{w}{\arg\max}\prod\limits_{i=1}^{N}p(y_i\mid w)p(w)<br>$$<br>取对数：<br>$$<br>\underset{w}{\arg \max} \sum\limits_{i=1}^n \log p(y_i\mid w) + \log p(w)=\sum\limits_{i=1}^n \log \dfrac{1}{\sqrt{2\pi}\sigma}-\dfrac{(y_i-w^Tx)^2}{2\sigma^2} + \log \dfrac{1}{\sqrt{2\pi}\sigma_0}-\dfrac{||w||^2}{2\sigma_0^2}<br>$$<br>去除和w无关的项：<br>$$<br>\underset{w}{\arg \min} \sum\limits_{i=1}^n \dfrac{(y_i-w^Tx)^2}{2\sigma^2} +\dfrac{||w||^2}{2\sigma_0^2}=\underset{w}{\arg \min} \sum\limits_{i=1}^n (y_i-w^Tx)^2+\dfrac{\sigma^2}{\sigma_0^2} ||w||^2<br>$$<br>这一目标，实际上就是$\lambda=\dfrac{\sigma^2}{\sigma_0^2}$时的岭回归，因此可以得到：</p>
-<blockquote>
-<p>结论：正则化（岭回归下）最小二乘估计 $\leftrightarrow$ 数据噪声服从于高斯分布且$w$先验服从高斯分布的极大后验估计</p>
-</blockquote>
+                <h1 id="Matrix-Calculus"><a href="#Matrix-Calculus" class="headerlink" title="Matrix Calculus"></a>Matrix Calculus</h1><p>Reference: [The Matrix Cookbook](<a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf" target="_blank" rel="noopener">matrixcookbook.pdf (uwaterloo.ca)</a>)</p>
+<h2 id="Useful-Conclusion（keep-updating）"><a href="#Useful-Conclusion（keep-updating）" class="headerlink" title="Useful Conclusion（keep updating）"></a>Useful Conclusion（keep updating）</h2><p>eq(69)：$\mathbf{x, a}\in \mathbf{R}^p:$<br>$$<br>\dfrac{\partial \mathbf{x}^T\mathbf{a}}{\partial \mathbf{x}}=\dfrac{\partial \mathbf{a}^T\mathbf{x}}{\partial \mathbf{x}}=\mathbf{a}<br>$$<br>eq(81)：<br>$$<br>\dfrac{\partial \mathbf{x}^T\mathbf{B}\mathbf{x}}{\partial \mathbf{x}}=(\mathbf{B+B}^T)\mathbf{x}<br>$$</p>
 
             </div>
             <hr/>
@@ -473,7 +425,7 @@ $$
                     </i>
                 </span> -->
                 <!-- <span class="reprint-info">
-                    <a href="https://rqhu1995.github.io/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">https://rqhu1995.github.io/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</a>
+                    <a href="https://rqhu1995.github.io/2021/06/15/matrix-math-cheatsheet/">https://rqhu1995.github.io/2021/06/15/matrix-math-cheatsheet/</a>
                 </span> -->
             </div>
             <div class="reprint__notice">
@@ -510,11 +462,7 @@ $$
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E7%99%BD%E6%9D%BF%E7%AC%94%E8%AE%B0%E6%8E%A8%E5%AF%BC/">
-                                    <span class="chip bg-color">白板笔记推导</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -553,9 +501,10 @@ $$
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/06/15/matrix-math-cheatsheet/">
                     <div class="card-image">
@@ -574,9 +523,9 @@ Useful Conclusion（keep updating）eq(69
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -585,6 +534,7 @@ Useful Conclusion（keep updating）eq(69
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -595,24 +545,25 @@ Useful Conclusion（keep updating）eq(69
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/19/machine-learning-math-basic-1/">
+                <a href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="机器学习-数学基础">
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/4.jpg" class="responsive-img" alt="线性回归">
                         
-                        <span class="card-title">机器学习-数学基础</span>
+                        <span class="card-title">线性回归</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma
+                            线性回归最小二乘法
+$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$$$\newcommand{\bm}[1]{\b
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
                             </span>
                         <span class="publish-author">
                             
@@ -625,8 +576,8 @@ Useful Conclusion（keep updating）eq(69
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">白板推导学习笔记</span>
+                    <a href="/tags/%E7%99%BD%E6%9D%BF%E7%AC%94%E8%AE%B0%E6%8E%A8%E5%AF%BC/">
+                        <span class="chip bg-color">白板笔记推导</span>
                     </a>
                     
                 </div>
