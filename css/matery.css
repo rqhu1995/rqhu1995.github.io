@@ -2051,6 +2051,10 @@ footer .copy-right {
     margin: 0px;
 }
 
+div.MathJax_Display {
+    font-size: 0.85em;
+}
+
 .reprint__type&nbsp;.reprint-info{
     &nbsp;&nbsp;&nbsp;&nbsp;word-wrap:&nbsp;break-word;
     }
