@@ -406,7 +406,7 @@
 <p>不含否定的命题逻辑程序的stable model的定义：</p>
 <ul>
 <li>对于不含否定的命题逻辑程序而言，minimal model就是stable model。</li>
-<li>minimal model：不存在更小的集合<img src="https://math.now.sh?inline=S'%20%5Csubset%20S" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>（包含关系），<img src="https://math.now.sh?inline=S'" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>是程序P的模型。</li>
+<li>minimal model：不存在更小的集合$S’ \subset S$（包含关系），$S’$是程序P的模型。</li>
 <li>model：能够满足程序中的每一个formula</li>
 <li>满足一个formula的定义：基本formula的（或且非蕴含）</li>
 </ul>
@@ -415,260 +415,219 @@
 <p>命题逻辑程序稳定模型 《== 镜像 ==》 回答集程序稳定模型</p>
 <p>转换表：</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gef9cv7qhpj30fy09q74w.jpg" alt="image-20200503144417745" style="zoom: 50%;" />
+
 <p>本节考虑含有否定的程序。</p>
-<pre class=" language-language-prolog"><code class="language-language-prolog">p.
-q.
-r :- p, not s.
-s :- q.
-</code></pre>
+<pre class=" language-prolog"><code class="language-prolog">p<span class="token operator">.</span>
+q<span class="token operator">.</span>
+r <span class="token operator">:-</span> p<span class="token punctuation">,</span> <span class="token operator">not</span> s<span class="token operator">.</span>
+s <span class="token operator">:-</span> q<span class="token operator">.</span></code></pre>
 <p>对于含有否定的程序，ASP如何理解「稳定」的概念？</p>
 <p>对稳定的理解基于一种self-verifying conjecture（自我验证假设）。</p>
-<p>首先对上述程序提出一个conjecture：<img src="https://math.now.sh?inline=%5C%7Bp%2Cq%2Cs%5C%7D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
-<p>将conjecture带入程序，得到：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%2C%20%5C%5C%26q%2C%20%5C%5C%26r%20%5Cleftarrow%20p%20%5Cland%20%5Cbot%2C%5C%5C%26s%20%5Cleftarrow%20q.%5C%5C%5Cend%7Balign%7D%0A" /></p><p>上述程序是确定的（definite），最小模型为{p,q,s}，与假设一致，因此程序最终的稳定模型就是{p,q,s}.</p>
+<p>首先对上述程序提出一个conjecture：$\{p,q,s\}$</p>
+<p>将conjecture带入程序，得到：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow p \land \bot,\\&amp;s \leftarrow q.\\\end{align}<br>$$<br>上述程序是确定的（definite），最小模型为{p,q,s}，与假设一致，因此程序最终的稳定模型就是{p,q,s}.</p>
 <p>对于确定程序（不含not），最小模型和稳定模型是一致的；对于含有not的程序，要先通过假设A进行规约，在自我验证之后，如果规约后的程序（一定是确定程序）的最小模型/稳定模型就是假设A，那么这个假设A就是原来程序的稳定模型（不谈最小了）。所以对非确定性程序而言，假设的大小并不影响他是不是回答集。</p>
 <p>一个命题公式F的关键部分定义：F的子公式，满足：</p>
 <ul>
-<li>形式为<img src="https://math.now.sh?inline=%5Clnot%20G" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></li>
+<li>形式为$\lnot G$</li>
 <li>不包含于一个更大的这样的形式</li>
 </ul>
-<p>例子：<img src="https://math.now.sh?inline=p%20%5Cleftarrow%20%5Clnot%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
-<p>关键部分备选：<img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>或<img src="https://math.now.sh?inline=%5Clnot%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>。</p>
-<p>如果是<img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，它包含于<img src="https://math.now.sh?inline=%5Clnot%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，是更大的这样的形式，所以只能是<img src="https://math.now.sh?inline=%5Clnot%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>。</p>
+<p>例子：$p \leftarrow \lnot \lnot p$</p>
+<p>关键部分备选：$\lnot p$或$\lnot \lnot p$。</p>
+<p>如果是$\lnot p$，它包含于$\lnot \lnot p$，是更大的这样的形式，所以只能是$\lnot \lnot p$。</p>
 <p>规则R对I的规约：将一条规则的关键部分进行替换，原则：</p>
 <ul>
-<li><img src="https://math.now.sh?inline=I" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>满足规则R的关键部分，替换为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></li>
-<li><img src="https://math.now.sh?inline=I" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>不满足规则R的关键部分，替换为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></li>
+<li>$I$满足规则R的关键部分，替换为$\top$</li>
+<li>$I$不满足规则R的关键部分，替换为$\bot$</li>
 </ul>
-<p>手工求解稳定模型的一个例子：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26p%20%5Clor%20q%2C%20%5C%5C%0A%26r%20%5Cleftarrow%20%5Clnot%20p.%20%5C%5C%0A%5Cend%7Balign%7D%0A" /></p><p>找到关键部分：<img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>. 讨论关键部分是否在稳定模型中（影响规约结果的唯一要素）。</p>
+<p>手工求解稳定模型的一个例子：<br>$$<br>\begin{align}<br>&amp;p \lor q, \<br>&amp;r \leftarrow \lnot p. \<br>\end{align}<br>$$<br>找到关键部分：$\lnot p$. 讨论关键部分是否在稳定模型中（影响规约结果的唯一要素）。</p>
 <ul>
-<li>
-<p>Case 1: p在稳定模型中。规约结果A为：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26p%20%5Clor%20q%2C%20%5C%5C%0A%26r%20%5Cleftarrow%20%5Cbot.%20%5C%5C%0A%5Cend%7Balign%7D%0A" /></p><p>A的稳定模型包含：</p>
+<li><p>Case 1: p在稳定模型中。规约结果A为：<br>$$<br>\begin{align}<br>&amp;p \lor q, \<br>&amp;r \leftarrow \bot. \<br>\end{align}<br>$$<br>A的稳定模型包含：</p>
 <ul>
-<li>{p}</li>
-<li>{q}</li>
+<li>\{p\}</li>
+<li>\{q\}</li>
 </ul>
 <p>第一个稳定模型与假设（case）不矛盾（包含p），因此{p}是原程序的一个稳定模型；</p>
 </li>
-<li>
-<p>Case 2: p不在稳定模型中。规约结果B为：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%20%5Clor%20q%2C%20%5C%5C%26r%20%5Cleftarrow%20%5Ctop.%20%5C%5C%5Cend%7Balign%7D%0A" /></p><p>B的稳定模型包含：</p>
+<li><p>Case 2: p不在稳定模型中。规约结果B为：<br>$$<br>\begin{align}&amp;p \lor q, \\&amp;r \leftarrow \top. \\\end{align}<br>$$<br>B的稳定模型包含：</p>
 <ul>
-<li>{p, r}</li>
-<li>{q, r}</li>
+<li>\{p, r\}</li>
+<li>\{q, r\}</li>
 </ul>
 <p>第一个稳定模型与假设（case）不矛盾（不包含p），因此{q, r}是原程序的一个稳定模型；</p>
 </li>
 </ul>
 <p>综上，原程序的稳定模型为：{p}, {q, r}</p>
-<p>双否定：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26p%20%5Cleftarrow%20%5Clnot%20%5Clnot%20q%2C%20%5C%5C%0A%26q%20%5Cleftarrow%20%5Clnot%20%5Clnot%20p.%20%5C%5C%0A%5Cend%7Balign%7D%0A" /></p><p>关键部分<img src="https://math.now.sh?inline=%5Clnot%20%5Clnot%20q" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>与<img src="https://math.now.sh?inline=%5Clnot%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，讨论情况4种：</p>
+<p>双否定：<br>$$<br>\begin{align}<br>&amp;p \leftarrow \lnot \lnot q, \<br>&amp;q \leftarrow \lnot \lnot p. \<br>\end{align}<br>$$<br>关键部分$\lnot \lnot q$与$\lnot \lnot p$，讨论情况4种：</p>
 <ul>
-<li>
-<p><img src="https://math.now.sh?inline=%5Clnot%20q" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>在，<img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>不在</p>
-<p>规约：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26p%20%5Cleftarrow%20%5Cbot%2C%20%5C%5C%0A%26q%20%5Cleftarrow%20%5Ctop.%20%5C%5C%0A%5Cend%7Balign%7D%0A" /></p><p>规约后唯一稳定模型{q}，不符合假设</p>
+<li><p>$\lnot q$在，$\lnot p$不在</p>
+<p>规约：<br>$$<br>\begin{align}<br>&amp;p \leftarrow \bot, \<br>&amp;q \leftarrow \top. \<br>\end{align}<br>$$<br>规约后唯一稳定模型{q}，不符合假设</p>
 </li>
-<li>
-<p><img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>在，<img src="https://math.now.sh?inline=%5Clnot%20q" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>不在</p>
-<p>规约：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%20%5Cleftarrow%20%5Ctop%2C%20%5C%5C%26q%20%5Cleftarrow%20%5Cbot.%20%5C%5C%5Cend%7Balign%7D%0A" /></p><p>规约后唯一稳定模型{p}，不符合假设</p>
+<li><p>$\lnot p$在，$\lnot q$不在</p>
+<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \top, \\&amp;q \leftarrow \bot. \\\end{align}<br>$$<br>规约后唯一稳定模型{p}，不符合假设</p>
 </li>
-<li>
-<p><img src="https://math.now.sh?inline=%5Clnot%20q" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>在，<img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>在</p>
-<p>规约：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%20%5Cleftarrow%20%5Cbot%2C%20%5C%5C%26q%20%5Cleftarrow%20%5Cbot.%20%5C%5C%5Cend%7Balign%7D%0A" /></p><p>规约后唯一稳定模型{}，符合假设（空集表示<img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>与<img src="https://math.now.sh?inline=%5Clnot%20q" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>都成立）</p>
+<li><p>$\lnot q$在，$\lnot p$在</p>
+<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \bot, \\&amp;q \leftarrow \bot. \\\end{align}<br>$$<br>规约后唯一稳定模型{}，符合假设（空集表示$\lnot p$与$\lnot q$都成立）</p>
 </li>
-<li>
-<p><img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>不在，<img src="https://math.now.sh?inline=%5Clnot%20q" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>不在</p>
-<p>规约：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%20%5Cleftarrow%20%5Ctop%2C%20%5C%5C%26q%20%5Cleftarrow%20%5Ctop.%20%5C%5C%5Cend%7Balign%7D%0A" /></p><p>规约后唯一稳定模型{p, q}，符合假设</p>
+<li><p>$\lnot p$不在，$\lnot q$不在</p>
+<p>规约：<br>$$<br>\begin{align}&amp;p \leftarrow \top, \\&amp;q \leftarrow \top. \\\end{align}<br>$$<br>规约后唯一稳定模型{p, q}，符合假设</p>
 </li>
 </ul>
 <p>综上，回答集有两个{p,q}和{}（要么都不对，要么都对）</p>
 <p>not not不能直接转换为正，转为正后就变为确定程序，稳定模型即最小模型就只包含{}</p>
-<p>按照上述方式求解稳定模型，有时候会非常复杂。因为关键部分（否定）太多的时候，排列组合的情况就会相应很多。</p>
+<p>按照上述方式求解稳定模型，有时候会非常复杂。因为关键部分（否定）太多的时候，排列组合的情况就会相应很多。 </p>
 <blockquote>
-<p>关于规约的一个定理：一个解释I满足一个命题逻辑程序<img src="https://math.now.sh?inline=%5CPi" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，当且仅当它满足<img src="https://math.now.sh?inline=%5CPi%5EI" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>。</p>
+<p>关于规约的一个定理：一个解释I满足一个命题逻辑程序$\Pi$，当且仅当它满足$\Pi^I$。</p>
 </blockquote>
 <p>根据这个定理，求解稳定模型就变为：</p>
 <p>I是一个程序的稳定模型，当且仅当：</p>
 <ul>
 <li>I是程序的模型</li>
-<li>I是<img src="https://math.now.sh?inline=%5CPi%5EI" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的最小模型（再次强调：最小是规约完后最小，不是所有的规约下比大小）</li>
+<li>I是$\Pi^I$的最小模型（再次强调：最小是规约完后最小，不是所有的规约下比大小）</li>
 </ul>
 <p>命题程序的化简：</p>
-<p>将原程序替换为一些稳定模型相同的程序。但是等价公式的替换，未必会带来相同的稳定模型。</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=p%20%5Clor%20q%2C%20p%20%5Cleftarrow%20%5Clnot%20q%2C%20q%20%5Cleftarrow%20%5Clnot%20p.%0A" /></p><p>上述三个公式是相互等价的，但是稳定模型分别是<img src="https://math.now.sh?inline=%5C%7B%5C%7Bp%5C%7D%2C%20%5C%7Bq%5C%7D%5C%7D%2C%20%5C%7B%5C%7Bp%5C%7D%5C%7D%2C%20%5C%7B%5C%7Bq%5C%7D%5C%7D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>.</p>
-<p>类似的，双重否定即是肯定，这也是不正确的等价。<img src="https://math.now.sh?inline=p%20%5Cleftarrow%20%5Clnot%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的稳定模型有两个{}和{p}</p>
+<p>将原程序替换为一些稳定模型相同的程序。但是等价公式的替换，未必会带来相同的稳定模型。<br>$$<br>p \lor q, p \leftarrow \lnot q, q \leftarrow \lnot p.<br>$$<br>上述三个公式是相互等价的，但是稳定模型分别是$\{\{p\}, \{q\}\}, \{\{p\}\}, \{\{q\}\}$.</p>
+<p>类似的，双重否定即是肯定，这也是不正确的等价。$p \leftarrow \lnot \lnot p$的稳定模型有两个{}和{p}</p>
 <blockquote>
-<p>关于事实的定理：将程序<img src="https://math.now.sh?inline=%5CPi" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>规则中属于事实集合A的元素全部替换为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，记为<img src="https://math.now.sh?inline=%5CPi%5EA_%7B%5Ctop%7D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，<img src="https://math.now.sh?inline=%5CPi%5EA_%7B%5Ctop%7D%20%5Ccup%20A" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=%5CPi%20%5Ccup%20A" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>稳定模型相同</p>
+<p> 关于事实的定理：将程序$\Pi$规则中属于事实集合A的元素全部替换为$\top$，记为$\Pi^A_{\top}$，$\Pi^A_{\top} \cup A$和$\Pi \cup A$稳定模型相同</p>
 </blockquote>
-<p>利用这一定理和上述的等价转换，有时候可以不需要规约。</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%2C%20%5C%5C%26q%2C%20%5C%5C%26r%20%5Cleftarrow%20p%20%5Cland%20%5Clnot%20s%2C%5C%5C%26s%20%5Cleftarrow%20q.%5C%5C%5Cend%7Balign%7D%0A" /></p><p>A={p, q}，那么<img src="https://math.now.sh?inline=%5CPi_%5Ctop%5EA%20%5Ccup%20A%3D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%2C%20%5C%5C%26q%2C%20%5C%5C%26r%20%5Cleftarrow%20%5Ctop%20%5Cland%20%5Clnot%20s%2C%5C%5C%26s%20%5Cleftarrow%20%5Ctop.%5C%5C%5Cend%7Balign%7D%0A" /></p><p>进行一次等价的化简：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%2C%20%5C%5C%26q%2C%20%5C%5C%26r%20%5Cleftarrow%20%5Clnot%20s%2C%28%5Ctop%20%5Cland%20F%20%3D%20F%29%5C%5C%26s.(F%20%5Cleftarrow%20%5Ctop%20%3D%20F)%5C%5C%5Cend%7Balign%7D%0A" /></p><p>再进行一次事实定理的使用：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%2C%20%5C%5C%26q%2C%20%5C%5C%26r%20%5Cleftarrow%20%5Clnot%20%5Ctop%2C%5C%5C%26s.%5C%5C%5Cend%7Balign%7D%0A" /></p><p>再进行一次等价化简</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%26p%2C%20%5C%5C%26q%2C%20%5C%5C%26r%20%5Cleftarrow%20%5Cbot%2C%5C%5C%26s.%5C%5C%5Cend%7Balign%7D%0A" /></p><p>==&gt;</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26p%2C%20%5C%5C%0A%26q%2C%20%5C%5C%0A%26%5Ctop%2C%20%5C%5C%0A%26s.%5C%5C%0A%5Cend%7Balign%7D%0A" /></p><p>稳定模型：p,q,s.</p>
+<p>利用这一定理和上述的等价转换，有时候可以不需要规约。<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow p \land \lnot s,\\&amp;s \leftarrow q.\\\end{align}<br>$$<br>A={p, q}，那么$\Pi_\top^A \cup A=$<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \top \land \lnot s,\\&amp;s \leftarrow \top.\\\end{align}<br>$$<br>进行一次等价的化简：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \lnot s,(\top \land F = F)\\&amp;s.(F \leftarrow \top = F)\\\end{align}<br>$$<br>再进行一次事实定理的使用：<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \lnot \top,\\&amp;s.\\\end{align}<br>$$<br>再进行一次等价化简<br>$$<br>\begin{align}&amp;p, \\&amp;q, \\&amp;r \leftarrow \bot,\\&amp;s.\\\end{align}<br>$$<br>==&gt;<br>$$<br>\begin{align}<br>&amp;p, \<br>&amp;q, \<br>&amp;\top, \<br>&amp;s.\<br>\end{align}<br>$$</p>
+<p>稳定模型：p,q,s.</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gejmyqxfp0j30oc0dkta5.jpg" alt="image-20200507093718117" style="zoom:50%;" />
-<p>根据表4.1，头<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>或体<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的规则可以直接drop掉，不影响稳定模型。</p>
-<p>针对一个原子公式，如果它仅仅在体部出现过，那么这个原子公式是不相关的。我们可以使用<img src="https://math.now.sh?inline=%5CPi_%5Cbot%5EA" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>来对应表示这些原子公式出现过的规则。</p>
+
+<p>根据表4.1，头$\top$或体$\bot$的规则可以直接drop掉，不影响稳定模型。</p>
+<p>针对一个原子公式，如果它仅仅在体部出现过，那么这个原子公式是不相关的。我们可以使用$\Pi_\bot^A$来对应表示这些原子公式出现过的规则。</p>
 <p>empty conjunction as ⊤ and the empty disjunction as ⊥：</p>
-<p>理解的方式：在数学求和<img src="https://math.now.sh?inline=%5CSigma_i" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>、求积$ \Pi_i<img src="https://math.now.sh?inline=%E4%B8%AD%EF%BC%8C%E6%88%91%E4%BB%AC%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%AF%B9i%3D0%E6%97%B6%E5%80%99%E7%9A%84%E7%89%B9%E6%AE%8A%E5%A4%84%E7%90%86%E3%80%82%E4%B8%80%E8%88%AC%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E5%85%B6%E5%AE%9A%E4%B9%89%E4%B8%BA%E8%AF%A5%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%B9%BA%E5%85%83%EF%BC%8C%E5%8D%B30%E4%B8%AA%E6%95%B0%E6%B1%82%E5%92%8C%E4%B8%BA0%EF%BC%8C0%E4%B8%AA%E6%95%B0%E6%B1%82%E7%A7%AF%E4%B8%BA1%EF%BC%8C0%E7%9A%84%E9%98%B6%E4%B9%98%E4%B8%BA1%EF%BC%8C" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>n^0=1<img src="https://math.now.sh?inline=...%E3%80%82%E5%9B%A0%E6%AD%A4%EF%BC%8C%E5%AF%B9%E4%BA%8E%E5%90%88%E5%8F%96%EF%BC%8C%E5%B9%BA%E5%85%83%E4%B8%BA" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>\bot<img src="https://math.now.sh?inline=%EF%BC%9B%E6%9E%90%E5%8F%96%E4%B8%BA" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>\top$，空合取就定义为真，空析取就定义为假。</p>
-<p><code>not p(X) :- q. </code>– q成立，所有p(X)都不成立；</p>
-<p><img src="https://math.now.sh?inline=%3D%3D%E3%80%8BX%E5%8F%AF%E5%8F%96%E5%80%BC%E4%B8%BA1..8" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
+<p>理解的方式：在数学求和$\Sigma_i$、求积$ \Pi_i$中，我们会出现对i=0时候的特殊处理。一般情况下，我们将其定义为该运算符的幺元，即0个数求和为0，0个数求积为1，0的阶乘为1，$n^0=1$…。因此，对于合取，幺元为$\bot$；析取为$\top$，空合取就定义为真，空析取就定义为假。</p>
+<p><code>not p(X) :- q.</code>– q成立，所有p(X)都不成立；</p>
+<p>$==》X可取值为1..8$</p>
 <p><code>not p\(1\) $\land$ not p\(2\) $\land$ not p\(3\) ... $\land$ not p\(8\) :- q.</code></p>
-<p><img src="https://math.now.sh?inline=q%20%5Cleftarrow%20not%5C%20p%28X%29." style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/> – 有一个p(X)不成立，q就不成立</p>
-<p><img src="https://math.now.sh?inline=%3D%3D%E3%80%8BX%E5%8F%AF%E5%8F%96%E5%80%BC%E4%B8%BA1..8" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
-<p><code>q :- not p(1) $\lor$ not p(2) ... $\lor$ not p(8)</code>. – 有一个<img src="https://math.now.sh?inline=p%28X%29" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>不成立，q就不成立</p>
+<p>$q \leftarrow not\ p(X).$ – 有一个p(X)不成立，q就不成立</p>
+<p>$==》X可取值为1..8$</p>
+<p><code>q :- not p(1) $\lor$ not p(2) ... $\lor$ not p(8)</code>. – 有一个$p(X)$不成立，q就不成立</p>
 <p>Clingo的全序：S &gt;= Z！任何符号比所有整数都要大。</p>
-<p>求下面程序的命题程序镜像：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cmathrm%7Bcomposite%28N%29%20%5Ctext%7B%20%3A-%20%7D%20N%20%3D%201..5%2C%20I%20%3D%202..N-1%2C%20N%20%5Csetminus%20I%20%3D%200.%7D%0A" /></p><p><code>composite(1) :- 1 = 1..5, 2 = 2..1, 1 \ 1 = 0</code></p>
-<h2 id="N-1，I-2">(N=1，I=2)</h2>
-<h3 id="1-1…5的值：">1=1…5的值：</h3>
-<ul>
-<li>
-<p>体部</p>
+<p>求下面程序的命题程序镜像：<br>$$<br>\mathrm{composite(N) \text{ :- } N = 1..5, I = 2..N-1, N \setminus I = 0.}<br>$$<br><code>composite(1) :- 1 = 1..5, 2 = 2..1, 1 \ 1 = 0</code></p>
+<h2 id="N-1，I-2"><a href="#N-1，I-2" class="headerlink" title="(N=1，I=2)"></a>(N=1，I=2)</h2><h3 id="1-1-5的值："><a href="#1-1-5的值：" class="headerlink" title="1=1..5的值："></a>1=1..5的值：</h3><ul>
+<li><p>体部</p>
 </li>
-<li>
-<p>1与{1,2,3,4,5}比较，其中1=1满足比较</p>
+<li><p>1与{1,2,3,4,5}比较，其中1=1满足比较</p>
 </li>
-<li>
-<p>结果为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
-<p>2=2…1的值：</p>
+<li><p>结果为$\top$ </p>
+<p>2=2..1的值：</p>
 </li>
-<li>
-<p>体部</p>
+<li><p>体部</p>
 </li>
-<li>
-<p>1与<img src="https://math.now.sh?inline=%5Cphi" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，任意数字与1都不满足比较</p>
+<li><p>1与$\phi$，任意数字与1都不满足比较</p>
 </li>
-<li>
-<p>结果为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
+<li><p>结果为$\bot$</p>
 </li>
 </ul>
-<h3 id="2-2…1的值：">2=2…1的值：</h3>
-<ul>
+<h3 id="2-2-1的值："><a href="#2-2-1的值：" class="headerlink" title="2=2..1的值："></a>2=2..1的值：</h3><ul>
 <li>体部</li>
-<li>1与<img src="https://math.now.sh?inline=%5Cphi" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，任意数字与1都不满足比较</li>
-<li>结果为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></li>
+<li>1与$\phi$，任意数字与1都不满足比较</li>
+<li>结果为$\bot$</li>
 </ul>
-<h3 id="1-1-0">1 \ 1 = 0</h3>
-<ul>
-<li>直接计算，结果为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></li>
+<h3 id="1-1-0"><a href="#1-1-0" class="headerlink" title="1 \ 1 = 0"></a>1 \ 1 = 0</h3><ul>
+<li>直接计算，结果为$\top$</li>
 </ul>
-<h3 id="…（继续枚举N和I，然后根据规则进行值的替换）">…（继续枚举N和I，然后根据规则进行值的替换）</h3>
-<p>总结：</p>
+<h3 id="…（继续枚举N和I，然后根据规则进行值的替换）"><a href="#…（继续枚举N和I，然后根据规则进行值的替换）" class="headerlink" title="…（继续枚举N和I，然后根据规则进行值的替换）"></a>…（继续枚举N和I，然后根据规则进行值的替换）</h3><p>总结：</p>
 <p>clingo到命题逻辑的替换原则：</p>
 <ul>
-<li>
-<p>符号根据表格进行等价替换</p>
+<li><p>符号根据表格进行等价替换</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gek7f68r35j30cw084q3e.jpg" alt="image-20200507212515798" style="zoom:50%;" />
 </li>
-<li>
-<p>比较运算符按照相应方法替换为<img src="https://math.now.sh?inline=%5Ctop%2F%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，方法为：</p>
+<li><p>比较运算符按照相应方法替换为$\top/\bot$，方法为：</p>
 <ul>
-<li><img src="https://math.now.sh?inline=t_1%20%5Cprec%20t_2" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，如果在头部，每个<img src="https://math.now.sh?inline=t_1" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=t_2" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的值都满足<img src="https://math.now.sh?inline=%5Cprec" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>时为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，否则为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>；（且）</li>
-<li><img src="https://math.now.sh?inline=t_1%20%5Cprec%20t_2" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，如果在体部，至少有一组<img src="https://math.now.sh?inline=t_1" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=t_2" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>满足<img src="https://math.now.sh?inline=%5Cprec" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>时为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，否则为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>；（或）</li>
-<li>每个原子都按照相应方法替换为<img src="https://math.now.sh?inline=%5Ctop%2F%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，方法为（含有not时，p换为<img src="https://math.now.sh?inline=%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>；not not时，换为<img src="https://math.now.sh?inline=%5Clnot%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>）</li>
-<li><img src="https://math.now.sh?inline=p%28t_1%2Ct_2%2C...%2Ct_n%29" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>在头部，替换为<img src="https://math.now.sh?inline=t_i" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的排列组合的合取（且）</li>
-<li><img src="https://math.now.sh?inline=p%28t_1%2Ct_2%2C...%2Ct_n%29" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>在体部，替换为<img src="https://math.now.sh?inline=t_i" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的排列组合的析取（或）</li>
+<li>$t_1 \prec t_2$，如果在头部，每个$t_1$和$t_2$的值都满足$\prec$时为$\top$，否则为$\bot$；（且）</li>
+<li>$t_1 \prec t_2$，如果在体部，至少有一组$t_1$和$t_2$满足$\prec$时为$\top$，否则为$\bot$；（或）</li>
+<li>每个原子都按照相应方法替换为$\top/\bot$，方法为（含有not时，p换为$\lnot p$；not not时，换为$\lnot \lnot p$）</li>
+<li>$p(t_1,t_2,…,t_n)$在头部，替换为$t_i$的排列组合的合取（且）</li>
+<li>$p(t_1,t_2,…,t_n)$在体部，替换为$t_i$的排列组合的析取（或）</li>
 </ul>
 </li>
-<li>
-<p>如果原子本身就是空，那么头部换为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，体部换为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
-<p>（头部原子间是或，幺元为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>；体部原子间是且，幺元为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>）</p>
+<li><p>如果原子本身就是空，那么头部换为$\bot$，体部换为$\top$</p>
+<p>（头部原子间是或，幺元为$\bot$；体部原子间是且，幺元为$\top$）</p>
 <p>头部原子之间是或，头部单原子内部term值组合是且（体部一满足，会有多个头部同时成立）；</p>
 <p>体部原子之间是且，体部单原子内部term值组合是或（体部满足某一个，即可使得对应头部成立）；</p>
 </li>
 </ul>
 <p>例子：找命题程序镜像</p>
 <pre><code>p(5..7).
-q(X) :- X = 1..5, not p(X).
-</code></pre>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=p%285%29.%5C%5C%0Ap(6).%5C%5C%0Ap(7).%5C%5C%0A" /></p><p>没有问题，三个事实。</p>
+q(X) :- X = 1..5, not p(X).</code></pre><p>$$<br>p(5).\<br>p(6).\<br>p(7).\<br>$$</p>
+<p>没有问题，三个事实。</p>
 <p>规则部分按照X的取值进行：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">X取值</th>
-<th style="text-align:center">q(X)</th>
-<th style="text-align:center">X=1…5</th>
-<th style="text-align:center">not p(X)</th>
+<th align="center">X取值</th>
+<th align="center">q(X)</th>
+<th align="center">X=1..5</th>
+<th align="center">not p(X)</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">1<br /> q(1) :- 1 = 1…5, not p(1).</td>
-<td style="text-align:center">q(1)，atom，值就是自己:q(1)</td>
-<td style="text-align:center">1=1…5，体部，1=1:值为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></td>
-<td style="text-align:center">not p(1)，值<img src="https://math.now.sh?inline=%5Clnot%20q%281%29" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></td>
+<tbody><tr>
+<td align="center">1<br /> q(1) :- 1 = 1..5, not p(1).</td>
+<td align="center">q(1)，atom，值就是自己:q(1)</td>
+<td align="center">1=1..5，体部，1=1:值为$\top$</td>
+<td align="center">not p(1)，值$\lnot q(1)$</td>
 </tr>
 <tr>
-<td style="text-align:center">2<br /> q(2) :- 2 = 1…5, not p(2).</td>
-<td style="text-align:center">q(2)，atom，值就是自己:q(2)</td>
-<td style="text-align:center">2=1…5，体部，2=2:值为<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></td>
-<td style="text-align:center">not p(2)，值<img src="https://math.now.sh?inline=%5Clnot%20p%282%29" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></td>
+<td align="center">2<br /> q(2) :- 2 = 1..5, not p(2).</td>
+<td align="center">q(2)，atom，值就是自己:q(2)</td>
+<td align="center">2=1..5，体部，2=2:值为$\top$</td>
+<td align="center">not p(2)，值$\lnot p(2)$</td>
 </tr>
 <tr>
-<td style="text-align:center">。。。一直到5</td>
-<td style="text-align:center">。。。一直到5</td>
-<td style="text-align:center">。。。一直到5</td>
-<td style="text-align:center">。。。一直到5</td>
+<td align="center">。。。一直到5</td>
+<td align="center">。。。一直到5</td>
+<td align="center">。。。一直到5</td>
+<td align="center">。。。一直到5</td>
 </tr>
 <tr>
-<td style="text-align:center">6<br /> q(6) :- 6 = 1…5, not p(6).</td>
-<td style="text-align:center">q(6)，atom，值就是自己:q(6)</td>
-<td style="text-align:center">6=1…5，体部，无法满足，值为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></td>
-<td style="text-align:center">not p(6)，值<img src="https://math.now.sh?inline=%5Clnot%20p%286%29" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></td>
+<td align="center">6<br /> q(6) :- 6 = 1..5, not p(6).</td>
+<td align="center">q(6)，atom，值就是自己:q(6)</td>
+<td align="center">6=1..5，体部，无法满足，值为$\bot$</td>
+<td align="center">not p(6)，值$\lnot p(6)$</td>
 </tr>
 <tr>
-<td style="text-align:center">。。。</td>
-<td style="text-align:center">。。。</td>
-<td style="text-align:center">。。。</td>
-<td style="text-align:center">。。。</td>
+<td align="center">。。。</td>
+<td align="center">。。。</td>
+<td align="center">。。。</td>
+<td align="center">。。。</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>汇总上表：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=p%285%29%20%5Cland%20p(6)%20%5Cland%20p(7)%5C%5C%5C%5C%0A%5Cbegin%7Bcases%7D%0A%26q(u)%20%5Cleftarrow%20%5Ctop%20%5Cland%20%5Clnot%5C%20p(u).%20%5C%20%5C%20%5C%20u%20%5Cin%20%5C%7B1%2C2%2C3%2C4%2C5%5C%7D%20%5C%5C%5C%5C%0A%26q(u)%20%5Cleftarrow%20%5Cbot%20%5Cland%20%5Clnot%5C%20p(u).%20%5C%20%5C%20%5C%20u%20%5Cin%20%5Cmathbf%7BS%5Ccup%20Z%7D%20%5Csetminus%5C%7B1%2C2%2C3%2C4%2C5%5C%7D%20%0A%5Cend%7Bcases%7D%0A" /></p><p>关于exclusive law（排中律）：</p>
-<p><img src="https://math.now.sh?inline=p%20%5Clor%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>是个永真式，有两个稳定模型：<img src="https://math.now.sh?inline=%5C%7B%5C%7D%2C%5C%7Bp%5C%7D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，在clingo中，这样的程序写为<code>p, not p.</code></p>
+<p>$$<br>p(5) \land p(6) \land p(7)\\\<br>\begin{cases}<br>&amp;q(u) \leftarrow \top \land \lnot\ p(u). \ \ \ u \in \{1,2,3,4,5\} \\\<br>&amp;q(u) \leftarrow \bot \land \lnot\ p(u). \ \ \ u \in \mathbf{S\cup Z} \setminus\{1,2,3,4,5\}<br>\end{cases}<br>$$</p>
+<p>关于exclusive law（排中律）：</p>
+<p>$p \lor \lnot p$是个永真式，有两个稳定模型：$\{\},\{p\}$，在clingo中，这样的程序写为<code>p, not p.</code></p>
 <blockquote>
-<p>关于排中律的定理：一个命题程序<img src="https://math.now.sh?inline=%5CPi" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的解释是这个程序的模型，当且仅当<img src="https://math.now.sh?inline=I" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>是将<img src="https://math.now.sh?inline=%5CPi" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>中获取到的通过将每个原子p命题增加<img src="https://math.now.sh?inline=p%20%5Clor%20%5Clnot%20p" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，<img src="https://math.now.sh?inline=I" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>仍然是模型。</p>
+<p>关于排中律的定理：一个命题程序$\Pi$的解释是这个程序的模型，当且仅当$I$是将$\Pi$中获取到的通过将每个原子p命题增加$p \lor \lnot p$，$I$仍然是模型。</p>
 </blockquote>
 <p>实际上就是把每个原子p都增加一个选择规则{p}。</p>
 <p>想要通过clingo求出程序的所有模型，可以通过上述定理，使得所有的atom都进行选择。</p>
 <p>choice rule的命题程序镜像：将大括号去掉，改为排中律的析取永真式</p>
 <p>例如：</p>
 <ul>
-<li>p(3…1). 3…1是空集，因此p(3…1)变换为多个空集的合取（这是term值的排列组合），即<img src="https://math.now.sh?inline=%5Ctop" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，回答集为空集；</li>
-<li><img src="https://math.now.sh?inline=%3A-." style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>程序唯一一条规则，且头部和体部都为空。atom是空集了，且在头部析取，结果为<img src="https://math.now.sh?inline=%5Cbot" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，无回答集。</li>
+<li>p(3..1). 3..1是空集，因此p(3..1)变换为多个空集的合取（这是term值的排列组合），即$\top$，回答集为空集；</li>
+<li>$:-.$程序唯一一条规则，且头部和体部都为空。atom是空集了，且在头部析取，结果为$\bot$，无回答集。</li>
 </ul>
 <p>关于约束：</p>
-<p>程序<img src="https://math.now.sh?inline=P" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>中的约束<img src="https://math.now.sh?inline=%5CSigma" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>和其余部分<img src="https://math.now.sh?inline=%5CPi" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>拆成两个子程序，定理：</p>
+<p>程序$P$中的约束$\Sigma$和其余部分$\Pi$拆成两个子程序，定理：</p>
 <blockquote>
-<p>I是P的稳定模型，当且仅当I是<img src="https://math.now.sh?inline=%5CSigma" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的<strong>模型</strong>，且是<img src="https://math.now.sh?inline=%5CPi" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的稳定模型。</p>
+<p>I是P的稳定模型，当且仅当I是$\Sigma$的<strong>模型</strong>，且是$\Pi$的稳定模型。</p>
 </blockquote>
 <p>即满足非约束部分后，又能够保证不满足剩余约束的体部。</p>
 <p>目前为止的程序类型：</p>
 <p>positive（体部不含否定） – 最小模型就是稳定模型；</p>
-<p>definite （头部不含析取的positive）-- 有且仅有一个稳定模型</p>
-<p>其他（含有否定、头部包含析取）-- 无确定结论</p>
-<p>缺省逻辑：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cfrac%7BF%3A%5Cmathrm%7BM%5C%20%7DG_1%2C%5Cldots%2C%5Cmathrm%7BM%5C%20%7DG_n%7D%7BH%7D.%0A" /></p><p><img src="https://math.now.sh?inline=F" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>为假设，<img src="https://math.now.sh?inline=%5Cmathrm%7BM%7D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>表示：「假设<img src="https://math.now.sh?inline=G_i" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>这件事情」是不会产生矛盾的，<img src="https://math.now.sh?inline=H" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>是结论，<img src="https://math.now.sh?inline=G_i" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>代表推出<img src="https://math.now.sh?inline=F" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的证据。整个公式读作：</p>
-<p>在<img src="https://math.now.sh?inline=F" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>的条件下，如果所有的证据都能够不矛盾地被假设为正确，那么可以得到结论<img src="https://math.now.sh?inline=H" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>。如果用缺省逻辑的视角看规则：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=A_0%20%5Cleftarrow%20A_1%20%5Cland%20%5Cldots%20%5Cland%20A_m%20%5Cland%20%5Clnot%20A_%7Bm%20%2B%201%7D%20%5Cland%20%5Cldots%20%E2%88%A7%20%5Clnot%20A_n.%0A" /></p><p>应该表示为：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cfrac%7BA_1%20%5Cland%20%5Cldots%20%5Cland%20A_m%3A%5Cmathrm%7BM%5C%20%7D%5Clnot%20A_%7Bm%2B1%7D%5Cland%20%5Cldots%2C%5Cmathrm%7BM%5C%20%7D%20%5Cland%20%5Clnot%20A_n%7D%7BA_0%7D.%0A" /></p><p>自认知逻辑：除了命题逻辑的连接词，还会有<img src="https://math.now.sh?inline=%5Ctext%7BL%7D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，<img src="https://math.now.sh?inline=%5Ctext%7BL%7DF" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>表示：<img src="https://math.now.sh?inline=F" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>被相信，NAF和<img src="https://math.now.sh?inline=%5Clnot%20L" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>是对应的（<img src="https://math.now.sh?inline=F" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>不被相信）</p>
+<p>definite （头部不含析取的positive）– 有且仅有一个稳定模型</p>
+<p>其他（含有否定、头部包含析取）– 无确定结论</p>
+<p>缺省逻辑：<br>$$<br>\frac{F:\mathrm{M\ }G_1,\ldots,\mathrm{M\ }G_n}{H}.<br>$$<br>$F$为假设，$\mathrm{M}$表示：「假设$G_i$这件事情」是不会产生矛盾的，$H$是结论，$G_i$代表推出$F$的证据。整个公式读作：</p>
+<p>在$F$的条件下，如果所有的证据都能够不矛盾地被假设为正确，那么可以得到结论$H$。如果用缺省逻辑的视角看规则：<br>$$<br>A_0 \leftarrow A_1 \land \ldots \land A_m \land \lnot A_{m + 1} \land \ldots ∧ \lnot A_n.<br>$$<br>应该表示为：<br>$$<br>\frac{A_1 \land \ldots \land A_m:\mathrm{M\ }\lnot A_{m+1}\land \ldots,\mathrm{M\ } \land \lnot A_n}{A_0}.<br>$$<br>自认知逻辑：除了命题逻辑的连接词，还会有$\text{L}$，$\text{L}F$表示：$F$被相信，NAF和$\lnot L$是对应的（$F$不被相信）</p>
 <p>选择规则带有基数限制：</p>
 <p>1 {A 1; . . . ;A n}. 可以通过约束进行变换。</p>
-<p>对每个元素<img src="https://math.now.sh?inline=A_i" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>进行永真变换：<img src="https://math.now.sh?inline=A_i%20%5Clor%20%5Clnot%20A_i" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，然后增加约束：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbot%20%5Cleftarrow%20%5Clnot%20A_1%2C%20%5Clnot%20A_2%2C%20%5Cldots%2C%20%5Clnot%20A_n.%0A" /></p><p>如果涉及到本地变量，问题会变得更复杂.</p>
-<p><img src="https://math.now.sh?inline=1%20%5C%7Bq%28X%29%20%3A%20p(X)%5C%7D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/>，不考虑基数1，可以转化为：<img src="https://math.now.sh?inline=q%28v%29%20%5Clor%20%5Clnot%20q(v)%20%5Cleftarrow%20p(v)%2C%20v%20%5Cin%20%5Cmathbf%7BS%20%5Ccup%20Z%7D" style="filter: opacity(75%);transform:scale(0.75);text-align:center;display:inline-block;margin: 0;"/></p>
-<p>考虑基数1，则需要去掉所有的p和q完全没有交集的情况（p(v)和q(v)没有任何一个v能够同时成立)，增加约束(infinite)：</p>
-<p style="filter: opacity(75%);transform:scale(0.75);text-align:center;"><img src="https://math.now.sh?from=%5Cbot%20%5Cleftarrow%20%5Cbigwedge_%5Climits%7Bv%20%5Cin%20%5Cmathbf%7BS%20%5Ccup%20Z%7D%7D%20%5Clnot%28p(v%29%20%5Cland%20q(v))%0A" /></p>
+<p>对每个元素$A_i$进行永真变换：$A_i \lor \lnot A_i$，然后增加约束：<br>$$<br>\bot \leftarrow \lnot A_1, \lnot A_2, \ldots, \lnot A_n.<br>$$<br>如果涉及到本地变量，问题会变得更复杂.</p>
+<p>$1 \{q(X) : p(X)\}$，不考虑基数1，可以转化为：$q(v) \lor \lnot q(v) \leftarrow p(v), v \in \mathbf{S \cup Z}$</p>
+<p>考虑基数1，则需要去掉所有的p和q完全没有交集的情况（p(v)和q(v)没有任何一个v能够同时成立)，增加约束(infinite)：<br>$$<br>\bot \leftarrow \bigwedge_\limits{v \in \mathbf{S \cup Z}} \lnot(p(v) \land q(v))<br>$$</p>
+
             </div>
             <hr/>
 
@@ -789,15 +748,12 @@ q(X) :- X = 1..5, not p(X).
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            编译原理（三）自动机
-给定一个字符串s，判定，即是否是一个正则表达式的语言。(L将正则表达式映射到语义上)
+                            编译原理（三）自动机给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)
 Lexical Specification
-
 
 为每一个token类都写一个正则
 
-R1（number）：digits+
-R2（le
+R1（numbe
                         
                     </div>
                     <div class="publish-info">
@@ -844,16 +800,13 @@ R2（le
                         
                             Token – 一些字符串的集合（可以理解为分词）
 
-
 英语中：名词、动词、形：
-
 
 编程语言中：token class（看作一类）
 
-
 编程语言中：
 
-Identifier（标识符）：由字母或数字起始，字母或数字组成的一串字符串：A1，F
+Identifier（标识符）：由字母或数字起始，字母或数字组成的一串字符串：A1，Foo，
                         
                     </div>
                     <div class="publish-info">
