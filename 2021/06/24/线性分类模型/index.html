@@ -498,7 +498,37 @@
 <p>$$<br>\begin{align}<br>\frac{\partial W}{\partial \Sigma}&amp;=-\frac{N}{2}\frac{1}{|\Sigma|}|\Sigma|\Sigma^{-1}+ \frac{1}{2}\sum_{i=1}^{N_1}\Sigma^{-1}(x_i-\mu_1)(x_i-\mu_1)^T\Sigma^{-1}+\frac{1}{2}\sum_{i=1}^{N_2}\Sigma^{-1}(x_i-\mu_2)(x_i-\mu_2)^T\Sigma^{-1}\\\<br>&amp;=-\frac{N\Sigma^{-1}}{2}+\frac{1}{2}\sum_{i=1}^{N_1}\Sigma^{-1}(x_i-\mu_1)(x_i-\mu_1)^T\Sigma^{-1}+\frac{1}{2}\sum_{i=1}^{N_2}\Sigma^{-1}(x_i-\mu_2)(x_i-\mu_2)^T\Sigma^{-1}<br>\end{align}<br>$$</p>
 <p>令$\dfrac{\partial W}{\partial \Sigma}=0$，则（移向，同乘2，同时左右都乘$\Sigma$）<br>$$<br>N\Sigma=\sum_{i=1}^{N_1}(x_i-\mu_1)(x_i-\mu_1)^T+\sum_{i=1}^{N_2}(x_i-\mu_2)(x_i-\mu_2)^T\\\<br>$$</p>
 <p>$$<br>\hat{\Sigma}=\dfrac{1}{N}\underbrace{\sum_{i=1}^{N_1}(x_i-\mu_1)(x_i-\mu_1)^T}_{c_1样本的方差矩阵的N_1倍}+\dfrac{1}{N}\underbrace{\sum_{i=1}^{N_2}(x_i-\mu_2)(x_i-\mu_2)^T}_{c_2样本的方差矩阵的N_2倍}<br>$$</p>
-<h2 id="朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）"><a href="#朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）" class="headerlink" title="朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）"></a>朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）</h2><p>思想：朴素贝叶斯假设——条件独立性假设——</p>
+<h2 id="朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）"><a href="#朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）" class="headerlink" title="朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）"></a>朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）</h2><p>思想：朴素贝叶斯假设——条件独立性假设——最简单的概率图模型</p>
+<p>给定$y$的条件下，各个属性之间都是独立的：$x_i \bot x_j \mid y$</p>
+<img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210625112413398.png" alt="image-20210625112413398" style="zoom:25%;" />
+$$
+p(x \mid y)=\prod_{j=1}^p p(x_j \mid y)
+$$
+
+<p>$$<br>\hat{y}=\arg\max_y p(y \mid x)=\arg \max_y p(x\mid y)p(y)<br>$$</p>
+<p>朴素贝叶斯假设$y$服从二项分布，$p(x \mid y)$中，$x$的每个维度都服从正态分布（$N(\mu_i, \sigma_i^2)$）</p>
+<p>利用这种思想，采用MLE推导，从现有样本估计出两个分布的参数（这个过程是学习）。</p>
+<h2 id="补充：总结生成模型和判别模型的区别"><a href="#补充：总结生成模型和判别模型的区别" class="headerlink" title="补充：总结生成模型和判别模型的区别"></a>补充：总结生成模型和判别模型的区别</h2><p>机器学习的核心任务：根据样本属性$X$，预测标记$Y$，即计算$p(Y\mid X)$</p>
+<blockquote>
+<p>判别模型：找到一个明确的边界，首先计算$p(Y=y_1\mid X)$与$p(Y=y_2\mid X)$，之后取二者中概率较大的一方作为分类结果（二分类问题中，基于$p(Y=y_1 \mid X) + p(Y=y_2\mid X)=1$）。</p>
+</blockquote>
+<p>例如：可以看到，在logistic regression中，估计参数$w$时，面向的是使得$p(y_i \mid x_i)$最大；估计好之后，在实际做分类时候，也是对单一新样本$X_{new}$选择$y = \arg \max\limits_{y_i} p(y_i \mid X_{new})$</p>
+<blockquote>
+<p>生成模型：求出样本与不同标记（y）之间的联合概率分布，取大的获胜。注意到不同标记之间的联合概率之和就未必是1了。</p>
+</blockquote>
+<p>例如：可以看到，在GDA中，估计参数$\theta$时，面向的是使得$p(x_i \mid y)p(y)=p(x,y)$最大；估计好之后，在实际做分类时候，也是对单一新样本$X_{new}$分别计算$p(X_{new}, y_i)$选择$y=\arg \max\limits_{y_i}p(X_{new}, y_i)$</p>
+<p>下面的例子来源于<a href="https://www.zhihu.com/question/20446337/answer/256466823" target="_blank" rel="noopener">知乎@politer</a>的回答：</p>
+<p>判别式模型举例：要确定一个羊是山羊还是绵羊，用判别模型的方法是从历史数据中学习到模型，这个模型输入样本能够直接输出是山羊/绵羊的概率，然后通过提取这只羊的特征来预测出这只羊是山羊的概率，是绵羊的概率。</p>
+<p>生成式模型举例：利用生成模型是根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型，（例如GDA中，对不同的标签，服从均值不同的正态分布，即$p(x \mid y=山羊), p(x \mid y=绵羊)$，需要分别学习$\mu_1, \mu_2, \Sigma$，同时还要学习标签的二项分布均值$\phi$），然后来了一个新羊，从中提取特征$X$，放到山羊模型中看概率是多少，再放到绵羊模型中看概率是多少，哪个大就是哪个。</p>
+<blockquote>
+<p>无论如何，二者在学习时：<strong>都是使后验最大化。</strong>只不过：</p>
+<ul>
+<li>判别模型直接对$p(Y\mid X)$建模——logistic regression模型算出来的就是$p(Y \mid X)$</li>
+<li>生成模型通过正比于$p(X, Y)$对联合概率建模——GDA分别对$p(X \mid Y)$和$p(Y)$建模</li>
+</ul>
+</blockquote>
+<iframe src="https://nbviewer.jupyter.org/url/101.133.221.153%3A5000/get_file/GDA-Iris.ipynb" width="570" height="2000"></iframe>
+
 
             </div>
             <hr/>
