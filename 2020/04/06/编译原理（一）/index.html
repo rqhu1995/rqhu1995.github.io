@@ -258,109 +258,10 @@
 
 
 
-<main class="post-container content">
+<main class="container content">
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-        
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    .toc-fixed .toc-link::before{
-        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
+    <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -402,7 +303,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="编译原理（一）"><a href="#编译原理（一）" class="headerlink" title="编译原理（一）"></a>编译原理（一）</h1><h2 id="解释器和编译器"><a href="#解释器和编译器" class="headerlink" title="解释器和编译器"></a>解释器和编译器</h2><ul>
+                <h1>编译原理（一）</h1>
+<h2 id="解释器和编译器">解释器和编译器</h2>
+<ul>
 <li>编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）</li>
 <li>解释器：输入是程序代码、数据data，输出是程序执行结果</li>
 </ul>
@@ -422,55 +325,59 @@
 </blockquote>
 <p>FORTRAN I的结构，也是当代编译器的结构</p>
 <ul>
-<li><p>词法分析（Lexical Analysis） – syntactic</p>
+<li>
+<p>词法分析（Lexical Analysis） – syntactic</p>
 <p>任务类似于识别一个句子里的各个单词（分词），这里的句子可以理解为一句代码语句。</p>
 <p>token：分割词的时候使用的标记，英语中的空格/标点等</p>
 </li>
-<li><p>解析（Parsing）– syntactic</p>
+<li>
+<p>解析（Parsing）-- syntactic</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguk9kjpj32220soq7e.jpg" alt="image-20200502005619541" style="zoom:50%;" />
-
 <p>分析每一个词的词性，进一步向上，得到解析树。</p>
 </li>
-<li><p>语义分析（Semantic Analysis）–type，scope</p>
+<li>
+<p>语义分析（Semantic Analysis）–type，scope</p>
 <p>理解句子的意义。困难！人进行词法分析、解析和机器进行的方式是一致的（分词、找词性、判断关系），但理解句子的意思的部分，对机器过于困难。编译器只能做有限的工作，例如寻找句子里的不一致性。</p>
 <ul>
-<li><p>编译器可以寻找变量的绑定（scope）</p>
+<li>
+<p>编译器可以寻找变量的绑定（scope）</p>
 <p>他说他妈妈找不到她了。他究竟分别是谁？</p>
 <p>在计算机中，类似的问题：打印的Jack是谁？</p>
 </li>
 </ul>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguihlyaj30xg0twwgb.jpg" alt="image-20200502010319257" style="zoom:50%;" />
-
-
-
-</li>
-</ul>
 <ul>
-<li><p>编译器可以寻找类型的不匹配</p>
+<li>
+<p>编译器可以寻找类型的不匹配</p>
 <p><strong>Jack</strong> said <strong>her</strong> mother left home today. Jack与her显然不匹配；</p>
 <p>计算机中<code>int c = 5.8;</code>同样是一个语义错误，从赋值语句的语法来说，没有问题，但int 和 5.8 类型不匹配。</p>
 </li>
 </ul>
-<ul>
-<li><p>优化（运行更快，是用更少的内存）</p>
+</li>
+<li>
+<p>优化（运行更快，是用更少的内存）</p>
 <p><code>X = Y * 0</code>和<code>X=0</code>是一样的（在都是int的情况下）</p>
 <p>在浮点情况下：NAN * 0 = NAN</p>
 </li>
-<li><p>代码生成 – translation</p>
+<li>
+<p>代码生成 – translation</p>
 <p>将高级语言程序，转换为机器码/汇编语言</p>
 </li>
 </ul>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguha2ndj31jo0bmdr7.jpg" alt="image-20200502011346840" style="zoom:50%;" />
-
 <p>Programmer training is the dominant cost for a programming language.</p>
 <ul>
-<li><p>广泛使用的语言发生改变会很慢（教的成本太大）</p>
+<li>
+<p>广泛使用的语言发生改变会很慢（教的成本太大）</p>
 </li>
-<li><p>一个语言的起步是很容易的（没有用户）</p>
+<li>
+<p>一个语言的起步是很容易的（没有用户）</p>
 </li>
-<li><p>新语言更适宜填补现有的空缺</p>
+<li>
+<p>新语言更适宜填补现有的空缺</p>
 </li>
-<li><p>新的语言会趋向于某个老的语言（这样能够减少训练成本）</p>
+<li>
+<p>新的语言会趋向于某个老的语言（这样能够减少训练成本）</p>
 <p>Java – C++</p>
 </li>
 </ul>
@@ -597,15 +504,17 @@
                     <div class="summary block-with-text">
                         
                             变量、集合、约束、选择
+
 集合划分
 
 {p(X) ; q(X)} = 1 :- X = 1..n.
+
 将数字1到n，划分进入两个集合之中。
 
 局部变量与全局变量
 
 仅仅出现在大括号内的变量是局部变量，否则是全局变量；
-局部变量的规则实例仅仅是他
+局部变量的规则实例仅仅
                         
                     </div>
                     <div class="publish-info">
@@ -650,11 +559,13 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            编译原理（一）解释器和编译器
+                            编译原理（一）
+解释器和编译器
+
 编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）
 解释器：输入是程序代码、数据data，输出是程序执行结果
 
-所以python可以一行一行执行，C语言必须编译
+所以python可以一行一行执行，C语言必须
                         
                     </div>
                     <div class="publish-info">
@@ -713,100 +624,6 @@
 code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
 </style>
 
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
 
     
 
