@@ -334,7 +334,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="从线性回归到线性分类"><a href="#从线性回归到线性分类" class="headerlink" title="从线性回归到线性分类"></a>从线性回归到线性分类</h3><img src="https://tva1.sinaimg.cn/large/008i3skNgy1grprb1r4wnj322k0j0q6k.jpg" alt="" style="zoom:10%;" />
+<h3 id="从线性回归到线性分类"><a href="#从线性回归到线性分类" class="headerlink" title="从线性回归到线性分类"></a>从线性回归到线性分类</h3><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005628.jpg" alt="" style="zoom:10%;" />
 
 <ul>
 <li>激活函数将回归的结果映射到0-1，$y=f(w^Tx+b)$。<ul>
@@ -354,7 +354,7 @@
 <li>也可从降维角度理解，将p维的数据，通过映射降到1维（一个值），再通过阈值筛选合适的分类。</li>
 </ul>
 <h2 id="感知机算法——硬输出（类别1）"><a href="#感知机算法——硬输出（类别1）" class="headerlink" title="感知机算法——硬输出（类别1）"></a>感知机算法——硬输出（类别1）</h2><p>思想：错误驱动</p>
-<img src="https://tva1.sinaimg.cn/large/008i3skNgy1grprb4sximj312g0qwn0d.jpg" alt="感知机分类示意" style="zoom:30%;" />
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005637.jpg" alt="感知机分类示意" style="zoom:30%;" />
 
 <p>模型：$f(x)=sign(w^Tx), x\in \mathbb{R}^P,w\in \mathbb{R}^P$<br>$$<br>sign(a)=\begin{cases}<br>+1, a&gt;0 \\\<br>-1, a\le0<br>\end{cases}<br>$$<br>策略：损失函数（loss function）<br>$$<br>L’(w)=\sum_{i=1}^NI\{y_iw^Tx_i&lt;0\}<br>$$<br>即，样本标签和使用$w$计算出的结果不一致的样本的数量</p>
 <p>使用这样的损失函数存在的问题：函数不可导（可导一定连续，因此不连续一定不可导，上述的函数关于$w$是不连续的）</p>
@@ -362,7 +362,7 @@
 <p>于是采用随机梯度下降（SGD），但SGD中不求和，随机选择$D$中的一个错分样本$x_i$更新：<br>$$<br>w_i^{(t+1)}= w_i^{(t)}-\lambda\times(-y_ix_i)=w_i^{(t)} + \lambda y_ix_i<br>$$<br>感知机算法的变形（pocket algorithm）</p>
 <h2 id="线性判别分析（Fisher）——硬输出（类别2）"><a href="#线性判别分析（Fisher）——硬输出（类别2）" class="headerlink" title="线性判别分析（Fisher）——硬输出（类别2）"></a>线性判别分析（Fisher）——硬输出（类别2）</h2><p>分类思想：松耦合，高内聚（类内小，类间大）</p>
 <p>投影方向1满足，投影方向2不合适。</p>
-<img src="https://tva1.sinaimg.cn/large/008i3skNgy1grtacrqeu7j30n40j4tax.jpg" alt="fisher投影示意图" style="zoom:40%;" />
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005641.jpg" alt="fisher投影示意图" style="zoom:40%;" />
 
 <p>使用投影的概念进行理解，$Z_i=w^Tx_i$，其中$w$是投影方向，投影完可以看作是$w$方向上的一个标量（$w$是单位向量）。</p>
 <p>目标是类内小，类间大，对每个类$k$（这里讨论的都是二分类问题，即$k\in \{1,2\}$）而言：<br>$$<br>\begin{align}<br>&amp;Z_i=w^Tx_{i,k}\\\<br>&amp;\bar{Z}_k=\dfrac{1}{N_k} \sum_{i=1}^{N_k}(w^Tx_{i,k})\\\<br>&amp;S_k=\dfrac{1}{N_k} \sum_{i=1}^{N_k}(Z_i-\bar{Z}_k)(Z_i-\bar{Z}_k)^T= \dfrac{1}{N_k}\sum_{i=1}^{N_k}(w^Tx_{i,k}-\bar{Z}_k)(w^Tx_{i,k}-\bar{Z}_k)^T<br>\end{align}<br>$$<br>类内小采用方差矩阵度量：$S_1+S_2$</p>
@@ -401,7 +401,7 @@
 <p>$$<br>\hat{\Sigma}=\dfrac{1}{N}\underbrace{\sum_{i=1}^{N_1}(x_i-\mu_1)(x_i-\mu_1)^T}_{c_1样本的方差矩阵的N_1倍}+\dfrac{1}{N}\underbrace{\sum_{i=1}^{N_2}(x_i-\mu_2)(x_i-\mu_2)^T}_{c_2样本的方差矩阵的N_2倍}<br>$$</p>
 <h2 id="朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）"><a href="#朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）" class="headerlink" title="朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）"></a>朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）</h2><p>思想：朴素贝叶斯假设——条件独立性假设——最简单的概率图模型</p>
 <p>给定$y$的条件下，各个属性之间都是独立的：$x_i \bot x_j \mid y$</p>
-<img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210625112413398.png" alt="image-20210625112413398" style="zoom:25%;" />
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005650.png" alt="image-20210625112413398" style="zoom:25%;" />
 $$
 p(x \mid y)=\prod_{j=1}^p p(x_j \mid y)
 $$
@@ -429,7 +429,7 @@ $$
 </ul>
 </blockquote>
 <p>一个使用GDA进行Iris花朵分类的例子：（只分了前两类）</p>
-<iframe src="https://nbviewer.jupyter.org/url/101.133.221.153%3A5000/get_file/GDA-Iris.ipynb" width="900" height="1500"></iframe>
+<iframe src="https://nbviewer.jupyter.org/url/101.34.75.195%3A8080/get_file/GDA-Iris.ipynb" width="900" height="1500"></iframe>
 
 
             </div>
@@ -664,7 +664,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
     <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], scale: 110, linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], scale: 80, linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
              tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
              TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "70%" } }, Macros: { href: "{}" } },
              messageStyle: "none"
