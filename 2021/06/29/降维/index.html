@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="线性分类模型, Bonjour">
+    <meta name="keywords" content="降维, Bonjour">
     <meta name="description" content="Logic &amp; Skills &amp; Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>线性分类模型 | Bonjour</title>
+    <title>降维 | Bonjour</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">线性分类模型</h1>
+                    <h1 class="description center-align post-title">降维</h1>
                 </div>
             </div>
         </div>
@@ -286,7 +286,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-24
+                    2021-06-29
                 </div>
                 
 
@@ -303,134 +303,70 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h1><h2 id="回顾线性回归"><a href="#回顾线性回归" class="headerlink" title="回顾线性回归"></a>回顾线性回归</h2><h3 id="线性回归的特点"><a href="#线性回归的特点" class="headerlink" title="线性回归的特点"></a>线性回归的特点</h3><ul>
-<li>线性<ul>
-<li><strong>属性线性</strong>（x的线性组合）。<ul>
-<li>不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$</li>
+                <h1 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h1><h2 id="过拟合与维度灾难"><a href="#过拟合与维度灾难" class="headerlink" title="过拟合与维度灾难"></a>过拟合与维度灾难</h2><ul>
+<li><p>解决过拟合问题的方案</p>
+<ul>
+<li>增加数据</li>
+<li>正则化（Lasso、Ridge岭回归）</li>
+<li>降维</li>
 </ul>
 </li>
-<li><strong>全局线性</strong>（激活函数是一个线性函数）。<ul>
-<li>不满足的情况：激活函数为非线性的线性分类（Sigmoid）</li>
-</ul>
-</li>
-<li><strong>系数线性</strong>（反过来看，也是w的线性组合）。<ul>
-<li>不满足的情况：感知机算法训练出的w和初始值、迭代次数有关系，同一组样本训练的w不一定是固定的。（感知机算法同时也是全局非线性的，因为输出有一层激活非线性）</li>
-</ul>
+<li><p>维度灾难从集合意义上理解</p>
+<p>$n$维超立方体及其内切超球</p>
+<p>立方体体积永远是1，超球体体积$K \times 0.5^n$</p>
 </li>
 </ul>
-</li>
-<li>全局性<ul>
-<li>拟合出来的方程适用于全部的特征空间没有分段进行拟合。<ul>
-<li>不满足的情况：线性样条回归、决策树（每次选择的一个节点，都是在对特征空间进行划分）</li>
+<img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210629104154293.png" alt="image-20210629104154293" style="zoom:53%;" />
+
+<p>随着n的增大，这一球体体积逐渐趋向于0，即说明：在高维空间中，数据将分布在角落，这与三维世界的直觉相距甚远。即中间的内切球随着维度增大逐渐变成空壳，数据大量分布在球与立方体的间隙中，这表示数据实际上非常稀疏（分布在中心表示集中）</p>
+<h2 id="常见的降维方法"><a href="#常见的降维方法" class="headerlink" title="常见的降维方法"></a>常见的降维方法</h2><ul>
+<li>直接降维：特征选择（Lasso，令某些$X_i$的系数为0）</li>
+<li>线性降维：PCA，MDS</li>
+<li>非线性降维：流形学习</li>
 </ul>
-</li>
+<h2 id="样本方差与样本均值的矩阵表达"><a href="#样本方差与样本均值的矩阵表达" class="headerlink" title="样本方差与样本均值的矩阵表达"></a>样本方差与样本均值的矩阵表达</h2><p>样本：<br>$$<br>X=\begin{bmatrix} x_1 \quad x_2 \quad \ldots \quad x_N\end{bmatrix}^T_{N \times P}=\begin{bmatrix} x_1^T\\\\ x_2^T \\\\ \ldots \\\\ x_N^T\end{bmatrix}=一行一个样本横展开的矩阵<br>$$<br>样本均值（列向量）：<br>$$<br>\bar{X}_{p \times1} = \dfrac{1}{N}\sum_{i=1}^Nx_i=\dfrac{1}{N}(x_1, x_2,\ldots,x_N) \begin{bmatrix} 1\\\\ 1 \\\\ \ldots \\\\ 1\end{bmatrix}=\dfrac{1}{N}X^T\mathbf{1}_N<br>$$<br>样本方差矩阵：<br>$$<br>\begin{align}<br>S_{p \times p}&amp;=\dfrac{1}{N} \sum_{i=1}^N(x_i-\bar{X})(x_i-\bar{X})^T\<br>&amp;=\dfrac{1}{N}(X^T-\bar{X}\mathbf{1}_N^T)(X^T-\bar{X}\mathbf{1}_N^T)^T\<br>&amp;=\dfrac{1}{N}(X^T-\dfrac{1}{N}X^T\mathbf{1}_N1^T_N)(X^T-\dfrac{1}{N}X^T\mathbf{1}_N1^T_N)^T\<br>&amp;=\dfrac{1}{N}(X^T\underbrace{(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T)}_{H_N：centering\ matrix})(X^T(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T))^T\<br>&amp;=\dfrac{1}{N}X^TH_NH_N^TX<br>\end{align}<br>$$<br>观察$H_N$性质：</p>
+<ul>
+<li>对称性：$H_N^T=H_N$</li>
+<li>$H^2=H \cdot H=(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T) \cdot(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T)$</li>
 </ul>
-</li>
-<li>数据未加工<ul>
-<li>直接对数据进行拟合，不对数据进行任何处理。<ul>
-<li>不满足的情况：PCA降维、流形学习</li>
+<p>$$<br>\begin{align}<br>&amp;=I-2(I-H)+\dfrac{1}{N^2}(1_N1_N^T1_N1_N^2)\<br>&amp;=I-2(I-H)+\dfrac{1}{N^2}\begin{bmatrix}N\quad N\quad  \ldots \quad N \\\\ N\quad N\quad  \ldots \quad N \\\\ \ldots \\\\ N\quad N\quad  \ldots \quad N\end{bmatrix} \\\<br>&amp;=I-2(I-H)+\begin{bmatrix}1/N\quad 1/N\quad  \ldots \quad 1/N \\\\ 1/N\quad1/ N\quad  \ldots \quad1/ N \\\\ \ldots \\\\ 1/N\quad 1/N\quad  \ldots \quad 1/N\end{bmatrix}\\\<br>&amp;=I-2(I-H)+\dfrac{1}{N}(1_N1_N^T)\\\<br>&amp;=2H-I+\dfrac{1}{N}1_N1_N^T\\\<br>&amp;=2I-\dfrac{2}{N}1_N1_N^T-I+\dfrac{1}{N}1_N1_N^T\\\<br>&amp;=I-\dfrac{1}{N}1_N1_N^T \\\<br>&amp;=H<br>\end{align}<br>$$</p>
+<p>所以：<br>$$<br>\begin{align}<br>&amp;\because H\times H^T=H^2=H \\\\ &amp;\therefore S=\dfrac{1}{N}X^THX<br>\end{align}<br>$$</p>
+<h2 id="主成分分析（PCA：Principle-Component-Analysis）"><a href="#主成分分析（PCA：Principle-Component-Analysis）" class="headerlink" title="主成分分析（PCA：Principle Component Analysis）"></a>主成分分析（PCA：Principle Component Analysis）</h2><p>一个中心：对原始特征空间的重构，将原始特征空间中线性相关的特征转为无关</p>
+<p>两个基本点：</p>
+<ul>
+<li>最大投影方差（找到正交的$u_i$，使得在$u_i$上的投影方差尽可能大，方差最大的前$q$个（$q$为需要降到的维数）为选定的<strong>主成分</strong>）</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="从线性回归到线性分类"><a href="#从线性回归到线性分类" class="headerlink" title="从线性回归到线性分类"></a>从线性回归到线性分类</h3><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005628.jpg" alt="" style="zoom:10%;" />
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210629135104.png" alt="image-20210629135102603" style="zoom:33%;" />
+
+
 
 <ul>
-<li>激活函数将回归的结果映射到0-1，$y=f(w^Tx+b)$。<ul>
-<li>硬分类：$y \in \{0, 1\}$；<ul>
-<li>线性判别分析（fisher模型）</li>
-<li>感知机</li>
+<li>最小重构距离：把投影之后的数据还原回原空间需要的代价（难度），例如向$u_2$投影后，许多数据甚至会落在一个点上，难以还原（实际和方差是对应的，方差大了就不会落在一起，还原也容易）</li>
 </ul>
+<h3 id="最大投影方差视角"><a href="#最大投影方差视角" class="headerlink" title="最大投影方差视角"></a>最大投影方差视角</h3><ul>
+<li><p>首先将数据中心化（均值平移到原点，$x_i \leftarrow x_i-\bar{X}$）</p>
 </li>
-<li>软分类：$y \in [0,1]$<ul>
-<li>生成式模型：Gaussian Discriminant Analysis</li>
-<li>判别式模型：Logistic Regression（是做分类的！不是回归！名字不重要！）</li>
-</ul>
+<li><p>假设投影方向为$u_1$，满足$u_1^Tu_i=1$（单位向量）</p>
 </li>
-<li>统计上$f^{-1}$称为链接函数（link function）</li>
-</ul>
+<li><p>那么一个中心化后的样本（$x_i-\bar{X}$）在$u_1$的投影就是$(x_i-\bar{X})^Tu_1$</p>
 </li>
-<li>也可从降维角度理解，将p维的数据，通过映射降到1维（一个值），再通过阈值筛选合适的分类。</li>
+<li><p>先中心化：$(x1-\dfrac{x1+x2+x3+x4}{4}, x2-\dfrac{x1+x2+x3+x4}{4},x3-\dfrac{x1+x2+x3+x4}{4},x4-\dfrac{x1+x2+x3+x4}{4})$，再投影$(px1-\dfrac{px1+px2+px3+px4}{4}, px2-\dfrac{px1+px2+px3+px4}{4},px3-\dfrac{px1+px2+px3+px4}{4},x4-\dfrac{px1+px2+px3+px4}{4})$，再求投影均值，发现是<br>$$<br>(px1-\dfrac{px1+px2+px3+px4}{4}+ \\\\px2-\dfrac{px1+px2+px3+px4}{4}+\\\\px3-\dfrac{px1+px2+px3+px4}{4}+\\\\px4-\dfrac{px1+px2+px3+px4}{4})/4\\\<br>=0<br>$$</p>
+</li>
+<li><p>因此（$x_i-\bar{X}$）的投影的方差和为$\sum\limits_{i=1}^{n}\dfrac{1}{N}((x_i-\bar{X})^Tu_1-0)^2$</p>
+</li>
 </ul>
-<h2 id="感知机算法——硬输出（类别1）"><a href="#感知机算法——硬输出（类别1）" class="headerlink" title="感知机算法——硬输出（类别1）"></a>感知机算法——硬输出（类别1）</h2><p>思想：错误驱动</p>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005637.jpg" alt="感知机分类示意" style="zoom:30%;" />
-
-<p>模型：$f(x)=sign(w^Tx), x\in \mathbb{R}^P,w\in \mathbb{R}^P$<br>$$<br>sign(a)=\begin{cases}<br>+1, a&gt;0 \\\<br>-1, a\le0<br>\end{cases}<br>$$<br>策略：损失函数（loss function）<br>$$<br>L’(w)=\sum_{i=1}^NI\{y_iw^Tx_i&lt;0\}<br>$$<br>即，样本标签和使用$w$计算出的结果不一致的样本的数量</p>
-<p>使用这样的损失函数存在的问题：函数不可导（可导一定连续，因此不连续一定不可导，上述的函数关于$w$是不连续的）</p>
-<p>考虑直接统计总的损失（取负号），而不做计数$I$的映射，这样函数关于$w$就可导了<br>$$<br>L(w)=\sum_{x_i\in D}-y_iw^Tx_i<br>$$<br>此时求导得到$\nabla_{w_i} L=-\sum\limits_{x_i\in D}y_ix_i$</p>
-<p>于是采用随机梯度下降（SGD），但SGD中不求和，随机选择$D$中的一个错分样本$x_i$更新：<br>$$<br>w_i^{(t+1)}= w_i^{(t)}-\lambda\times(-y_ix_i)=w_i^{(t)} + \lambda y_ix_i<br>$$<br>感知机算法的变形（pocket algorithm）</p>
-<h2 id="线性判别分析（Fisher）——硬输出（类别2）"><a href="#线性判别分析（Fisher）——硬输出（类别2）" class="headerlink" title="线性判别分析（Fisher）——硬输出（类别2）"></a>线性判别分析（Fisher）——硬输出（类别2）</h2><p>分类思想：松耦合，高内聚（类内小，类间大）</p>
-<p>投影方向1满足，投影方向2不合适。</p>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005641.jpg" alt="fisher投影示意图" style="zoom:40%;" />
-
-<p>使用投影的概念进行理解，$Z_i=w^Tx_i$，其中$w$是投影方向，投影完可以看作是$w$方向上的一个标量（$w$是单位向量）。</p>
-<p>目标是类内小，类间大，对每个类$k$（这里讨论的都是二分类问题，即$k\in \{1,2\}$）而言：<br>$$<br>\begin{align}<br>&amp;Z_i=w^Tx_{i,k}\\\<br>&amp;\bar{Z}_k=\dfrac{1}{N_k} \sum_{i=1}^{N_k}(w^Tx_{i,k})\\\<br>&amp;S_k=\dfrac{1}{N_k} \sum_{i=1}^{N_k}(Z_i-\bar{Z}_k)(Z_i-\bar{Z}_k)^T= \dfrac{1}{N_k}\sum_{i=1}^{N_k}(w^Tx_{i,k}-\bar{Z}_k)(w^Tx_{i,k}-\bar{Z}_k)^T<br>\end{align}<br>$$<br>类内小采用方差矩阵度量：$S_1+S_2$</p>
-<p>类间大采用均值距离度量：$(\bar{Z}_1-\bar{Z}_2)^2$</p>
-<p>多目标优化，采用目标函数：<br>$$<br>J(w)=\dfrac{(\bar{Z}_1-\bar{Z}_2)^2}{S_1+S_2}<br>$$</p>
-<p>$$<br>\hat{w}=\underset{w}{\arg \max}\ J(w)<br>$$</p>
-<p>其中，</p>
-<p>令第$k$类的样本均值为$\bar{x}_k=\dfrac{1}{N_k}\sum\limits_{i=1}^{N_k} x_{i,k}$，则<br>$$<br>\bar{Z}_1-\bar{Z}_2=\dfrac{1}{N_1}\sum_{i=1}^{N}(w^Tx_{i,1})-\dfrac{1}{N_2}\sum_{i=1}^{N}(w^Tx_{i,2})=w^T(\bar{x}_1-\bar{x}_2)<br>$$</p>
-<p>$$<br>\begin{align}<br>\therefore\ &amp;(\bar{Z}_1-\bar{Z}_2)^2=(w^T(\bar{x}_1-\bar{x}_2))(w^T(\bar{x}_1-\bar{x}_2))^T=w^T(\bar{x}_1-\bar{x}_2)(\bar{x}_1-\bar{x}_2)^Tw\\\<br>&amp;(w^Tx_{i,k}-\bar{Z}_k)=(w^Tx_{i,k}-w^T\bar{x}_{k})=(w^T(x_{i,k}-\bar{x}_{k}))\\\<br>&amp;S_k=\dfrac{1}{N_k}\sum_{i=1}^{N_k} (w^T(x_{i,k}-\bar{x}_{k}))(w^T(x_{i,k}-\bar{x}_{k}))^T=\dfrac{1}{N_k}\sum_{i=1}^{N_k}w^T(x_{i,k}-\bar{x}_{k})(x_{i,k}-\bar{x}_k)^Tw<br>\end{align}<br>$$</p>
-<p>由于$w$与各样本$i$无关，因此<br>$$<br>S_k=w^T\ \ \ \ \underbrace{\dfrac{1}{N_k}\sum_{i=1}^{N_k}(x_{i,k}-\bar{x}_{k})(x_{i,k}-\bar{x}_k)^T}_{S_{c_k}}\ \ \ \ w<br>$$<br>综上，<br>$$<br>J(w)=\dfrac{w^T(\bar{x}_1-\bar{x}_2)(\bar{x}_1-\bar{x}_2)^Tw}{w^T(S_{c_1}+S_{c_2})w}<br>$$<br>定义类别间（between）的方差$S_b=(\bar{x}_1-\bar{x}_2)(\bar{x}_1-\bar{x}_2)^T$, 类别内方差$S_w=(S_{c_1}+S_{c_2})$。<br>$$<br>J(w)=\dfrac{w^T S_b w}{w^T S_w w}=w^TS_bw(w^TS_ww)^{-1}<br>$$<br>接下来求解最大值时对应的$w$，<br>$$<br>\dfrac{\partial J(w)}{\partial w}=2S_bw(w^TS_ww)^{-1}-2w^TS_bw(w^TS_ww)^{-2}S_ww<br>$$<br>令$\dfrac{\partial J(w)}{\partial w}=0$</p>
-<p>则<br>$$<br>\begin{align}<br>&amp;S_bw(w^TS_ww)^{-1}=w^TS_bw(w^TS_ww)^{-2}S_ww \qquad -\text{左右同时乘以标量$(w^TS_ww)^2$}\\\<br>&amp;S_bw(w^TS_ww)=(w^TS_bw)S_ww \qquad -\text{括号内都是标量，可以随便移向、变顺序，且不影响$w$的方向}\\\<br>&amp;S_ww=\dfrac{(w^TS_ww)}{(w^TS_bw)}S_bw \\\<br>&amp;w=\dfrac{(w^TS_ww)}{(w^TS_bw)}S_w^{-1}S_bw<br>\end{align}<br>$$<br>可以看到，如果只关心方向，那么$w$同向于$S_w^{-1}S_bw$，而$S_bw=(\bar{x}_1-\bar{x}_2)(\bar{x}_1-\bar{x}_2)^Tw$，其中$(\bar{x}_1-\bar{x}_2)^Tw$又是一个标量，因此$w$继续同向于$S_w^{-1}(\bar{x}_1-\bar{x}_2)$</p>
-<h2 id="Logistic-Regression——软输出（类别1，概率判别模型）"><a href="#Logistic-Regression——软输出（类别1，概率判别模型）" class="headerlink" title="Logistic Regression——软输出（类别1，概率判别模型）"></a>Logistic Regression——软输出（类别1，概率判别模型）</h2><p>模型：</p>
-<p>激活函数，sigmoid：$[\mathbb{R} \rightarrow (0,1)] \leftrightarrows [ w^Tx \rightarrow Probability]$<br>$$<br>\sigma(z)=\dfrac{1}{1+e^{-z}}<br>$$<br>$z$是回归模型输入样本后得到的结果$w^Tx$<br>$$<br>P(Y=y \mid X)= (\dfrac{1}{1+e^{-w^Tx}})^y+(\dfrac{e^{-w^Tx}}{1+e^{-w^Tx}})^{1-y}=p_1^y p_0^{1-y}<br>$$<br>算法：极大似然估计得到最优的$w$<br>$$<br>\begin{align}<br>&amp;L(w)=\log \prod_{i=1}^N P(y_i \mid x_i) \\\<br>&amp;=\sum_{i=1}^N \log p_1^yp^{1-y}_0\\\<br>&amp;=\sum_{i=1}^N \left[ y_i\log \dfrac{1}{1+e^{-w^Tx_i}} + (1-y_i)\log \dfrac{e^{-w^Tx_i}}{1+e^{-w^Tx_i}}\right]\\\<br>&amp;=\sum_{i=1}^N\left[-y_i\log (1+e^{-w^Tx_i}) + (1-y_i)(-w^Tx_i-\log(1+e^{-w^Tx_i}))\right]\\\<br>&amp;=\sum_{i=1}^N\left[-y_i\log (1+e^{-w^Tx_i}) -w^Tx_i -\log(1+e^{-w^Tx_i}) +  y_iw^Tx_i  + y_i\log(1+e^{-w^Tx_i})\right]\\\<br>&amp;=\sum_{i=1}^N (y_i-1)w^Tx_i-\log(1+e^{-w^Tx_i})<br>\end{align}<br>$$<br>对$w$求导：<br>$$<br>\dfrac{\partial L(w)}{\partial w}=\sum_{i=1}^N\left[(y_i-1)x_i+\dfrac{e^{-w^Tx_i}x_i}{1+e^{-w^Tx_i}} \right]<br>$$<br>求解一般采用梯度下降法。</p>
-<h2 id="高斯判别分析模型——软输出（类别2-1，概率生成-连续问题）"><a href="#高斯判别分析模型——软输出（类别2-1，概率生成-连续问题）" class="headerlink" title="高斯判别分析模型——软输出（类别2.1，概率生成+连续问题）"></a>高斯判别分析模型——软输出（类别2.1，概率生成+连续问题）</h2><p>概率判别模型：<br>$$<br>\hat{y} = \underset{y \in \{0, 1\}}{\arg \max}\ p(y \mid x)<br>$$<br>计算出$p(y \mid x)$，看是$y=1$的概率大还是$y=0$的概率大，之后做分类；</p>
-<p>概率生成模型，从贝叶斯角度，不去精确求解$p(y \mid x)$，只要能判断哪一种$y$能使得后验概率最大：<br>$$<br>\because p(y \mid x) \propto \underset{\text{类条件概率密度或者叫似然}}{p(x \mid y)} \underset{\ \ 先验概率}{p(y)} \\\<br>\therefore \hat{y}= \underset{y}{\arg \max}\ p(y \mid x)=\underset{y}{\arg \max}\ p(y)p(x \mid y)<br>$$<br>高斯判别模型的假设：</p>
-<p>先验$y \sim \mathrm{Bernoulli}(\phi)$</p>
-<p>类条件概率密度$(x \mid y=1) \sim N(\mu_1, \Sigma)$</p>
-<p>类条件概率密度$(x \mid y=0) \sim N(\mu_2, \Sigma)$</p>
-<p>合并表达：$N(\mu_1, \Sigma)^yN(\mu_1, \Sigma)^{1-y}$（正态分布的概率密度函数简记为$N$）</p>
-<p>直接采用log似然：<br>$$<br>\begin{align}<br>L(\theta)&amp;=\log \prod_{i=1}^Np(y_i)p(x_i \mid y_i) \\\<br>&amp;=\sum_{i=1}^N \left[ \log p(y_i) + \log p(x_i \mid y_i) \right ] \\\<br>&amp;=\sum_{i=1}^N\left[\underbrace{y\log N(\mu_1, \Sigma)}_{A_1} +\underbrace{(1-y) \log N(\mu_2, \Sigma)}_{A_2} + y \log \phi + (1-y) \log(1-\phi)\right]<br>\end{align}<br>$$<br>此处的参数$\theta$包括：$\mu_1,\mu_2, \Sigma, \phi$</p>
-<p>先求$\phi$：<br>$$<br>\dfrac{\partial L(\theta)}{\partial \phi}=\sum_{i=1}^N \dfrac{y_i}{\phi}-\dfrac{(1-y_i)}{1-\phi}=0<br>$$</p>
-<p>$$<br>\sum_{i=1}^N(1-\phi)y_i-\phi(1-y_i)=\sum_{i=1}^N y_i-\phi y_i-\phi + \phi y_i=\sum_{i=1}^N y_i - \phi=0<br>$$</p>
-<p>$\therefore$<br>$$<br>\phi = \dfrac{1}{N}\sum_{i=1}^N y_i=\dfrac{N_1}{N}（N_1是标签y不为0的个数）<br>$$<br>下面求$\mu_1$，可以发现和$\mu_1$有关的只有$N(\mu_1, \Sigma)$，因此对$\sum_{i=1}^N y_i \log N(\mu_1, \Sigma)$求$\mu_1$的偏导</p>
-<p>展开：<br>$$<br>\begin{align}<br>&amp;\ \ \ \ \ \underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i \log \dfrac{1}{(2\pi)^{\frac{p}{2}}\Sigma^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)}\\\<br>&amp;=\underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i(-\frac{1}{2}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1))\\\<br>&amp;=\underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i(-\frac{1}{2}(x_i^T\Sigma^{-1}-\mu_1^T\Sigma^{-1})(x_i-\mu_1))\\\<br>&amp;=\underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i(-\frac{1}{2}(x_i^T\Sigma^{-1}x_i-x_i^T\Sigma^{-1}\mu_1-\mu_1^T\Sigma^{-1}x_i + \mu_1^T\Sigma^{-1}\mu_1))\\\<br>&amp;=\underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i(-\frac{1}{2}(x_i^T\Sigma^{-1}x_i-2x_i^T\Sigma^{-1}\mu_1 + \mu_1^T\Sigma^{-1}\mu_1))\\\<br>\end{align}<br>$$</p>
-<p>$$<br>\dfrac{\partial \Delta}{\partial \mu_1}=-\frac{1}{2} (\sum_{i=1}^{N}y_i(-2x_i\Sigma^{-1}+2\Sigma^{-1}\mu_1))=(\sum_{i=1}^{N}y_i(x_i\Sigma^{-1}-\Sigma^{-1}\mu_1))<br>$$</p>
-<p>令偏导为0，有<br>$$<br>\sum_{i=0}^Ny_i(x_i-\mu_1)=\sum_{i=1}^Ny_ix_i-y_i\mu_1=0<br>$$</p>
-<p>$$<br>\sum_{i=1}^Ny_ix_i=\sum_{i=1}^Ny_i\mu_1\\\<br>\hat{\mu_1}=\dfrac{\sum_{i=1}^Ny_ix_i}{\sum_{i=1}^Ny_i}=\dfrac{\sum\limits_{i=1}^N y_ix_i}{N_1}<br>$$<br>$\mu_2$求法与$\mu_1$一致，下面求$\Sigma$，为了方便表达，对样本进行分类：</p>
-<p>$c_1 = \{x_i \in X \mid y_i =1, i=1, \ldots N\}$</p>
-<p>$c_2 = \{x_i \in X \mid y_i =0, i=1, \ldots N\}$</p>
-<p>下面对$A_1$和$A_2$进行化简<br>$$<br>A_1=\sum_{i=1}^Ny_i\log N(\mu_1, \Sigma)=\sum_{x_i\in c_1}\log N(\mu_1, \Sigma)\\\<br>A_2=\sum_{i=1}^N(1-y_i)\log N(\mu_2, \Sigma)=\sum_{x_i\in c_2}\log N(\mu_2, \Sigma)<br>$$<br>则<br>$$<br>\hat{\Sigma}=\underset{\Sigma}{\arg \max}\ A_1 + A_2=\underset{\Sigma}{\arg \max}\ \sum_{x_i\in c_1}\log N(\mu_1, \Sigma)+\sum_{x_i\in c_2}\log N(\mu_2, \Sigma)<br>$$<br>其中，</p>
-<p>$$<br>\begin{align}<br>\log N(\mu_1, \Sigma)&amp;=\log \dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}-\frac{1}{2} (x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)\\\<br>&amp;=-\log(2\pi)^{\frac{p}{2}}-\log(|\Sigma|)^{\frac{1}{2}}-\frac{1}{2} (x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)\\\<br>&amp;=-\frac{p}{2}\log(2\pi)-\frac{1}{2}\log(|\Sigma|)-\frac{1}{2} (x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)<br>\end{align}<br>$$</p>
-<p>$$<br>\sum_{i=1}^N\log N(\mu_1, \Sigma)=-\frac{N_1p}{2}\log(2\pi)-\frac{N_1}{2}\log(|\Sigma|)-\frac{1}{2} \sum_{i=1}^{N_1}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)<br>$$</p>
-<p>合并<br>$$<br>W=A_1+A_2=-\frac{Np}{2}\log(2\pi)-\frac{N}{2}\log(|\Sigma|)-\frac{1}{2} \sum_{i=1}^{N_1}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)-\sum_{i=1}^{N_2}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)<br>$$</p>
-<p>$$<br>\begin{align}<br>\frac{\partial W}{\partial \Sigma}&amp;=-\frac{N}{2}\frac{1}{|\Sigma|}|\Sigma|\Sigma^{-1}+ \frac{1}{2}\sum_{i=1}^{N_1}\Sigma^{-1}(x_i-\mu_1)(x_i-\mu_1)^T\Sigma^{-1}+\frac{1}{2}\sum_{i=1}^{N_2}\Sigma^{-1}(x_i-\mu_2)(x_i-\mu_2)^T\Sigma^{-1}\\\<br>&amp;=-\frac{N\Sigma^{-1}}{2}+\frac{1}{2}\sum_{i=1}^{N_1}\Sigma^{-1}(x_i-\mu_1)(x_i-\mu_1)^T\Sigma^{-1}+\frac{1}{2}\sum_{i=1}^{N_2}\Sigma^{-1}(x_i-\mu_2)(x_i-\mu_2)^T\Sigma^{-1}<br>\end{align}<br>$$</p>
-<p>令$\dfrac{\partial W}{\partial \Sigma}=0$，则（移向，同乘2，同时左右都乘$\Sigma$）<br>$$<br>N\Sigma=\sum_{i=1}^{N_1}(x_i-\mu_1)(x_i-\mu_1)^T+\sum_{i=1}^{N_2}(x_i-\mu_2)(x_i-\mu_2)^T\\\<br>$$</p>
-<p>$$<br>\hat{\Sigma}=\dfrac{1}{N}\underbrace{\sum_{i=1}^{N_1}(x_i-\mu_1)(x_i-\mu_1)^T}_{c_1样本的方差矩阵的N_1倍}+\dfrac{1}{N}\underbrace{\sum_{i=1}^{N_2}(x_i-\mu_2)(x_i-\mu_2)^T}_{c_2样本的方差矩阵的N_2倍}<br>$$</p>
-<h2 id="朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）"><a href="#朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）" class="headerlink" title="朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）"></a>朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）</h2><p>思想：朴素贝叶斯假设——条件独立性假设——最简单的概率图模型</p>
-<p>给定$y$的条件下，各个属性之间都是独立的：$x_i \bot x_j \mid y$</p>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005650.png" alt="image-20210625112413398" style="zoom:25%;" />
-$$
-p(x \mid y)=\prod_{j=1}^p p(x_j \mid y)
-$$
-
-<p>$$<br>\hat{y}=\arg\max_y p(y \mid x)=\arg \max_y p(x\mid y)p(y)<br>$$</p>
-<p>朴素贝叶斯假设$y$服从二项分布，$p(x \mid y)$中，$x$的每个维度都服从正态分布（$N(\mu_i, \sigma_i^2)$）</p>
-<p>利用这种思想，采用MLE推导，从现有样本估计出两个分布的参数（这个过程是学习）。</p>
-<h2 id="补充：总结生成模型和判别模型的区别"><a href="#补充：总结生成模型和判别模型的区别" class="headerlink" title="补充：总结生成模型和判别模型的区别"></a>补充：总结生成模型和判别模型的区别</h2><p>机器学习的核心任务：根据样本属性$X$，预测标记$Y$，即计算$p(Y\mid X)$</p>
+<p>求解投影方向问题，变为一个优化问题：<br>$$<br>\begin{align}<br>\hat{u}&amp;=\arg\max_u J(u)\\\<br>&amp;=\arg\max_u\dfrac{1}{N}\sum_{i=1}^N({\underbrace{(x_i-\bar{X})^Tu_1)}_{实数}}^2\\\<br>&amp;=\arg\max_u \dfrac{1}{N}\sum_{i=1}^N u_1^T(x_i-\bar{X})(x_i-\bar{X})^Tu_1\\\<br>&amp;=\arg\max_u u_1^T \underbrace{\left(\sum_{i=1}^N \dfrac{1}{N}u_1^T(x_i-\bar{X})(x_i-\bar{X})^T\right)}_{样本方差矩阵S}u_1<br>\end{align}<br>$$<br>转为约束优化问题：<br>$$<br>\max u_1^T S u_1\\\<br>s.t. u_1^Tu_1=1<br>$$<br>使用<strong>拉格朗日乘数法</strong>求解：<br>$$<br>L(u, \lambda)=u_1^TSu_1+\lambda （1-u_1^Tu_1）<br>$$</p>
+<p>$$<br>\dfrac{\partial L(u_1, \lambda)}{\partial u_1}=2Su_1-2\lambda u_1=0\\\<br>Su_1=\lambda u_1（\star）<br>$$</p>
+<p>$\lambda$是$S$的特征值，$u_1$是其对应的特征向量。</p>
+<p>（$\star$）式代入目标中，最大化$u_1^TSu_1$，就是最大化$\lambda$。当要$q$维时，选择最大的前$q$个特征值。</p>
 <blockquote>
-<p>判别模型：找到一个明确的边界，首先计算$p(Y=y_1\mid X)$与$p(Y=y_2\mid X)$，之后取二者中概率较大的一方作为分类结果（二分类问题中，基于$p(Y=y_1 \mid X) + p(Y=y_2\mid X)=1$）。</p>
+<p>此处只研究了一个方向$u_1$的投影，是因为投影方向之间线性无关，当有多个方向时，每个方向都适用统一的结论，即和的max<strong>在此处</strong>等于max的和。</p>
 </blockquote>
-<p>例如：可以看到，在logistic regression中，估计参数$w$时，面向的是使得$p(y_i \mid x_i)$最大；估计好之后，在实际做分类时候，也是对单一新样本$X_{new}$选择$y = \arg \max\limits_{y_i} p(y_i \mid X_{new})$</p>
-<blockquote>
-<p>生成模型：求出样本与不同标记（y）之间的联合概率分布，取大的获胜。注意到不同标记之间的联合概率之和就未必是1了。</p>
-</blockquote>
-<p>例如：可以看到，在GDA中，估计参数$\theta$时，面向的是使得$p(x_i \mid y)p(y)=p(x,y)$最大；估计好之后，在实际做分类时候，也是对单一新样本$X_{new}$分别计算$p(X_{new}, y_i)$选择$y=\arg \max\limits_{y_i}p(X_{new}, y_i)$</p>
-<p>下面的例子来源于<a href="https://www.zhihu.com/question/20446337/answer/256466823" target="_blank" rel="noopener">知乎@politer</a>的回答：</p>
-<p>判别式模型举例：要确定一个羊是山羊还是绵羊，用判别模型的方法是从历史数据中学习到模型，这个模型输入样本能够直接输出是山羊/绵羊的概率，然后通过提取这只羊的特征来预测出这只羊是山羊的概率，是绵羊的概率。</p>
-<p>生成式模型举例：利用生成模型是根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型，（例如GDA中，对不同的标签，服从均值不同的正态分布，即$p(x \mid y=山羊), p(x \mid y=绵羊)$，需要分别学习$\mu_1, \mu_2, \Sigma$，同时还要学习标签的二项分布均值$\phi$），然后来了一个新羊，从中提取特征$X$，放到山羊模型中看概率是多少，再放到绵羊模型中看概率是多少，哪个大就是哪个。</p>
-<blockquote>
-<p>无论如何，二者在学习时：<strong>都是使后验最大化。</strong>只不过：</p>
-<ul>
-<li>判别模型直接对$p(Y\mid X)$建模——logistic regression模型算出来的就是$p(Y \mid X)$</li>
-<li>生成模型通过正比于$p(X, Y)$对联合概率建模——GDA分别对$p(X \mid Y)$和$p(Y)$建模</li>
-</ul>
-</blockquote>
-<p>一个使用GDA进行Iris花朵分类的例子：（只分了前两类）</p>
-<iframe src="https://nbviewer.jupyter.org/url/101.34.75.195%3A8080/get_file/GDA-Iris.ipynb" width="900" height="1500"></iframe>
+<h3 id="最小重构代价视角"><a href="#最小重构代价视角" class="headerlink" title="最小重构代价视角"></a>最小重构代价视角</h3><p>重构的含义：首先观察坐标映射的过程，将原来的样本x（蓝色向量），转为新的正交基下的线性组合（红色向量）。如果转换的新坐标系有$p$维，那么转换后的向量表示为：<br>$$<br>x_i = \sum_{k=1}^p\underbrace{(x^Tu_k)}_{scalar}\underbrace{u_k}_{length=1, direction}<br>$$</p>
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210629160030.png" alt="image-20210629160021429" style="zoom: 33%;" />
 
+<p>这样的情况下，如果原数据就是$p$维，那么实际就没有降维。如果降到$q(q &lt; p)$维，那么新的向量表示为：<br>$$<br>\hat{x_i}=\sum_{k=1}^q(x^Tu_k)u_k<br>$$<br>所谓的重构代价，就是降维后的$\hat{x_i}$与未降维$x_i$的欧式距离/二范数/差的模，即<br>$$<br>J=\dfrac{1}{N}\sum_{i=1}^N ||\hat{x_i}-x_i||^2<br>$$<br>代入表达式（此处考虑先中心化）：<br>$$<br>\begin{align}<br>J&amp;=\dfrac{1}{N}\sum_{i=1}^N ||x_i-\bar{X}-\hat{x_i}||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=1}^p((x-\bar{X})^Tu_k)u_k -\sum_{k=1}^q((x-\bar{X})^Tu_k)u_k||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=q+1}^p(\underbrace{(x-\bar{X})^Tu_k)}_{实数C_k} \underbrace{u_k}_{单位向量} ||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=q+1}^pC_ku_k ||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N\sum_{k=q+1}^pC_k^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N\sum_{k=q+1}^p{((x-\bar{X})^Tu_k)}^2\\\<br>&amp;=\sum_{k=q+1}^p\sum_{i=1}^N\dfrac{1}{N}((x-\bar{X})^Tu_k)^2\\\<br>&amp;=\sum_{k=q+1}^pu_k^TSu_k –类似于最大方差<br>\end{align}<br>$$<br>转为约束优化问题：<br>$$<br>\min\sum_{k=q+1}^p u_k^T S u_k \quad(1)\\\<br>s.t.\ \ \ \ \  u_k^Tu_k=1\quad(2)<br>$$</p>
+<p>由于$u_i$之间线性无关，因此要求和最小，可以转化为每一个$u_k^TSu_k$最小，此时类似于最大方差，但是是求最小值，仍然得到$Su_k=\lambda_k u_k$，代入(1)中，得到<br>$$<br>\min \sum_{k=q+1}^p \lambda_k\underbrace{u_k^T u_k}_{u_k^T u_k=1} \implies \min \sum_{k=q+1}^p \lambda_k<br>$$<br>则此处要求取最小的（p-q）个$\lambda_k$并丢弃，而此处取得都是不要的（$q+1, q+2, \ldots, p$，这些维度都是降维之后丢弃的），正好与最大方差（选用最大的q个$\lambda_k$）相一致。</p>
 
             </div>
             <hr/>
@@ -456,7 +392,7 @@ $$
                     </i>
                 </span> -->
                 <!-- <span class="reprint-info">
-                    <a href="https://rqhu1995.github.io/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">https://rqhu1995.github.io/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/</a>
+                    <a href="https://rqhu1995.github.io/2021/06/29/%E9%99%8D%E7%BB%B4/">https://rqhu1995.github.io/2021/06/29/%E9%99%8D%E7%BB%B4/</a>
                 </span> -->
             </div>
             <div class="reprint__notice">
@@ -536,9 +472,10 @@ $$
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/06/29/%E9%99%8D%E7%BB%B4/">
                     <div class="card-image">
@@ -571,9 +508,9 @@ $n$维超立方体及其内切超球
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -582,6 +519,7 @@ $n$维超立方体及其内切超球
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -600,25 +538,31 @@ $n$维超立方体及其内切超球
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/15/matrix-math-cheatsheet/">
+                <a href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/13.jpg" class="responsive-img" alt="matrix-math-cheatsheet">
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/9.jpg" class="responsive-img" alt="线性分类模型">
                         
-                        <span class="card-title">matrix-math-cheatsheet</span>
+                        <span class="card-title">线性分类模型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Matrix CalculusReference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
-Useful Conclusion（keep updating）eq(69
+                            线性分类回顾线性回归线性回归的特点
+线性
+属性线性（x的线性组合）。
+不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$
+
+
+全局线性（激活函数是一个线性函数）。
+不满足的情况：激活函数为非线性的线性分类（S
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-24
                             </span>
                         <span class="publish-author">
                             
@@ -627,6 +571,14 @@ Useful Conclusion（keep updating）eq(69
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">白板推导笔记</span>
+                    </a>
+                    
                 </div>
                 
             </div>
