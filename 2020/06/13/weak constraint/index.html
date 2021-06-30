@@ -310,7 +310,6 @@
 <p>检查方法：从最高级向下找，找到第一个不一样的惩罚。</p>
 <p>不存在被支配者的stable model就是最优化model</p>
 <img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20200612144346398.png" alt="image-20200612144346398" style="zoom:50%;" />
-
 <p>冒号后成立的前提下，第一个计算结果和为3，第二个为6；原因，成立后，集合变为{3;3}和{3,1,2; 3,2,3}，对前者，实际上是单元素集合（重复不考虑）；后者是双元素集合。计算和的时候，计算的是权重，权重就是第一位数字。</p>
 
             </div>
@@ -431,15 +430,17 @@
                         
                             
 N：网络
+
 V，E：网络节点和边
 R：资源
-m：映射：（边到时间）– 一条边通过的最短时间
-a：映射：（资源到边集）– 一个资源分配给的边
-b：映射：（资源到时间）– 一个资源占用需要等待的时间
+m：映射：（边到时间）-- 一条边通过的最短时间
+a：映射：（资源到边集）-- 一个资源分配给的边
+b：映射：（资源到时间）-- 一个资源占用需要等待的时间
 
 
 T：火车
-S，L：V，E的一个无环子图–
+
+S，L：V，E的一个
                         
                     </div>
                     <div class="publish-info">
@@ -476,12 +477,15 @@ S，L：V，E的一个无环子图–
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            编译原理（三）自动机给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)
+                            编译原理（三）自动机
+给定一个字符串s，判定，即是否是一个正则表达式的语言。(L将正则表达式映射到语义上)
 Lexical Specification
+
 
 为每一个token类都写一个正则
 
-R1（numbe
+R1（number）：digits+
+R2（le
                         
                     </div>
                     <div class="publish-info">
