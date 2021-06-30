@@ -389,7 +389,18 @@
 </ul>
 <p>原因，首先看$S$分解之后再映射scalar：<br>$$<br>HX \cdot V= U \Sigma V^T V=U\Sigma–这是scalar也对的坐标矩阵<br>$$<br>再看$T$直接特征分解的结果：<br>$$<br>T(U\Sigma)=U \Sigma \Sigma^TU^TU\Sigma=(U \Sigma) (\Sigma^T\Sigma)<br>$$<br>于是，$U\Sigma$就是$T$的所有特征向量的集合，其特征值为对角方阵$(\Sigma^T\Sigma)$的对角元素（参考单个特征向量的定义$A\mu=\lambda\mu$，此处是将多个满足的$\mu$铺平到多个列），通过上一步对$S$的讨论就看到$U\Sigma$就是放缩后的实际向量，因此对$T$进行特征向量分解，就不需要再放缩了，直接得到的特征向量就是坐标了。</p>
 <p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210630143412.png" alt="PCA知识点总结"></p>
-<h3 id="概率视角下的PCA（P-PCA）"><a href="#概率视角下的PCA（P-PCA）" class="headerlink" title="概率视角下的PCA（P-PCA）"></a>概率视角下的PCA（P-PCA）</h3>
+<h3 id="概率视角下的PCA（P-PCA）"><a href="#概率视角下的PCA（P-PCA）" class="headerlink" title="概率视角下的PCA（P-PCA）"></a>概率视角下的PCA（P-PCA）</h3><p>降维任务：从$x \in \R^p$，降到$z \in \R^{q}$，显然$q&lt;p$。</p>
+<p>假设</p>
+<ul>
+<li><p>$z \sim N(0_q, I_q)$</p>
+</li>
+<li><p>$x = wz+\mu+\varepsilon$</p>
+</li>
+<li><p>$\varepsilon \sim N(0, \sigma^2I_p)$</p>
+</li>
+</ul>
+<p>这是一个线性高斯模型（观测变量与因变量之间是线性关系）</p>
+
             </div>
             <hr/>
 
