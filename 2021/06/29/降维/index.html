@@ -367,7 +367,29 @@
 
 <p>这样的情况下，如果原数据就是$p$维，那么实际就没有降维。如果降到$q(q &lt; p)$维，那么新的向量表示为：<br>$$<br>\hat{x_i}=\sum_{k=1}^q(x^Tu_k)u_k<br>$$<br>所谓的重构代价，就是降维后的$\hat{x_i}$与未降维$x_i$的欧式距离/二范数/差的模，即<br>$$<br>J=\dfrac{1}{N}\sum_{i=1}^N ||\hat{x_i}-x_i||^2<br>$$<br>代入表达式（此处考虑先中心化）：<br>$$<br>\begin{align}<br>J&amp;=\dfrac{1}{N}\sum_{i=1}^N ||x_i-\bar{X}-\hat{x_i}||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=1}^p((x-\bar{X})^Tu_k)u_k -\sum_{k=1}^q((x-\bar{X})^Tu_k)u_k||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=q+1}^p(\underbrace{(x-\bar{X})^Tu_k)}_{实数C_k} \underbrace{u_k}_{单位向量} ||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=q+1}^pC_ku_k ||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N\sum_{k=q+1}^pC_k^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N\sum_{k=q+1}^p{((x-\bar{X})^Tu_k)}^2\\\<br>&amp;=\sum_{k=q+1}^p\sum_{i=1}^N\dfrac{1}{N}((x-\bar{X})^Tu_k)^2\\\<br>&amp;=\sum_{k=q+1}^pu_k^TSu_k –类似于最大方差<br>\end{align}<br>$$<br>转为约束优化问题：<br>$$<br>\min\sum_{k=q+1}^p u_k^T S u_k \quad(1)\\\<br>s.t.\ \ \ \ \  u_k^Tu_k=1\quad(2)<br>$$</p>
 <p>由于$u_i$之间线性无关，因此要求和最小，可以转化为每一个$u_k^TSu_k$最小，此时类似于最大方差，但是是求最小值，仍然得到$Su_k=\lambda_k u_k$，代入(1)中，得到<br>$$<br>\min \sum_{k=q+1}^p \lambda_k\underbrace{u_k^T u_k}_{u_k^T u_k=1} \implies \min \sum_{k=q+1}^p \lambda_k<br>$$<br>则此处要求取最小的（p-q）个$\lambda_k$并丢弃，即此处取的都是不需要的（$q+1, q+2, \ldots, p$，这些维度都是降维之后丢弃的），正好与最大方差（选用最大的q个$\lambda_k$）相一致。</p>
+<h2 id="SVD矩阵分解视角"><a href="#SVD矩阵分解视角" class="headerlink" title="SVD矩阵分解视角"></a>SVD矩阵分解视角</h2><p>一般来说，对样本的方差矩阵进行特征值和特征向量的分解，就可以得到需要的$q(q &lt; p)$个主成分及对应的投影方向（$q$个特征向量），下面从SVD的视角理解。</p>
+<p>数据中心化：<br>$$<br>\begin{align}<br>HX&amp;=(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T)X\\\<br>&amp;=X-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^TX\\\<br>&amp;=X-\dfrac{1}{N}\left(\begin{bmatrix}1\quad 1\quad  \ldots \quad 1 \\\\ 1\quad 1\quad  \ldots \quad 1 \\\\ \ldots \\\\ 1\quad 1\quad  \ldots \quad 1\end{bmatrix}_{N\times N}\right) X\\\<br>&amp;=X-\dfrac{1}{N}\begin{bmatrix} \sum_{i=1}^Nx_{i1}\quad \sum_{i=1}^Nx_{i2}\quad  \ldots \quad \sum_{i=1}^Nx_{ip} \\\\ \sum_{i=1}^Nx_{i1}\quad \sum_{i=1}^Nx_{i2}\quad  \ldots \quad \sum_{i=1}^Nx_{ip} \\\\ \ldots \\\\ \sum_{i=1}^Nx_{i1}\quad \sum_{i=1}^Nx_{i2}\quad  \ldots \quad \sum_{i=1}^Nx_{ip}\end{bmatrix}\\\<br>&amp;=\begin{bmatrix} x_{11}-\sum_{i=1}^Nx_{i1}/N \quad x_{12}-\sum_{i=1}^Nx_{i2}/N\quad  \ldots \quad x_{1p}-\sum_{i=1}^Nx_{ip}/N \\\\ x_{21}-\sum_{i=1}^Nx_{i1}/N \quad x_{22}-\sum_{i=1}^Nx_{i2}/N\quad  \ldots \quad x_{2p}-\sum_{i=1}^Nx_{ip}/N  \\\\ \ldots \\\\ x_{N1}-\sum_{i=1}^Nx_{i1}/N \quad x_{N2}-\sum_{i=1}^Nx_{i2}/N\quad  \ldots \quad x_{Np}-\sum_{i=1}^Nx_{ip}/N \end{bmatrix}<br>\end{align}<br>$$</p>
+<p>对中心化后的数据矩阵（其实就是每个样本在每个特征上都减去了该特征在所有样本的均值）进行SVD分解，表示为：<br>$$<br>HX=U\Sigma V^T<br>$$<br>其中：</p>
+<ul>
+<li><p>$U^TU=I，U \in \R_{N \times N}$</p>
+</li>
+<li><p>$VV^T=V^TV=I， V \in \R_{P \times P}$</p>
+</li>
+<li><p>$\Sigma \in \R_{N \times P}$：对角矩阵，不一定是方阵，这种也算：</p>
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210630104639.png" alt="diagonal matrix" style="zoom:50%;" />
 
+</li>
+</ul>
+<p>再看原协方差矩阵：<br>$$<br>\begin{align}<br>S’&amp;=X^THX\\\<br>&amp;=X^TH^T(HX)\\\<br>&amp;=(HX)^T(HX)\\\<br>&amp;=(U\Sigma V^T)^T(U\Sigma V^T)\\\<br>&amp;=V\Sigma^T(U^TU)\Sigma V^T\\\<br>&amp;=V\Sigma^T I \Sigma V^T\\\<br>&amp;=V\Sigma^T\Sigma V^T<br>\end{align}<br>$$<br>$S’=NS$，为了推导过程中去除系数所定义。这时候对比原PCA求法（特征值与特征向量求法），能够找到一一对应关系：<br>$$<br>S=GKG^T, G^TG=I–原求法\\\<br>S’=V\Sigma^T\Sigma V^T—–现求法<br>$$<br>即$G=V, K=\Sigma^T\Sigma$</p>
+<p>这种情况下，就可以通过对中心化后的数据进行奇异值（SVD）分解得到对应的特征向量（投影方向）。</p>
+<p>再看一个矩阵：<br>$$<br>T=(HX)(HX)^T=U \Sigma V^T V \Sigma^T U^T=U \Sigma \Sigma^TU^T<br>$$<br>发现$T$与$S$有相同的特征值，其之间的关系：</p>
+<ul>
+<li>$S$ 做特征分解，得到投影方向$V$后，需要进行$HX\cdot V$进行方向投影，得到在该方向上的坐标（即确定在该方向上的scalar）</li>
+<li>$T$ 做特征分解，得到投影方向$V’$后，$V’$里的所有向量就是坐标（即其scalar也是正确的）。</li>
+</ul>
+<p>原因，首先看$S$分解之后再映射scalar：<br>$$<br>HX \cdot V= U \Sigma V^T V=U\Sigma–这是scalar也对的坐标矩阵<br>$$<br>再看$T$直接特征分解的结果：<br>$$<br>T(U\Sigma)=U \Sigma \Sigma^TU^TU\Sigma=(U \Sigma) (\Sigma^T\Sigma)<br>$$<br>于是，$U\Sigma$就是$T$的所有特征向量的集合，其特征值为对角方阵$(\Sigma^T\Sigma)$的对角元素（参考单个特征向量的定义$A\mu=\lambda\mu$，此处是将多个满足的$\mu$铺平到多个列），通过上一步对$S$的讨论就看到$U\Sigma$就是放缩后的实际向量，因此对$T$进行特征向量分解，就不需要再放缩了，直接得到的特征向量就是坐标了。</p>
+<p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210630143412.png" alt="PCA知识点总结"></p>
+<h3 id="概率视角下的PCA（P-PCA）"><a href="#概率视角下的PCA（P-PCA）" class="headerlink" title="概率视角下的PCA（P-PCA）"></a>概率视角下的PCA（P-PCA）</h3>
             </div>
             <hr/>
 
