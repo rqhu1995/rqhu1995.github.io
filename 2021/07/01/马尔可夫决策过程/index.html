@@ -307,63 +307,81 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>背景介绍</h1>
-<p>随机过程：<img src="https://math.now.sh?inline=%5C%7Bs_t%5C%7D%5E%7B%5Cinfty%7D_%7Bt%3D1%7D" style="display:inline-block;margin: 0;"/></p>
-<p>马尔可夫链/马尔可夫假设：具有Markov性质的随机过程</p>
-<p style=""><img src="https://math.now.sh?from=p%28s_%7Bt%2B1%7D%20%5Cmid%20s_t%2C%20s_%7Bt-1%7D%2C%20%5Cldots%20s_1%29%3Dp(s_%7Bt%2B1%7D%20%5Cmid%20s_t)%0A" /></p><p>状态空间模型：马尔可夫链+观测变量</p>
+                <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>随机过程：$\{s_t\}^{\infty}_{t=1}$</p>
+<p>马尔可夫链/马尔可夫假设：具有Markov性质的随机过程<br>$$<br>p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid s_t)<br>$$<br>状态空间模型：马尔可夫链+观测变量</p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701101506.png" alt="马尔可夫状态空间模型" style="zoom:50%;" />
+
 <p>当前观测值observation只依赖于当前状态，与之前的状态无关。</p>
 <p>马尔可夫回报模型：马尔可夫链+回报</p>
 <p>马尔可夫决策模型：马尔可夫链+动作+回报</p>
 <ul>
-<li><img src="https://math.now.sh?inline=%5Cmathcal%7BS%7D" style="display:inline-block;margin: 0;"/>：状态集合，<img src="https://math.now.sh?inline=s_t" style="display:inline-block;margin: 0;"/>是<img src="https://math.now.sh?inline=t" style="display:inline-block;margin: 0;"/>时刻的状态</li>
-<li><img src="https://math.now.sh?inline=%5Cmathcal%7BA%7D" style="display:inline-block;margin: 0;"/>：动作集合，<img src="https://math.now.sh?inline=%5Cforall%20s%20%5Cin%20%5Cmathcal%7BS%7D%2C%20%5Cmathcal%7BA%7D%28s%29%20%5Crightarrow%20A_t" style="display:inline-block;margin: 0;"/></li>
-<li><img src="https://math.now.sh?inline=%5Cmathcal%7BR%7D" style="display:inline-block;margin: 0;"/>：奖励集合，<img src="https://math.now.sh?inline=R_t%2C%20R_%7Bt%2B1%7D" style="display:inline-block;margin: 0;"/></li>
+<li>$\mathcal{S}$：状态集合，$s_t$是$t$时刻的状态</li>
+<li>$\mathcal{A}$：动作集合，$\forall s \in \mathcal{S}, \mathcal{A}(s) \rightarrow A_t$</li>
+<li>$\mathcal{R}$：奖励集合，$R_t, R_{t+1}$</li>
 </ul>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701110017.png" alt="状态转移过程示意图" style="zoom: 33%;" />
-<h1>动态特性：概率<img src="https://math.now.sh?inline=%5Cmathcal%7BP%7D" style="display:inline-block;margin: 0;"/></h1>
-<ul>
-<li><img src="https://math.now.sh?inline=P" style="display:inline-block;margin: 0;"/></li>
+
+<h1 id="动态特性：概率-mathcal-P"><a href="#动态特性：概率-mathcal-P" class="headerlink" title="动态特性：概率$\mathcal{P}$"></a>动态特性：概率$\mathcal{P}$</h1><ul>
+<li>$P$</li>
 </ul>
-<p style=""><img src="https://math.now.sh?from=%5Cmathcal%7BP%7D%28s'%2C%20r%20%5Cmid%20s%2C%20a%29%3DPr(s_%7Bt%2B1%7D%3Ds'%2C%20r_%7Bt%2B1%7D%3Dr%20%5Cmid%20s_t%3Ds%2C%20a_t%3Da)%0A" /></p><ul>
+<p>$$<br>\mathcal{P}(s’, r \mid s, a)=Pr(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)<br>$$</p>
+<ul>
 <li>状态转移函数</li>
 </ul>
-<p style=""><img src="https://math.now.sh?from=p%28s'%20%5Cmid%20s%2C%20a%29%3D%5Csum_%7Br%20%5Cin%20R%7Dp(s'%2C%20r%20%5Cmid%20s%2C%20a)%0A" /></p><ul>
-<li>
-<p>策略policy <img src="https://math.now.sh?inline=%5Cpi" style="display:inline-block;margin: 0;"/>：</p>
+<p>$$<br>p(s’ \mid s, a)=\sum_{r \in R}p(s’, r \mid s, a)<br>$$</p>
+<ul>
+<li><p>策略policy $\pi$：</p>
 <p>分为确定性策略和随机性策略</p>
 <ul>
-<li>确定性策略：<img src="https://math.now.sh?inline=%5Cpi%28s%29%3Da" style="display:inline-block;margin: 0;"/>，遇到状态<img src="https://math.now.sh?inline=s" style="display:inline-block;margin: 0;"/>就采用动作<img src="https://math.now.sh?inline=a" style="display:inline-block;margin: 0;"/></li>
-<li>随机性策略：<img src="https://math.now.sh?inline=%5Cpi%28a%20%5Cmid%20s%29%3Dprob" style="display:inline-block;margin: 0;"/>，遇到状态<img src="https://math.now.sh?inline=s" style="display:inline-block;margin: 0;"/>采取的动作服从某种概率分布</li>
+<li>确定性策略：$\pi(s)=a$，遇到状态$s$就采用动作$a$</li>
+<li>随机性策略：$\pi(a \mid s)=prob$，遇到状态$s$采取的动作服从某种概率分布</li>
 </ul>
 </li>
 </ul>
-<h2 id="价值函数">价值函数</h2>
-<ul>
-<li>回报<img src="https://math.now.sh?inline=G_t" style="display:inline-block;margin: 0;"/>：<p style=""><img src="https://math.now.sh?from=G_t%3DR_%7Bt%2B1%7D%2B%5Cgamma%20R_%7Bt%2B2%7D%2B%5Cldots%2B%20%5Cgamma%5E%7BT-t-1%7D%20R_%7Bt%2BT%7D%3D%5Csum_%7Bi%3D0%7D%5E%7BT%7D%5Cgamma%5E%7Bi%7DR_%7Bt%2Bi%7D%0A" /></p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701145114.png" alt="3种状态，3种动作的回报示意图" style="zoom:33%;" />
+<h2 id="价值函数"><a href="#价值函数" class="headerlink" title="价值函数"></a>价值函数</h2><ul>
+<li>回报$G_t$：<br>$$<br>G_t=R_{t+1}+\gamma R_{t+2}+\ldots+ \gamma^{T-t-1} R_{t+T}=\sum_{i=0}^{T}\gamma^{i}R_{t+i}<br>$$<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701145114.png" alt="3种状态，3种动作的回报示意图" style="zoom:33%;" />
+
 </li>
 </ul>
-<p>一个<img src="https://math.now.sh?inline=G_t" style="display:inline-block;margin: 0;"/>的值只能反映面对状态<img src="https://math.now.sh?inline=s_t" style="display:inline-block;margin: 0;"/>所采用的<strong>一种</strong>动作、该动作产生的<strong>一种</strong>下一状态所带来的回报（图中的一条路径），但是策略本身是有可能有很多条路径的，如上图有9条，那么真正评估一个策略能够带来的回报，就需要将9条路径按照概率进行加权平均，这时候就定义了价值函数：</p>
+<p>一个$G_t$的值只能反映面对状态$s_t$所采用的<strong>一种</strong>动作、该动作产生的<strong>一种</strong>下一状态所带来的回报（图中的一条路径），但是策略本身是有可能有很多条路径的，如上图有9条，那么真正评估一个策略能够带来的回报，就需要将9条路径按照概率进行加权平均，这时候就定义了价值函数：</p>
 <ul>
-<li>价值函数<img src="https://math.now.sh?inline=%5Cbegin%7Bcases%7DV_%7B%5Cpi%7D%28s%29%3DE_%7B%5Cpi%7D%5BG_t%20%5Cmid%20s_t%3Ds%5D%5C%5C%5C%5Cq_%7B%5Cpi%7D(s%2Ca)%3DE_%7B%5Cpi%7D%5BG_t%20%5Cmid%20s_t%3Ds%2C%20a_t%3Da%5D%5Cend%7Bcases%7D" style="display:inline-block;margin: 0;"/>
-<ul>
-<li><img src="https://math.now.sh?inline=V_%7B%5Cpi%7D%28s%29" style="display:inline-block;margin: 0;"/>中，<img src="https://math.now.sh?inline=%5Cpi" style="display:inline-block;margin: 0;"/>影响到<img src="https://math.now.sh?inline=s" style="display:inline-block;margin: 0;"/>下的所采用的<img src="https://math.now.sh?inline=a" style="display:inline-block;margin: 0;"/>（如上图）；</li>
-<li>但<img src="https://math.now.sh?inline=q_%7B%5Cpi%7D%28s%2Ca%29" style="display:inline-block;margin: 0;"/>仅仅评价一个确定的状态+一个确定的动作的价值，<img src="https://math.now.sh?inline=s" style="display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=a" style="display:inline-block;margin: 0;"/>二者是任取的，不受<img src="https://math.now.sh?inline=%5Cpi" style="display:inline-block;margin: 0;"/>的制约。</li>
+<li>价值函数$\begin{cases}V_{\pi}(s)=E_{\pi}[G_t \mid s_t=s]\\\\q_{\pi}(s,a)=E_{\pi}[G_t \mid s_t=s, a_t=a]\end{cases}$<ul>
+<li>$V_{\pi}(s)$中，$\pi$影响到$s$下的所采用的$a$（如上图）；</li>
+<li>但$q_{\pi}(s,a)$仅仅评价一个确定的状态+一个确定的动作的价值，$s$和$a$二者是任取的，不受$\pi$的制约。</li>
 </ul>
 </li>
 </ul>
-<p>那么，对一个<img src="https://math.now.sh?inline=s" style="display:inline-block;margin: 0;"/>而言，<img src="https://math.now.sh?inline=V_%5Cpi%28s%29" style="display:inline-block;margin: 0;"/>实际上就是这一步采用所有动作的价值的概率加权平均，这个概率就是这一步采取各动作的概率，也就是策略<img src="https://math.now.sh?inline=%5Cpi%28a%5Cmid%20s%29" style="display:inline-block;margin: 0;"/>：</p>
-<p style=""><img src="https://math.now.sh?from=V_%5Cpi%28s%29%3D%5Csum_%7Ba%5Cin%5Cmathcal%7BA%7D(s)%7D%5Cpi(a%20%5Cmid%20s)q_%5Cpi(s%2Ca)%0A" /></p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701154634.png" alt="展开奖励随机性后的回溯图" style="zoom:33%;" />
-<h2 id="贝尔曼期望方程">贝尔曼期望方程</h2>
-<p>选中一个动作之后，实际上产生的由状态<img src="https://math.now.sh?inline=s_t" style="display:inline-block;margin: 0;"/>和动作<img src="https://math.now.sh?inline=a_t" style="display:inline-block;margin: 0;"/>产生的价值<img src="https://math.now.sh?inline=r_%7Bt%2B1%7D" style="display:inline-block;margin: 0;"/>本身也是有随机性的，图中绿色结点反映了这种随机性，对每一个动作结点都适用。</p>
+<p>那么，对一个$s$而言，$V_\pi(s)$实际上就是这一步采用所有动作的价值的概率加权平均，这个概率就是这一步采取各动作的概率，也就是策略$\pi(a\mid s)$：<br>$$<br>V_\pi(s)=\sum_{a\in\mathcal{A}(s)}\pi(a \mid s)q_\pi(s,a)<br>$$<br><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701154634.png" alt="展开奖励随机性后的回溯图" style="zoom:33%;" /></p>
+<h2 id="贝尔曼期望方程"><a href="#贝尔曼期望方程" class="headerlink" title="贝尔曼期望方程"></a>贝尔曼期望方程</h2><p>选中一个动作之后，实际上产生的由状态$s_t$和动作$a_t$产生的价值$r_{t+1}$本身也是有随机性的，图中绿色结点反映了这种随机性，对每一个动作结点都适用。</p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701213447.png" alt="" style="zoom:50%;" />
-<p>于是，借助<img src="https://math.now.sh?inline=V_%5Cpi%28s%29" style="display:inline-block;margin: 0;"/>与<img src="https://math.now.sh?inline=q_%5Cpi%28s%2Ca%29" style="display:inline-block;margin: 0;"/>之间的关系，可以找到<img src="https://math.now.sh?inline=V_%5Cpi%28s%29" style="display:inline-block;margin: 0;"/>与<img src="https://math.now.sh?inline=V_%5Cpi%28s'%29" style="display:inline-block;margin: 0;"/>的关系，即：</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AV_%5Cpi%28s%29%26%3D%5Csum_%7Ba%20%5Cin%20%5Cmathcal%7BA%7D(s)%7D%5Cpi(a%20%5Cmid%20s)q_%5Cpi(s%2Ca)%5C%5C%5C%5C%0A%26%3D%5Csum_%7Ba%20%5Cin%20%5Cmathcal%7BA%7D(s)%7D%5Cpi(a%20%5Cmid%20s)%5Csum_%7Bs'%5Cin%20S%7D%5Csum_%7Br%20%5Cin%20R_t%7Dp(s_%7Bt%2B1%7D%3Ds'%2C%20r_%7Bt%2B1%7D%3Dr%20%5Cmid%20s_t%3Ds%2C%20a_t%3Da)(r%2B%5Cgamma%20V_%5Cpi(s'))%0A%5Cend%7Balign%7D%0A" /></p><p>同理，也可找到<img src="https://math.now.sh?inline=q_%5Cpi%28s%2Ca%29" style="display:inline-block;margin: 0;"/>与<img src="https://math.now.sh?inline=q_%5Cpi%28s'%2Ca'%29" style="display:inline-block;margin: 0;"/>的关系，</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0Aq_%5Cpi%28s%2Ca%29%26%3D%5Csum_%7Bs'%5Cin%20S%7D%5Csum_%7Br%20%5Cin%20R_t%7Dp(s_%7Bt%2B1%7D%3Ds'%2C%20r_%7Bt%2B1%7D%3Dr%20%5Cmid%20s_t%3Ds%2C%20a_t%3Da)(r%2B%5Cgamma%20V_%5Cpi(s'))%5C%5C%5C%5C%0A%26%3D%5Csum_%7Bs'%5Cin%20S%7D%5Csum_%7Br%20%5Cin%20R_t%7Dp(s_%7Bt%2B1%7D%3Ds'%2C%20r_%7Bt%2B1%7D%3Dr%20%5Cmid%20s_t%3Ds%2C%20a_t%3Da)(r%2B%5Cgamma%20%5Csum_%7Ba'%5Cin%20%5Cmathcal%7BA(s')%7D%7D%5Cpi(a'%20%5Cmid%20s')q_%5Cpi(s'%2Ca'))%0A%5Cend%7Balign%7D%0A" /></p><p><strong>贝尔曼期望方程（Bellman Equation）：</strong></p>
+
+<p>于是，借助$V_\pi(s)$与$q_\pi(s,a)$之间的关系，可以找到$V_\pi(s)$与$V_\pi(s’)$的关系，即：<br>$$<br>\begin{align}<br>V_\pi(s)&amp;=\sum_{a \in \mathcal{A}(s)}\pi(a \mid s)q_\pi(s,a)\\\<br>&amp;=\sum_{a \in \mathcal{A}(s)}\pi(a \mid s)\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma V_\pi(s’))<br>\end{align}<br>$$<br>同理，也可找到$q_\pi(s,a)$与$q_\pi(s’,a’)$的关系，<br>$$<br>\begin{align}<br>q_\pi(s,a)&amp;=\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma V_\pi(s’))\\\<br>&amp;=\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma \sum_{a’\in \mathcal{A(s’)}}\pi(a’ \mid s’)q_\pi(s’,a’))<br>\end{align}<br>$$</p>
+<p><strong>贝尔曼期望方程（Bellman Equation）：</strong></p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701213500.png" alt="" style="zoom:50%;" />
+
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701213503.png" alt="" style="zoom:50%;" />
-<h2 id="贝尔曼最优方程">贝尔曼最优方程</h2>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Bcases%7D%0AV_%5Cstar%28s%29%20%3D%5Cmax%5Climits_%7B%5Cpi%7DV_%7B%5Cpi%7D(s)%5C%5C%5C%5C%0Aq_%5Cstar(s%2C%20a)%20%3D%5Cmax%5Climits_%7B%5Cpi%7Dq_%7B%5Cpi%7D(s%2Ca)%0A%5Cend%7Bcases%7D%0A" /></p>
+
+<h2 id="贝尔曼最优方程"><a href="#贝尔曼最优方程" class="headerlink" title="贝尔曼最优方程"></a>贝尔曼最优方程</h2><p>$$<br>\begin{cases}<br>V_\star(s) =\max\limits_{\pi}V_{\pi}(s)\\\<br>q_\star(s, a) =\max\limits_{\pi}q_{\pi}(s,a)<br>\end{cases}<br>$$</p>
+<p>记$\pi_{\star}=\arg\max\limits_{\pi} V_\pi(s)=\arg\max\limits_{\pi} q_\pi(s,a)$，那么<br>$$<br>V_{\star}(s)=\max_\pi V_\pi(s)=V_{\pi_\star}(s)\\\\ q_{\star}(s,a)=\max_\pi q_\pi(s, a)=q_{\pi_\star}(s,a)<br>$$</p>
+<blockquote>
+<p> <strong>Notice:</strong></p>
+<p>虽然上述等式成立，但是：</p>
+<ul>
+<li>$\max V_\pi(s)$强调最优策略的价值的值，实际不关心这个策略；</li>
+<li>$V_{\pi_\star}(s)$强调最优策略$\pi_\star$</li>
+</ul>
+</blockquote>
+<p>$$<br>V_{\pi_\star}(s) ==?== q_{\pi_\star}(s,a)<br>$$</p>
+<p>我们知道：$V_{\pi_\star}(s)$是$q_{\pi_\star}(s,a)$的加权平均，因此必然有<br>$$<br>V_{\pi_\star}(s)\le \max_a q_{\pi_\star}(s,a)<br>$$<br>既然如此，如果根据某个策略$\pi$求期望加权之后不是最大的$q$了，那么可以找到$\pi_{new}$就是把最大的$q(s,a)$的概率$\pi(a \mid s)$设置为0，最大的$q(s,a)$概率设置为1，也就是确定性策略了。当然也不完全是，在几个动作$a$对应的$q$都是最大的$\arg\max$情况下，仍然需要进行随机性选择。</p>
+<blockquote>
+<p>综上，可以得到结论：<br>$$<br>V_{\pi_\star}(s) = \max_a q_{\pi_\star}(s,a)<br>$$<br>即对于一个状态$s$，能够带来最优状态价值的最优策略$\pi_\star$，即在$s$状态下执行什么样的动作是最优的，应该是执行那个能够使得$q_{\pi_\star}(s,a)$最大的$a$。</p>
+</blockquote>
+<p>能够看到，就是将加权平均改为了$\max$。那么问题来了，<br>$$<br>q_{\pi_\star}(s,a)=\sum_{s’\in \mathcal{S}}\sum_{r \in \mathcal{R}}p(s_{t+1}=s’, r_t=r \mid s_t=s, a_t=a)(r+\gamma V(s’))<br>$$<br>这也是一个加权平均（$s’$与$r$的两层排列组合），能不能也推广：<br>$$<br>q_{\pi_\star}(s,a)=\max_{s’,r} (r+\gamma V_{\pi_\star}(s’))<br>$$<br>🙅‍♂️：不可以！原因是：</p>
+<blockquote>
+<p>人不可能去干预从action到新状态的过程，采用一个action后，依据何种概率走到何种状态，这是系统的转移概率已经决定了的，不可能人为去求max。</p>
+</blockquote>
+<p>最后，再次根据$V_{\pi_\star}(s)$，代入$q_{\pi_\star}(s,a)$的公式进去，得到：<br>$$<br>\boxed{V_{\pi_\star}(s) = \max_a \sum_{s’\in \mathcal{S}}\sum_{r \in \mathcal{R}}p(s_{t+1}=s’, r_t=r \mid s_t=s, a_t=a)(r+\gamma V_{\pi_\star}(s’))}<br>$$<br>同理，<br>$$<br>\boxed{q_{\pi_\star}(s,a)=\sum_{s’\in \mathcal{S}}\sum_{r \in \mathcal{R}}p(s_{t+1}=s’, r_t=r \mid s_t=s, a_t=a)(r+\gamma \max_{a’} q_{\pi_\star}(s’,a’))}<br>$$<br>上述两个式子就是贝尔曼最优方程。</p>
+
             </div>
             <hr/>
 
@@ -489,14 +507,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背景介绍
-随机过程：
-马尔可夫链/马尔可夫假设：具有Markov性质的随机过程
-状态空间模型：马尔可夫链+观测变量
-
-当前观测值observation只依赖于当前状态，与之前的状态无关。
-马尔可夫回报模型：马尔可夫链+回报
-马尔可夫决策模型
+                            背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
+马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid 
                         
                     </div>
                     <div class="publish-info">
@@ -546,10 +558,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            降维
-过拟合与维度灾难
-
-
+                            降维过拟合与维度灾难
 解决过拟合问题的方案
 
 增加数据
@@ -557,14 +566,14 @@
 降维
 
 
-
 维度灾难从集合意义上理解
-维超立方体及其内切超球
-立方体体积永远是1，超球体体积
+$n$维超立方体及其内切超球
+立方体体积永远是1，超球体体积$K \times 0.5^n$
 
 
 
-随着n的增大，这一球体体积逐渐趋向于0
+
+随着n
                         
                     </div>
                     <div class="publish-info">
