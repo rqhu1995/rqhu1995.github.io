@@ -407,8 +407,14 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
-马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid 
+                                    背景介绍
+随机过程：
+马尔可夫链/马尔可夫假设：具有Markov性质的随机过程
+状态空间模型：马尔可夫链+观测变量
+
+当前观测值observation只依赖于当前状态，与之前的状态无关。
+马尔可夫回报模型：马尔可夫链+回报
+马尔可夫决策模型
                                 
                             </div>
                             <div class="publish-info">
@@ -470,7 +476,10 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    降维过拟合与维度灾难
+                                    降维
+过拟合与维度灾难
+
+
 解决过拟合问题的方案
 
 增加数据
@@ -478,14 +487,14 @@
 降维
 
 
+
 维度灾难从集合意义上理解
-$n$维超立方体及其内切超球
-立方体体积永远是1，超球体体积$K \times 0.5^n$
+维超立方体及其内切超球
+立方体体积永远是1，超球体体积
 
 
 
-
-随着n
+随着n的增大，这一球体体积逐渐趋向于0
                                 
                             </div>
                             <div class="publish-info">
@@ -540,14 +549,23 @@ $n$维超立方体及其内切超球
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性分类回顾线性回归线性回归的特点
+                                    线性分类
+回顾线性回归
+线性回归的特点
+
 线性
+
 属性线性（x的线性组合）。
-不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$
+
+不满足的情况：特征转换（多项式回归），
 
 
 全局线性（激活函数是一个线性函数）。
-不满足的情况：激活函数为非线性的线性分类（S
+
+不满足的情况：激活函数为非线性的线性分类（Sigmoid）
+
+
+系数线性（反
                                 
                             </div>
                             <div class="publish-info">
@@ -602,8 +620,10 @@ $n$维超立方体及其内切超球
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Matrix CalculusReference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
-Useful Conclusion（keep updating）eq(69
+                                    Matrix Calculus
+Reference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
+Useful Conclusion（keep updating）
+eq(
                                 
                             </div>
                             <div class="publish-info">
@@ -652,8 +672,21 @@ Useful Conclusion（keep updating）eq(69
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性回归最小二乘法
-$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$$$\newcommand{\bm}[1]{\b
+                                    线性回归
+最小二乘法
+
+
+个样本：, 
+矩阵表示：
+
+
+最小二乘估计：
+
+
+$$
+X^TY-X^TX\beta=0, \beta=(X^TX)^{-1}X^TY
+$$
+各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，
                                 
                             </div>
                             <div class="publish-info">
@@ -713,7 +746,20 @@ $N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma
+                                    高斯分布
+概率密度
+假设为研究的维度，为均值向量，为协方差矩阵（）
+一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）
+当时，
+
+先求，
+
+令，则
+
+接着求，
+
+令，则
+关于两个估计的无偏性
                                 
                             </div>
                             <div class="publish-info">
@@ -780,15 +826,17 @@ $N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \
                                 
                                     
 N：网络
+
 V，E：网络节点和边
 R：资源
-m：映射：（边到时间）– 一条边通过的最短时间
-a：映射：（资源到边集）– 一个资源分配给的边
-b：映射：（资源到时间）– 一个资源占用需要等待的时间
+m：映射：（边到时间）-- 一条边通过的最短时间
+a：映射：（资源到边集）-- 一个资源分配给的边
+b：映射：（资源到时间）-- 一个资源占用需要等待的时间
 
 
 T：火车
-S，L：V，E的一个无环子图–
+
+S，L：V，E的一个
                                 
                             </div>
                             <div class="publish-info">
@@ -897,12 +945,15 @@ I 被 I’ 支配（dominated），if：
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    编译原理（三）自动机给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)
+                                    编译原理（三）自动机
+给定一个字符串s，判定，即是否是一个正则表达式的语言。(L将正则表达式映射到语义上)
 Lexical Specification
+
 
 为每一个token类都写一个正则
 
-R1（numbe
+R1（number）：digits+
+R2（le
                                 
                             </div>
                             <div class="publish-info">
@@ -961,7 +1012,8 @@ R1（numbe
 不含否定的命题逻辑程序的stable model的定义：
 
 对于不含否定的命题逻辑程序而言，minimal model就是stable model。
-minimal model：不存在更小的集合$S’ \subset S$（包含关系），$
+minimal model：不存在更小的集合（包含关系），是程序P的模型。
+model：
                                 
                             </div>
                             <div class="publish-info">
