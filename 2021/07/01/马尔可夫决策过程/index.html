@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="降维, Bonjour">
+    <meta name="keywords" content="马尔可夫决策过程, Bonjour">
     <meta name="description" content="Logic &amp; Skills &amp; Life">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>降维 | Bonjour</title>
+    <title>马尔可夫决策过程 | Bonjour</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/awesome/css/all.css">
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">降维</h1>
+                    <h1 class="description center-align post-title">马尔可夫决策过程</h1>
                 </div>
             </div>
         </div>
@@ -274,6 +274,10 @@
                                 <span class="chip bg-color">白板推导笔记</span>
                             </a>
                         
+                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">强化学习</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -286,7 +290,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-29
+                    2021-07-01
                 </div>
                 
 
@@ -303,103 +307,61 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h1><h2 id="过拟合与维度灾难"><a href="#过拟合与维度灾难" class="headerlink" title="过拟合与维度灾难"></a>过拟合与维度灾难</h2><ul>
-<li><p>解决过拟合问题的方案</p>
-<ul>
-<li>增加数据</li>
-<li>正则化（Lasso、Ridge岭回归）</li>
-<li>降维</li>
-</ul>
-</li>
-<li><p>维度灾难从集合意义上理解</p>
-<p>$n$维超立方体及其内切超球</p>
-<p>立方体体积永远是1，超球体体积$K \times 0.5^n$</p>
-</li>
-</ul>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210629164123.png" alt="数据稀疏示意图" style="zoom:53%;" />
+                <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>随机过程：$\{s_t\}^{\infty}_{t=1}$</p>
+<p>马尔可夫链/马尔可夫假设：具有Markov性质的随机过程<br>$$<br>p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid s_t)<br>$$<br>状态空间模型：马尔可夫链+观测变量</p>
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701101506.png" alt="马尔可夫状态空间模型" style="zoom:50%;" />
 
-<p>随着n的增大，这一球体体积逐渐趋向于0，即说明：在高维空间中，数据将分布在角落，这与三维世界的直觉相距甚远。即中间的内切球随着维度增大逐渐变成空壳，数据大量分布在球与立方体的间隙中，这表示数据实际上非常稀疏（分布在中心表示集中）</p>
-<h2 id="常见的降维方法"><a href="#常见的降维方法" class="headerlink" title="常见的降维方法"></a>常见的降维方法</h2><ul>
-<li>直接降维：特征选择（Lasso，令某些$X_i$的系数为0）</li>
-<li>线性降维：PCA，MDS</li>
-<li>非线性降维：流形学习</li>
-</ul>
-<h2 id="样本方差与样本均值的矩阵表达"><a href="#样本方差与样本均值的矩阵表达" class="headerlink" title="样本方差与样本均值的矩阵表达"></a>样本方差与样本均值的矩阵表达</h2><p>样本：<br>$$<br>X=\begin{bmatrix} x_1 \quad x_2 \quad \ldots \quad x_N\end{bmatrix}^T_{N \times P}=\begin{bmatrix} x_1^T\\\\ x_2^T \\\\ \ldots \\\\ x_N^T\end{bmatrix}=一行一个样本横展开的矩阵<br>$$<br>样本均值（列向量）：<br>$$<br>\bar{X}_{p \times1} = \dfrac{1}{N}\sum_{i=1}^Nx_i=\dfrac{1}{N}(x_1, x_2,\ldots,x_N) \begin{bmatrix} 1\\\\ 1 \\\\ \ldots \\\\ 1\end{bmatrix}=\dfrac{1}{N}X^T\mathbf{1}_N<br>$$<br>样本方差矩阵：<br>$$<br>\begin{align}<br>S_{p \times p}&amp;=\dfrac{1}{N} \sum_{i=1}^N(x_i-\bar{X})(x_i-\bar{X})^T\\\<br>&amp;=\dfrac{1}{N}(X^T-\bar{X}\mathbf{1}_N^T)(X^T-\bar{X}\mathbf{1}_N^T)^T\\\<br>&amp;=\dfrac{1}{N}(X^T-\dfrac{1}{N}X^T\mathbf{1}_N1^T_N)(X^T-\dfrac{1}{N}X^T\mathbf{1}_N1^T_N)^T\\\<br>&amp;=\dfrac{1}{N}(X^T\underbrace{(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T)}_{H_N：centering\ matrix})(X^T(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T))^T\\\<br>&amp;=\dfrac{1}{N}X^TH_NH_N^TX<br>\end{align}<br>$$<br>观察$H_N$性质：</p>
+<p>当前观测值observation只依赖于当前状态，与之前的状态无关。</p>
+<p>马尔可夫回报模型：马尔可夫链+回报</p>
+<p>马尔可夫决策模型：马尔可夫链+动作+回报</p>
 <ul>
-<li>对称性：$H_N^T=H_N$</li>
-<li>$H^2=H \cdot H=(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T) \cdot(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T)$</li>
+<li>$\mathcal{S}$：状态集合，$s_t$是$t$时刻的状态</li>
+<li>$\mathcal{A}$：动作集合，$\forall s \in \mathcal{S}, \mathcal{A}(s) \rightarrow A_t$</li>
+<li>$\mathcal{R}$：奖励集合，$R_t, R_{t+1}$</li>
 </ul>
-<p>$$<br>\begin{align}<br>&amp;=I-2(I-H)+\dfrac{1}{N^2}(1_N1_N^T1_N1_N^2)\\\<br>&amp;=I-2(I-H)+\dfrac{1}{N^2}\begin{bmatrix}N\quad N\quad  \ldots \quad N \\\\ N\quad N\quad  \ldots \quad N \\\\ \ldots \\\\ N\quad N\quad  \ldots \quad N\end{bmatrix} \\\<br>&amp;=I-2(I-H)+\begin{bmatrix}1/N\quad 1/N\quad  \ldots \quad 1/N \\\\ 1/N\quad1/ N\quad  \ldots \quad1/ N \\\\ \ldots \\\\ 1/N\quad 1/N\quad  \ldots \quad 1/N\end{bmatrix}\\\<br>&amp;=I-2(I-H)+\dfrac{1}{N}(1_N1_N^T)\\\<br>&amp;=2H-I+\dfrac{1}{N}1_N1_N^T\\\<br>&amp;=2I-\dfrac{2}{N}1_N1_N^T-I+\dfrac{1}{N}1_N1_N^T\\\<br>&amp;=I-\dfrac{1}{N}1_N1_N^T \\\<br>&amp;=H<br>\end{align}<br>$$</p>
-<p>所以：<br>$$<br>\begin{align}<br>&amp;\because H\times H^T=H^2=H \\\\ &amp;\therefore S=\dfrac{1}{N}X^THX<br>\end{align}<br>$$</p>
-<h2 id="主成分分析（PCA：Principle-Component-Analysis）"><a href="#主成分分析（PCA：Principle-Component-Analysis）" class="headerlink" title="主成分分析（PCA：Principle Component Analysis）"></a>主成分分析（PCA：Principle Component Analysis）</h2><p>一个中心：对原始特征空间的重构，将原始特征空间中线性相关的特征转为无关</p>
-<p>两个基本点：</p>
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701110017.png" alt="状态转移过程示意图" style="zoom: 33%;" />
+
+<h1 id="动态特性：概率-mathcal-P"><a href="#动态特性：概率-mathcal-P" class="headerlink" title="动态特性：概率$\mathcal{P}$"></a>动态特性：概率$\mathcal{P}$</h1><ul>
+<li>$P$</li>
+</ul>
+<p>$$<br>\mathcal{P}(s’, r \mid s, a)=Pr(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)<br>$$</p>
 <ul>
-<li>最大投影方差（找到正交的$u_i$，使得在$u_i$上的投影方差尽可能大，方差最大的前$q$个（$q$为需要降到的维数）为选定的<strong>主成分</strong>）</li>
+<li>状态转移函数</li>
 </ul>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210629164129.png" alt="最大投影方差示意图" style="zoom:33%;" />
-
-
-
+<p>$$<br>p(s’ \mid s, a)=\sum_{r \in R}p(s’, r \mid s, a)<br>$$</p>
 <ul>
-<li>最小重构距离：把投影之后的数据还原回原空间需要的代价（难度），例如向$u_2$投影后，许多数据甚至会落在一个点上，难以还原（实际和方差是对应的，方差大了就不会落在一起，还原也容易）</li>
-</ul>
-<h3 id="最大投影方差视角"><a href="#最大投影方差视角" class="headerlink" title="最大投影方差视角"></a>最大投影方差视角</h3><ul>
-<li><p>首先将数据中心化（均值平移到原点，$x_i \leftarrow x_i-\bar{X}$）</p>
-</li>
-<li><p>假设投影方向为$u_1$，满足$u_1^Tu_i=1$（单位向量）</p>
-</li>
-<li><p>那么一个中心化后的样本（$x_i-\bar{X}$）在$u_1$的投影就是$(x_i-\bar{X})^Tu_1$</p>
-</li>
-<li><p>先中心化：$(x1-\dfrac{x1+x2+x3+x4}{4}, x2-\dfrac{x1+x2+x3+x4}{4},x3-\dfrac{x1+x2+x3+x4}{4},x4-\dfrac{x1+x2+x3+x4}{4})$，再投影$(px1-\dfrac{px1+px2+px3+px4}{4}, px2-\dfrac{px1+px2+px3+px4}{4},px3-\dfrac{px1+px2+px3+px4}{4},x4-\dfrac{px1+px2+px3+px4}{4})$，再求投影均值，发现是<br>$$<br>(px1-\dfrac{px1+px2+px3+px4}{4}+ \\\\px2-\dfrac{px1+px2+px3+px4}{4}+\\\\px3-\dfrac{px1+px2+px3+px4}{4}+\\\\px4-\dfrac{px1+px2+px3+px4}{4})/4\\\<br>=0<br>$$</p>
-</li>
-<li><p>因此（$x_i-\bar{X}$）的投影的方差和为$\sum\limits_{i=1}^{n}\dfrac{1}{N}((x_i-\bar{X})^Tu_1-0)^2$</p>
-</li>
-</ul>
-<p>求解投影方向问题，变为一个优化问题：<br>$$<br>\begin{align}<br>\hat{u}&amp;=\arg\max_u J(u)\\\<br>&amp;=\arg\max_u\dfrac{1}{N}\sum_{i=1}^N({\underbrace{(x_i-\bar{X})^Tu_1)}_{实数}}^2\\\<br>&amp;=\arg\max_u \dfrac{1}{N}\sum_{i=1}^N u_1^T(x_i-\bar{X})(x_i-\bar{X})^Tu_1\\\<br>&amp;=\arg\max_u u_1^T \underbrace{\left(\sum_{i=1}^N \dfrac{1}{N}u_1^T(x_i-\bar{X})(x_i-\bar{X})^T\right)}_{样本方差矩阵S}u_1<br>\end{align}<br>$$<br>转为约束优化问题：<br>$$<br>\max u_1^T S u_1\\\<br>s.t. u_1^Tu_1=1<br>$$<br>使用<strong>拉格朗日乘数法</strong>求解：<br>$$<br>L(u, \lambda)=u_1^TSu_1+\lambda （1-u_1^Tu_1）<br>$$</p>
-<p>$$<br>\dfrac{\partial L(u_1, \lambda)}{\partial u_1}=2Su_1-2\lambda u_1=0\\\<br>Su_1=\lambda u_1（\star）<br>$$</p>
-<p>$\lambda$是$S$的特征值，$u_1$是其对应的特征向量。</p>
-<p>（$\star$）式代入目标中，最大化$u_1^TSu_1$，就是最大化$\lambda$。当要$q$维时，选择最大的前$q$个特征值。</p>
-<blockquote>
-<p>此处只研究了一个方向$u_1$的投影，是因为投影方向之间线性无关，当有多个方向时，每个方向都适用统一的结论，即和的max<strong>在此处</strong>等于max的和。</p>
-</blockquote>
-<h3 id="最小重构代价视角"><a href="#最小重构代价视角" class="headerlink" title="最小重构代价视角"></a>最小重构代价视角</h3><p>重构的含义：首先观察坐标映射的过程，将原来的样本x（蓝色向量），转为新的正交基下的线性组合（红色向量）。如果转换的新坐标系有$p$维，那么转换后的向量表示为：<br>$$<br>x_i = \sum_{k=1}^p\underbrace{(x^Tu_k)}_{scalar}\underbrace{u_k}_{length=1, direction}<br>$$</p>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210629160030.png" alt="最小重构示意图" style="zoom: 33%;" />
-
-<p>这样的情况下，如果原数据就是$p$维，那么实际就没有降维。如果降到$q(q &lt; p)$维，那么新的向量表示为：<br>$$<br>\hat{x_i}=\sum_{k=1}^q(x^Tu_k)u_k<br>$$<br>所谓的重构代价，就是降维后的$\hat{x_i}$与未降维$x_i$的欧式距离/二范数/差的模，即<br>$$<br>J=\dfrac{1}{N}\sum_{i=1}^N ||\hat{x_i}-x_i||^2<br>$$<br>代入表达式（此处考虑先中心化）：<br>$$<br>\begin{align}<br>J&amp;=\dfrac{1}{N}\sum_{i=1}^N ||x_i-\bar{X}-\hat{x_i}||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=1}^p((x-\bar{X})^Tu_k)u_k -\sum_{k=1}^q((x-\bar{X})^Tu_k)u_k||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=q+1}^p(\underbrace{(x-\bar{X})^Tu_k)}_{实数C_k} \underbrace{u_k}_{单位向量} ||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N||\sum_{k=q+1}^pC_ku_k ||^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N\sum_{k=q+1}^pC_k^2\\\<br>&amp;=\dfrac{1}{N}\sum_{i=1}^N\sum_{k=q+1}^p{((x-\bar{X})^Tu_k)}^2\\\<br>&amp;=\sum_{k=q+1}^p\sum_{i=1}^N\dfrac{1}{N}((x-\bar{X})^Tu_k)^2\\\<br>&amp;=\sum_{k=q+1}^pu_k^TSu_k –类似于最大方差<br>\end{align}<br>$$<br>转为约束优化问题：<br>$$<br>\min\sum_{k=q+1}^p u_k^T S u_k \quad(1)\\\<br>s.t.\ \ \ \ \  u_k^Tu_k=1\quad(2)<br>$$</p>
-<p>由于$u_i$之间线性无关，因此要求和最小，可以转化为每一个$u_k^TSu_k$最小，此时类似于最大方差，但是是求最小值，仍然得到$Su_k=\lambda_k u_k$，代入(1)中，得到<br>$$<br>\min \sum_{k=q+1}^p \lambda_k\underbrace{u_k^T u_k}_{u_k^T u_k=1} \implies \min \sum_{k=q+1}^p \lambda_k<br>$$<br>则此处要求取最小的（p-q）个$\lambda_k$并丢弃，即此处取的都是不需要的（$q+1, q+2, \ldots, p$，这些维度都是降维之后丢弃的），正好与最大方差（选用最大的q个$\lambda_k$）相一致。</p>
-<h2 id="SVD矩阵分解视角"><a href="#SVD矩阵分解视角" class="headerlink" title="SVD矩阵分解视角"></a>SVD矩阵分解视角</h2><p>一般来说，对样本的方差矩阵进行特征值和特征向量的分解，就可以得到需要的$q(q &lt; p)$个主成分及对应的投影方向（$q$个特征向量），下面从SVD的视角理解。</p>
-<p>数据中心化：<br>$$<br>\begin{align}<br>HX&amp;=(I-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^T)X\\\<br>&amp;=X-\dfrac{1}{N}\mathbf{1}_N\mathbf{1}_N^TX\\\<br>&amp;=X-\dfrac{1}{N}\left(\begin{bmatrix}1\quad 1\quad  \ldots \quad 1 \\\\ 1\quad 1\quad  \ldots \quad 1 \\\\ \ldots \\\\ 1\quad 1\quad  \ldots \quad 1\end{bmatrix}_{N\times N}\right) X\\\<br>&amp;=X-\dfrac{1}{N}\begin{bmatrix} \sum_{i=1}^Nx_{i1}\quad \sum_{i=1}^Nx_{i2}\quad  \ldots \quad \sum_{i=1}^Nx_{ip} \\\\ \sum_{i=1}^Nx_{i1}\quad \sum_{i=1}^Nx_{i2}\quad  \ldots \quad \sum_{i=1}^Nx_{ip} \\\\ \ldots \\\\ \sum_{i=1}^Nx_{i1}\quad \sum_{i=1}^Nx_{i2}\quad  \ldots \quad \sum_{i=1}^Nx_{ip}\end{bmatrix}\\\<br>&amp;=\begin{bmatrix} x_{11}-\sum_{i=1}^Nx_{i1}/N \quad x_{12}-\sum_{i=1}^Nx_{i2}/N\quad  \ldots \quad x_{1p}-\sum_{i=1}^Nx_{ip}/N \\\\ x_{21}-\sum_{i=1}^Nx_{i1}/N \quad x_{22}-\sum_{i=1}^Nx_{i2}/N\quad  \ldots \quad x_{2p}-\sum_{i=1}^Nx_{ip}/N  \\\\ \ldots \\\\ x_{N1}-\sum_{i=1}^Nx_{i1}/N \quad x_{N2}-\sum_{i=1}^Nx_{i2}/N\quad  \ldots \quad x_{Np}-\sum_{i=1}^Nx_{ip}/N \end{bmatrix}<br>\end{align}<br>$$</p>
-<p>对中心化后的数据矩阵（其实就是每个样本在每个特征上都减去了该特征在所有样本的均值）进行SVD分解，表示为：<br>$$<br>HX=U\Sigma V^T<br>$$<br>其中：</p>
+<li><p>策略policy $\pi$：</p>
+<p>分为确定性策略和随机性策略</p>
 <ul>
-<li><p>$U^TU=I，U \in \mathbb{R}_{N \times N}$</p>
+<li>确定性策略：$\pi(s)=a$，遇到状态$s$就采用动作$a$</li>
+<li>随机性策略：$\pi(a \mid s)=prob$，遇到状态$s$采取的动作服从某种概率分布</li>
+</ul>
 </li>
-<li><p>$VV^T=V^TV=I， V \in \mathbb{R}_{P \times P}$</p>
-</li>
-<li><p>$\Sigma \in \mathbb{R}_{N \times P}$：对角矩阵，不一定是方阵，这种也算：</p>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210630104639.png" alt="diagonal matrix" style="zoom:50%;" />
+</ul>
+<h2 id="价值函数"><a href="#价值函数" class="headerlink" title="价值函数"></a>价值函数</h2><ul>
+<li>回报$G_t$：<br>$$<br>G_t=R_{t+1}+\gamma R_{t+2}+\ldots+ \gamma^{T-t-1} R_{t+T}=\sum_{i=0}^{T}\gamma^{i}R_{t+i}<br>$$<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701145114.png" alt="3种状态，3种动作的回报示意图" style="zoom:33%;" />
 
 </li>
 </ul>
-<p>再看原协方差矩阵：<br>$$<br>\begin{align}<br>S’&amp;=X^THX\\\<br>&amp;=X^TH^T(HX)\\\<br>&amp;=(HX)^T(HX)\\\<br>&amp;=(U\Sigma V^T)^T(U\Sigma V^T)\\\<br>&amp;=V\Sigma^T(U^TU)\Sigma V^T\\\<br>&amp;=V\Sigma^T I \Sigma V^T\\\<br>&amp;=V\Sigma^T\Sigma V^T<br>\end{align}<br>$$<br>$S’=NS$，为了推导过程中去除系数所定义。这时候对比原PCA求法（特征值与特征向量求法），能够找到一一对应关系：<br>$$<br>S=GKG^T, G^TG=I–原求法\\\<br>S’=V\Sigma^T\Sigma V^T—–现求法<br>$$<br>即$G=V, K=\Sigma^T\Sigma$</p>
-<p>这种情况下，就可以通过对中心化后的数据进行奇异值（SVD）分解得到对应的特征向量（投影方向）。</p>
-<p>再看一个矩阵：<br>$$<br>T=(HX)(HX)^T=U \Sigma V^T V \Sigma^T U^T=U \Sigma \Sigma^TU^T<br>$$<br>发现$T$与$S$有相同的特征值，其之间的关系：</p>
+<p>一个$G_t$的值只能反映面对状态$s_t$所采用的<strong>一种</strong>动作、该动作产生的<strong>一种</strong>下一状态所带来的回报（图中的一条路径），但是策略本身是有可能有很多条路径的，如上图有9条，那么真正评估一个策略能够带来的回报，就需要将9条路径按照概率进行加权平均，这时候就定义了价值函数：</p>
 <ul>
-<li>$S$ 做特征分解，得到投影方向$V$后，需要进行$HX\cdot V$进行方向投影，得到在该方向上的坐标（即确定在该方向上的scalar）</li>
-<li>$T$ 做特征分解，得到投影方向$V’$后，$V’$里的所有向量就是坐标（即其scalar也是正确的）。</li>
+<li>价值函数$\begin{cases}V_{\pi}(s)=E_{\pi}[G_t \mid s_t=s]\\\\q_{\pi}(s,a)=E_{\pi}[G_t \mid s_t=s, a_t=a]\end{cases}$<ul>
+<li>$V_{\pi}(s)$中，$\pi$影响到$s$下的所采用的$a$（如上图）；</li>
+<li>但$q_{\pi}(s,a)$仅仅评价一个确定的状态+一个确定的动作的价值，$s$和$a$二者是任取的，不受$\pi$的制约。</li>
 </ul>
-<p>原因，首先看$S$分解之后再映射scalar：<br>$$<br>HX \cdot V= U \Sigma V^T V=U\Sigma–这是scalar也对的坐标矩阵<br>$$<br>再看$T$直接特征分解的结果：<br>$$<br>T(U\Sigma)=U \Sigma \Sigma^TU^TU\Sigma=(U \Sigma) (\Sigma^T\Sigma)<br>$$<br>于是，$U\Sigma$就是$T$的所有特征向量的集合，其特征值为对角方阵$(\Sigma^T\Sigma)$的对角元素（参考单个特征向量的定义$A\mu=\lambda\mu$，此处是将多个满足的$\mu$铺平到多个列），通过上一步对$S$的讨论就看到$U\Sigma$就是放缩后的实际向量，因此对$T$进行特征向量分解，就不需要再放缩了，直接得到的特征向量就是坐标了。</p>
-<p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210630143412.png" alt="PCA知识点总结"></p>
-<h3 id="概率视角下的PCA（P-PCA）"><a href="#概率视角下的PCA（P-PCA）" class="headerlink" title="概率视角下的PCA（P-PCA）"></a>概率视角下的PCA（P-PCA）</h3><p>降维任务：从$x \in \mathbb{R}^p$，降到$z \in \mathbb{R}^{q}$，显然$q&lt;p$。</p>
-<p>假设</p>
-<ul>
-<li><p>$z \sim N(0_q, I_q)$</p>
-</li>
-<li><p>$x = wz+\mu+\varepsilon$</p>
-</li>
-<li><p>$\varepsilon \sim N(0, \sigma^2I_p)$</p>
 </li>
 </ul>
-<p>这是一个线性高斯模型（观测变量与因变量之间是线性关系）</p>
+<p>那么，对一个$s$而言，$V_\pi(s)$实际上就是这一步采用所有动作的价值的概率加权平均，这个概率就是这一步采取各动作的概率，也就是策略$\pi(a\mid s)$：<br>$$<br>V_\pi(s)=\sum_{a\in\mathcal{A}(s)}\pi(a \mid s)q_\pi(s,a)<br>$$<br><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701154634.png" alt="展开奖励随机性后的回溯图" style="zoom:33%;" /></p>
+<h2 id="贝尔曼期望方程"><a href="#贝尔曼期望方程" class="headerlink" title="贝尔曼期望方程"></a>贝尔曼期望方程</h2><p>选中一个动作之后，实际上产生的由状态$s_t$和动作$a_t$产生的价值$r_{t+1}$本身也是有随机性的，图中绿色结点反映了这种随机性，对每一个动作结点都适用。<br>$$<br>\begin{align}<br>q_\pi(s,a)&amp;=<br>   \underbrace{\sum_{s’\in S} \sum_{r\in R_t}}_{下一状态与回报的组合} &amp;&amp;\Biggl(\underbrace{p(r_{t+1}=r,s_{t+1}=s’ \mid s_t=s, a_t=a)\times r}_{当前加权回报}</p>
+<ul>
+<li>\\\\<br>&amp; &amp;&amp;\underbrace{p(r_{t+1}=r,s_{t+1}=s’ \mid s_t=s, a_t=a)\times\gamma V_\pi(s’)}_{未来加权回报}\Biggr) \\\<br>&amp;=\sum_{s’\in S} \sum_{r\in R_t}\left( r+\gamma V_\pi(s’)\right)<br>\end{align}<br>$$<br>于是，借助$V_\pi(s)$与$q_\pi(s,a)$之间的关系，可以找到$V_\pi(s)$与$V_\pi(s’)$的关系，即：<br>$$<br>\begin{align}<br>V_\pi(s)&amp;=\sum_{a \in \mathcal{A}(s)}\pi(a \mid s)q_\pi(s,a)\\\<br>&amp;=\sum_{a \in \mathcal{A}(s)}\pi(a \mid s)\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma V_\pi(s’))<br>\end{align}<br>$$<br>同理，也可找到$q_\pi(s,a)$与$q_\pi(s’,a’)$的关系，<br>$$<br>\begin{align}<br>q_\pi(s,a)&amp;=\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma V_\pi(s’))\\\<br>&amp;=\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma \sum_{a’\in \mathcal{A(s’)}}\pi(a’ \mid s’)q_\pi(s’,a’))<br>\end{align}<br>$$</li>
+</ul>
+<p><strong>贝尔曼期望方程（Bellman Equation）：</strong></p>
+<img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210701164143716.png" alt="image-20210701164143716" style="zoom:50%;" />
+
+<img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210701164202576.png" alt="image-20210701164202576" style="zoom:50%;" />
+
+<h2 id="贝尔曼最优方程"><a href="#贝尔曼最优方程" class="headerlink" title="贝尔曼最优方程"></a>贝尔曼最优方程</h2><p>$$<br>\begin{cases}<br>V_\star(s) =\max\limits_{\pi}V_{\pi}(s)\\\<br>q_\star(s, a) =\max\limits_{\pi}q_{\pi}(s,a)<br>\end{cases}<br>$$</p>
 
             </div>
             <hr/>
@@ -425,7 +387,7 @@
                     </i>
                 </span> -->
                 <!-- <span class="reprint-info">
-                    <a href="https://rqhu1995.github.io/2021/06/29/%E9%99%8D%E7%BB%B4/">https://rqhu1995.github.io/2021/06/29/%E9%99%8D%E7%BB%B4/</a>
+                    <a href="https://rqhu1995.github.io/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">https://rqhu1995.github.io/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/</a>
                 </span> -->
             </div>
             <div class="reprint__notice">
@@ -467,6 +429,10 @@
                                     <span class="chip bg-color">白板推导笔记</span>
                                 </a>
                             
+                                <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">强化学习</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -505,9 +471,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">
                     <div class="card-image">
@@ -526,9 +493,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -537,6 +504,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -559,31 +527,39 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
+                <a href="/2021/06/29/%E9%99%8D%E7%BB%B4/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/9.jpg" class="responsive-img" alt="线性分类模型">
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="降维">
                         
-                        <span class="card-title">线性分类模型</span>
+                        <span class="card-title">降维</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            线性分类回顾线性回归线性回归的特点
-线性
-属性线性（x的线性组合）。
-不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$
+                            降维过拟合与维度灾难
+解决过拟合问题的方案
+
+增加数据
+正则化（Lasso、Ridge岭回归）
+降维
 
 
-全局线性（激活函数是一个线性函数）。
-不满足的情况：激活函数为非线性的线性分类（S
+维度灾难从集合意义上理解
+$n$维超立方体及其内切超球
+立方体体积永远是1，超球体体积$K \times 0.5^n$
+
+
+
+
+随着n
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-29
                             </span>
                         <span class="publish-author">
                             
