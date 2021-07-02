@@ -274,6 +274,10 @@
                                 <span class="chip bg-color">白板推导笔记</span>
                             </a>
                         
+                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">强化学习</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -310,7 +314,7 @@
 </li>
 <li><p>step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \in \mathcal{S}$，求解$V_\pi(s)\text{ 和 }q_\pi(s,a)$</p>
 </li>
-<li><p>step 2：策略改进：根据计算出来的$q_\pi(s,a)$，找到一个$\pi’ \neq \pi$，使得$q_{\pi’}(s,a) &gt; q_{\pi}(s,a)$</p>
+<li><p>step 2：策略改进：根据计算出来的$q_\pi(s,a)$，找到一个$\pi’ \neq \pi$，使得$V_\pi(s) &gt; V_{\pi’}(s)$</p>
 </li>
 <li><p>step 3：go to step 0。</p>
 </li>
@@ -320,11 +324,21 @@
 </li>
 </ul>
 <h1 id="策略评估"><a href="#策略评估" class="headerlink" title="策略评估"></a>策略评估</h1><blockquote>
-<p> 已知一个MDP$(\mathcal{\underset{\underset{状态集}{\downarrow}}{S}, \underset{\underset{动作集}{\downarrow}}{A}, \underset{\underset{动态特性}{\downarrow}}{Pr(s’,r\mid s, a)},\underset{\underset{奖励函数集}{\downarrow}}{R}, \underset{\underset{折扣系数}{\downarrow}}{\gamma} })$，给定$\pi$，求$V_\pi=\begin{bmatrix}V_\pi(S_1)\\\\V_\pi(S_2)\\\...\\\\V_\pi(S_{||\mathcal{S}||})\end{bmatrix}$</p>
+<p> 已知一个MDP$(\mathcal{\underset{\underset{状态集}{\downarrow}}{S}, \underset{\underset{动作集}{\downarrow}}{A}, \underset{\underset{动态特性}{\downarrow}}{Pr(s’,r\mid s, a)},\underset{\underset{奖励函数集}{\downarrow}}{R}, \underset{\underset{折扣系数}{\downarrow}}{\gamma} })$，给定$\pi$，求$V_\pi=\begin{bmatrix}V_\pi(S_1)\\\\V_\pi(S_2)\\\\ \ldots \\\\V_\pi(S_{||\mathcal{S}||})\end{bmatrix}$</p>
 </blockquote>
 <p>利用Bellman equation：<br>$$<br>V_\pi(s)=\sum_{a \in \mathcal{A(s)}}\pi(a\mid s)q_\pi(s,a)=\sum_{a \in \mathcal{A(s)}}\pi(a\mid s) \sum_{s’,r}p(s’,r\mid s, a)(r+\gamma V_\pi(s’))\\\<br>q_\pi(s,a)=\sum_{s’,r}p(s’,r\mid s, a)(r+\gamma \sum_{a’ \in \mathcal{A(s’)}}\pi(a’\mid s’)q_\pi(s’,a’))<br>$$</p>
-<h2 id="解析解求法"><a href="#解析解求法" class="headerlink" title="解析解求法"></a>解析解求法</h2><p>将$V_\pi(s)$拆解：<br>$$<br>\begin{align}<br>V_\pi(s)&amp;=\sum_{a \in \mathcal{A(s)}}\pi(a\mid s) \sum_{s’,r}p(s’,r\mid s, a)(r+\gamma V_\pi(s’))\\\<br>&amp;=\sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{s’,r}r \times p(s’,r\mid s, a)}_{s’通过求和消掉了} + \gamma \sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{s’,r} V_\pi(s’) \times p(s’,r\mid s, a)}_{r通过求和消掉了}\\\<br>&amp;=\sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{r}r \times p(s’,r\mid s, a)}_{r(s,a)\triangleq E(R_{t+1}\mid s,a)} + \gamma \sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{s’,r} V_\pi(s’) \times p(s’\mid s, a)}_{r通过求和消掉了}\\\<br>&amp;=\underbrace{\sum_{a \in \mathcal{A(s)}} \pi(a \mid s)r(s,a)}_{和a没关系了，记为r_\pi(s)}+\gamma \sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{s’} V_\pi(s’) \times p(s’\mid s, a)}_{r通过求和消掉了}\\\<br>&amp;=r_\pi(s)+\gamma \underbrace{\sum_{s’}\sum_{a \in \mathcal{A(s)}}}_{动作及下个状态排列组合}\pi(a\mid s) p(s’\mid s, a)V_\pi(s’)\\\<br>&amp;=r_\pi(s)+\gamma\sum_{s’}\underbrace{\sum_{a \in \mathcal{A(s)}}\pi(a\mid s) p(s’\mid s, a)}_{先固定s’，求和掉a，记为P_\pi(s,s’)}V_\pi(s’)\\\<br>&amp;=r_\pi(s)+\gamma\sum_{s’}P_\pi(s,s’)V_\pi(s’)<br>\end{align}<br>$$<br>扩展到矩阵：<br>$$<br>\begin{bmatrix}V_\pi(S_1)\\\\V_\pi(S_2)\\\...\\\\V_\pi(S_{||\mathcal{S}||})\end{bmatrix}=\begin{bmatrix}r_\pi(S_1)\\\\r_\pi(S_2)\\\...\\\\r_\pi(S_{||\mathcal{S}||})\end{bmatrix}+\gamma<br>\begin{bmatrix}<br>p_\pi(S_1,S_1)&amp;p_\pi(S_1,S_2) &amp; \ldots &amp; p_\pi(S_1,S_{||\mathcal{S}||}) \\\<br>p_\pi(S_2,S_1)&amp;p_\pi(S_2,S_2) &amp; \ldots &amp; p_\pi(S_2,S_{||\mathcal{S}||}) \\\<br>&amp; \ldots \\\<br>p_\pi(S_{||\mathcal{S}||},S_1)&amp;p_\pi(S_{||\mathcal{S}||},S_2) &amp; \ldots &amp; p_\pi(S_{||\mathcal{S}||},S_{||\mathcal{S}||})<br>\end{bmatrix}\begin{bmatrix}V_\pi(S_1)\\\\V_\pi(S_2)\\\...\\\\V_\pi(S_{||\mathcal{S}||})\end{bmatrix}<br>$$<br>解方程可得到：<br>$$<br>V_\pi=r_\pi+\gamma P_\pi V_\pi \implies V_\pi(I-\gamma P_\pi)=r_\pi\implies V_\pi=(I-\gamma P_\pi)^{-1}r_\pi<br>$$<br>计算一个$N$阶矩阵的逆矩阵的复杂度是$N^3$，此处就是$||\mathcal{S}||^3$。当状态数较多的时候，这种方式（解析解求法）计算量太大，无法（在有限时间内）得到求解结果。</p>
-<h2 id="迭代解法"><a href="#迭代解法" class="headerlink" title="迭代解法"></a>迭代解法</h2>
+<h2 id="解法1：直接求解析解"><a href="#解法1：直接求解析解" class="headerlink" title="解法1：直接求解析解"></a>解法1：直接求解析解</h2><p>将$V_\pi(s)$拆解：<br>$$<br>\begin{align}<br>V_\pi(s)&amp;=\sum_{a \in \mathcal{A(s)}}\pi(a\mid s) \sum_{s’,r}p(s’,r\mid s, a)(r+\gamma V_\pi(s’))\\\<br>&amp;=\sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{s’,r}r \times p(s’,r\mid s, a)}_{s’通过求和消掉了} + \gamma \sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{s’,r} V_\pi(s’) \times p(s’,r\mid s, a)}_{r通过求和消掉了}\\\<br>&amp;=\sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{r}r \times p(s’,r\mid s, a)}_{r(s,a)\triangleq E(R_{t+1}\mid s,a)} + \gamma \sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{s’,r} V_\pi(s’) \times p(s’\mid s, a)}_{r通过求和消掉了}\\\<br>&amp;=\underbrace{\sum_{a \in \mathcal{A(s)}} \pi(a \mid s)r(s,a)}_{和a没关系了，记为r_\pi(s)}+\gamma \sum_{a \in \mathcal{A(s)}}\pi(a\mid s)\underbrace{\sum_{s’} V_\pi(s’) \times p(s’\mid s, a)}_{r通过求和消掉了}\\\<br>&amp;=r_\pi(s)+\gamma \underbrace{\sum_{s’}\sum_{a \in \mathcal{A(s)}}}_{动作及下个状态排列组合}\pi(a\mid s) p(s’\mid s, a)V_\pi(s’)\\\<br>&amp;=r_\pi(s)+\gamma\sum_{s’}\underbrace{\sum_{a \in \mathcal{A(s)}}\pi(a\mid s) p(s’\mid s, a)}_{先固定s’，求和掉a，记为P_\pi(s,s’)}V_\pi(s’)\\\<br>&amp;=r_\pi(s)+\gamma\sum_{s’}P_\pi(s,s’)V_\pi(s’)<br>\end{align}<br>$$<br>扩展到矩阵：<br>$$<br>\begin{bmatrix}V_\pi(S_1)\\\\V_\pi(S_2)\\\\ \ldots \\\\V_\pi(S_{||\mathcal{S}||})\end{bmatrix}=\begin{bmatrix}r_\pi(S_1)\\\\r_\pi(S_2)\\\\ \ldots \\\\r_\pi(S_{||\mathcal{S}||})\end{bmatrix}+\gamma<br>\begin{bmatrix}<br>p_\pi(S_1,S_1)&amp;p_\pi(S_1,S_2) &amp; \ldots &amp; p_\pi(S_1,S_{||\mathcal{S}||}) \\\<br>p_\pi(S_2,S_1)&amp;p_\pi(S_2,S_2) &amp; \ldots &amp; p_\pi(S_2,S_{||\mathcal{S}||}) \\\<br>&amp; \ldots \\\<br>p_\pi(S_{||\mathcal{S}||},S_1)&amp;p_\pi(S_{||\mathcal{S}||},S_2) &amp; \ldots &amp; p_\pi(S_{||\mathcal{S}||},S_{||\mathcal{S}||})<br>\end{bmatrix}\begin{bmatrix}V_\pi(S_1)\\\\V_\pi(S_2)\\\\ \ldots \\\\V_\pi(S_{||\mathcal{S}||})\end{bmatrix}<br>$$<br>解方程可得到：<br>$$<br>V_\pi=r_\pi+\gamma P_\pi V_\pi \implies V_\pi(I-\gamma P_\pi)=r_\pi\implies V_\pi=(I-\gamma P_\pi)^{-1}r_\pi<br>$$<br>计算一个$N$阶矩阵的逆矩阵的复杂度是$N^3$，此处就是$||\mathcal{S}||^3$。当状态数较多的时候，这种方式（解析解求法）计算量太大，无法（在有限时间内）得到求解结果。</p>
+<h2 id="解法2：迭代策略评估（数值解）"><a href="#解法2：迭代策略评估（数值解）" class="headerlink" title="解法2：迭代策略评估（数值解）"></a>解法2：迭代策略评估（数值解）</h2><p>整体思想：构造数列$\{V_k\}_{k=1}^{\infty}$，使得<br>$$<br>\{V_k\}_{k=1}^{\infty} \rightarrow V_\pi<br>$$<br>直接利用贝尔曼公式，设置前后项之间的迭代关系：<br>$$<br>V_{k+1}(s)\triangleq \sum_{a} \pi(a \mid s)\sum_{s’r}p(s’,r \mid s,a)(r+\gamma V_{k}(s’))<br>$$</p>
+<h1 id="策略改进"><a href="#策略改进" class="headerlink" title="策略改进"></a>策略改进</h1><p>如果判断两个策略之间的优劣？最直观的方式：计算状态价值函数$V_\pi(s)$。但是这种方式需要多次计$V$。有更简单的方法，首先给出<strong>策略改进定理</strong>：</p>
+<blockquote>
+<p><strong>策略改进定理</strong>：给定$\pi, \pi’$,若 $\forall s \in \mathcal{S}$，有$q_{\pi}(s, \pi’(s)) \ge V_\pi(s)$，则 $\forall s \in \mathcal{S}$，有$V_{\pi’}(s) \ge V_\pi(s)$，即该策略$\pi’$不亚于原策略$\pi$。</p>
+</blockquote>
+<p>定理证明如下：</p>
+<p>$$<br>\begin{align}<br>q_\pi(s,a)&amp;=\sum_{s’, r} p(s’, r \mid s, a)(r+\gamma V_\pi({s’}))\\\<br>&amp;=E[R_{t+1} + \gamma V_\pi(S_{t+1}) \mid S_t=s, A_t=a]<br>\end{align}<br>$$</p>
+<p>$$<br>\therefore q_\pi(s,\pi’(s))=E\left[\boxed{R_{t+1}} + \gamma V\boxed{_\pi}(s) \mid S_t=s, \boxed{A_t=\pi’(s)}\right]<br>$$</p>
+<p>上式含义为，$S_t=s$下执行动作$\pi’(s)$是根据$\pi’$策略产生的，进而产生$R_{t+1}$，都是遵循策略$\pi’$的，而后续的回报仍然继续服从$\pi$，因此可以写成：</p>
+<p>所以：<br>$$<br>\begin{align}<br>V_\pi(s) \le q_{\pi}(s, \pi’(s))&amp;=E_{\pi’}[R_{t+1} + \gamma V_\pi(S_{t+1}) \mid S_t=s]\\\<br>&amp;\le E_{\pi’}[R_{t+1} + \gamma q_\pi(S_{t+1}, \pi’(S_{t+1})) \mid S_t=s]\\\<br>&amp;= E_{\pi’}[R_{t+1} + \gamma E_{\pi’}[R_{t+2} + \gamma V_\pi(S_{t+2}) \mid S_{t+1}] \mid S_t=s]\\\<br>&amp;=E_{\pi’}[R_{t+1} + \gamma \underbrace{E_{\pi’}[R_{t+2} \mid S_{t+1}]}_{外面还有一个E_{\pi’}\\\\\ \ \ 期望的期望\\\\可以去掉一个期望}+ \gamma^2  \underbrace{E_{\pi’}[V_\pi(S_{t+2}) \mid S_{t+1}]}_{同前面} \mid S_t=s]\\\<br>&amp;=E_{\pi’}[\underbrace{R_{t+1}+\gamma R_{t+2}}_{\pi’控制} + \gamma^2 V_\pi(S_{t+2}) \mid S_t =s ]\\\<br>&amp;=E_{\pi’}[\underbrace{R_{t+1}+\gamma R_{t+2} + \gamma^2 R_{t+3}}_{\pi’控制} + \gamma^3 V_\pi(S_{t+3}) \mid S_t =s ]\\\<br>&amp;=…\\\<br>&amp;=E_{\pi’}[\underbrace{R_{t+1}+\gamma R_{t+2} + \gamma^2 R_{t+3}+\ldots }_{\pi’控制越来越多，最后变成G_t}\mid S_t =s ]\\\<br>&amp;=V_{\pi’}(s)<br>\end{align}<br>$$</p>
+<h2 id="改进策略：贪心策略"><a href="#改进策略：贪心策略" class="headerlink" title="改进策略：贪心策略"></a>改进策略：贪心策略</h2>
             </div>
             <hr/>
 
@@ -389,6 +403,10 @@
                             
                                 <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0/">
                                     <span class="chip bg-color">白板推导笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">强化学习</span>
                                 </a>
                             
                         </div>
@@ -472,6 +490,10 @@ step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \
                     
                     <a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">白板推导笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">强化学习</span>
                     </a>
                     
                 </div>
