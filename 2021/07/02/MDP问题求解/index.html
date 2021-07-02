@@ -338,7 +338,15 @@
 <p>$$<br>\therefore q_\pi(s,\pi’(s))=E\left[\boxed{R_{t+1}} + \gamma V\boxed{_\pi}(s) \mid S_t=s, \boxed{A_t=\pi’(s)}\right]<br>$$</p>
 <p>上式含义为，$S_t=s$下执行动作$\pi’(s)$是根据$\pi’$策略产生的，进而产生$R_{t+1}$，都是遵循策略$\pi’$的，而后续的回报仍然继续服从$\pi$，因此可以写成：</p>
 <p>所以：<br>$$<br>\begin{align}<br>V_\pi(s) \le q_{\pi}(s, \pi’(s))&amp;=E_{\pi’}[R_{t+1} + \gamma V_\pi(S_{t+1}) \mid S_t=s]\\\<br>&amp;\le E_{\pi’}[R_{t+1} + \gamma q_\pi(S_{t+1}, \pi’(S_{t+1})) \mid S_t=s]\\\<br>&amp;= E_{\pi’}[R_{t+1} + \gamma E_{\pi’}[R_{t+2} + \gamma V_\pi(S_{t+2}) \mid S_{t+1}] \mid S_t=s]\\\<br>&amp;=E_{\pi’}[R_{t+1} + \gamma \underbrace{E_{\pi’}[R_{t+2} \mid S_{t+1}]}_{外面还有一个E_{\pi’}\\\\\ \ \ 期望的期望\\\\可以去掉一个期望}+ \gamma^2  \underbrace{E_{\pi’}[V_\pi(S_{t+2}) \mid S_{t+1}]}_{同前面} \mid S_t=s]\\\<br>&amp;=E_{\pi’}[\underbrace{R_{t+1}+\gamma R_{t+2}}_{\pi’控制} + \gamma^2 V_\pi(S_{t+2}) \mid S_t =s ]\\\<br>&amp;=E_{\pi’}[\underbrace{R_{t+1}+\gamma R_{t+2} + \gamma^2 R_{t+3}}_{\pi’控制} + \gamma^3 V_\pi(S_{t+3}) \mid S_t =s ]\\\<br>&amp;=…\\\<br>&amp;=E_{\pi’}[\underbrace{R_{t+1}+\gamma R_{t+2} + \gamma^2 R_{t+3}+\ldots }_{\pi’控制越来越多，最后变成G_t}\mid S_t =s ]\\\<br>&amp;=V_{\pi’}(s)<br>\end{align}<br>$$</p>
-<h2 id="改进策略：贪心策略"><a href="#改进策略：贪心策略" class="headerlink" title="改进策略：贪心策略"></a>改进策略：贪心策略</h2>
+<h2 id="改进策略：贪心策略"><a href="#改进策略：贪心策略" class="headerlink" title="改进策略：贪心策略"></a>改进策略：贪心策略</h2><p>面对当前状态$s$下的几个选择，选择$\pi’(s)=\arg\max\limits_{a}q_\pi(s,a)$<br>$$<br>V_\pi(s) \le \max_a q_\pi(s,a)=q_\pi(s, \pi’(s))<br>$$<br>由策略改进定理可知，$\forall s \in \mathcal{S}, V_\pi(s) \le V_{\pi’}(s)$，贪心策略选择的策略一定不亚于原来的策略了。</p>
+<p>如果改进后，发现得到的$V_\pi=V_{\pi’}$，那么有结论：$V_\pi=V_{\pi’}=V_{\pi_\star}$</p>
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210702161818.png" alt="策略迭代示意图" style="zoom:50%;" />
+
+<blockquote>
+<p>存在问题：迭代中包含迭代，主要是策略评估时还需要迭代</p>
+</blockquote>
+<p>解决方案：截断策略评估，截断的方案是，<strong>在策略评估的迭代时，不迭代到尽头</strong>。例如当按照上面的迭代式进行$V_{k+1}$的更新时，按照下面的方式更新（贝尔曼最优）一次。也就是，面对一个状态，直接找最大的动作回报下进行策略评估迭代：<br>$$<br>V_{k+1}(s)=\max_a \sum_{s’r} p(s’r \mid  s, a)[r + \gamma V_{k}(s’)]\\\<br>对比原来的策略评估 \downarrow \\\<br>V_{k+1}(s)\triangleq \sum_{a} \pi(a \mid s)\sum_{s’r}p(s’,r \mid s,a)(r+\gamma V_{k}(s’))<br>$$<br>这种方式下的迭代，就叫价值迭代。（其实就是策略迭代的一种极端情况）</p>
+
             </div>
             <hr/>
 
