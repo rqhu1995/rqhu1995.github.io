@@ -409,21 +409,11 @@
                             <div class="summary block-with-text">
                                 
                                     基本框架
-
-
 策略迭代
-
 
 step 0：若未达到终止条件，则step 1，否则结束：
 
-
-step 1：策略评估（策略预测）：给定一个策略，，求解
-
-
-step 2：策略改进：根据计算出来的，找到一个，使得
-
-
-step 3：go to 
+step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \in \mathcal{S}$，求解$V_\pi(s)\text{ 和 
                                 
                             </div>
                             <div class="publish-info">
@@ -480,14 +470,8 @@ step 3：go to
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    背景介绍
-随机过程：
-马尔可夫链/马尔可夫假设：具有Markov性质的随机过程
-状态空间模型：马尔可夫链+观测变量
-
-当前观测值observation只依赖于当前状态，与之前的状态无关。
-马尔可夫回报模型：马尔可夫链+回报
-马尔可夫决策模型
+                                    背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
+马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid 
                                 
                             </div>
                             <div class="publish-info">
@@ -549,10 +533,7 @@ step 3：go to
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    降维
-过拟合与维度灾难
-
-
+                                    降维过拟合与维度灾难
 解决过拟合问题的方案
 
 增加数据
@@ -560,14 +541,14 @@ step 3：go to
 降维
 
 
-
 维度灾难从集合意义上理解
-维超立方体及其内切超球
-立方体体积永远是1，超球体体积
+$n$维超立方体及其内切超球
+立方体体积永远是1，超球体体积$K \times 0.5^n$
 
 
 
-随着n的增大，这一球体体积逐渐趋向于0
+
+随着n
                                 
                             </div>
                             <div class="publish-info">
@@ -622,23 +603,14 @@ step 3：go to
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性分类
-回顾线性回归
-线性回归的特点
-
+                                    线性分类回顾线性回归线性回归的特点
 线性
-
 属性线性（x的线性组合）。
-
-不满足的情况：特征转换（多项式回归），
+不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$
 
 
 全局线性（激活函数是一个线性函数）。
-
-不满足的情况：激活函数为非线性的线性分类（Sigmoid）
-
-
-系数线性（反
+不满足的情况：激活函数为非线性的线性分类（S
                                 
                             </div>
                             <div class="publish-info">
@@ -693,10 +665,8 @@ step 3：go to
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Matrix Calculus
-Reference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
-Useful Conclusion（keep updating）
-eq(
+                                    Matrix CalculusReference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
+Useful Conclusion（keep updating）eq(69
                                 
                             </div>
                             <div class="publish-info">
@@ -745,21 +715,8 @@ eq(
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    线性回归
-最小二乘法
-
-
-个样本：, 
-矩阵表示：
-
-
-最小二乘估计：
-
-
-$$
-X^TY-X^TX\beta=0, \beta=(X^TX)^{-1}X^TY
-$$
-各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，
+                                    线性回归最小二乘法
+$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$$$\newcommand{\bm}[1]{\b
                                 
                             </div>
                             <div class="publish-info">
@@ -819,20 +776,7 @@ $$
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    高斯分布
-概率密度
-假设为研究的维度，为均值向量，为协方差矩阵（）
-一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）
-当时，
-
-先求，
-
-令，则
-
-接着求，
-
-令，则
-关于两个估计的无偏性
+                                    高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma
                                 
                             </div>
                             <div class="publish-info">

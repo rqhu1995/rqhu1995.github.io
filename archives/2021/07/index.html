@@ -409,21 +409,11 @@
                             <div class="summary block-with-text">
                                 
                                     基本框架
-
-
 策略迭代
-
 
 step 0：若未达到终止条件，则step 1，否则结束：
 
-
-step 1：策略评估（策略预测）：给定一个策略，，求解
-
-
-step 2：策略改进：根据计算出来的，找到一个，使得
-
-
-step 3：go to 
+step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \in \mathcal{S}$，求解$V_\pi(s)\text{ 和 
                                 
                             </div>
                             <div class="publish-info">
@@ -480,14 +470,8 @@ step 3：go to
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    背景介绍
-随机过程：
-马尔可夫链/马尔可夫假设：具有Markov性质的随机过程
-状态空间模型：马尔可夫链+观测变量
-
-当前观测值observation只依赖于当前状态，与之前的状态无关。
-马尔可夫回报模型：马尔可夫链+回报
-马尔可夫决策模型
+                                    背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
+马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid 
                                 
                             </div>
                             <div class="publish-info">
