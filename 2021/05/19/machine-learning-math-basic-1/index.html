@@ -29,7 +29,8 @@
 
     <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -303,70 +304,72 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h1><h2 id="概率密度"><a href="#概率密度" class="headerlink" title="概率密度"></a>概率密度</h2><p>假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）<br>$$<br>X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma|^{\frac{1}{2} }}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}<br>$$</p>
-<h2 id="一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）"><a href="#一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）" class="headerlink" title="一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）"></a>一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）</h2><p>当$p=1$时，$p(X=x)=\dfrac{e^{-\frac{(x-\mu)^2}{2\Sigma} }}{\sqrt{2\pi\Sigma} }$<br>$$<br>\theta_{MLE}=\underset{\theta=\{\mu, \Sigma\} }{\mathrm{argmax} } \prod\limits_{i=1}^n p(X=x_i)=\underset{\theta=\{\mu, \Sigma\} }{\mathrm{argmax} }\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma} })-nlog(\sqrt{2\pi\Sigma})<br>$$</p>
-<ul>
-<li>先求$\mu_{MLE}$，<br>$$<br>f(\mu)=\sum\limits_{i=1}^n (x_i-\mu)^2<br>$$</li>
+                <h1>高斯分布</h1>
+<h2 id="概率密度">概率密度</h2>
+<p>假设<img src="https://math.now.sh?inline=p" style="display:inline-block;margin: 0;"/>为研究的维度，<img src="https://math.now.sh?inline=%5Cmu" style="display:inline-block;margin: 0;"/>为均值向量，<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>为协方差矩阵（<img src="https://math.now.sh?inline=p%5Ctimes%20p" style="display:inline-block;margin: 0;"/>）</p>
+<p style=""><img src="https://math.now.sh?from=X%20%5Csim%20N%28%5Cmu%2C%20%5CSigma%29%3D%5Cdfrac%7B1%7D%7B(2%5Cpi)%5E%7B%5Cfrac%7Bp%7D%7B2%7D%20%7D%7C%5CSigma%7C%5E%7B%5Cfrac%7B1%7D%7B2%7D%20%7D%7Dexp%5E%7B-%5Cfrac%7B1%7D%7B2%7D(x-%5Cmu)%5ET%5CSigma%5E%7B-1%7D(x-%5Cmu)%7D%0A" /></p><h2 id="一维的情况下的两个极大似然估计（Maximum-Likelihood-Estimation，MLE）">一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）</h2>
+<p>当<img src="https://math.now.sh?inline=p%3D1" style="display:inline-block;margin: 0;"/>时，<img src="https://math.now.sh?inline=p%28X%3Dx%29%3D%5Cdfrac%7Be%5E%7B-%5Cfrac%7B(x-%5Cmu)%5E2%7D%7B2%5CSigma%7D%20%7D%7D%7B%5Csqrt%7B2%5Cpi%5CSigma%7D%20%7D" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=%5Ctheta_%7BMLE%7D%3D%5Cunderset%7B%5Ctheta%3D%5C%7B%5Cmu%2C%20%5CSigma%5C%7D%20%7D%7B%5Cmathrm%7Bargmax%7D%20%7D%20%5Cprod%5Climits_%7Bi%3D1%7D%5En%20p%28X%3Dx_i%29%3D%5Cunderset%7B%5Ctheta%3D%5C%7B%5Cmu%2C%20%5CSigma%5C%7D%20%7D%7B%5Cmathrm%7Bargmax%7D%20%7D%5Csum%5Climits_%7Bi%3D1%7D%5En(%7B-%5Cfrac%7B(x_i-%5Cmu)%5E2%7D%7B2%5CSigma%7D%20%7D)-nlog(%5Csqrt%7B2%5Cpi%5CSigma%7D)%0A" /></p><ul>
+<li>先求<img src="https://math.now.sh?inline=%5Cmu_%7BMLE%7D" style="display:inline-block;margin: 0;"/>，<p style=""><img src="https://math.now.sh?from=f%28%5Cmu%29%3D%5Csum%5Climits_%7Bi%3D1%7D%5En%20(x_i-%5Cmu)%5E2%0A" /></p></li>
 </ul>
-<p>$$<br>f’(\mu)=\sum\limits_{i=1}^n -2(x_i-\mu)=2\mu n-2\sum\limits_{i=1}^nx_i​<br>$$</p>
-<p>令$f’(\mu)=0$，则</p>
-<p>$$<br>\mu_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^nx_i<br>$$</p>
-<ul>
-<li>接着求$\Sigma_{MLE}$，<br>$$<br>f(\Sigma)=\sum\limits_{i=1}^n({-\frac{(x_i-\mu)^2}{2\Sigma} })-nlog(\sqrt{2\pi\Sigma})<br>$$</li>
+<p style=""><img src="https://math.now.sh?from=f'%28%5Cmu%29%3D%5Csum%5Climits_%7Bi%3D1%7D%5En%20-2(x_i-%5Cmu)%3D2%5Cmu%20n-2%5Csum%5Climits_%7Bi%3D1%7D%5Enx_i%E2%80%8B%0A" /></p><p>令<img src="https://math.now.sh?inline=f'%28%5Cmu%29%3D0" style="display:inline-block;margin: 0;"/>，则</p>
+<p style=""><img src="https://math.now.sh?from=%5Cmu_%7BMLE%7D%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5Enx_i%0A" /></p><ul>
+<li>接着求<img src="https://math.now.sh?inline=%5CSigma_%7BMLE%7D" style="display:inline-block;margin: 0;"/>，<p style=""><img src="https://math.now.sh?from=f%28%5CSigma%29%3D%5Csum%5Climits_%7Bi%3D1%7D%5En(%7B-%5Cfrac%7B(x_i-%5Cmu)%5E2%7D%7B2%5CSigma%7D%20%7D)-nlog(%5Csqrt%7B2%5Cpi%5CSigma%7D)%0A" /></p></li>
 </ul>
-<p>$$<br>f’(\Sigma)=\dfrac{\sum\limits_{i=1}^n (x_i-\mu)^2}{2\Sigma^2}-\dfrac{n}{2\Sigma}$<br>$$</p>
-<p>令$f’(\mu)=0$，则<br>$$<br>\sum\limits_{i=1}^n (x_i-\mu)^2=n\Sigma \<br>\Sigma_{MLE}=\dfrac{1}{n}\sum\limits_{i=1}^n (x_i-\mu_{MLE})^2<br>$$</p>
-<h2 id="关于两个估计的无偏性"><a href="#关于两个估计的无偏性" class="headerlink" title="关于两个估计的无偏性"></a>关于两个估计的无偏性</h2><ul>
-<li><p>计算$E(\mu_{MLE})$：<br>$$<br>E(\dfrac{1}{n}\sum\limits_{i=1}^n x_i)=\dfrac{1}{n}\sum\limits_{i=1}^nE(x_i)=\dfrac{1}{n} n \mu=\mu<br>$$</p>
-</li>
-<li><p>计算$E(\Sigma_{MLE})$：</p>
+<p style=""><img src="https://math.now.sh?from=f'%28%5CSigma%29%3D%5Cdfrac%7B%5Csum%5Climits_%7Bi%3D1%7D%5En%20(x_i-%5Cmu)%5E2%7D%7B2%5CSigma%5E2%7D-%5Cdfrac%7Bn%7D%7B2%5CSigma%7D%24%0A" /></p><p>令<img src="https://math.now.sh?inline=f'%28%5Cmu%29%3D0" style="display:inline-block;margin: 0;"/>，则</p>
+<p style=""><img src="https://math.now.sh?from=%5Csum%5Climits_%7Bi%3D1%7D%5En%20%28x_i-%5Cmu%29%5E2%3Dn%5CSigma%20%5C%5C%0A%5CSigma_%7BMLE%7D%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20(x_i-%5Cmu_%7BMLE%7D)%5E2%0A" /></p><h2 id="关于两个估计的无偏性">关于两个估计的无偏性</h2>
 <ul>
-<li>首先对$\Sigma_{MLE}$做一个化简：</li>
-</ul>
-<p>$$<br>\begin{align}<br>\Sigma_{MLE} &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+ \dfrac{1}{n}\sum\limits_{i=1}^n\mu_{MLE}^2-2\dfrac{1}{n}\sum\limits_{i=1}^n x_i\mu_{MLE}\quad [note:\dfrac{1}{n}\sum\limits_{i=1}^n x_i=\mu_{MLE}]\\\<br>&amp;=\dfrac{1}{n}\sum\limits_{i=1}^n x_i^2+\mu^2_{MLE}-2\mu_{MLE}^2\\\<br>&amp;= \dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE})<br>\end{align}<br>$$</p>
-</li>
-</ul>
+<li>
+<p>计算<img src="https://math.now.sh?inline=E%28%5Cmu_%7BMLE%7D%29" style="display:inline-block;margin: 0;"/>：</p>
+<p style=""><img src="https://math.now.sh?from=E%28%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%29%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5EnE(x_i)%3D%5Cdfrac%7B1%7D%7Bn%7D%20n%20%5Cmu%3D%5Cmu%0A" /></p></li>
+<li>
+<p>计算<img src="https://math.now.sh?inline=E%28%5CSigma_%7BMLE%7D%29" style="display:inline-block;margin: 0;"/>：</p>
 <ul>
+<li>首先对<img src="https://math.now.sh?inline=%5CSigma_%7BMLE%7D" style="display:inline-block;margin: 0;"/>做一个化简：</li>
+</ul>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5CSigma_%7BMLE%7D%20%26%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%5E2%2B%20%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%5Cmu_%7BMLE%7D%5E2-2%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%5Cmu_%7BMLE%7D%5Cquad%20%5Bnote%3A%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%3D%5Cmu_%7BMLE%7D%5D%5C%5C%5C%5C%0A%26%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i%5E2%2B%5Cmu%5E2_%7BMLE%7D-2%5Cmu_%7BMLE%7D%5E2%5C%5C%5C%5C%0A%26%3D%20%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20%28x_i%5E2%20-%20%5Cmu%5E2_%7BMLE%7D%29%0A%5Cend%7Balign%7D%0A" /></p><ul>
 <li>接着求其期望：</li>
 </ul>
-<p>$$<br>\begin{align}<br>E(\Sigma_{MLE})&amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n (x_i^2 - \mu^2_{MLE}))\\\<br>                            &amp;=E(\dfrac{1}{n}\sum\limits_{i=1}^n [x_i^2 - \mu^2 -( \mu^2_{MLE} - \mu^2)]) \quad –&gt;恒等变形\\\<br>                            &amp;=(\dfrac{1}{n}\sum\limits_{i=1}^n E(x_i^2)-E^2(x_i)-E(\mu^2_{MLE})+E(\mu^2)))\quad–&gt;\mu^2看作常数，\mu^2=E(\mu^2)\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) + (E^2(\mu_{MLE})-E(\mu^2_{MLE}))\quad –&gt;方差与概率间的公式转化\\\<br>                            &amp;=\dfrac{1}{n}\sum\limits_{i=1}^n D(x_i) - D(\mu_{MLE})\quad –&gt;方差与概率间的公式转化 \\\<br>                            &amp;=\Sigma-D(\mu_{MLE})\\\<br>                            &amp;=\Sigma - D(\dfrac{1}{n}\sum\limits_{i=1}^n x_i) \\\<br>                            &amp;=\Sigma-\dfrac{1}{n^2}nD(x_i)\\\<br>                            &amp;=\Sigma- \dfrac{1}{n}\Sigma \\\<br>                            &amp;=\dfrac{n-1}{n}\Sigma<br>\end{align}<br>$$</p>
-<ul>
-<li>发现$E(\mu_{MLE})=\mu, E(\Sigma_{MLE}) \neq \Sigma$，因此$\mu_{MLE}$作为$\mu$的估计是无偏的，$\Sigma_{MLE}$作为$\Sigma$的估计是有偏的。</li>
+</li>
 </ul>
-<h2 id="多维度的情况"><a href="#多维度的情况" class="headerlink" title="多维度的情况"></a>多维度的情况</h2><p>观察指数部分，记为D：$(x-\mu)^T\Sigma^{-1}(x-\mu)$</p>
-<p>$x$是一个样本向量：$x =\left(x_1,x_2,\ldots,x_n \right)^T$。</p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AE%28%5CSigma_%7BMLE%7D%29%26%3DE(%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20(x_i%5E2%20-%20%5Cmu%5E2_%7BMLE%7D))%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3DE(%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20%5Bx_i%5E2%20-%20%5Cmu%5E2%20-(%20%5Cmu%5E2_%7BMLE%7D%20-%20%5Cmu%5E2)%5D)%20%5Cquad%20--%3E%E6%81%92%E7%AD%89%E5%8F%98%E5%BD%A2%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D(%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20E(x_i%5E2)-E%5E2(x_i)-E(%5Cmu%5E2_%7BMLE%7D)%2BE(%5Cmu%5E2)))%5Cquad--%3E%5Cmu%5E2%E7%9C%8B%E4%BD%9C%E5%B8%B8%E6%95%B0%EF%BC%8C%5Cmu%5E2%3DE(%5Cmu%5E2)%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20D(x_i)%20%2B%20(E%5E2(%5Cmu_%7BMLE%7D)-E(%5Cmu%5E2_%7BMLE%7D))%5Cquad%20--%3E%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%A6%82%E7%8E%87%E9%97%B4%E7%9A%84%E5%85%AC%E5%BC%8F%E8%BD%AC%E5%8C%96%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20D(x_i)%20-%20D(%5Cmu_%7BMLE%7D)%5Cquad%20--%3E%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%A6%82%E7%8E%87%E9%97%B4%E7%9A%84%E5%85%AC%E5%BC%8F%E8%BD%AC%E5%8C%96%20%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5CSigma-D(%5Cmu_%7BMLE%7D)%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5CSigma%20-%20D(%5Cdfrac%7B1%7D%7Bn%7D%5Csum%5Climits_%7Bi%3D1%7D%5En%20x_i)%20%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5CSigma-%5Cdfrac%7B1%7D%7Bn%5E2%7DnD(x_i)%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5CSigma-%20%5Cdfrac%7B1%7D%7Bn%7D%5CSigma%20%5C%5C%5C%5C%0A%09%09%09%09%09%09%09%26%3D%5Cdfrac%7Bn-1%7D%7Bn%7D%5CSigma%0A%5Cend%7Balign%7D%0A" /></p><ul>
+<li>发现<img src="https://math.now.sh?inline=E%28%5Cmu_%7BMLE%7D%29%3D%5Cmu%2C%20E(%5CSigma_%7BMLE%7D)%20%5Cneq%20%5CSigma" style="display:inline-block;margin: 0;"/>，因此<img src="https://math.now.sh?inline=%5Cmu_%7BMLE%7D" style="display:inline-block;margin: 0;"/>作为<img src="https://math.now.sh?inline=%5Cmu" style="display:inline-block;margin: 0;"/>的估计是无偏的，<img src="https://math.now.sh?inline=%5CSigma_%7BMLE%7D" style="display:inline-block;margin: 0;"/>作为<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>的估计是有偏的。</li>
+</ul>
+<h2 id="多维度的情况">多维度的情况</h2>
+<p>观察指数部分，记为D：<img src="https://math.now.sh?inline=%28x-%5Cmu%29%5ET%5CSigma%5E%7B-1%7D(x-%5Cmu)" style="display:inline-block;margin: 0;"/></p>
+<p><img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/>是一个样本向量：<img src="https://math.now.sh?inline=x%20%3D%5Cleft%28x_1%2Cx_2%2C%5Cldots%2Cx_n%20%5Cright%29%5ET" style="display:inline-block;margin: 0;"/>。</p>
 <p>注意这部分的结果是一个标量（维度：（1,p)-(p,p)-(p,1)-&gt;(1,1)）</p>
-<p>实际上，D是一个马氏距离，是向量$x$与向量$\mu$之间的马氏距离。</p>
-<p>而$\Sigma=U \Lambda U^T=[u_1, u_2, \dots,u_p] \begin{bmatrix}<br>    \lambda_{1} &amp; &amp; \<br>    &amp; \ddots &amp; \<br>    &amp; &amp; \lambda_{r}<br>  \end{bmatrix} \begin{bmatrix}<br>    u_{1}^T  \<br>    u_2^T \<br>    \ldots \\ u_p^T<br>  \end{bmatrix}=\sum\limits_{i=1}^{p}u_i\lambda_iu_i^T$</p>
-<p>($U$与$U^T$互逆)</p>
-<p>求逆：${(U^T)}^{-1}\Lambda^{-1}U^{-1}=\sum\limits_{i=1}^pu_i \dfrac{1}{\lambda_i}u_i^T$</p>
-<p>马氏距离表示为：<br>$$<br>(x-\mu)^T \Sigma^{-1}(x-\mu)=<br>(x-\mu)^T \left(\sum\limits_{i=1}^pu_i \dfrac{1}{\lambda_i}u_i^T \right)(x-\mu)=<br>\sum\limits_{i=1}^{p}(x-\mu)^T u_i \dfrac{1}{\lambda_i}u_i^T(x-\mu)<br>$$<br><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr2qy9seaaj311a06gmxr.jpg" alt="image-20210601142450162"></p>
-<p>得到马氏距离为：$\sum\limits_{i=1}^{p}y_i^2/\lambda_i$</p>
-<p>当维度为2时，可以看作是一个以$u_1$和$u_2$为直角坐标系下的椭圆（$y$的方向与$u$一致，因为$(x-\mu)^Tu_i$是在$u_i$上的投影）：</p>
+<p>实际上，D是一个马氏距离，是向量<img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/>与向量<img src="https://math.now.sh?inline=%5Cmu" style="display:inline-block;margin: 0;"/>之间的马氏距离。</p>
+<p>而<img src="https://math.now.sh?inline=%5CSigma%3DU%20%5CLambda%20U%5ET%3D%5Bu_1%2C%20u_2%2C%20%5Cdots%2Cu_p%5D%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Clambda_%7B1%7D%20%26%20%26%20%5C%5C%0A%20%20%20%20%26%20%5Cddots%20%26%20%5C%5C%0A%20%20%20%20%26%20%26%20%5Clambda_%7Br%7D%0A%20%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20u_%7B1%7D%5ET%20%20%5C%5C%0A%20%20%20%20u_2%5ET%20%5C%5C%0A%20%20%20%20%5Cldots%20%5C%5C%20u_p%5ET%0A%20%20%5Cend%7Bbmatrix%7D%3D%5Csum%5Climits_%7Bi%3D1%7D%5E%7Bp%7Du_i%5Clambda_iu_i%5ET" style="display:inline-block;margin: 0;"/></p>
+<p>(<img src="https://math.now.sh?inline=U" style="display:inline-block;margin: 0;"/>与<img src="https://math.now.sh?inline=U%5ET" style="display:inline-block;margin: 0;"/>互逆)</p>
+<p>求逆：<img src="https://math.now.sh?inline=%7B%28U%5ET%29%7D%5E%7B-1%7D%5CLambda%5E%7B-1%7DU%5E%7B-1%7D%3D%5Csum%5Climits_%7Bi%3D1%7D%5Epu_i%20%5Cdfrac%7B1%7D%7B%5Clambda_i%7Du_i%5ET" style="display:inline-block;margin: 0;"/></p>
+<p>马氏距离表示为：</p>
+<p style=""><img src="https://math.now.sh?from=%28x-%5Cmu%29%5ET%20%5CSigma%5E%7B-1%7D(x-%5Cmu)%3D%0A(x-%5Cmu)%5ET%20%5Cleft(%5Csum%5Climits_%7Bi%3D1%7D%5Epu_i%20%5Cdfrac%7B1%7D%7B%5Clambda_i%7Du_i%5ET%20%5Cright)(x-%5Cmu)%3D%0A%5Csum%5Climits_%7Bi%3D1%7D%5E%7Bp%7D(x-%5Cmu)%5ET%20u_i%20%5Cdfrac%7B1%7D%7B%5Clambda_i%7Du_i%5ET(x-%5Cmu)%0A" /></p><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr2qy9seaaj311a06gmxr.jpg" alt="image-20210601142450162"></p>
+<p>得到马氏距离为：<img src="https://math.now.sh?inline=%5Csum%5Climits_%7Bi%3D1%7D%5E%7Bp%7Dy_i%5E2%2F%5Clambda_i" style="display:inline-block;margin: 0;"/></p>
+<p>当维度为2时，可以看作是一个以<img src="https://math.now.sh?inline=u_1" style="display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=u_2" style="display:inline-block;margin: 0;"/>为直角坐标系下的椭圆（<img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/>的方向与<img src="https://math.now.sh?inline=u" style="display:inline-block;margin: 0;"/>一致，因为<img src="https://math.now.sh?inline=%28x-%5Cmu%29%5ETu_i" style="display:inline-block;margin: 0;"/>是在<img src="https://math.now.sh?inline=u_i" style="display:inline-block;margin: 0;"/>上的投影）：</p>
 <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr4b6bq7g5j30km0dymy7.jpg" alt="image-20210601160052158" style="zoom:50%;" />
-
 <p>于是，高斯分布的概率可以理解为</p>
 <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr4b69y49lj30ma08cdga.jpg" alt="image-20210601164545379" style="zoom:50%;" />
-
 <p>马氏距离为n的时候，形成等概率线（椭圆上的点），如果把n算作第三维，实际上就是椭圆曲面的一个切面</p>
-<h2 id="高斯分布的局限性"><a href="#高斯分布的局限性" class="headerlink" title="高斯分布的局限性"></a>高斯分布的局限性</h2><p>$\Sigma$参数数量：对一个$p$维的高斯分布，参数数量过多</p>
-<p>边缘概率分布$p$。$\def\vector#1.{\begin{pmatrix} #1 \end{pmatrix} }$</p>
-<p>$X \sim (\mu, \Sigma)$</p>
-<p>$$<br>X=\vector{x_1\\x_2\\\ldots\\x_p}.=\vector{x_a\\x_b}., \mu=\vector{\mu_a\\\mu_b}.,\Sigma=\begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix}<br>$$<br>$x_a$，m维；$x_b$，n维，$m+n=p$</p>
-<p>求$p(x_a), p(x_b \mid x_a)$</p>
-<p>先给一个定理：$X \sim (\mu, \Sigma)$，$AX+B \sim (A\mu+B, A\Sigma A^T)$</p>
-<p>$x_a =(I_m \ \ \ \ 0) \vector{x_a\\x_b}.$</p>
-<p>$\therefore x_a \sim \left((I_m\ \ \ \ 0)\vector{\mu_a\\\mu_b}.=\mu_a,  (I_m\ \ \ \ 0) \begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix} \vector{I_m\\0}.=\Sigma_{aa}\right)$</p>
+<h2 id="高斯分布的局限性">高斯分布的局限性</h2>
+<p><img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>参数数量：对一个<img src="https://math.now.sh?inline=p" style="display:inline-block;margin: 0;"/>维的高斯分布，参数数量过多</p>
+<p>边缘概率分布<img src="https://math.now.sh?inline=p" style="display:inline-block;margin: 0;"/>。<img src="https://math.now.sh?inline=%5Cdef%5Cvector%231.%7B%5Cbegin%7Bpmatrix%7D%20%231%20%5Cend%7Bpmatrix%7D%20%7D" style="display:inline-block;margin: 0;"/></p>
+<p><img src="https://math.now.sh?inline=X%20%5Csim%20%28%5Cmu%2C%20%5CSigma%29" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=X%3D%5Cvector%7Bx_1%5C%5Cx_2%5C%5C%5Cldots%5C%5Cx_p%7D.%3D%5Cvector%7Bx_a%5C%5Cx_b%7D.%2C%20%5Cmu%3D%5Cvector%7B%5Cmu_a%5C%5C%5Cmu_b%7D.%2C%5CSigma%3D%5Cbegin%7Bpmatrix%7D%5CSigma_%7Baa%7D%20%26%20%5CSigma_%7Bab%7D%20%5C%5C%20%5CSigma_%7Bba%7D%20%26%20%5CSigma_%7Bbb%7D%20%5Cend%7Bpmatrix%7D%0A" /></p><p><img src="https://math.now.sh?inline=x_a" style="display:inline-block;margin: 0;"/>，m维；<img src="https://math.now.sh?inline=x_b" style="display:inline-block;margin: 0;"/>，n维，<img src="https://math.now.sh?inline=m%2Bn%3Dp" style="display:inline-block;margin: 0;"/></p>
+<p>求<img src="https://math.now.sh?inline=p%28x_a%29%2C%20p(x_b%20%5Cmid%20x_a)" style="display:inline-block;margin: 0;"/></p>
+<p>先给一个定理：<img src="https://math.now.sh?inline=X%20%5Csim%20%28%5Cmu%2C%20%5CSigma%29" style="display:inline-block;margin: 0;"/>，<img src="https://math.now.sh?inline=AX%2BB%20%5Csim%20%28A%5Cmu%2BB%2C%20A%5CSigma%20A%5ET%29" style="display:inline-block;margin: 0;"/></p>
+<p><img src="https://math.now.sh?inline=x_a%20%3D%28I_m%20%5C%20%5C%20%5C%20%5C%200%29%20%5Cvector%7Bx_a%5C%5Cx_b%7D." style="display:inline-block;margin: 0;"/></p>
+<p><img src="https://math.now.sh?inline=%5Ctherefore%20x_a%20%5Csim%20%5Cleft%28(I_m%5C%20%5C%20%5C%20%5C%200%29%5Cvector%7B%5Cmu_a%5C%5C%5Cmu_b%7D.%3D%5Cmu_a%2C%20%20(I_m%5C%20%5C%20%5C%20%5C%200)%20%5Cbegin%7Bpmatrix%7D%5CSigma_%7Baa%7D%20%26%20%5CSigma_%7Bab%7D%20%5C%5C%20%5CSigma_%7Bba%7D%20%26%20%5CSigma_%7Bbb%7D%20%5Cend%7Bpmatrix%7D%20%5Cvector%7BI_m%5C%5C0%7D.%3D%5CSigma_%7Baa%7D%5Cright)" style="display:inline-block;margin: 0;"/></p>
 <p>Schur Complement:</p>
-<p>$$<br>\begin{cases}<br>x_{b \cdot a}=x_b - \Sigma_{ba}\Sigma^{-1}_{aa}x_a \\\<br>\mu_{b \cdot a}=\mu_b - \Sigma_{ba}\Sigma^{-1}_{aa}\mu_a \\\<br>\Sigma_{bb \cdot a}=\Sigma_{bb} - \Sigma_{ba}\Sigma^{-1}_{aa}\Sigma_{ab}<br>\end{cases}<br>$$<br>矩阵表示：<br>$$<br>\begin{align}<br>x_{b \cdot a}&amp;=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}\\\<br>E[x_{b \cdot a}]&amp;=E[\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}]=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix}\begin{pmatrix}   \mu_a \\ \mu_b \end{pmatrix}=-\Sigma_{ba}\Sigma^{-1}_{aa}\mu_a+\mu_b=\mu_{b \cdot a}\\\<br>Var[x_{b \cdot a}]&amp;=Var[\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}   x_a \\ x_b \end{pmatrix}]=\begin{pmatrix} -\Sigma_{ba}\Sigma^{-1}_{aa} \quad I \end{pmatrix} \begin{pmatrix}\Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb} \end{pmatrix} \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.<br>\\\\ &amp; =(-\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{aa}+\Sigma_{ba} \quad -\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}) \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.\\\<br>&amp;=(0 \quad -\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}) \vector{-(\Sigma_{aa}^{-1})^T\Sigma_{ba}^T \\ I}.\\\<br>&amp;=-\Sigma_{ba}\Sigma_{aa}^{-1}\Sigma_{ab}+\Sigma_{bb}=\Sigma_{bb \cdot a}<br>\end{align}<br>$$</p>
-<p>$x_b=x_{b\cdot a}+\Sigma_{ba}\Sigma^{-1}_{aa}x_a$<br>$$<br>\begin{align}<br>E(x_b \mid x_a)&amp;=E(x_{b \cdot a}+\Sigma_{ba}\Sigma^{-1}_{aa}x_a)=\mu_{b \cdot a} + \Sigma_{ba}\Sigma^{-1}_{aa}x_a\\\<br>Var(x_b \mid x_a)&amp;=Var(x_{b\cdot a})=\Sigma_{bb \cdot a}<br>\end{align}<br>$$</p>
-<p>$p(x)\sim N(x \mid \mu, \Lambda^{-1}), p(y \mid x) \sim N(y \mid Ax + b, L^{-1})$<br>$$<br>y=Ax+b+\varepsilon, \varepsilon \sim N(0, L^{-1})<br>$$<br>$E(y)=E(Ax+b+\varepsilon)=AE(x)+b+E(\varepsilon)=A\mu+b\\\\Var(y)=Var(Ax+b+\varepsilon)=A\Lambda^{-1}A^T+L^{-1}\\\\y \sim N(A\mu +b, A\Lambda^{-1}A^T+L^{-1})$</p>
-<p>$z=\vector{x \\ y}. \sim N \left(\begin{bmatrix} \mu \\ A\mu +b \end{bmatrix}, \begin{bmatrix} \Lambda^{-1} &amp; \Delta \\ \Delta &amp; A\Lambda^{-1}A^T+L^{-1} \end{bmatrix} \right)$</p>
-<p>$\Delta=Cov(x, y) = E[(x-E(x))(y-E(y))^T]$<br>$$<br>\begin{align}<br>E[(x-E(x))(y-E(y))^T]&amp;=E[(x-\mu)(Ax+b+\varepsilon-A\mu-b)^T]\\\<br>&amp;=E[(x-\mu)(Ax-A\mu+\varepsilon)^T]\\\<br>&amp;=E[(x-\mu)(x-\mu)^TA^T+(x-\mu)\varepsilon^T]\\\<br>&amp;=Var(x)A^T+E[(x-\mu)\varepsilon^T]\\\<br>&amp;=\Lambda^{-1}A^T + E(x-\mu)E(\varepsilon^T)\\\<br>&amp;=\Lambda^{-1}A^T<br>\end{align}<br>$$<br>根据<br>$$<br>\begin{align}<br>E(x_b \mid x_a)&amp;=E(x_{b \cdot a}+\Sigma_{ba}\Sigma^{-1}_{aa}x_a)=\mu_{b \cdot a} + \Sigma_{ba}\Sigma^{-1}_{aa}x_a\\\<br>Var(x_b \mid x_a)&amp;=Var(x_{b\cdot a})=\Sigma_{bb \cdot a}<br>\end{align}<br>$$</p>
-<p>$\therefore E(x \mid y) = \mu_{x\cdot y} + \Sigma_{xy}\Sigma^{-1}_{yy}y=\mu_x-\Sigma_{xy}\Sigma^{-1}_{yy}\mu_y+ \Sigma_{xy}\Sigma^{-1}_{yy}y= \mu-\Sigma_{xy}\Sigma^{-1}_{yy}(\mu_y-y)=\mu-\Sigma_{xy}\Sigma^{-1}_{yy}(A\mu+b-Ax-b)$</p>
-<p>$$<br>\begin{align}<br>\therefore E(x \mid y) &amp;= \mu_{x\cdot y} + \Sigma_{xy}\Sigma^{-1}_{yy}y\\\<br>&amp;=\mu_x-\Sigma_{xy}\Sigma^{-1}_{yy}\mu_y+ \Sigma_{xy}\Sigma^{-1}_{yy}y \\\<br>&amp;= \mu-\Sigma_{xy}\Sigma^{-1}_{yy}(\mu_y-y) \\\<br>&amp;=\mu-\Sigma_{xy}\Sigma^{-1}_{yy}(A\mu+b-Ax-b)\\\<br>&amp;=\mu-\Sigma_{xy}\Sigma^{-1}_{yy}A(\mu-x)\\\<br>&amp;=\mu-\Lambda^{-1}A^T(A\Lambda^{-1}A^T+L^{-1})A(\mu-x)<br>\end{align}<br>$$</p>
-<p>$$<br>\begin{align}<br>\therefore Var(x \mid y) &amp; = \Sigma_{xx \cdot y}=\Sigma_{xx}-\Sigma_{xy}\Sigma^{-1}_{yy}\Sigma_{yx}=\Lambda^{-1}-\Lambda^{-1}A^T(A\Lambda^{-1}A^T+L^{-1})^{-1}A\Lambda^{ {-1}^{T} }<br>\end{align}<br>$$</p>
-
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Bcases%7D%0Ax_%7Bb%20%5Ccdot%20a%7D%3Dx_b%20-%20%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7Dx_a%20%5C%5C%5C%5C%0A%5Cmu_%7Bb%20%5Ccdot%20a%7D%3D%5Cmu_b%20-%20%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7D%5Cmu_a%20%5C%5C%5C%5C%0A%5CSigma_%7Bbb%20%5Ccdot%20a%7D%3D%5CSigma_%7Bbb%7D%20-%20%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7D%5CSigma_%7Bab%7D%0A%5Cend%7Bcases%7D%0A" /></p><p>矩阵表示：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0Ax_%7Bb%20%5Ccdot%20a%7D%26%3D%5Cbegin%7Bpmatrix%7D%20-%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7D%20%5Cquad%20I%20%5Cend%7Bpmatrix%7D%20%5Cbegin%7Bpmatrix%7D%20%20%20x_a%20%5C%5C%20x_b%20%5Cend%7Bpmatrix%7D%5C%5C%5C%5C%0AE%5Bx_%7Bb%20%5Ccdot%20a%7D%5D%26%3DE%5B%5Cbegin%7Bpmatrix%7D%20-%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7D%20%5Cquad%20I%20%5Cend%7Bpmatrix%7D%20%5Cbegin%7Bpmatrix%7D%20%20%20x_a%20%5C%5C%20x_b%20%5Cend%7Bpmatrix%7D%5D%3D%5Cbegin%7Bpmatrix%7D%20-%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7D%20%5Cquad%20I%20%5Cend%7Bpmatrix%7D%5Cbegin%7Bpmatrix%7D%20%20%20%5Cmu_a%20%5C%5C%20%5Cmu_b%20%5Cend%7Bpmatrix%7D%3D-%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7D%5Cmu_a%2B%5Cmu_b%3D%5Cmu_%7Bb%20%5Ccdot%20a%7D%5C%5C%5C%5C%0AVar%5Bx_%7Bb%20%5Ccdot%20a%7D%5D%26%3DVar%5B%5Cbegin%7Bpmatrix%7D%20-%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7D%20%5Cquad%20I%20%5Cend%7Bpmatrix%7D%20%5Cbegin%7Bpmatrix%7D%20%20%20x_a%20%5C%5C%20x_b%20%5Cend%7Bpmatrix%7D%5D%3D%5Cbegin%7Bpmatrix%7D%20-%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7D%20%5Cquad%20I%20%5Cend%7Bpmatrix%7D%20%5Cbegin%7Bpmatrix%7D%5CSigma_%7Baa%7D%20%26%20%5CSigma_%7Bab%7D%20%5C%5C%20%5CSigma_%7Bba%7D%20%26%20%5CSigma_%7Bbb%7D%20%5Cend%7Bpmatrix%7D%20%5Cvector%7B-%28%5CSigma_%7Baa%7D%5E%7B-1%7D%29%5ET%5CSigma_%7Bba%7D%5ET%20%5C%5C%20I%7D.%0A%5C%5C%5C%5C%20%26%20%3D(-%5CSigma_%7Bba%7D%5CSigma_%7Baa%7D%5E%7B-1%7D%5CSigma_%7Baa%7D%2B%5CSigma_%7Bba%7D%20%5Cquad%20-%5CSigma_%7Bba%7D%5CSigma_%7Baa%7D%5E%7B-1%7D%5CSigma_%7Bab%7D%2B%5CSigma_%7Bbb%7D)%20%5Cvector%7B-(%5CSigma_%7Baa%7D%5E%7B-1%7D)%5ET%5CSigma_%7Bba%7D%5ET%20%5C%5C%20I%7D.%5C%5C%5C%5C%0A%26%3D(0%20%5Cquad%20-%5CSigma_%7Bba%7D%5CSigma_%7Baa%7D%5E%7B-1%7D%5CSigma_%7Bab%7D%2B%5CSigma_%7Bbb%7D)%20%5Cvector%7B-(%5CSigma_%7Baa%7D%5E%7B-1%7D)%5ET%5CSigma_%7Bba%7D%5ET%20%5C%5C%20I%7D.%5C%5C%5C%5C%0A%26%3D-%5CSigma_%7Bba%7D%5CSigma_%7Baa%7D%5E%7B-1%7D%5CSigma_%7Bab%7D%2B%5CSigma_%7Bbb%7D%3D%5CSigma_%7Bbb%20%5Ccdot%20a%7D%0A%5Cend%7Balign%7D%0A" /></p><p><img src="https://math.now.sh?inline=x_b%3Dx_%7Bb%5Ccdot%20a%7D%2B%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7Dx_a" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AE%28x_b%20%5Cmid%20x_a%29%26%3DE(x_%7Bb%20%5Ccdot%20a%7D%2B%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7Dx_a)%3D%5Cmu_%7Bb%20%5Ccdot%20a%7D%20%2B%20%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7Dx_a%5C%5C%5C%5C%0AVar(x_b%20%5Cmid%20x_a)%26%3DVar(x_%7Bb%5Ccdot%20a%7D)%3D%5CSigma_%7Bbb%20%5Ccdot%20a%7D%0A%5Cend%7Balign%7D%0A" /></p><p><img src="https://math.now.sh?inline=p%28x%29%5Csim%20N(x%20%5Cmid%20%5Cmu%2C%20%5CLambda%5E%7B-1%7D)%2C%20p(y%20%5Cmid%20x)%20%5Csim%20N(y%20%5Cmid%20Ax%20%2B%20b%2C%20L%5E%7B-1%7D)" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=y%3DAx%2Bb%2B%5Cvarepsilon%2C%20%5Cvarepsilon%20%5Csim%20N%280%2C%20L%5E%7B-1%7D%29%0A" /></p><p><img src="https://math.now.sh?inline=E%28y%29%3DE(Ax%2Bb%2B%5Cvarepsilon)%3DAE(x)%2Bb%2BE(%5Cvarepsilon)%3DA%5Cmu%2Bb%5C%5C%5C%5CVar(y)%3DVar(Ax%2Bb%2B%5Cvarepsilon)%3DA%5CLambda%5E%7B-1%7DA%5ET%2BL%5E%7B-1%7D%5C%5C%5C%5Cy%20%5Csim%20N(A%5Cmu%20%2Bb%2C%20A%5CLambda%5E%7B-1%7DA%5ET%2BL%5E%7B-1%7D)" style="display:inline-block;margin: 0;"/></p>
+<p><img src="https://math.now.sh?inline=z%3D%5Cvector%7Bx%20%5C%5C%20y%7D.%20%5Csim%20N%20%5Cleft%28%5Cbegin%7Bbmatrix%7D%20%5Cmu%20%5C%5C%20A%5Cmu%20%2Bb%20%5Cend%7Bbmatrix%7D%2C%20%5Cbegin%7Bbmatrix%7D%20%5CLambda%5E%7B-1%7D%20%26%20%5CDelta%20%5C%5C%20%5CDelta%20%26%20A%5CLambda%5E%7B-1%7DA%5ET%2BL%5E%7B-1%7D%20%5Cend%7Bbmatrix%7D%20%5Cright%29" style="display:inline-block;margin: 0;"/></p>
+<p><img src="https://math.now.sh?inline=%5CDelta%3DCov%28x%2C%20y%29%20%3D%20E%5B(x-E(x))(y-E(y))%5ET%5D" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AE%5B%28x-E(x%29)(y-E(y))%5ET%5D%26%3DE%5B(x-%5Cmu)(Ax%2Bb%2B%5Cvarepsilon-A%5Cmu-b)%5ET%5D%5C%5C%5C%5C%0A%26%3DE%5B(x-%5Cmu)(Ax-A%5Cmu%2B%5Cvarepsilon)%5ET%5D%5C%5C%5C%5C%0A%26%3DE%5B(x-%5Cmu)(x-%5Cmu)%5ETA%5ET%2B(x-%5Cmu)%5Cvarepsilon%5ET%5D%5C%5C%5C%5C%0A%26%3DVar(x)A%5ET%2BE%5B(x-%5Cmu)%5Cvarepsilon%5ET%5D%5C%5C%5C%5C%0A%26%3D%5CLambda%5E%7B-1%7DA%5ET%20%2B%20E(x-%5Cmu)E(%5Cvarepsilon%5ET)%5C%5C%5C%5C%0A%26%3D%5CLambda%5E%7B-1%7DA%5ET%0A%5Cend%7Balign%7D%0A" /></p><p>根据</p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AE%28x_b%20%5Cmid%20x_a%29%26%3DE(x_%7Bb%20%5Ccdot%20a%7D%2B%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7Dx_a)%3D%5Cmu_%7Bb%20%5Ccdot%20a%7D%20%2B%20%5CSigma_%7Bba%7D%5CSigma%5E%7B-1%7D_%7Baa%7Dx_a%5C%5C%5C%5C%0AVar(x_b%20%5Cmid%20x_a)%26%3DVar(x_%7Bb%5Ccdot%20a%7D)%3D%5CSigma_%7Bbb%20%5Ccdot%20a%7D%0A%5Cend%7Balign%7D%0A" /></p><p><img src="https://math.now.sh?inline=%5Ctherefore%20E%28x%20%5Cmid%20y%29%20%3D%20%5Cmu_%7Bx%5Ccdot%20y%7D%20%2B%20%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7Dy%3D%5Cmu_x-%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7D%5Cmu_y%2B%20%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7Dy%3D%20%5Cmu-%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7D(%5Cmu_y-y)%3D%5Cmu-%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7D(A%5Cmu%2Bb-Ax-b)" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5Ctherefore%20E%28x%20%5Cmid%20y%29%20%26%3D%20%5Cmu_%7Bx%5Ccdot%20y%7D%20%2B%20%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7Dy%5C%5C%5C%5C%0A%26%3D%5Cmu_x-%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7D%5Cmu_y%2B%20%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7Dy%20%5C%5C%5C%5C%0A%26%3D%20%5Cmu-%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7D(%5Cmu_y-y)%20%5C%5C%5C%5C%0A%26%3D%5Cmu-%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7D(A%5Cmu%2Bb-Ax-b)%5C%5C%5C%5C%0A%26%3D%5Cmu-%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7DA(%5Cmu-x)%5C%5C%5C%5C%0A%26%3D%5Cmu-%5CLambda%5E%7B-1%7DA%5ET(A%5CLambda%5E%7B-1%7DA%5ET%2BL%5E%7B-1%7D)A(%5Cmu-x)%0A%5Cend%7Balign%7D%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5Ctherefore%20Var%28x%20%5Cmid%20y%29%20%26%20%3D%20%5CSigma_%7Bxx%20%5Ccdot%20y%7D%3D%5CSigma_%7Bxx%7D-%5CSigma_%7Bxy%7D%5CSigma%5E%7B-1%7D_%7Byy%7D%5CSigma_%7Byx%7D%3D%5CLambda%5E%7B-1%7D-%5CLambda%5E%7B-1%7DA%5ET(A%5CLambda%5E%7B-1%7DA%5ET%2BL%5E%7B-1%7D)%5E%7B-1%7DA%5CLambda%5E%7B%20%7B-1%7D%5E%7BT%7D%20%7D%0A%5Cend%7Balign%7D%0A" /></p>
             </div>
             <hr/>
 
@@ -487,8 +490,21 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            线性回归最小二乘法
-$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$$$\newcommand{\bm}[1]{\b
+                            线性回归
+最小二乘法
+
+
+个样本：, 
+矩阵表示：
+
+
+最小二乘估计：
+
+
+$$
+X^TY-X^TX\beta=0, \beta=(X^TX)^{-1}X^TY
+$$
+各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，
                         
                     </div>
                     <div class="publish-info">
@@ -535,15 +551,17 @@ $N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \
                         
                             
 N：网络
+
 V，E：网络节点和边
 R：资源
-m：映射：（边到时间）– 一条边通过的最短时间
-a：映射：（资源到边集）– 一个资源分配给的边
-b：映射：（资源到时间）– 一个资源占用需要等待的时间
+m：映射：（边到时间）-- 一条边通过的最短时间
+a：映射：（资源到边集）-- 一个资源分配给的边
+b：映射：（资源到时间）-- 一个资源占用需要等待的时间
 
 
 T：火车
-S，L：V，E的一个无环子图–
+
+S，L：V，E的一个
                         
                     </div>
                     <div class="publish-info">
