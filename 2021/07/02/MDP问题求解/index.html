@@ -347,6 +347,8 @@
 <p>存在问题：迭代中包含迭代，主要是策略评估时还需要迭代</p>
 </blockquote>
 <p>解决方案：截断策略评估，截断的方案是，<strong>在策略评估的迭代时，不迭代到尽头</strong>。例如当按照上面的迭代式进行$V_{k+1}$的更新时，按照下面的方式更新（贝尔曼最优）一次。也就是，面对一个状态，直接找最大的动作回报下进行策略评估迭代：<br>$$<br>V_{k+1}(s)=\max_a \sum_{s’r} p(s’r \mid  s, a)[r + \gamma V_{k}(s’)]\\\<br>对比原来的策略评估 \downarrow \\\<br>V_{k+1}(s)\triangleq \sum_{a} \pi(a \mid s)\sum_{s’r}p(s’,r \mid s,a)(r+\gamma V_{k}(s’))<br>$$<br>这种方式下的迭代，就叫价值迭代。（其实就是策略迭代的一种极端情况）</p>
+<iframe src = "https://nbviewer.jupyter.org/url/101.34.75.195%3A8080/get_file/pi-and-ai.ipynb" width="900" height="1500"/>
+
 
             </div>
             <hr/>
