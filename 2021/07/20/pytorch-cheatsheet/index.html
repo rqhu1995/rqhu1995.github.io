@@ -300,13 +300,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="TORCH-UNSQUEEZE"><a href="#TORCH-UNSQUEEZE" class="headerlink" title="TORCH.UNSQUEEZE"></a>TORCH.UNSQUEEZE</h1><p><code>torch.unsqueeze(dim: int)</code>，在dim后加入一个单维度：</p>
-<pre class=" language-python"><code class="language-python">tensor <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-tensor<span class="token punctuation">.</span>shape <span class="token comment" spellcheck="true"># torch.Size([4])</span>
-tensor_unsqueeze <span class="token operator">=</span> tensor<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 在第0维度添加一个单维度，值为1</span>
-tensor_unsqueeze<span class="token punctuation">.</span>shape <span class="token comment" spellcheck="true"># torch.Size([1, 4])</span>
-tensor_unsqueeze <span class="token operator">=</span> tensor<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-tensor_unsqueeze<span class="token punctuation">.</span>shape <span class="token comment" spellcheck="true"># torch.Size([4, 1])</span></code></pre>
+                <h1>TORCH.UNSQUEEZE</h1>
+<p><code>torch.unsqueeze(dim: int)</code>，在dim后加入一个单维度：</p>
+<pre class=" language-language-python"><code class="language-language-python">tensor = torch.tensor([1, 2, 3, 4])
+tensor.shape # torch.Size([4])
+tensor_unsqueeze = tensor.unsqueeze(0) # 在第0维度添加一个单维度，值为1
+tensor_unsqueeze.shape # torch.Size([1, 4])
+tensor_unsqueeze = tensor.unsqueeze(1)
+tensor_unsqueeze.shape # torch.Size([4, 1])
+</code></pre>
 
             </div>
             <hr/>
@@ -424,12 +426,19 @@ tensor_unsqueeze<span class="token punctuation">.</span>shape <span class="token
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            当$x=x_i$成立时，$p \ge q$成立：$$p \ge q-M(x-x_i)$$$M$: very large number
+                            当成立时，成立：
+: very large number
 子回路约束消除：
 
-加入时间变量 $t_j \ge t_i-M(1-x_{ij})$
 
-通过子图，任何一个
+加入时间变量 
+
+
+通过子图，任何一个子图内至少存在一个节点没有连接到这个子图
+等价表达：，子图内所有边数小于顶点数，证明至少有一个边出去了
+
+
+BSS: Ra
                         
                     </div>
                     <div class="publish-info">
@@ -539,7 +548,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
     <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], scale: 80, linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], scale: 120, linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
              tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
              TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "70%" } }, Macros: { href: "{}" } },
              messageStyle: "none"

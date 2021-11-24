@@ -301,24 +301,26 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li>N：网络<ul>
+<li>N：网络
+<ul>
 <li>V，E：网络节点和边</li>
 <li>R：资源</li>
-<li>m：映射：（边到时间）– 一条边通过的最短时间</li>
-<li>a：映射：（资源到边集）– 一个资源分配给的边</li>
-<li>b：映射：（资源到时间）– 一个资源占用需要等待的时间</li>
+<li>m：映射：（边到时间）-- 一条边通过的最短时间</li>
+<li>a：映射：（资源到边集）-- 一个资源分配给的边</li>
+<li>b：映射：（资源到时间）-- 一个资源占用需要等待的时间</li>
 </ul>
 </li>
-<li>T：火车<ul>
+<li>T：火车
+<ul>
 <li>S，L：V，E的一个无环子图–（火车的轨迹）</li>
-<li>e：映射：（节点到时间）– 火车到节点S的最早时间；</li>
-<li>l：映射：（节点到时间）– 火车到节点S的最晚时间；</li>
-<li>w：映射：（边到时间）– 火车在某条边需要等待的时间（等待资源释放）；</li>
+<li>e：映射：（节点到时间）-- 火车到节点S的最早时间；</li>
+<li>l：映射：（节点到时间）-- 火车到节点S的最晚时间；</li>
+<li>w：映射：（边到时间）-- 火车在某条边需要等待的时间（等待资源释放）；</li>
 </ul>
 </li>
-<li>C：$(t_1,e_1,t_2,e_2,c)$：存在连接关系（送货、下客）的边，先到的火车t1需要在后者t2来之后至少c秒才能离开轨道（边）</li>
+<li>C：<img src="https://math.now.sh?inline=%28t_1%2Ce_1%2Ct_2%2Ce_2%2Cc%29" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/>：存在连接关系（送货、下客）的边，先到的火车t1需要在后者t2来之后至少c秒才能离开轨道（边）</li>
 </ul>
-<p>问题的解答：$(P, A)$，P为一辆火车在网络中的一条路径，A为该火车到达路径每个节点的时间</p>
+<p>问题的解答：<img src="https://math.now.sh?inline=%28P%2C%20A%29" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/>，P为一辆火车在网络中的一条路径，A为该火车到达路径每个节点的时间</p>
 
             </div>
             <hr/>
@@ -436,7 +438,20 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma
+                            高斯分布
+概率密度
+假设为研究的维度，为均值向量，为协方差矩阵（）
+一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）
+当时，
+
+先求，
+
+令，则
+
+接着求，
+
+令，则
+关于两个估计的无偏性
                         
                     </div>
                     <div class="publish-info">
