@@ -308,16 +308,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="DQN网络"><a href="#DQN网络" class="headerlink" title="DQN网络"></a>DQN网络</h1><p>目标：找到$Q^\ast(s,a)$函数，之后给定一个$s_i$，就可以得到$\arg\max_\limits{a} Q(s_i,a)$</p>
-<h2 id="Temperal-Difference学习（TD-learning）"><a href="#Temperal-Difference学习（TD-learning）" class="headerlink" title="Temperal Difference学习（TD learning）"></a>Temperal Difference学习（TD learning）</h2><p>例如：</p>
+                <h1>DQN网络</h1>
+<p>目标：找到<img src="https://math.now.sh?inline=Q%5E%5Cast%28s%2Ca%29" style="display:inline-block;margin: 0;"/>函数，之后给定一个<img src="https://math.now.sh?inline=s_i" style="display:inline-block;margin: 0;"/>，就可以得到<img src="https://math.now.sh?inline=%5Carg%5Cmax_%5Climits%7Ba%7D%20Q%28s_i%2Ca%29" style="display:inline-block;margin: 0;"/></p>
+<h2 id="Temperal-Difference学习（TD-learning）">Temperal Difference学习（TD learning）</h2>
+<p>例如：</p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="image-20210707173757889" style="zoom:50%;" />
-
 <p>出发前首先预测A-C之间的时间，1000；走到B，实际用时300，再次使用该模型估计剩余时间，得到的结果600。此时可以更新预测时间：900，900被称为TD target。</p>
 <p>TD error：1000-900=100</p>
-<p>Loss Function：$L=\frac{1}{2}(Q(w)-y)^2$</p>
-<p>梯度下降：$\left.w:=w-\alpha\dfrac{\partial L}{\partial w}\right|_{w=w_t}$</p>
-<p>能够使用TD learning的情况：<br>$$<br>A \approx B + C<br>$$<br>A和C是模型预测结果，B是实际运行结果。</p>
-<p>在深度强化学习中，有：<br>$$<br>Q(s_t, a_t; \mathbf{w}) \approx r_t + \gamma \cdot Q(s_{t+1}, a_{t+1}; \mathbf{w})<br>$$<br>Model Free与Model Based的区别：是否知道Transition Table（状态转移表）</p>
+<p>Loss Function：<img src="https://math.now.sh?inline=L%3D%5Cfrac%7B1%7D%7B2%7D%28Q(w%29-y)%5E2" style="display:inline-block;margin: 0;"/></p>
+<p>梯度下降：<img src="https://math.now.sh?inline=%5Cleft.w%3A%3Dw-%5Calpha%5Cdfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D%5Cright%7C_%7Bw%3Dw_t%7D" style="display:inline-block;margin: 0;"/></p>
+<p>能够使用TD learning的情况：</p>
+<p style=""><img src="https://math.now.sh?from=A%20%5Capprox%20B%20%2B%20C%0A" /></p><p>A和C是模型预测结果，B是实际运行结果。</p>
+<p>在深度强化学习中，有：</p>
+<p style=""><img src="https://math.now.sh?from=Q%28s_t%2C%20a_t%3B%20%5Cmathbf%7Bw%7D%29%20%5Capprox%20r_t%20%2B%20%5Cgamma%20%5Ccdot%20Q(s_%7Bt%2B1%7D%2C%20a_%7Bt%2B1%7D%3B%20%5Cmathbf%7Bw%7D)%0A" /></p><p>Model Free与Model Based的区别：是否知道Transition Table（状态转移表）</p>
 <p>SARSA算法：</p>
 
             </div>
@@ -445,10 +448,16 @@
                     <div class="summary block-with-text">
                         
                             随机策略
+
 离散情况
 
-$$\pi_\theta(a\mid s)=\dfrac{e^{h(s,a;\theta)}}{\sum_{a’}e^{h(s,a’;\theta)}}$$
-其中，$h$是一个打分函数，可能来自$\theta$线性组合
+其中，是一个打分函数，可能来自线性组合，也可能是一个非线性的神经网络
+
+随机情况：Gaussian-dist
+
+RL策略学习
+数据
+$(s_1, a_1, r_1), (s_2, a_2, r_2), \ldots,
                         
                     </div>
                     <div class="publish-info">
@@ -486,11 +495,21 @@ $$\pi_\theta(a\mid s)=\dfrac{e^{h(s,a;\theta)}}{\sum_{a’}e^{h(s,a’;\theta)}}
                     <div class="summary block-with-text">
                         
                             基本框架
+
+
 策略迭代
+
 
 step 0：若未达到终止条件，则step 1，否则结束：
 
-step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \in \mathcal{S}$，求解$V_\pi(s)\text{ 和 
+
+step 1：策略评估（策略预测）：给定一个策略，，求解
+
+
+step 2：策略改进：根据计算出来的，找到一个，使得
+
+
+step 3：go to 
                         
                     </div>
                     <div class="publish-info">

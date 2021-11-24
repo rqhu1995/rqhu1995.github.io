@@ -304,51 +304,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><h2 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h2><ul>
-<li>$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$<br>$$<br>\newcommand{\bm}[1]{\begin{bmatrix} #1 \end{bmatrix}}<br>$$</li>
+                <h1>线性回归</h1>
+<h2 id="最小二乘法">最小二乘法</h2>
+<ul>
+<li>
+<p><img src="https://math.now.sh?inline=N" style="display:inline-block;margin: 0;"/>个样本：<img src="https://math.now.sh?inline=%5C%7B%28x_1%2C%20y_1%29%2C%20%5Cldots%20(x_n%2C%20y_n)%5C%7D" style="display:inline-block;margin: 0;"/>, <img src="https://math.now.sh?inline=x_i%20%5Cin%20%5Cmathbb%7BR%7D%5Ep%2C%20y_i%20%5Cin%20%5Cmathbb%7BR%7D" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=%5Cnewcommand%7B%5Cbm%7D%5B1%5D%7B%5Cbegin%7Bbmatrix%7D%20%231%20%5Cend%7Bbmatrix%7D%7D%0A" /></p><p>矩阵表示：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AX%26%3D%5Cbm%7Bx_1%2C%20x_2%2C%20%5Cldots%2C%20x_n%7D%5ET%3D%5Cbm%7Bx_1%5ET%5C%5C%20x_2%5ET%5C%5C%20x_3%5ET%5C%5C%20%5Cldots%20%5C%5C%20x_n%5ET%7D%20--%3E%20%5Ctext%7B%E4%B8%80%E8%A1%8C%E4%B8%80%E4%B8%AA%E6%A0%B7%E6%9C%AC%EF%BC%8C%E5%90%84%E7%BB%B4%E5%BA%A6%E6%A8%AA%E7%9D%80%E6%91%8A%E5%BC%80%7D%5C%5C%5C%5C%0AY%26%3D%5Cbm%7By_1%5C%5C%20y_2%5C%5C%20y_3%5C%5C%20%5Cldots%20%5C%5C%20y_n%7D%0A%5Cend%7Balign%7D%0A" /></p></li>
 </ul>
-<p>  矩阵表示：<br>  $$<br>  \begin{align}<br>  X&amp;=\bm{x_1, x_2, \ldots, x_n}^T=\bm{x_1^T\\ x_2^T\\ x_3^T\\ \ldots \\ x_n^T} –&gt; \text{一行一个样本，各维度横着摊开}\\\<br>  Y&amp;=\bm{y_1\\ y_2\\ y_3\\ \ldots \\ y_n}<br>  \end{align}<br>  $$</p>
-<p>最小二乘估计：<br>$$<br>\begin{align}<br>L(w)&amp;=\sum\limits_{i=1}^{N}||w^Tx_i-y_i||^2\\\<br>&amp;=\sum\limits_{i=1}^{N}(w^Tx_i-y_i)^2\\\<br>&amp;=[(w^Tx_1\quad w^Tx_2 \ldots \quad w^Tx_n) - (y_1\quad y_2 \ldots \quad y_n)] \bm{w^Tx_1-y_1\\\\w^Tx_2-y_2\\\\ \ldots \\\\w^Tx_n-y_n}\\\<br>&amp;=(w^TX^T-Y^T)(w^TX^T-Y^T)^T \\\<br>&amp;=(w^TX^T-Y^T)(XW-Y)\\\<br>&amp;=w^TX^TXW-w^TX^TY-Y^TXW+Y^TY\\\<br>&amp;=w^TX^TXW-2w^TX^TY+Y^TY<br>\end{align}<br>$$<br>$\therefore \dfrac{\partial L(w)}{\partial w}=2X^TXw-2x^TY=0, w=(X^TX)^{-1}X^TY$</p>
+<p>最小二乘估计：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AL%28w%29%26%3D%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN%7D%7C%7Cw%5ETx_i-y_i%7C%7C%5E2%5C%5C%5C%5C%0A%26%3D%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN%7D(w%5ETx_i-y_i)%5E2%5C%5C%5C%5C%0A%26%3D%5B(w%5ETx_1%5Cquad%20w%5ETx_2%20%5Cldots%20%5Cquad%20w%5ETx_n)%20-%20(y_1%5Cquad%20y_2%20%5Cldots%20%5Cquad%20y_n)%5D%20%5Cbm%7Bw%5ETx_1-y_1%5C%5C%5C%5Cw%5ETx_2-y_2%5C%5C%5C%5C%20%5Cldots%20%5C%5C%5C%5Cw%5ETx_n-y_n%7D%5C%5C%5C%5C%0A%26%3D(w%5ETX%5ET-Y%5ET)(w%5ETX%5ET-Y%5ET)%5ET%20%5C%5C%5C%5C%0A%26%3D(w%5ETX%5ET-Y%5ET)(XW-Y)%5C%5C%5C%5C%0A%26%3Dw%5ETX%5ETXW-w%5ETX%5ETY-Y%5ETXW%2BY%5ETY%5C%5C%5C%5C%0A%26%3Dw%5ETX%5ETXW-2w%5ETX%5ETY%2BY%5ETY%0A%5Cend%7Balign%7D%0A" /></p><p><img src="https://math.now.sh?inline=%5Ctherefore%20%5Cdfrac%7B%5Cpartial%20L%28w%29%7D%7B%5Cpartial%20w%7D%3D2X%5ETXw-2x%5ETY%3D0%2C%20w%3D(X%5ETX)%5E%7B-1%7DX%5ETY" style="display:inline-block;margin: 0;"/></p>
 <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr6lohd4r9j31l60u0whw.jpg" alt="最小二乘其他理解" style="zoom:25%;" />
 $$
 X^TY-X^TX\beta=0, \beta=(X^TX)^{-1}X^TY
 $$
 各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，（$N$维向量），要使得这向量与标签向量$Y$之间的距离最近，则这个向量应当是标签值向量在该面上的投影，误差被分散到各个维度上。
-
-
-
-<h2 id="概率视角下的线性回归"><a href="#概率视角下的线性回归" class="headerlink" title="概率视角下的线性回归"></a>概率视角下的线性回归</h2><p>假设样本在拟合的方程下的值的偏差存在噪声$\varepsilon$，即和真实值存在的偏差，服从正态分布$\varepsilon \sim N(0, \sigma^2)$，则</p>
-<p>$y=f(w)+\varepsilon$</p>
-<p>此处把$w^Tx$看成常数，噪声是随机变量，所以：</p>
-<p>$y\mid x;w \sim N(w^Tx, \sigma^2)$</p>
-<p>从极大似然估计的角度来估计这个参数（常数）：<br>$$<br>\begin{align}<br>\mathcal{L}(w)&amp;=log(\prod\limits_{i=1}^{N}p(y_i)) \\\<br>&amp;=log \left(\prod\limits_{i=1}^{N}\dfrac{1}{\sqrt{2\pi}\sigma}e^{-\dfrac{(y_i-w^Tx)^2}{2\sigma^2}}\right)\\\<br>&amp;=\sum\limits_{i=1}^{N}log\dfrac{1}{\sqrt{2\pi}\sigma}-\sum\limits_{i=1}^{N}\dfrac{(y_i-w^Tx)^2}{2\sigma^2}<br>\end{align}<br>$$</p>
-<p>$$<br>\begin{align}<br>\hat{w}&amp;=\underset{w}{\arg\max}\sum\limits_{i=1}^{N}log\dfrac{1}{\sqrt{2\pi}\sigma}-\sum\limits_{i=1}^{N}\dfrac{(y_i-w^Tx)^2}{2\sigma^2}\\\<br>&amp;=\underset{w}{\arg\min}\sum\limits_{i=1}^{N}\dfrac{(y_i-w^Tx)^2}{2\sigma^2}\\\<br>&amp;=\underset{w}{\arg\min}\sum\limits_{i=1}^{N}(y_i-w^Tx)^2<br>\end{align}<br>$$<br>这与上面的最小二乘法推导出的结论相同，即最小二乘法求出的$w$就是噪声服从于高斯分布的极大似然估计下的$\hat{w}$</p>
+<h2 id="概率视角下的线性回归">概率视角下的线性回归</h2>
+<p>假设样本在拟合的方程下的值的偏差存在噪声<img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/>，即和真实值存在的偏差，服从正态分布<img src="https://math.now.sh?inline=%5Cvarepsilon%20%5Csim%20N%280%2C%20%5Csigma%5E2%29" style="display:inline-block;margin: 0;"/>，则</p>
+<p><img src="https://math.now.sh?inline=y%3Df%28w%29%2B%5Cvarepsilon" style="display:inline-block;margin: 0;"/></p>
+<p>此处把<img src="https://math.now.sh?inline=w%5ETx" style="display:inline-block;margin: 0;"/>看成常数，噪声是随机变量，所以：</p>
+<p><img src="https://math.now.sh?inline=y%5Cmid%20x%3Bw%20%5Csim%20N%28w%5ETx%2C%20%5Csigma%5E2%29" style="display:inline-block;margin: 0;"/></p>
+<p>从极大似然估计的角度来估计这个参数（常数）：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5Cmathcal%7BL%7D%28w%29%26%3Dlog(%5Cprod%5Climits_%7Bi%3D1%7D%5E%7BN%7Dp(y_i))%20%5C%5C%5C%5C%0A%26%3Dlog%20%5Cleft(%5Cprod%5Climits_%7Bi%3D1%7D%5E%7BN%7D%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7De%5E%7B-%5Cdfrac%7B(y_i-w%5ETx)%5E2%7D%7B2%5Csigma%5E2%7D%7D%5Cright)%5C%5C%5C%5C%0A%26%3D%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN%7Dlog%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D-%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN%7D%5Cdfrac%7B(y_i-w%5ETx)%5E2%7D%7B2%5Csigma%5E2%7D%0A%5Cend%7Balign%7D%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5Chat%7Bw%7D%26%3D%5Cunderset%7Bw%7D%7B%5Carg%5Cmax%7D%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN%7Dlog%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D-%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN%7D%5Cdfrac%7B%28y_i-w%5ETx%29%5E2%7D%7B2%5Csigma%5E2%7D%5C%5C%5C%5C%0A%26%3D%5Cunderset%7Bw%7D%7B%5Carg%5Cmin%7D%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN%7D%5Cdfrac%7B(y_i-w%5ETx)%5E2%7D%7B2%5Csigma%5E2%7D%5C%5C%5C%5C%0A%26%3D%5Cunderset%7Bw%7D%7B%5Carg%5Cmin%7D%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN%7D(y_i-w%5ETx)%5E2%0A%5Cend%7Balign%7D%0A" /></p><p>这与上面的最小二乘法推导出的结论相同，即最小二乘法求出的<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>就是噪声服从于高斯分布的极大似然估计下的<img src="https://math.now.sh?inline=%5Chat%7Bw%7D" style="display:inline-block;margin: 0;"/></p>
 <blockquote>
-<p>结论：最小二乘估计 $\leftrightarrow$ 数据噪声服从于高斯分布的极大似然估计</p>
+<p>结论：最小二乘估计 <img src="https://math.now.sh?inline=%5Cleftrightarrow" style="display:inline-block;margin: 0;"/> 数据噪声服从于高斯分布的极大似然估计</p>
 </blockquote>
-<h2 id="岭回归"><a href="#岭回归" class="headerlink" title="岭回归"></a>岭回归</h2><p>当有N个p维样本时，若数据量较小时（行少列多），线性回归的最小二乘估计$\hat{w}=(X^TX)^{-1}X^TY$中，$X^TX$（$p$阶方阵）可能会出现不可逆的情况。例如，只有一个二维的样本时，拟合出的曲线很容易过拟合。</p>
+<h2 id="岭回归">岭回归</h2>
+<p>当有N个p维样本时，若数据量较小时（行少列多），线性回归的最小二乘估计<img src="https://math.now.sh?inline=%5Chat%7Bw%7D%3D%28X%5ETX%29%5E%7B-1%7DX%5ETY" style="display:inline-block;margin: 0;"/>中，<img src="https://math.now.sh?inline=X%5ETX" style="display:inline-block;margin: 0;"/>（<img src="https://math.now.sh?inline=p" style="display:inline-block;margin: 0;"/>阶方阵）可能会出现不可逆的情况。例如，只有一个二维的样本时，拟合出的曲线很容易过拟合。</p>
 <p>解决过拟合的方案：</p>
 <ul>
 <li>加数据</li>
 <li>特征选择/特征提取</li>
 <li>正则化</li>
 </ul>
-<p>正则化的框架：<br>$$<br>\underset{w}{\arg\min}[\underset{\underset{Loss}{\downarrow}}{L(w)}+\underset{\underset{Penalty}{\downarrow}}{\lambda P(w)}]<br>$$<br>Penalty的类型：</p>
+<p>正则化的框架：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cunderset%7Bw%7D%7B%5Carg%5Cmin%7D%5B%5Cunderset%7B%5Cunderset%7BLoss%7D%7B%5Cdownarrow%7D%7D%7BL%28w%29%7D%2B%5Cunderset%7B%5Cunderset%7BPenalty%7D%7B%5Cdownarrow%7D%7D%7B%5Clambda%20P(w)%7D%5D%0A" /></p><p>Penalty的类型：</p>
 <ul>
-<li>L1，Lasso，一范数，$||w||_1$</li>
-<li>L2，Ridge，二范数，$||w||_2$–又叫岭回归</li>
+<li>L1，Lasso，一范数，<img src="https://math.now.sh?inline=%7C%7Cw%7C%7C_1" style="display:inline-block;margin: 0;"/></li>
+<li>L2，Ridge，二范数，<img src="https://math.now.sh?inline=%7C%7Cw%7C%7C_2" style="display:inline-block;margin: 0;"/>–又叫岭回归</li>
 </ul>
 <p>对最小二乘估计使用岭回归：</p>
 <img src="https://tva1.sinaimg.cn/large/008i3skNgy1grj02k3t83j30ym0u0n5g.jpg" alt="岭回归推导过程" style="zoom:50%;" />
-
-<h2 id="从概率视角看岭回归"><a href="#从概率视角看岭回归" class="headerlink" title="从概率视角看岭回归"></a>从概率视角看岭回归</h2><p>假设噪声$\varepsilon$服从高斯分布，w也服从高斯分布，为简便起见，设定这两个分布的均值为0，方差分别是$\sigma$与$\sigma_0$。即：</p>
-<p>$\varepsilon \sim N(0, \sigma)，w \sim N(0, \sigma_0)$</p>
-<p>对每一个样本$x_i$而言，$wx_i$是拟合的曲线计算出的y，$f(w)=wx_i+ \varepsilon$是添加了噪声之后的实际标签结果，因此</p>
-<p>$f(w) \sim N(w^Tx_i, \sigma)$</p>
-<p>从贝叶斯的视角，将参数也看成服从某种概率分布的情形，讨论后验概率，即样本$y_i$给定之后，$w$的值<br>$$<br>p(w \mid y_i)=\dfrac{p(y_i\mid w)p(w)}{p(y_i)}=\dfrac{p(y_i\mid w)p(w)}{\int_w p(y_i\mid w)p(w)}<br>$$<br>分母与$y_i$无关，是所有情况的总和。</p>
-<p>因此，考察最大后验概率（MAP）：<br>$$<br>\underset{w}{\arg\max}\prod\limits_{i=1}^{N}p(w\mid y_i)=\underset{w}{\arg\max}\prod\limits_{i=1}^{N}p(y_i\mid w)p(w)<br>$$<br>取对数：<br>$$<br>\underset{w}{\arg \max} \sum\limits_{i=1}^n \log p(y_i\mid w) + \log p(w)=\sum\limits_{i=1}^n \log \dfrac{1}{\sqrt{2\pi}\sigma}-\dfrac{(y_i-w^Tx)^2}{2\sigma^2} + \log \dfrac{1}{\sqrt{2\pi}\sigma_0}-\dfrac{||w||^2}{2\sigma_0^2}<br>$$<br>去除和w无关的项：<br>$$<br>\underset{w}{\arg \min} \sum\limits_{i=1}^n \dfrac{(y_i-w^Tx)^2}{2\sigma^2} +\dfrac{||w||^2}{2\sigma_0^2}=\underset{w}{\arg \min} \sum\limits_{i=1}^n (y_i-w^Tx)^2+\dfrac{\sigma^2}{\sigma_0^2} ||w||^2<br>$$<br>这一目标，实际上就是$\lambda=\dfrac{\sigma^2}{\sigma_0^2}$时的岭回归，因此可以得到：</p>
+<h2 id="从概率视角看岭回归">从概率视角看岭回归</h2>
+<p>假设噪声<img src="https://math.now.sh?inline=%5Cvarepsilon" style="display:inline-block;margin: 0;"/>服从高斯分布，w也服从高斯分布，为简便起见，设定这两个分布的均值为0，方差分别是<img src="https://math.now.sh?inline=%5Csigma" style="display:inline-block;margin: 0;"/>与<img src="https://math.now.sh?inline=%5Csigma_0" style="display:inline-block;margin: 0;"/>。即：</p>
+<p><img src="https://math.now.sh?inline=%5Cvarepsilon%20%5Csim%20N%280%2C%20%5Csigma%29%EF%BC%8Cw%20%5Csim%20N(0%2C%20%5Csigma_0)" style="display:inline-block;margin: 0;"/></p>
+<p>对每一个样本<img src="https://math.now.sh?inline=x_i" style="display:inline-block;margin: 0;"/>而言，<img src="https://math.now.sh?inline=wx_i" style="display:inline-block;margin: 0;"/>是拟合的曲线计算出的y，<img src="https://math.now.sh?inline=f%28w%29%3Dwx_i%2B%20%5Cvarepsilon" style="display:inline-block;margin: 0;"/>是添加了噪声之后的实际标签结果，因此</p>
+<p><img src="https://math.now.sh?inline=f%28w%29%20%5Csim%20N(w%5ETx_i%2C%20%5Csigma)" style="display:inline-block;margin: 0;"/></p>
+<p>从贝叶斯的视角，将参数也看成服从某种概率分布的情形，讨论后验概率，即样本<img src="https://math.now.sh?inline=y_i" style="display:inline-block;margin: 0;"/>给定之后，<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>的值</p>
+<p style=""><img src="https://math.now.sh?from=p%28w%20%5Cmid%20y_i%29%3D%5Cdfrac%7Bp(y_i%5Cmid%20w)p(w)%7D%7Bp(y_i)%7D%3D%5Cdfrac%7Bp(y_i%5Cmid%20w)p(w)%7D%7B%5Cint_w%20p(y_i%5Cmid%20w)p(w)%7D%0A" /></p><p>分母与<img src="https://math.now.sh?inline=y_i" style="display:inline-block;margin: 0;"/>无关，是所有情况的总和。</p>
+<p>因此，考察最大后验概率（MAP）：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cunderset%7Bw%7D%7B%5Carg%5Cmax%7D%5Cprod%5Climits_%7Bi%3D1%7D%5E%7BN%7Dp%28w%5Cmid%20y_i%29%3D%5Cunderset%7Bw%7D%7B%5Carg%5Cmax%7D%5Cprod%5Climits_%7Bi%3D1%7D%5E%7BN%7Dp(y_i%5Cmid%20w)p(w)%0A" /></p><p>取对数：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cunderset%7Bw%7D%7B%5Carg%20%5Cmax%7D%20%5Csum%5Climits_%7Bi%3D1%7D%5En%20%5Clog%20p%28y_i%5Cmid%20w%29%20%2B%20%5Clog%20p(w)%3D%5Csum%5Climits_%7Bi%3D1%7D%5En%20%5Clog%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D-%5Cdfrac%7B(y_i-w%5ETx)%5E2%7D%7B2%5Csigma%5E2%7D%20%2B%20%5Clog%20%5Cdfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma_0%7D-%5Cdfrac%7B%7C%7Cw%7C%7C%5E2%7D%7B2%5Csigma_0%5E2%7D%0A" /></p><p>去除和w无关的项：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cunderset%7Bw%7D%7B%5Carg%20%5Cmin%7D%20%5Csum%5Climits_%7Bi%3D1%7D%5En%20%5Cdfrac%7B%28y_i-w%5ETx%29%5E2%7D%7B2%5Csigma%5E2%7D%20%2B%5Cdfrac%7B%7C%7Cw%7C%7C%5E2%7D%7B2%5Csigma_0%5E2%7D%3D%5Cunderset%7Bw%7D%7B%5Carg%20%5Cmin%7D%20%5Csum%5Climits_%7Bi%3D1%7D%5En%20(y_i-w%5ETx)%5E2%2B%5Cdfrac%7B%5Csigma%5E2%7D%7B%5Csigma_0%5E2%7D%20%7C%7Cw%7C%7C%5E2%0A" /></p><p>这一目标，实际上就是<img src="https://math.now.sh?inline=%5Clambda%3D%5Cdfrac%7B%5Csigma%5E2%7D%7B%5Csigma_0%5E2%7D" style="display:inline-block;margin: 0;"/>时的岭回归，因此可以得到：</p>
 <blockquote>
-<p>结论：正则化（岭回归下）最小二乘估计 $\leftrightarrow$ 数据噪声服从于高斯分布且$w$先验服从高斯分布的极大后验估计</p>
+<p>结论：正则化（岭回归下）最小二乘估计 <img src="https://math.now.sh?inline=%5Cleftrightarrow" style="display:inline-block;margin: 0;"/> 数据噪声服从于高斯分布且<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>先验服从高斯分布的极大后验估计</p>
 </blockquote>
 
             </div>
@@ -471,8 +480,10 @@ $$
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Matrix CalculusReference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
-Useful Conclusion（keep updating）eq(69
+                            Matrix Calculus
+Reference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
+Useful Conclusion（keep updating）
+eq(
                         
                     </div>
                     <div class="publish-info">
@@ -509,7 +520,20 @@ Useful Conclusion（keep updating）eq(69
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma
+                            高斯分布
+概率密度
+假设为研究的维度，为均值向量，为协方差矩阵（）
+一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）
+当时，
+
+先求，
+
+令，则
+
+接着求，
+
+令，则
+关于两个估计的无偏性
                         
                     </div>
                     <div class="publish-info">

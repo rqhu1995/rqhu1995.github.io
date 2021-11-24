@@ -300,10 +300,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Matrix-Calculus"><a href="#Matrix-Calculus" class="headerlink" title="Matrix Calculus"></a>Matrix Calculus</h1><p>Reference: [The Matrix Cookbook](<a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf" target="_blank" rel="noopener">matrixcookbook.pdf (uwaterloo.ca)</a>)</p>
-<h2 id="Useful-Conclusion（keep-updating）"><a href="#Useful-Conclusion（keep-updating）" class="headerlink" title="Useful Conclusion（keep updating）"></a>Useful Conclusion（keep updating）</h2><p>eq(69)：$\mathbf{x, a}\in \mathbf{R}^p:$<br>$$<br>\dfrac{\partial \mathbf{x}^T\mathbf{a}}{\partial \mathbf{x}}=\dfrac{\partial \mathbf{a}^T\mathbf{x}}{\partial \mathbf{x}}=\mathbf{a}<br>$$<br>eq(81)：<br>$$<br>\dfrac{\partial \mathbf{x}^T\mathbf{B}\mathbf{x}}{\partial \mathbf{x}}=(\mathbf{B+B}^T)\mathbf{x}<br>$$<br>eq(61):<br>$$<br>\dfrac{\partial \mathbf{a}^T\mathbf{X^{-1}}\mathbf{b}}{\partial \mathbf{X}}=\mathbf{-X}^{-1}\mathbf{ab}^T\mathbf{X}^{-1}<br>$$<br>brief proof of eq(61):</p>
-<p>Using the definition of the trace (denoted as $tr$) of a matrix. Given matrix A, B, we have<br>$$<br>tr(AB)=tr(BA)\\\<br>tr(ABC)=tr(BCA)=tr(CAB)\\\<br>\dfrac{\partial tr(AB)}{\partial A}=B^T<br>$$<br>Here $\mathbf{a}$ is $a \in \mathbb{R}^{p \times 1}, X \in \mathbb{R}^{p \times p}, b \in \mathbb{R}^{p \times 1}$, therefore we have $\mathbf{a}^T\mathbf{X^{-1}}\mathbf{b}$ is a scalar, thus its trace is the value of itself. i.e.,<br>$$<br>\mathbf{a}^T\mathbf{X^{-1}}\mathbf{b}=tr(\mathbf{a}^T\mathbf{X^{-1}}\mathbf{b})<br>$$<br>So we can write:<br>$$<br>\dfrac{\partial a^TX^{-1}b}{\partial X}=\dfrac{\partial tr(a^TX^{-1}b)}{\partial X}=\dfrac{\partial tr(ba^TX^{-1})}{\partial X}=\dfrac{\partial tr(X^{-1}ba^T)}{\partial X}=(ba^T)^T \dfrac{\partial X^{-1}}{\partial X}=-ab^TX^{-2}=-X^{-1}ab^TX^{-1}<br>$$</p>
-
+                <h1>Matrix Calculus</h1>
+<p>Reference: [The Matrix Cookbook](<a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf" target="_blank" rel="noopener">matrixcookbook.pdf (uwaterloo.ca)</a>)</p>
+<h2 id="Useful-Conclusion（keep-updating）">Useful Conclusion（keep updating）</h2>
+<p>eq(69)：<img src="https://math.now.sh?inline=%5Cmathbf%7Bx%2C%20a%7D%5Cin%20%5Cmathbf%7BR%7D%5Ep%3A" style="display:inline-block;margin: 0;"/></p>
+<p style=""><img src="https://math.now.sh?from=%5Cdfrac%7B%5Cpartial%20%5Cmathbf%7Bx%7D%5ET%5Cmathbf%7Ba%7D%7D%7B%5Cpartial%20%5Cmathbf%7Bx%7D%7D%3D%5Cdfrac%7B%5Cpartial%20%5Cmathbf%7Ba%7D%5ET%5Cmathbf%7Bx%7D%7D%7B%5Cpartial%20%5Cmathbf%7Bx%7D%7D%3D%5Cmathbf%7Ba%7D%0A" /></p><p>eq(81)：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cdfrac%7B%5Cpartial%20%5Cmathbf%7Bx%7D%5ET%5Cmathbf%7BB%7D%5Cmathbf%7Bx%7D%7D%7B%5Cpartial%20%5Cmathbf%7Bx%7D%7D%3D%28%5Cmathbf%7BB%2BB%7D%5ET%29%5Cmathbf%7Bx%7D%0A" /></p><p>eq(61):</p>
+<p style=""><img src="https://math.now.sh?from=%5Cdfrac%7B%5Cpartial%20%5Cmathbf%7Ba%7D%5ET%5Cmathbf%7BX%5E%7B-1%7D%7D%5Cmathbf%7Bb%7D%7D%7B%5Cpartial%20%5Cmathbf%7BX%7D%7D%3D%5Cmathbf%7B-X%7D%5E%7B-1%7D%5Cmathbf%7Bab%7D%5ET%5Cmathbf%7BX%7D%5E%7B-1%7D%0A" /></p><p>brief proof of eq(61):</p>
+<p>Using the definition of the trace (denoted as <img src="https://math.now.sh?inline=tr" style="display:inline-block;margin: 0;"/>) of a matrix. Given matrix A, B, we have</p>
+<p style=""><img src="https://math.now.sh?from=tr%28AB%29%3Dtr(BA)%5C%5C%5C%5C%0Atr(ABC)%3Dtr(BCA)%3Dtr(CAB)%5C%5C%5C%5C%0A%5Cdfrac%7B%5Cpartial%20tr(AB)%7D%7B%5Cpartial%20A%7D%3DB%5ET%0A" /></p><p>Here <img src="https://math.now.sh?inline=%5Cmathbf%7Ba%7D" style="display:inline-block;margin: 0;"/> is <img src="https://math.now.sh?inline=a%20%5Cin%20%5Cmathbb%7BR%7D%5E%7Bp%20%5Ctimes%201%7D%2C%20X%20%5Cin%20%5Cmathbb%7BR%7D%5E%7Bp%20%5Ctimes%20p%7D%2C%20b%20%5Cin%20%5Cmathbb%7BR%7D%5E%7Bp%20%5Ctimes%201%7D" style="display:inline-block;margin: 0;"/>, therefore we have <img src="https://math.now.sh?inline=%5Cmathbf%7Ba%7D%5ET%5Cmathbf%7BX%5E%7B-1%7D%7D%5Cmathbf%7Bb%7D" style="display:inline-block;margin: 0;"/> is a scalar, thus its trace is the value of itself. i.e.,</p>
+<p style=""><img src="https://math.now.sh?from=%5Cmathbf%7Ba%7D%5ET%5Cmathbf%7BX%5E%7B-1%7D%7D%5Cmathbf%7Bb%7D%3Dtr%28%5Cmathbf%7Ba%7D%5ET%5Cmathbf%7BX%5E%7B-1%7D%7D%5Cmathbf%7Bb%7D%29%0A" /></p><p>So we can write:</p>
+<p style=""><img src="https://math.now.sh?from=%5Cdfrac%7B%5Cpartial%20a%5ETX%5E%7B-1%7Db%7D%7B%5Cpartial%20X%7D%3D%5Cdfrac%7B%5Cpartial%20tr%28a%5ETX%5E%7B-1%7Db%29%7D%7B%5Cpartial%20X%7D%3D%5Cdfrac%7B%5Cpartial%20tr(ba%5ETX%5E%7B-1%7D)%7D%7B%5Cpartial%20X%7D%3D%5Cdfrac%7B%5Cpartial%20tr(X%5E%7B-1%7Dba%5ET)%7D%7B%5Cpartial%20X%7D%3D(ba%5ET)%5ET%20%5Cdfrac%7B%5Cpartial%20X%5E%7B-1%7D%7D%7B%5Cpartial%20X%7D%3D-ab%5ETX%5E%7B-2%7D%3D-X%5E%7B-1%7Dab%5ETX%5E%7B-1%7D%0A" /></p>
             </div>
             <hr/>
 
@@ -420,14 +427,23 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            线性分类回顾线性回归线性回归的特点
+                            线性分类
+回顾线性回归
+线性回归的特点
+
 线性
+
 属性线性（x的线性组合）。
-不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$
+
+不满足的情况：特征转换（多项式回归），
 
 
 全局线性（激活函数是一个线性函数）。
-不满足的情况：激活函数为非线性的线性分类（S
+
+不满足的情况：激活函数为非线性的线性分类（Sigmoid）
+
+
+系数线性（反
                         
                     </div>
                     <div class="publish-info">
@@ -472,8 +488,21 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            线性回归最小二乘法
-$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$$$\newcommand{\bm}[1]{\b
+                            线性回归
+最小二乘法
+
+
+个样本：, 
+矩阵表示：
+
+
+最小二乘估计：
+
+
+$$
+X^TY-X^TX\beta=0, \beta=(X^TX)^{-1}X^TY
+$$
+各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，
                         
                     </div>
                     <div class="publish-info">
