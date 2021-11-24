@@ -29,8 +29,8 @@
 
     <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -304,161 +304,134 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>线性分类</h1>
-<h2 id="回顾线性回归">回顾线性回归</h2>
-<h3 id="线性回归的特点">线性回归的特点</h3>
-<ul>
-<li>线性
-<ul>
-<li><strong>属性线性</strong>（x的线性组合）。
-<ul>
-<li>不满足的情况：特征转换（多项式回归），<img src="https://math.now.sh?inline=w_1x_1%5E2%2Bw_2x_2x_3%2B..." style="display:inline-block;margin: 0;"/></li>
+                <h1 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h1><h2 id="回顾线性回归"><a href="#回顾线性回归" class="headerlink" title="回顾线性回归"></a>回顾线性回归</h2><h3 id="线性回归的特点"><a href="#线性回归的特点" class="headerlink" title="线性回归的特点"></a>线性回归的特点</h3><ul>
+<li>线性<ul>
+<li><strong>属性线性</strong>（x的线性组合）。<ul>
+<li>不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$</li>
 </ul>
 </li>
-<li><strong>全局线性</strong>（激活函数是一个线性函数）。
-<ul>
+<li><strong>全局线性</strong>（激活函数是一个线性函数）。<ul>
 <li>不满足的情况：激活函数为非线性的线性分类（Sigmoid）</li>
 </ul>
 </li>
-<li><strong>系数线性</strong>（反过来看，也是w的线性组合）。
-<ul>
+<li><strong>系数线性</strong>（反过来看，也是w的线性组合）。<ul>
 <li>不满足的情况：感知机算法训练出的w和初始值、迭代次数有关系，同一组样本训练的w不一定是固定的。（感知机算法同时也是全局非线性的，因为输出有一层激活非线性）</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>全局性
-<ul>
-<li>拟合出来的方程适用于全部的特征空间没有分段进行拟合。
-<ul>
+<li>全局性<ul>
+<li>拟合出来的方程适用于全部的特征空间没有分段进行拟合。<ul>
 <li>不满足的情况：线性样条回归、决策树（每次选择的一个节点，都是在对特征空间进行划分）</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>数据未加工
-<ul>
-<li>直接对数据进行拟合，不对数据进行任何处理。
-<ul>
+<li>数据未加工<ul>
+<li>直接对数据进行拟合，不对数据进行任何处理。<ul>
 <li>不满足的情况：PCA降维、流形学习</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="从线性回归到线性分类">从线性回归到线性分类</h3>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005628.jpg" alt="" style="zoom:10%;" />
+<h3 id="从线性回归到线性分类"><a href="#从线性回归到线性分类" class="headerlink" title="从线性回归到线性分类"></a>从线性回归到线性分类</h3><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005628.jpg" alt="" style="zoom:10%;" />
+
 <ul>
-<li>激活函数将回归的结果映射到0-1，<img src="https://math.now.sh?inline=y%3Df%28w%5ETx%2Bb%29" style="display:inline-block;margin: 0;"/>。
-<ul>
-<li>硬分类：<img src="https://math.now.sh?inline=y%20%5Cin%20%5C%7B0%2C%201%5C%7D" style="display:inline-block;margin: 0;"/>；
-<ul>
+<li>激活函数将回归的结果映射到0-1，$y=f(w^Tx+b)$。<ul>
+<li>硬分类：$y \in \{0, 1\}$；<ul>
 <li>线性判别分析（fisher模型）</li>
 <li>感知机</li>
 </ul>
 </li>
-<li>软分类：<img src="https://math.now.sh?inline=y%20%5Cin%20%5B0%2C1%5D" style="display:inline-block;margin: 0;"/>
-<ul>
+<li>软分类：$y \in [0,1]$<ul>
 <li>生成式模型：Gaussian Discriminant Analysis</li>
 <li>判别式模型：Logistic Regression（是做分类的！不是回归！名字不重要！）</li>
 </ul>
 </li>
-<li>统计上<img src="https://math.now.sh?inline=f%5E%7B-1%7D" style="display:inline-block;margin: 0;"/>称为链接函数（link function）</li>
+<li>统计上$f^{-1}$称为链接函数（link function）</li>
 </ul>
 </li>
 <li>也可从降维角度理解，将p维的数据，通过映射降到1维（一个值），再通过阈值筛选合适的分类。</li>
 </ul>
-<h2 id="感知机算法——硬输出（类别1）">感知机算法——硬输出（类别1）</h2>
-<p>思想：错误驱动</p>
+<h2 id="感知机算法——硬输出（类别1）"><a href="#感知机算法——硬输出（类别1）" class="headerlink" title="感知机算法——硬输出（类别1）"></a>感知机算法——硬输出（类别1）</h2><p>思想：错误驱动</p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005637.jpg" alt="感知机分类示意" style="zoom:30%;" />
-<p>模型：<img src="https://math.now.sh?inline=f%28x%29%3Dsign(w%5ETx)%2C%20x%5Cin%20%5Cmathbb%7BR%7D%5EP%2Cw%5Cin%20%5Cmathbb%7BR%7D%5EP" style="display:inline-block;margin: 0;"/></p>
-<p style=""><img src="https://math.now.sh?from=sign%28a%29%3D%5Cbegin%7Bcases%7D%0A%2B1%2C%20a%3E0%20%5C%5C%5C%5C%0A-1%2C%20a%5Cle0%0A%5Cend%7Bcases%7D%0A" /></p><p>策略：损失函数（loss function）</p>
-<p style=""><img src="https://math.now.sh?from=L'%28w%29%3D%5Csum_%7Bi%3D1%7D%5ENI%5C%7By_iw%5ETx_i%3C0%5C%7D%0A" /></p><p>即，样本标签和使用<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>计算出的结果不一致的样本的数量</p>
-<p>使用这样的损失函数存在的问题：函数不可导（可导一定连续，因此不连续一定不可导，上述的函数关于<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>是不连续的）</p>
-<p>考虑直接统计总的损失（取负号），而不做计数<img src="https://math.now.sh?inline=I" style="display:inline-block;margin: 0;"/>的映射，这样函数关于<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>就可导了</p>
-<p style=""><img src="https://math.now.sh?from=L%28w%29%3D%5Csum_%7Bx_i%5Cin%20D%7D-y_iw%5ETx_i%0A" /></p><p>此时求导得到<img src="https://math.now.sh?inline=%5Cnabla_%7Bw_i%7D%20L%3D-%5Csum%5Climits_%7Bx_i%5Cin%20D%7Dy_ix_i" style="display:inline-block;margin: 0;"/></p>
-<p>于是采用随机梯度下降（SGD），但SGD中不求和，随机选择<img src="https://math.now.sh?inline=D" style="display:inline-block;margin: 0;"/>中的一个错分样本<img src="https://math.now.sh?inline=x_i" style="display:inline-block;margin: 0;"/>更新：</p>
-<p style=""><img src="https://math.now.sh?from=w_i%5E%7B%28t%2B1%29%7D%3D%20w_i%5E%7B(t)%7D-%5Clambda%5Ctimes(-y_ix_i)%3Dw_i%5E%7B(t)%7D%20%2B%20%5Clambda%20y_ix_i%0A" /></p><p>感知机算法的变形（pocket algorithm）</p>
-<h2 id="线性判别分析（Fisher）——硬输出（类别2）">线性判别分析（Fisher）——硬输出（类别2）</h2>
-<p>分类思想：松耦合，高内聚（类内小，类间大）</p>
+
+<p>模型：$f(x)=sign(w^Tx), x\in \mathbb{R}^P,w\in \mathbb{R}^P$<br>$$<br>sign(a)=\begin{cases}<br>+1, a&gt;0 \\\<br>-1, a\le0<br>\end{cases}<br>$$<br>策略：损失函数（loss function）<br>$$<br>L’(w)=\sum_{i=1}^NI\{y_iw^Tx_i&lt;0\}<br>$$<br>即，样本标签和使用$w$计算出的结果不一致的样本的数量</p>
+<p>使用这样的损失函数存在的问题：函数不可导（可导一定连续，因此不连续一定不可导，上述的函数关于$w$是不连续的）</p>
+<p>考虑直接统计总的损失（取负号），而不做计数$I$的映射，这样函数关于$w$就可导了<br>$$<br>L(w)=\sum_{x_i\in D}-y_iw^Tx_i<br>$$<br>此时求导得到$\nabla_{w_i} L=-\sum\limits_{x_i\in D}y_ix_i$</p>
+<p>于是采用随机梯度下降（SGD），但SGD中不求和，随机选择$D$中的一个错分样本$x_i$更新：<br>$$<br>w_i^{(t+1)}= w_i^{(t)}-\lambda\times(-y_ix_i)=w_i^{(t)} + \lambda y_ix_i<br>$$<br>感知机算法的变形（pocket algorithm）</p>
+<h2 id="线性判别分析（Fisher）——硬输出（类别2）"><a href="#线性判别分析（Fisher）——硬输出（类别2）" class="headerlink" title="线性判别分析（Fisher）——硬输出（类别2）"></a>线性判别分析（Fisher）——硬输出（类别2）</h2><p>分类思想：松耦合，高内聚（类内小，类间大）</p>
 <p>投影方向1满足，投影方向2不合适。</p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005641.jpg" alt="fisher投影示意图" style="zoom:40%;" />
-<p>使用投影的概念进行理解，<img src="https://math.now.sh?inline=Z_i%3Dw%5ETx_i" style="display:inline-block;margin: 0;"/>，其中<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>是投影方向，投影完可以看作是<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>方向上的一个标量（<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>是单位向量）。</p>
-<p>目标是类内小，类间大，对每个类<img src="https://math.now.sh?inline=k" style="display:inline-block;margin: 0;"/>（这里讨论的都是二分类问题，即<img src="https://math.now.sh?inline=k%5Cin%20%5C%7B1%2C2%5C%7D" style="display:inline-block;margin: 0;"/>）而言：</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26Z_i%3Dw%5ETx_%7Bi%2Ck%7D%5C%5C%5C%5C%0A%26%5Cbar%7BZ%7D_k%3D%5Cdfrac%7B1%7D%7BN_k%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN_k%7D%28w%5ETx_%7Bi%2Ck%7D%29%5C%5C%5C%5C%0A%26S_k%3D%5Cdfrac%7B1%7D%7BN_k%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN_k%7D(Z_i-%5Cbar%7BZ%7D_k)(Z_i-%5Cbar%7BZ%7D_k)%5ET%3D%20%5Cdfrac%7B1%7D%7BN_k%7D%5Csum_%7Bi%3D1%7D%5E%7BN_k%7D(w%5ETx_%7Bi%2Ck%7D-%5Cbar%7BZ%7D_k)(w%5ETx_%7Bi%2Ck%7D-%5Cbar%7BZ%7D_k)%5ET%0A%5Cend%7Balign%7D%0A" /></p><p>类内小采用方差矩阵度量：<img src="https://math.now.sh?inline=S_1%2BS_2" style="display:inline-block;margin: 0;"/></p>
-<p>类间大采用均值距离度量：<img src="https://math.now.sh?inline=%28%5Cbar%7BZ%7D_1-%5Cbar%7BZ%7D_2%29%5E2" style="display:inline-block;margin: 0;"/></p>
-<p>多目标优化，采用目标函数：</p>
-<p style=""><img src="https://math.now.sh?from=J%28w%29%3D%5Cdfrac%7B(%5Cbar%7BZ%7D_1-%5Cbar%7BZ%7D_2)%5E2%7D%7BS_1%2BS_2%7D%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Chat%7Bw%7D%3D%5Cunderset%7Bw%7D%7B%5Carg%20%5Cmax%7D%5C%20J%28w%29%0A" /></p><p>其中，</p>
-<p>令第<img src="https://math.now.sh?inline=k" style="display:inline-block;margin: 0;"/>类的样本均值为<img src="https://math.now.sh?inline=%5Cbar%7Bx%7D_k%3D%5Cdfrac%7B1%7D%7BN_k%7D%5Csum%5Climits_%7Bi%3D1%7D%5E%7BN_k%7D%20x_%7Bi%2Ck%7D" style="display:inline-block;margin: 0;"/>，则</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbar%7BZ%7D_1-%5Cbar%7BZ%7D_2%3D%5Cdfrac%7B1%7D%7BN_1%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28w%5ETx_%7Bi%2C1%7D%29-%5Cdfrac%7B1%7D%7BN_2%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D(w%5ETx_%7Bi%2C2%7D)%3Dw%5ET(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2)%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5Ctherefore%5C%20%26%28%5Cbar%7BZ%7D_1-%5Cbar%7BZ%7D_2%29%5E2%3D(w%5ET(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2))(w%5ET(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2))%5ET%3Dw%5ET(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2)(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2)%5ETw%5C%5C%5C%5C%0A%26(w%5ETx_%7Bi%2Ck%7D-%5Cbar%7BZ%7D_k)%3D(w%5ETx_%7Bi%2Ck%7D-w%5ET%5Cbar%7Bx%7D_%7Bk%7D)%3D(w%5ET(x_%7Bi%2Ck%7D-%5Cbar%7Bx%7D_%7Bk%7D))%5C%5C%5C%5C%0A%26S_k%3D%5Cdfrac%7B1%7D%7BN_k%7D%5Csum_%7Bi%3D1%7D%5E%7BN_k%7D%20(w%5ET(x_%7Bi%2Ck%7D-%5Cbar%7Bx%7D_%7Bk%7D))(w%5ET(x_%7Bi%2Ck%7D-%5Cbar%7Bx%7D_%7Bk%7D))%5ET%3D%5Cdfrac%7B1%7D%7BN_k%7D%5Csum_%7Bi%3D1%7D%5E%7BN_k%7Dw%5ET(x_%7Bi%2Ck%7D-%5Cbar%7Bx%7D_%7Bk%7D)(x_%7Bi%2Ck%7D-%5Cbar%7Bx%7D_k)%5ETw%0A%5Cend%7Balign%7D%0A" /></p><p>由于<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>与各样本<img src="https://math.now.sh?inline=i" style="display:inline-block;margin: 0;"/>无关，因此</p>
-<p style=""><img src="https://math.now.sh?from=S_k%3Dw%5ET%5C%20%5C%20%5C%20%5C%20%5Cunderbrace%7B%5Cdfrac%7B1%7D%7BN_k%7D%5Csum_%7Bi%3D1%7D%5E%7BN_k%7D%28x_%7Bi%2Ck%7D-%5Cbar%7Bx%7D_%7Bk%7D%29(x_%7Bi%2Ck%7D-%5Cbar%7Bx%7D_k)%5ET%7D_%7BS_%7Bc_k%7D%7D%5C%20%5C%20%5C%20%5C%20w%0A" /></p><p>综上，</p>
-<p style=""><img src="https://math.now.sh?from=J%28w%29%3D%5Cdfrac%7Bw%5ET(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2)(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2)%5ETw%7D%7Bw%5ET(S_%7Bc_1%7D%2BS_%7Bc_2%7D)w%7D%0A" /></p><p>定义类别间（between）的方差<img src="https://math.now.sh?inline=S_b%3D%28%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2%29(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2)%5ET" style="display:inline-block;margin: 0;"/>, 类别内方差<img src="https://math.now.sh?inline=S_w%3D%28S_%7Bc_1%7D%2BS_%7Bc_2%7D%29" style="display:inline-block;margin: 0;"/>。</p>
-<p style=""><img src="https://math.now.sh?from=J%28w%29%3D%5Cdfrac%7Bw%5ET%20S_b%20w%7D%7Bw%5ET%20S_w%20w%7D%3Dw%5ETS_bw(w%5ETS_ww)%5E%7B-1%7D%0A" /></p><p>接下来求解最大值时对应的<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>，</p>
-<p style=""><img src="https://math.now.sh?from=%5Cdfrac%7B%5Cpartial%20J%28w%29%7D%7B%5Cpartial%20w%7D%3D2S_bw(w%5ETS_ww)%5E%7B-1%7D-2w%5ETS_bw(w%5ETS_ww)%5E%7B-2%7DS_ww%0A" /></p><p>令<img src="https://math.now.sh?inline=%5Cdfrac%7B%5Cpartial%20J%28w%29%7D%7B%5Cpartial%20w%7D%3D0" style="display:inline-block;margin: 0;"/></p>
-<p>则</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26S_bw%28w%5ETS_ww%29%5E%7B-1%7D%3Dw%5ETS_bw(w%5ETS_ww)%5E%7B-2%7DS_ww%20%5Cqquad%20-%5Ctext%7B%E5%B7%A6%E5%8F%B3%E5%90%8C%E6%97%B6%E4%B9%98%E4%BB%A5%E6%A0%87%E9%87%8F%24(w%5ETS_ww)%5E2%24%7D%5C%5C%5C%5C%0A%26S_bw(w%5ETS_ww)%3D(w%5ETS_bw)S_ww%20%5Cqquad%20-%5Ctext%7B%E6%8B%AC%E5%8F%B7%E5%86%85%E9%83%BD%E6%98%AF%E6%A0%87%E9%87%8F%EF%BC%8C%E5%8F%AF%E4%BB%A5%E9%9A%8F%E4%BE%BF%E7%A7%BB%E5%90%91%E3%80%81%E5%8F%98%E9%A1%BA%E5%BA%8F%EF%BC%8C%E4%B8%94%E4%B8%8D%E5%BD%B1%E5%93%8D%24w%24%E7%9A%84%E6%96%B9%E5%90%91%7D%5C%5C%5C%5C%0A%26S_ww%3D%5Cdfrac%7B(w%5ETS_ww)%7D%7B(w%5ETS_bw)%7DS_bw%20%5C%5C%5C%5C%0A%26w%3D%5Cdfrac%7B(w%5ETS_ww)%7D%7B(w%5ETS_bw)%7DS_w%5E%7B-1%7DS_bw%0A%5Cend%7Balign%7D%0A" /></p><p>可以看到，如果只关心方向，那么<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>同向于<img src="https://math.now.sh?inline=S_w%5E%7B-1%7DS_bw" style="display:inline-block;margin: 0;"/>，而<img src="https://math.now.sh?inline=S_bw%3D%28%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2%29(%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2)%5ETw" style="display:inline-block;margin: 0;"/>，其中<img src="https://math.now.sh?inline=%28%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2%29%5ETw" style="display:inline-block;margin: 0;"/>又是一个标量，因此<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>继续同向于<img src="https://math.now.sh?inline=S_w%5E%7B-1%7D%28%5Cbar%7Bx%7D_1-%5Cbar%7Bx%7D_2%29" style="display:inline-block;margin: 0;"/></p>
-<h2 id="Logistic-Regression——软输出（类别1，概率判别模型）">Logistic Regression——软输出（类别1，概率判别模型）</h2>
-<p>模型：</p>
-<p>激活函数，sigmoid：<img src="https://math.now.sh?inline=%5B%5Cmathbb%7BR%7D%20%5Crightarrow%20%280%2C1%29%5D%20%5Cleftrightarrows%20%5B%20w%5ETx%20%5Crightarrow%20Probability%5D" style="display:inline-block;margin: 0;"/></p>
-<p style=""><img src="https://math.now.sh?from=%5Csigma%28z%29%3D%5Cdfrac%7B1%7D%7B1%2Be%5E%7B-z%7D%7D%0A" /></p><p><img src="https://math.now.sh?inline=z" style="display:inline-block;margin: 0;"/>是回归模型输入样本后得到的结果<img src="https://math.now.sh?inline=w%5ETx" style="display:inline-block;margin: 0;"/></p>
-<p style=""><img src="https://math.now.sh?from=P%28Y%3Dy%20%5Cmid%20X%29%3D%20(%5Cdfrac%7B1%7D%7B1%2Be%5E%7B-w%5ETx%7D%7D)%5Ey%2B(%5Cdfrac%7Be%5E%7B-w%5ETx%7D%7D%7B1%2Be%5E%7B-w%5ETx%7D%7D)%5E%7B1-y%7D%3Dp_1%5Ey%20p_0%5E%7B1-y%7D%0A" /></p><p>算法：极大似然估计得到最优的<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/></p>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26L%28w%29%3D%5Clog%20%5Cprod_%7Bi%3D1%7D%5EN%20P(y_i%20%5Cmid%20x_i)%20%5C%5C%5C%5C%0A%26%3D%5Csum_%7Bi%3D1%7D%5EN%20%5Clog%20p_1%5Eyp%5E%7B1-y%7D_0%5C%5C%5C%5C%0A%26%3D%5Csum_%7Bi%3D1%7D%5EN%20%5Cleft%5B%20y_i%5Clog%20%5Cdfrac%7B1%7D%7B1%2Be%5E%7B-w%5ETx_i%7D%7D%20%2B%20(1-y_i)%5Clog%20%5Cdfrac%7Be%5E%7B-w%5ETx_i%7D%7D%7B1%2Be%5E%7B-w%5ETx_i%7D%7D%5Cright%5D%5C%5C%5C%5C%0A%26%3D%5Csum_%7Bi%3D1%7D%5EN%5Cleft%5B-y_i%5Clog%20(1%2Be%5E%7B-w%5ETx_i%7D)%20%2B%20(1-y_i)(-w%5ETx_i-%5Clog(1%2Be%5E%7B-w%5ETx_i%7D))%5Cright%5D%5C%5C%5C%5C%0A%26%3D%5Csum_%7Bi%3D1%7D%5EN%5Cleft%5B-y_i%5Clog%20(1%2Be%5E%7B-w%5ETx_i%7D)%20-w%5ETx_i%20-%5Clog(1%2Be%5E%7B-w%5ETx_i%7D)%20%2B%20%20y_iw%5ETx_i%20%20%2B%20y_i%5Clog(1%2Be%5E%7B-w%5ETx_i%7D)%5Cright%5D%5C%5C%5C%5C%0A%26%3D%5Csum_%7Bi%3D1%7D%5EN%20(y_i-1)w%5ETx_i-%5Clog(1%2Be%5E%7B-w%5ETx_i%7D)%0A%5Cend%7Balign%7D%0A" /></p><p>对<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>求导：</p>
-<p style=""><img src="https://math.now.sh?from=%5Cdfrac%7B%5Cpartial%20L%28w%29%7D%7B%5Cpartial%20w%7D%3D%5Csum_%7Bi%3D1%7D%5EN%5Cleft%5B(y_i-1)x_i%2B%5Cdfrac%7Be%5E%7B-w%5ETx_i%7Dx_i%7D%7B1%2Be%5E%7B-w%5ETx_i%7D%7D%20%5Cright%5D%0A" /></p><p>求解一般采用梯度下降法。</p>
-<h2 id="高斯判别分析模型——软输出（类别2-1，概率生成-连续问题）">高斯判别分析模型——软输出（类别2.1，概率生成+连续问题）</h2>
-<p>概率判别模型：</p>
-<p style=""><img src="https://math.now.sh?from=%5Chat%7By%7D%20%3D%20%5Cunderset%7By%20%5Cin%20%5C%7B0%2C%201%5C%7D%7D%7B%5Carg%20%5Cmax%7D%5C%20p%28y%20%5Cmid%20x%29%0A" /></p><p>计算出<img src="https://math.now.sh?inline=p%28y%20%5Cmid%20x%29" style="display:inline-block;margin: 0;"/>，看是<img src="https://math.now.sh?inline=y%3D1" style="display:inline-block;margin: 0;"/>的概率大还是<img src="https://math.now.sh?inline=y%3D0" style="display:inline-block;margin: 0;"/>的概率大，之后做分类；</p>
-<p>概率生成模型，从贝叶斯角度，不去精确求解<img src="https://math.now.sh?inline=p%28y%20%5Cmid%20x%29" style="display:inline-block;margin: 0;"/>，只要能判断哪一种<img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/>能使得后验概率最大：</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbecause%20p%28y%20%5Cmid%20x%29%20%5Cpropto%20%5Cunderset%7B%5Ctext%7B%E7%B1%BB%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E6%88%96%E8%80%85%E5%8F%AB%E4%BC%BC%E7%84%B6%7D%7D%7Bp(x%20%5Cmid%20y)%7D%20%5Cunderset%7B%5C%20%5C%20%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87%7D%7Bp(y)%7D%20%5C%5C%5C%5C%0A%5Ctherefore%20%5Chat%7By%7D%3D%20%5Cunderset%7By%7D%7B%5Carg%20%5Cmax%7D%5C%20p(y%20%5Cmid%20x)%3D%5Cunderset%7By%7D%7B%5Carg%20%5Cmax%7D%5C%20p(y)p(x%20%5Cmid%20y)%0A" /></p><p>高斯判别模型的假设：</p>
-<p>先验<img src="https://math.now.sh?inline=y%20%5Csim%20%5Cmathrm%7BBernoulli%7D%28%5Cphi%29" style="display:inline-block;margin: 0;"/></p>
-<p>类条件概率密度<img src="https://math.now.sh?inline=%28x%20%5Cmid%20y%3D1%29%20%5Csim%20N(%5Cmu_1%2C%20%5CSigma)" style="display:inline-block;margin: 0;"/></p>
-<p>类条件概率密度<img src="https://math.now.sh?inline=%28x%20%5Cmid%20y%3D0%29%20%5Csim%20N(%5Cmu_2%2C%20%5CSigma)" style="display:inline-block;margin: 0;"/></p>
-<p>合并表达：<img src="https://math.now.sh?inline=N%28%5Cmu_1%2C%20%5CSigma%29%5EyN(%5Cmu_1%2C%20%5CSigma)%5E%7B1-y%7D" style="display:inline-block;margin: 0;"/>（正态分布的概率密度函数简记为<img src="https://math.now.sh?inline=N" style="display:inline-block;margin: 0;"/>）</p>
-<p>直接采用log似然：</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0AL%28%5Ctheta%29%26%3D%5Clog%20%5Cprod_%7Bi%3D1%7D%5ENp(y_i)p(x_i%20%5Cmid%20y_i)%20%5C%5C%5C%5C%0A%26%3D%5Csum_%7Bi%3D1%7D%5EN%20%5Cleft%5B%20%5Clog%20p(y_i)%20%2B%20%5Clog%20p(x_i%20%5Cmid%20y_i)%20%5Cright%20%5D%20%5C%5C%5C%5C%0A%26%3D%5Csum_%7Bi%3D1%7D%5EN%5Cleft%5B%5Cunderbrace%7By%5Clog%20N(%5Cmu_1%2C%20%5CSigma)%7D_%7BA_1%7D%20%2B%5Cunderbrace%7B(1-y)%20%5Clog%20N(%5Cmu_2%2C%20%5CSigma)%7D_%7BA_2%7D%20%2B%20y%20%5Clog%20%5Cphi%20%2B%20(1-y)%20%5Clog(1-%5Cphi)%5Cright%5D%0A%5Cend%7Balign%7D%0A" /></p><p>此处的参数<img src="https://math.now.sh?inline=%5Ctheta" style="display:inline-block;margin: 0;"/>包括：<img src="https://math.now.sh?inline=%5Cmu_1%2C%5Cmu_2%2C%20%5CSigma%2C%20%5Cphi" style="display:inline-block;margin: 0;"/></p>
-<p>先求<img src="https://math.now.sh?inline=%5Cphi" style="display:inline-block;margin: 0;"/>：</p>
-<p style=""><img src="https://math.now.sh?from=%5Cdfrac%7B%5Cpartial%20L%28%5Ctheta%29%7D%7B%5Cpartial%20%5Cphi%7D%3D%5Csum_%7Bi%3D1%7D%5EN%20%5Cdfrac%7By_i%7D%7B%5Cphi%7D-%5Cdfrac%7B(1-y_i)%7D%7B1-%5Cphi%7D%3D0%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Csum_%7Bi%3D1%7D%5EN%281-%5Cphi%29y_i-%5Cphi(1-y_i)%3D%5Csum_%7Bi%3D1%7D%5EN%20y_i-%5Cphi%20y_i-%5Cphi%20%2B%20%5Cphi%20y_i%3D%5Csum_%7Bi%3D1%7D%5EN%20y_i%20-%20%5Cphi%3D0%0A" /></p><p><img src="https://math.now.sh?inline=%5Ctherefore" style="display:inline-block;margin: 0;"/></p>
-<p style=""><img src="https://math.now.sh?from=%5Cphi%20%3D%20%5Cdfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5EN%20y_i%3D%5Cdfrac%7BN_1%7D%7BN%7D%EF%BC%88N_1%E6%98%AF%E6%A0%87%E7%AD%BEy%E4%B8%8D%E4%B8%BA0%E7%9A%84%E4%B8%AA%E6%95%B0%EF%BC%89%0A" /></p><p>下面求<img src="https://math.now.sh?inline=%5Cmu_1" style="display:inline-block;margin: 0;"/>，可以发现和<img src="https://math.now.sh?inline=%5Cmu_1" style="display:inline-block;margin: 0;"/>有关的只有<img src="https://math.now.sh?inline=N%28%5Cmu_1%2C%20%5CSigma%29" style="display:inline-block;margin: 0;"/>，因此对<img src="https://math.now.sh?inline=%5Csum_%7Bi%3D1%7D%5EN%20y_i%20%5Clog%20N%28%5Cmu_1%2C%20%5CSigma%29" style="display:inline-block;margin: 0;"/>求<img src="https://math.now.sh?inline=%5Cmu_1" style="display:inline-block;margin: 0;"/>的偏导</p>
-<p>展开：</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%26%5C%20%5C%20%5C%20%5C%20%5C%20%5Cunderset%7B%5Cmu_1%7D%7B%5Carg%20%5Cmax%7D%5Csum_%7Bi%3D1%7D%5EN%20y_i%20%5Clog%20%5Cdfrac%7B1%7D%7B%282%5Cpi%29%5E%7B%5Cfrac%7Bp%7D%7B2%7D%7D%5CSigma%5E%7B%5Cfrac%7B1%7D%7B2%7D%7D%7De%5E%7B-%5Cfrac%7B1%7D%7B2%7D(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1)%7D%5C%5C%5C%5C%0A%26%3D%5Cunderset%7B%5Cmu_1%7D%7B%5Carg%20%5Cmax%7D%5Csum_%7Bi%3D1%7D%5EN%20y_i(-%5Cfrac%7B1%7D%7B2%7D(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1))%5C%5C%5C%5C%0A%26%3D%5Cunderset%7B%5Cmu_1%7D%7B%5Carg%20%5Cmax%7D%5Csum_%7Bi%3D1%7D%5EN%20y_i(-%5Cfrac%7B1%7D%7B2%7D(x_i%5ET%5CSigma%5E%7B-1%7D-%5Cmu_1%5ET%5CSigma%5E%7B-1%7D)(x_i-%5Cmu_1))%5C%5C%5C%5C%0A%26%3D%5Cunderset%7B%5Cmu_1%7D%7B%5Carg%20%5Cmax%7D%5Csum_%7Bi%3D1%7D%5EN%20y_i(-%5Cfrac%7B1%7D%7B2%7D(x_i%5ET%5CSigma%5E%7B-1%7Dx_i-x_i%5ET%5CSigma%5E%7B-1%7D%5Cmu_1-%5Cmu_1%5ET%5CSigma%5E%7B-1%7Dx_i%20%2B%20%5Cmu_1%5ET%5CSigma%5E%7B-1%7D%5Cmu_1))%5C%5C%5C%5C%0A%26%3D%5Cunderset%7B%5Cmu_1%7D%7B%5Carg%20%5Cmax%7D%5Csum_%7Bi%3D1%7D%5EN%20y_i(-%5Cfrac%7B1%7D%7B2%7D(x_i%5ET%5CSigma%5E%7B-1%7Dx_i-2x_i%5ET%5CSigma%5E%7B-1%7D%5Cmu_1%20%2B%20%5Cmu_1%5ET%5CSigma%5E%7B-1%7D%5Cmu_1))%5C%5C%5C%5C%0A%5Cend%7Balign%7D%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Cdfrac%7B%5Cpartial%20%5CDelta%7D%7B%5Cpartial%20%5Cmu_1%7D%3D-%5Cfrac%7B1%7D%7B2%7D%20%28%5Csum_%7Bi%3D1%7D%5E%7BN%7Dy_i(-2x_i%5CSigma%5E%7B-1%7D%2B2%5CSigma%5E%7B-1%7D%5Cmu_1%29)%3D(%5Csum_%7Bi%3D1%7D%5E%7BN%7Dy_i(x_i%5CSigma%5E%7B-1%7D-%5CSigma%5E%7B-1%7D%5Cmu_1))%0A" /></p><p>令偏导为0，有</p>
-<p style=""><img src="https://math.now.sh?from=%5Csum_%7Bi%3D0%7D%5ENy_i%28x_i-%5Cmu_1%29%3D%5Csum_%7Bi%3D1%7D%5ENy_ix_i-y_i%5Cmu_1%3D0%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Csum_%7Bi%3D1%7D%5ENy_ix_i%3D%5Csum_%7Bi%3D1%7D%5ENy_i%5Cmu_1%5C%5C%5C%5C%0A%5Chat%7B%5Cmu_1%7D%3D%5Cdfrac%7B%5Csum_%7Bi%3D1%7D%5ENy_ix_i%7D%7B%5Csum_%7Bi%3D1%7D%5ENy_i%7D%3D%5Cdfrac%7B%5Csum%5Climits_%7Bi%3D1%7D%5EN%20y_ix_i%7D%7BN_1%7D%0A" /></p><p><img src="https://math.now.sh?inline=%5Cmu_2" style="display:inline-block;margin: 0;"/>求法与<img src="https://math.now.sh?inline=%5Cmu_1" style="display:inline-block;margin: 0;"/>一致，下面求<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>，为了方便表达，对样本进行分类：</p>
-<p><img src="https://math.now.sh?inline=c_1%20%3D%20%5C%7Bx_i%20%5Cin%20X%20%5Cmid%20y_i%20%3D1%2C%20i%3D1%2C%20%5Cldots%20N%5C%7D" style="display:inline-block;margin: 0;"/></p>
-<p><img src="https://math.now.sh?inline=c_2%20%3D%20%5C%7Bx_i%20%5Cin%20X%20%5Cmid%20y_i%20%3D0%2C%20i%3D1%2C%20%5Cldots%20N%5C%7D" style="display:inline-block;margin: 0;"/></p>
-<p>下面对<img src="https://math.now.sh?inline=A_1" style="display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=A_2" style="display:inline-block;margin: 0;"/>进行化简</p>
-<p style=""><img src="https://math.now.sh?from=A_1%3D%5Csum_%7Bi%3D1%7D%5ENy_i%5Clog%20N%28%5Cmu_1%2C%20%5CSigma%29%3D%5Csum_%7Bx_i%5Cin%20c_1%7D%5Clog%20N(%5Cmu_1%2C%20%5CSigma)%5C%5C%5C%5C%0AA_2%3D%5Csum_%7Bi%3D1%7D%5EN(1-y_i)%5Clog%20N(%5Cmu_2%2C%20%5CSigma)%3D%5Csum_%7Bx_i%5Cin%20c_2%7D%5Clog%20N(%5Cmu_2%2C%20%5CSigma)%0A" /></p><p>则</p>
-<p style=""><img src="https://math.now.sh?from=%5Chat%7B%5CSigma%7D%3D%5Cunderset%7B%5CSigma%7D%7B%5Carg%20%5Cmax%7D%5C%20A_1%20%2B%20A_2%3D%5Cunderset%7B%5CSigma%7D%7B%5Carg%20%5Cmax%7D%5C%20%5Csum_%7Bx_i%5Cin%20c_1%7D%5Clog%20N%28%5Cmu_1%2C%20%5CSigma%29%2B%5Csum_%7Bx_i%5Cin%20c_2%7D%5Clog%20N(%5Cmu_2%2C%20%5CSigma)%0A" /></p><p>其中，</p>
-<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5Clog%20N%28%5Cmu_1%2C%20%5CSigma%29%26%3D%5Clog%20%5Cdfrac%7B1%7D%7B(2%5Cpi)%5E%7B%5Cfrac%7Bp%7D%7B2%7D%7D%7C%5CSigma%7C%5E%7B%5Cfrac%7B1%7D%7B2%7D%7D%7D-%5Cfrac%7B1%7D%7B2%7D%20(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1)%5C%5C%5C%5C%0A%26%3D-%5Clog(2%5Cpi)%5E%7B%5Cfrac%7Bp%7D%7B2%7D%7D-%5Clog(%7C%5CSigma%7C)%5E%7B%5Cfrac%7B1%7D%7B2%7D%7D-%5Cfrac%7B1%7D%7B2%7D%20(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1)%5C%5C%5C%5C%0A%26%3D-%5Cfrac%7Bp%7D%7B2%7D%5Clog(2%5Cpi)-%5Cfrac%7B1%7D%7B2%7D%5Clog(%7C%5CSigma%7C)-%5Cfrac%7B1%7D%7B2%7D%20(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1)%0A%5Cend%7Balign%7D%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Csum_%7Bi%3D1%7D%5EN%5Clog%20N%28%5Cmu_1%2C%20%5CSigma%29%3D-%5Cfrac%7BN_1p%7D%7B2%7D%5Clog(2%5Cpi)-%5Cfrac%7BN_1%7D%7B2%7D%5Clog(%7C%5CSigma%7C)-%5Cfrac%7B1%7D%7B2%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN_1%7D(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1)%0A" /></p><p>合并</p>
-<p style=""><img src="https://math.now.sh?from=W%3DA_1%2BA_2%3D-%5Cfrac%7BNp%7D%7B2%7D%5Clog%282%5Cpi%29-%5Cfrac%7BN%7D%7B2%7D%5Clog(%7C%5CSigma%7C)-%5Cfrac%7B1%7D%7B2%7D%20%5Csum_%7Bi%3D1%7D%5E%7BN_1%7D(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1)-%5Csum_%7Bi%3D1%7D%5E%7BN_2%7D(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1)%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20W%7D%7B%5Cpartial%20%5CSigma%7D%26%3D-%5Cfrac%7BN%7D%7B2%7D%5Cfrac%7B1%7D%7B%7C%5CSigma%7C%7D%7C%5CSigma%7C%5CSigma%5E%7B-1%7D%2B%20%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7BN_1%7D%5CSigma%5E%7B-1%7D%28x_i-%5Cmu_1%29(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7BN_2%7D%5CSigma%5E%7B-1%7D(x_i-%5Cmu_2)(x_i-%5Cmu_2)%5ET%5CSigma%5E%7B-1%7D%5C%5C%5C%5C%0A%26%3D-%5Cfrac%7BN%5CSigma%5E%7B-1%7D%7D%7B2%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7BN_1%7D%5CSigma%5E%7B-1%7D(x_i-%5Cmu_1)(x_i-%5Cmu_1)%5ET%5CSigma%5E%7B-1%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7BN_2%7D%5CSigma%5E%7B-1%7D(x_i-%5Cmu_2)(x_i-%5Cmu_2)%5ET%5CSigma%5E%7B-1%7D%0A%5Cend%7Balign%7D%0A" /></p><p>令<img src="https://math.now.sh?inline=%5Cdfrac%7B%5Cpartial%20W%7D%7B%5Cpartial%20%5CSigma%7D%3D0" style="display:inline-block;margin: 0;"/>，则（移向，同乘2，同时左右都乘<img src="https://math.now.sh?inline=%5CSigma" style="display:inline-block;margin: 0;"/>）</p>
-<p style=""><img src="https://math.now.sh?from=N%5CSigma%3D%5Csum_%7Bi%3D1%7D%5E%7BN_1%7D%28x_i-%5Cmu_1%29(x_i-%5Cmu_1)%5ET%2B%5Csum_%7Bi%3D1%7D%5E%7BN_2%7D(x_i-%5Cmu_2)(x_i-%5Cmu_2)%5ET%5C%5C%5C%5C%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Chat%7B%5CSigma%7D%3D%5Cdfrac%7B1%7D%7BN%7D%5Cunderbrace%7B%5Csum_%7Bi%3D1%7D%5E%7BN_1%7D%28x_i-%5Cmu_1%29(x_i-%5Cmu_1)%5ET%7D_%7Bc_1%E6%A0%B7%E6%9C%AC%E7%9A%84%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5%E7%9A%84N_1%E5%80%8D%7D%2B%5Cdfrac%7B1%7D%7BN%7D%5Cunderbrace%7B%5Csum_%7Bi%3D1%7D%5E%7BN_2%7D(x_i-%5Cmu_2)(x_i-%5Cmu_2)%5ET%7D_%7Bc_2%E6%A0%B7%E6%9C%AC%E7%9A%84%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5%E7%9A%84N_2%E5%80%8D%7D%0A" /></p><h2 id="朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）">朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）</h2>
-<p>思想：朴素贝叶斯假设——条件独立性假设——最简单的概率图模型</p>
-<p>给定<img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/>的条件下，各个属性之间都是独立的：<img src="https://math.now.sh?inline=x_i%20%5Cbot%20x_j%20%5Cmid%20y" style="display:inline-block;margin: 0;"/></p>
+
+<p>使用投影的概念进行理解，$Z_i=w^Tx_i$，其中$w$是投影方向，投影完可以看作是$w$方向上的一个标量（$w$是单位向量）。</p>
+<p>目标是类内小，类间大，对每个类$k$（这里讨论的都是二分类问题，即$k\in \{1,2\}$）而言：<br>$$<br>\begin{align}<br>&amp;Z_i=w^Tx_{i,k}\\\<br>&amp;\bar{Z}_k=\dfrac{1}{N_k} \sum_{i=1}^{N_k}(w^Tx_{i,k})\\\<br>&amp;S_k=\dfrac{1}{N_k} \sum_{i=1}^{N_k}(Z_i-\bar{Z}_k)(Z_i-\bar{Z}_k)^T= \dfrac{1}{N_k}\sum_{i=1}^{N_k}(w^Tx_{i,k}-\bar{Z}_k)(w^Tx_{i,k}-\bar{Z}_k)^T<br>\end{align}<br>$$<br>类内小采用方差矩阵度量：$S_1+S_2$</p>
+<p>类间大采用均值距离度量：$(\bar{Z}_1-\bar{Z}_2)^2$</p>
+<p>多目标优化，采用目标函数：<br>$$<br>J(w)=\dfrac{(\bar{Z}_1-\bar{Z}_2)^2}{S_1+S_2}<br>$$</p>
+<p>$$<br>\hat{w}=\underset{w}{\arg \max}\ J(w)<br>$$</p>
+<p>其中，</p>
+<p>令第$k$类的样本均值为$\bar{x}_k=\dfrac{1}{N_k}\sum\limits_{i=1}^{N_k} x_{i,k}$，则<br>$$<br>\bar{Z}_1-\bar{Z}_2=\dfrac{1}{N_1}\sum_{i=1}^{N}(w^Tx_{i,1})-\dfrac{1}{N_2}\sum_{i=1}^{N}(w^Tx_{i,2})=w^T(\bar{x}_1-\bar{x}_2)<br>$$</p>
+<p>$$<br>\begin{align}<br>\therefore\ &amp;(\bar{Z}_1-\bar{Z}_2)^2=(w^T(\bar{x}_1-\bar{x}_2))(w^T(\bar{x}_1-\bar{x}_2))^T=w^T(\bar{x}_1-\bar{x}_2)(\bar{x}_1-\bar{x}_2)^Tw\\\<br>&amp;(w^Tx_{i,k}-\bar{Z}_k)=(w^Tx_{i,k}-w^T\bar{x}_{k})=(w^T(x_{i,k}-\bar{x}_{k}))\\\<br>&amp;S_k=\dfrac{1}{N_k}\sum_{i=1}^{N_k} (w^T(x_{i,k}-\bar{x}_{k}))(w^T(x_{i,k}-\bar{x}_{k}))^T=\dfrac{1}{N_k}\sum_{i=1}^{N_k}w^T(x_{i,k}-\bar{x}_{k})(x_{i,k}-\bar{x}_k)^Tw<br>\end{align}<br>$$</p>
+<p>由于$w$与各样本$i$无关，因此<br>$$<br>S_k=w^T\ \ \ \ \underbrace{\dfrac{1}{N_k}\sum_{i=1}^{N_k}(x_{i,k}-\bar{x}_{k})(x_{i,k}-\bar{x}_k)^T}_{S_{c_k}}\ \ \ \ w<br>$$<br>综上，<br>$$<br>J(w)=\dfrac{w^T(\bar{x}_1-\bar{x}_2)(\bar{x}_1-\bar{x}_2)^Tw}{w^T(S_{c_1}+S_{c_2})w}<br>$$<br>定义类别间（between）的方差$S_b=(\bar{x}_1-\bar{x}_2)(\bar{x}_1-\bar{x}_2)^T$, 类别内方差$S_w=(S_{c_1}+S_{c_2})$。<br>$$<br>J(w)=\dfrac{w^T S_b w}{w^T S_w w}=w^TS_bw(w^TS_ww)^{-1}<br>$$<br>接下来求解最大值时对应的$w$，<br>$$<br>\dfrac{\partial J(w)}{\partial w}=2S_bw(w^TS_ww)^{-1}-2w^TS_bw(w^TS_ww)^{-2}S_ww<br>$$<br>令$\dfrac{\partial J(w)}{\partial w}=0$</p>
+<p>则<br>$$<br>\begin{align}<br>&amp;S_bw(w^TS_ww)^{-1}=w^TS_bw(w^TS_ww)^{-2}S_ww \qquad -\text{左右同时乘以标量$(w^TS_ww)^2$}\\\<br>&amp;S_bw(w^TS_ww)=(w^TS_bw)S_ww \qquad -\text{括号内都是标量，可以随便移向、变顺序，且不影响$w$的方向}\\\<br>&amp;S_ww=\dfrac{(w^TS_ww)}{(w^TS_bw)}S_bw \\\<br>&amp;w=\dfrac{(w^TS_ww)}{(w^TS_bw)}S_w^{-1}S_bw<br>\end{align}<br>$$<br>可以看到，如果只关心方向，那么$w$同向于$S_w^{-1}S_bw$，而$S_bw=(\bar{x}_1-\bar{x}_2)(\bar{x}_1-\bar{x}_2)^Tw$，其中$(\bar{x}_1-\bar{x}_2)^Tw$又是一个标量，因此$w$继续同向于$S_w^{-1}(\bar{x}_1-\bar{x}_2)$</p>
+<h2 id="Logistic-Regression——软输出（类别1，概率判别模型）"><a href="#Logistic-Regression——软输出（类别1，概率判别模型）" class="headerlink" title="Logistic Regression——软输出（类别1，概率判别模型）"></a>Logistic Regression——软输出（类别1，概率判别模型）</h2><p>模型：</p>
+<p>激活函数，sigmoid：$[\mathbb{R} \rightarrow (0,1)] \leftrightarrows [ w^Tx \rightarrow Probability]$<br>$$<br>\sigma(z)=\dfrac{1}{1+e^{-z}}<br>$$<br>$z$是回归模型输入样本后得到的结果$w^Tx$<br>$$<br>P(Y=y \mid X)= (\dfrac{1}{1+e^{-w^Tx}})^y+(\dfrac{e^{-w^Tx}}{1+e^{-w^Tx}})^{1-y}=p_1^y p_0^{1-y}<br>$$<br>算法：极大似然估计得到最优的$w$<br>$$<br>\begin{align}<br>&amp;L(w)=\log \prod_{i=1}^N P(y_i \mid x_i) \\\<br>&amp;=\sum_{i=1}^N \log p_1^yp^{1-y}_0\\\<br>&amp;=\sum_{i=1}^N \left[ y_i\log \dfrac{1}{1+e^{-w^Tx_i}} + (1-y_i)\log \dfrac{e^{-w^Tx_i}}{1+e^{-w^Tx_i}}\right]\\\<br>&amp;=\sum_{i=1}^N\left[-y_i\log (1+e^{-w^Tx_i}) + (1-y_i)(-w^Tx_i-\log(1+e^{-w^Tx_i}))\right]\\\<br>&amp;=\sum_{i=1}^N\left[-y_i\log (1+e^{-w^Tx_i}) -w^Tx_i -\log(1+e^{-w^Tx_i}) +  y_iw^Tx_i  + y_i\log(1+e^{-w^Tx_i})\right]\\\<br>&amp;=\sum_{i=1}^N (y_i-1)w^Tx_i-\log(1+e^{-w^Tx_i})<br>\end{align}<br>$$<br>对$w$求导：<br>$$<br>\dfrac{\partial L(w)}{\partial w}=\sum_{i=1}^N\left[(y_i-1)x_i+\dfrac{e^{-w^Tx_i}x_i}{1+e^{-w^Tx_i}} \right]<br>$$<br>求解一般采用梯度下降法。</p>
+<h2 id="高斯判别分析模型——软输出（类别2-1，概率生成-连续问题）"><a href="#高斯判别分析模型——软输出（类别2-1，概率生成-连续问题）" class="headerlink" title="高斯判别分析模型——软输出（类别2.1，概率生成+连续问题）"></a>高斯判别分析模型——软输出（类别2.1，概率生成+连续问题）</h2><p>概率判别模型：<br>$$<br>\hat{y} = \underset{y \in \{0, 1\}}{\arg \max}\ p(y \mid x)<br>$$<br>计算出$p(y \mid x)$，看是$y=1$的概率大还是$y=0$的概率大，之后做分类；</p>
+<p>概率生成模型，从贝叶斯角度，不去精确求解$p(y \mid x)$，只要能判断哪一种$y$能使得后验概率最大：<br>$$<br>\because p(y \mid x) \propto \underset{\text{类条件概率密度或者叫似然}}{p(x \mid y)} \underset{\ \ 先验概率}{p(y)} \\\<br>\therefore \hat{y}= \underset{y}{\arg \max}\ p(y \mid x)=\underset{y}{\arg \max}\ p(y)p(x \mid y)<br>$$<br>高斯判别模型的假设：</p>
+<p>先验$y \sim \mathrm{Bernoulli}(\phi)$</p>
+<p>类条件概率密度$(x \mid y=1) \sim N(\mu_1, \Sigma)$</p>
+<p>类条件概率密度$(x \mid y=0) \sim N(\mu_2, \Sigma)$</p>
+<p>合并表达：$N(\mu_1, \Sigma)^yN(\mu_1, \Sigma)^{1-y}$（正态分布的概率密度函数简记为$N$）</p>
+<p>直接采用log似然：<br>$$<br>\begin{align}<br>L(\theta)&amp;=\log \prod_{i=1}^Np(y_i)p(x_i \mid y_i) \\\<br>&amp;=\sum_{i=1}^N \left[ \log p(y_i) + \log p(x_i \mid y_i) \right ] \\\<br>&amp;=\sum_{i=1}^N\left[\underbrace{y\log N(\mu_1, \Sigma)}_{A_1} +\underbrace{(1-y) \log N(\mu_2, \Sigma)}_{A_2} + y \log \phi + (1-y) \log(1-\phi)\right]<br>\end{align}<br>$$<br>此处的参数$\theta$包括：$\mu_1,\mu_2, \Sigma, \phi$</p>
+<p>先求$\phi$：<br>$$<br>\dfrac{\partial L(\theta)}{\partial \phi}=\sum_{i=1}^N \dfrac{y_i}{\phi}-\dfrac{(1-y_i)}{1-\phi}=0<br>$$</p>
+<p>$$<br>\sum_{i=1}^N(1-\phi)y_i-\phi(1-y_i)=\sum_{i=1}^N y_i-\phi y_i-\phi + \phi y_i=\sum_{i=1}^N y_i - \phi=0<br>$$</p>
+<p>$\therefore$<br>$$<br>\phi = \dfrac{1}{N}\sum_{i=1}^N y_i=\dfrac{N_1}{N}（N_1是标签y不为0的个数）<br>$$<br>下面求$\mu_1$，可以发现和$\mu_1$有关的只有$N(\mu_1, \Sigma)$，因此对$\sum_{i=1}^N y_i \log N(\mu_1, \Sigma)$求$\mu_1$的偏导</p>
+<p>展开：<br>$$<br>\begin{align}<br>&amp;\ \ \ \ \ \underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i \log \dfrac{1}{(2\pi)^{\frac{p}{2}}\Sigma^{\frac{1}{2}}}e^{-\frac{1}{2}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)}\\\<br>&amp;=\underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i(-\frac{1}{2}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1))\\\<br>&amp;=\underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i(-\frac{1}{2}(x_i^T\Sigma^{-1}-\mu_1^T\Sigma^{-1})(x_i-\mu_1))\\\<br>&amp;=\underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i(-\frac{1}{2}(x_i^T\Sigma^{-1}x_i-x_i^T\Sigma^{-1}\mu_1-\mu_1^T\Sigma^{-1}x_i + \mu_1^T\Sigma^{-1}\mu_1))\\\<br>&amp;=\underset{\mu_1}{\arg \max}\sum_{i=1}^N y_i(-\frac{1}{2}(x_i^T\Sigma^{-1}x_i-2x_i^T\Sigma^{-1}\mu_1 + \mu_1^T\Sigma^{-1}\mu_1))\\\<br>\end{align}<br>$$</p>
+<p>$$<br>\dfrac{\partial \Delta}{\partial \mu_1}=-\frac{1}{2} (\sum_{i=1}^{N}y_i(-2x_i\Sigma^{-1}+2\Sigma^{-1}\mu_1))=(\sum_{i=1}^{N}y_i(x_i\Sigma^{-1}-\Sigma^{-1}\mu_1))<br>$$</p>
+<p>令偏导为0，有<br>$$<br>\sum_{i=0}^Ny_i(x_i-\mu_1)=\sum_{i=1}^Ny_ix_i-y_i\mu_1=0<br>$$</p>
+<p>$$<br>\sum_{i=1}^Ny_ix_i=\sum_{i=1}^Ny_i\mu_1\\\<br>\hat{\mu_1}=\dfrac{\sum_{i=1}^Ny_ix_i}{\sum_{i=1}^Ny_i}=\dfrac{\sum\limits_{i=1}^N y_ix_i}{N_1}<br>$$<br>$\mu_2$求法与$\mu_1$一致，下面求$\Sigma$，为了方便表达，对样本进行分类：</p>
+<p>$c_1 = \{x_i \in X \mid y_i =1, i=1, \ldots N\}$</p>
+<p>$c_2 = \{x_i \in X \mid y_i =0, i=1, \ldots N\}$</p>
+<p>下面对$A_1$和$A_2$进行化简<br>$$<br>A_1=\sum_{i=1}^Ny_i\log N(\mu_1, \Sigma)=\sum_{x_i\in c_1}\log N(\mu_1, \Sigma)\\\<br>A_2=\sum_{i=1}^N(1-y_i)\log N(\mu_2, \Sigma)=\sum_{x_i\in c_2}\log N(\mu_2, \Sigma)<br>$$<br>则<br>$$<br>\hat{\Sigma}=\underset{\Sigma}{\arg \max}\ A_1 + A_2=\underset{\Sigma}{\arg \max}\ \sum_{x_i\in c_1}\log N(\mu_1, \Sigma)+\sum_{x_i\in c_2}\log N(\mu_2, \Sigma)<br>$$<br>其中，</p>
+<p>$$<br>\begin{align}<br>\log N(\mu_1, \Sigma)&amp;=\log \dfrac{1}{(2\pi)^{\frac{p}{2}}|\Sigma|^{\frac{1}{2}}}-\frac{1}{2} (x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)\\\<br>&amp;=-\log(2\pi)^{\frac{p}{2}}-\log(|\Sigma|)^{\frac{1}{2}}-\frac{1}{2} (x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)\\\<br>&amp;=-\frac{p}{2}\log(2\pi)-\frac{1}{2}\log(|\Sigma|)-\frac{1}{2} (x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)<br>\end{align}<br>$$</p>
+<p>$$<br>\sum_{i=1}^N\log N(\mu_1, \Sigma)=-\frac{N_1p}{2}\log(2\pi)-\frac{N_1}{2}\log(|\Sigma|)-\frac{1}{2} \sum_{i=1}^{N_1}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)<br>$$</p>
+<p>合并<br>$$<br>W=A_1+A_2=-\frac{Np}{2}\log(2\pi)-\frac{N}{2}\log(|\Sigma|)-\frac{1}{2} \sum_{i=1}^{N_1}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)-\sum_{i=1}^{N_2}(x_i-\mu_1)^T\Sigma^{-1}(x_i-\mu_1)<br>$$</p>
+<p>$$<br>\begin{align}<br>\frac{\partial W}{\partial \Sigma}&amp;=-\frac{N}{2}\frac{1}{|\Sigma|}|\Sigma|\Sigma^{-1}+ \frac{1}{2}\sum_{i=1}^{N_1}\Sigma^{-1}(x_i-\mu_1)(x_i-\mu_1)^T\Sigma^{-1}+\frac{1}{2}\sum_{i=1}^{N_2}\Sigma^{-1}(x_i-\mu_2)(x_i-\mu_2)^T\Sigma^{-1}\\\<br>&amp;=-\frac{N\Sigma^{-1}}{2}+\frac{1}{2}\sum_{i=1}^{N_1}\Sigma^{-1}(x_i-\mu_1)(x_i-\mu_1)^T\Sigma^{-1}+\frac{1}{2}\sum_{i=1}^{N_2}\Sigma^{-1}(x_i-\mu_2)(x_i-\mu_2)^T\Sigma^{-1}<br>\end{align}<br>$$</p>
+<p>令$\dfrac{\partial W}{\partial \Sigma}=0$，则（移向，同乘2，同时左右都乘$\Sigma$）<br>$$<br>N\Sigma=\sum_{i=1}^{N_1}(x_i-\mu_1)(x_i-\mu_1)^T+\sum_{i=1}^{N_2}(x_i-\mu_2)(x_i-\mu_2)^T\\\<br>$$</p>
+<p>$$<br>\hat{\Sigma}=\dfrac{1}{N}\underbrace{\sum_{i=1}^{N_1}(x_i-\mu_1)(x_i-\mu_1)^T}_{c_1样本的方差矩阵的N_1倍}+\dfrac{1}{N}\underbrace{\sum_{i=1}^{N_2}(x_i-\mu_2)(x_i-\mu_2)^T}_{c_2样本的方差矩阵的N_2倍}<br>$$</p>
+<h2 id="朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）"><a href="#朴素贝叶斯分类器——软输出（类别2-2，概率生成-离散问题）" class="headerlink" title="朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）"></a>朴素贝叶斯分类器——软输出（类别2.2，概率生成+离散问题）</h2><p>思想：朴素贝叶斯假设——条件独立性假设——最简单的概率图模型</p>
+<p>给定$y$的条件下，各个属性之间都是独立的：$x_i \bot x_j \mid y$</p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210628005650.png" alt="image-20210625112413398" style="zoom:25%;" />
 $$
 p(x \mid y)=\prod_{j=1}^p p(x_j \mid y)
 $$
-<p style=""><img src="https://math.now.sh?from=%5Chat%7By%7D%3D%5Carg%5Cmax_y%20p%28y%20%5Cmid%20x%29%3D%5Carg%20%5Cmax_y%20p(x%5Cmid%20y)p(y)%0A" /></p><p>朴素贝叶斯假设<img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/>服从二项分布，<img src="https://math.now.sh?inline=p%28x%20%5Cmid%20y%29" style="display:inline-block;margin: 0;"/>中，<img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/>的每个维度都服从正态分布（<img src="https://math.now.sh?inline=N%28%5Cmu_i%2C%20%5Csigma_i%5E2%29" style="display:inline-block;margin: 0;"/>）</p>
+
+<p>$$<br>\hat{y}=\arg\max_y p(y \mid x)=\arg \max_y p(x\mid y)p(y)<br>$$</p>
+<p>朴素贝叶斯假设$y$服从二项分布，$p(x \mid y)$中，$x$的每个维度都服从正态分布（$N(\mu_i, \sigma_i^2)$）</p>
 <p>利用这种思想，采用MLE推导，从现有样本估计出两个分布的参数（这个过程是学习）。</p>
-<h2 id="补充：总结生成模型和判别模型的区别">补充：总结生成模型和判别模型的区别</h2>
-<p>机器学习的核心任务：根据样本属性<img src="https://math.now.sh?inline=X" style="display:inline-block;margin: 0;"/>，预测标记<img src="https://math.now.sh?inline=Y" style="display:inline-block;margin: 0;"/>，即计算<img src="https://math.now.sh?inline=p%28Y%5Cmid%20X%29" style="display:inline-block;margin: 0;"/></p>
+<h2 id="补充：总结生成模型和判别模型的区别"><a href="#补充：总结生成模型和判别模型的区别" class="headerlink" title="补充：总结生成模型和判别模型的区别"></a>补充：总结生成模型和判别模型的区别</h2><p>机器学习的核心任务：根据样本属性$X$，预测标记$Y$，即计算$p(Y\mid X)$</p>
 <blockquote>
-<p>判别模型：找到一个明确的边界，首先计算<img src="https://math.now.sh?inline=p%28Y%3Dy_1%5Cmid%20X%29" style="display:inline-block;margin: 0;"/>与<img src="https://math.now.sh?inline=p%28Y%3Dy_2%5Cmid%20X%29" style="display:inline-block;margin: 0;"/>，之后取二者中概率较大的一方作为分类结果（二分类问题中，基于<img src="https://math.now.sh?inline=p%28Y%3Dy_1%20%5Cmid%20X%29%20%2B%20p(Y%3Dy_2%5Cmid%20X)%3D1" style="display:inline-block;margin: 0;"/>）。</p>
+<p>判别模型：找到一个明确的边界，首先计算$p(Y=y_1\mid X)$与$p(Y=y_2\mid X)$，之后取二者中概率较大的一方作为分类结果（二分类问题中，基于$p(Y=y_1 \mid X) + p(Y=y_2\mid X)=1$）。</p>
 </blockquote>
-<p>例如：可以看到，在logistic regression中，估计参数<img src="https://math.now.sh?inline=w" style="display:inline-block;margin: 0;"/>时，面向的是使得<img src="https://math.now.sh?inline=p%28y_i%20%5Cmid%20x_i%29" style="display:inline-block;margin: 0;"/>最大；估计好之后，在实际做分类时候，也是对单一新样本<img src="https://math.now.sh?inline=X_%7Bnew%7D" style="display:inline-block;margin: 0;"/>选择<img src="https://math.now.sh?inline=y%20%3D%20%5Carg%20%5Cmax%5Climits_%7By_i%7D%20p%28y_i%20%5Cmid%20X_%7Bnew%7D%29" style="display:inline-block;margin: 0;"/></p>
+<p>例如：可以看到，在logistic regression中，估计参数$w$时，面向的是使得$p(y_i \mid x_i)$最大；估计好之后，在实际做分类时候，也是对单一新样本$X_{new}$选择$y = \arg \max\limits_{y_i} p(y_i \mid X_{new})$</p>
 <blockquote>
 <p>生成模型：求出样本与不同标记（y）之间的联合概率分布，取大的获胜。注意到不同标记之间的联合概率之和就未必是1了。</p>
 </blockquote>
-<p>例如：可以看到，在GDA中，估计参数<img src="https://math.now.sh?inline=%5Ctheta" style="display:inline-block;margin: 0;"/>时，面向的是使得<img src="https://math.now.sh?inline=p%28x_i%20%5Cmid%20y%29p(y)%3Dp(x%2Cy)" style="display:inline-block;margin: 0;"/>最大；估计好之后，在实际做分类时候，也是对单一新样本<img src="https://math.now.sh?inline=X_%7Bnew%7D" style="display:inline-block;margin: 0;"/>分别计算<img src="https://math.now.sh?inline=p%28X_%7Bnew%7D%2C%20y_i%29" style="display:inline-block;margin: 0;"/>选择<img src="https://math.now.sh?inline=y%3D%5Carg%20%5Cmax%5Climits_%7By_i%7Dp%28X_%7Bnew%7D%2C%20y_i%29" style="display:inline-block;margin: 0;"/></p>
+<p>例如：可以看到，在GDA中，估计参数$\theta$时，面向的是使得$p(x_i \mid y)p(y)=p(x,y)$最大；估计好之后，在实际做分类时候，也是对单一新样本$X_{new}$分别计算$p(X_{new}, y_i)$选择$y=\arg \max\limits_{y_i}p(X_{new}, y_i)$</p>
 <p>下面的例子来源于<a href="https://www.zhihu.com/question/20446337/answer/256466823" target="_blank" rel="noopener">知乎@politer</a>的回答：</p>
 <p>判别式模型举例：要确定一个羊是山羊还是绵羊，用判别模型的方法是从历史数据中学习到模型，这个模型输入样本能够直接输出是山羊/绵羊的概率，然后通过提取这只羊的特征来预测出这只羊是山羊的概率，是绵羊的概率。</p>
-<p>生成式模型举例：利用生成模型是根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型，（例如GDA中，对不同的标签，服从均值不同的正态分布，即<img src="https://math.now.sh?inline=p%28x%20%5Cmid%20y%3D%E5%B1%B1%E7%BE%8A%29%2C%20p(x%20%5Cmid%20y%3D%E7%BB%B5%E7%BE%8A)" style="display:inline-block;margin: 0;"/>，需要分别学习<img src="https://math.now.sh?inline=%5Cmu_1%2C%20%5Cmu_2%2C%20%5CSigma" style="display:inline-block;margin: 0;"/>，同时还要学习标签的二项分布均值<img src="https://math.now.sh?inline=%5Cphi" style="display:inline-block;margin: 0;"/>），然后来了一个新羊，从中提取特征<img src="https://math.now.sh?inline=X" style="display:inline-block;margin: 0;"/>，放到山羊模型中看概率是多少，再放到绵羊模型中看概率是多少，哪个大就是哪个。</p>
+<p>生成式模型举例：利用生成模型是根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型，（例如GDA中，对不同的标签，服从均值不同的正态分布，即$p(x \mid y=山羊), p(x \mid y=绵羊)$，需要分别学习$\mu_1, \mu_2, \Sigma$，同时还要学习标签的二项分布均值$\phi$），然后来了一个新羊，从中提取特征$X$，放到山羊模型中看概率是多少，再放到绵羊模型中看概率是多少，哪个大就是哪个。</p>
 <blockquote>
-<p>无论如何，二者在学习时：**都是使后验最大化。**只不过：</p>
+<p>无论如何，二者在学习时：<strong>都是使后验最大化。</strong>只不过：</p>
 <ul>
-<li>判别模型直接对<img src="https://math.now.sh?inline=p%28Y%5Cmid%20X%29" style="display:inline-block;margin: 0;"/>建模——logistic regression模型算出来的就是<img src="https://math.now.sh?inline=p%28Y%20%5Cmid%20X%29" style="display:inline-block;margin: 0;"/></li>
-<li>生成模型通过正比于<img src="https://math.now.sh?inline=p%28X%2C%20Y%29" style="display:inline-block;margin: 0;"/>对联合概率建模——GDA分别对<img src="https://math.now.sh?inline=p%28X%20%5Cmid%20Y%29" style="display:inline-block;margin: 0;"/>和<img src="https://math.now.sh?inline=p%28Y%29" style="display:inline-block;margin: 0;"/>建模</li>
+<li>判别模型直接对$p(Y\mid X)$建模——logistic regression模型算出来的就是$p(Y \mid X)$</li>
+<li>生成模型通过正比于$p(X, Y)$对联合概率建模——GDA分别对$p(X \mid Y)$和$p(Y)$建模</li>
 </ul>
 </blockquote>
 <p>一个使用GDA进行Iris花朵分类的例子：（只分了前两类）</p>
 <iframe src="https://nbviewer.jupyter.org/url/101.34.75.195%3A8080/get_file/GDA-Iris.ipynb" width="900" height="1500"></iframe>
+
 
             </div>
             <hr/>
@@ -580,10 +553,7 @@ $$
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            降维
-过拟合与维度灾难
-
-
+                            降维过拟合与维度灾难
 解决过拟合问题的方案
 
 增加数据
@@ -591,14 +561,14 @@ $$
 降维
 
 
-
 维度灾难从集合意义上理解
-维超立方体及其内切超球
-立方体体积永远是1，超球体体积
+$n$维超立方体及其内切超球
+立方体体积永远是1，超球体体积$K \times 0.5^n$
 
 
 
-随着n的增大，这一球体体积逐渐趋向于0
+
+随着n
                         
                     </div>
                     <div class="publish-info">
@@ -643,10 +613,8 @@ $$
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Matrix Calculus
-Reference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
-Useful Conclusion（keep updating）
-eq(
+                            Matrix CalculusReference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
+Useful Conclusion（keep updating）eq(69
                         
                     </div>
                     <div class="publish-info">

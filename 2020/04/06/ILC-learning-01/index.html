@@ -29,8 +29,8 @@
 
     <script src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -304,179 +304,147 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="变量、集合、约束、选择">变量、集合、约束、选择</h2>
-<ol>
+                <h2 id="变量、集合、约束、选择"><a href="#变量、集合、约束、选择" class="headerlink" title="变量、集合、约束、选择"></a>变量、集合、约束、选择</h2><ol>
 <li>集合划分</li>
 </ol>
-<pre class=" language-language-prolog"><code class="language-language-prolog">{p(X) ; q(X)} = 1 :- X = 1..n.
-</code></pre>
+<pre class=" language-prolog"><code class="language-prolog"><span class="token punctuation">{</span><span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">)</span> <span class="token operator">;</span> <span class="token function">q</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">:-</span> <span class="token variable">X</span> <span class="token operator">=</span> <span class="token number">1.</span><span class="token operator">.</span>n<span class="token operator">.</span></code></pre>
 <p>将数字1到n，划分进入两个集合之中。</p>
 <ol start="2">
 <li>局部变量与全局变量</li>
 </ol>
-<pre class=" language-language-prolog"><code class="language-language-prolog">仅仅出现在大括号内的变量是局部变量，否则是全局变量；
+<pre class=" language-prolog"><code class="language-prolog">仅仅出现在大括号内的变量是局部变量，否则是全局变量；
 局部变量的规则实例仅仅是他自己一条；
-全局变量的规则实例则是替换全部相关的变量值
-</code></pre>
+全局变量的规则实例则是替换全部相关的变量值</code></pre>
 <p>例1：不使用<strong>局部变量</strong>，改写第二条规则</p>
-<pre class=" language-language-prolog"><code class="language-language-prolog">p(a; b). % 规则1
-{q(X, Y) : p(X), p(Y)} = 1. % 规则2
-%%%规则2改写为%%%
-{q(a,a; a,b; b,a; b,b)} = 1.
-</code></pre>
+<pre class=" language-prolog"><code class="language-prolog"><span class="token function">p</span><span class="token punctuation">(</span>a<span class="token operator">;</span> b<span class="token punctuation">)</span><span class="token operator">.</span> <span class="token comment" spellcheck="true">% 规则1</span>
+<span class="token punctuation">{</span><span class="token function">q</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">Y</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token number">1.</span> <span class="token comment" spellcheck="true">% 规则2</span>
+<span class="token comment" spellcheck="true">%%%规则2改写为%%%</span>
+<span class="token punctuation">{</span><span class="token function">q</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>a<span class="token operator">;</span> a<span class="token punctuation">,</span>b<span class="token operator">;</span> b<span class="token punctuation">,</span>a<span class="token operator">;</span> b<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token number">1.</span></code></pre>
 <p>例2：不使用<strong>局部变量</strong>，改写第三条规则</p>
-<pre class=" language-language-prolog"><code class="language-language-prolog">p(a; b). % 规则1
-q(1..4). % 规则2
-1 {r(X, Y) : p(X)} :- q(Y). % 规则3
-%%%规则3改写为%%%
-1{r(a,1; b,1)}.
-1{r(a,2; b,2)}.
-1{r(a,3; b,3)}.
-1{r(a,4; b,4)}.
-</code></pre>
+<pre class=" language-prolog"><code class="language-prolog"><span class="token function">p</span><span class="token punctuation">(</span>a<span class="token operator">;</span> b<span class="token punctuation">)</span><span class="token operator">.</span> <span class="token comment" spellcheck="true">% 规则1</span>
+<span class="token function">q</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">.</span> <span class="token comment" spellcheck="true">% 规则2</span>
+<span class="token number">1</span> <span class="token punctuation">{</span><span class="token function">r</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">:-</span> <span class="token function">q</span><span class="token punctuation">(</span><span class="token variable">Y</span><span class="token punctuation">)</span><span class="token operator">.</span> <span class="token comment" spellcheck="true">% 规则3</span>
+<span class="token comment" spellcheck="true">%%%规则3改写为%%%</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">r</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span><span class="token number">1</span><span class="token operator">;</span> b<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">.</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">r</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">;</span> b<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">.</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">r</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span><span class="token number">3</span><span class="token operator">;</span> b<span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">.</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">r</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span><span class="token number">4</span><span class="token operator">;</span> b<span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">.</span></code></pre>
 <p>例3：涂色问题-每个点都需要涂一个颜色</p>
-<pre class=" language-language-prolog"><code class="language-language-prolog">vertex(1..5).
-color(red;blue;green).
-1{has_color(X, Y) : color(Y)}1 :- vertex(X).
-</code></pre>
+<pre class=" language-prolog"><code class="language-prolog"><span class="token function">vertex</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token function">color</span><span class="token punctuation">(</span>red<span class="token operator">;</span>blue<span class="token operator">;</span>green<span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">has_color</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">,</span> <span class="token variable">Y</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">color</span><span class="token punctuation">(</span><span class="token variable">Y</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token number">1</span> <span class="token operator">:-</span> <span class="token function">vertex</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">)</span><span class="token operator">.</span></code></pre>
 <ol start="3">
 <li>关于约束</li>
 </ol>
 <p>回答一个问题</p>
-<pre><code>:- not p.
-</code></pre>
-<p>和</p>
-<pre><code>p.
-</code></pre>
-<p>是否等价？</p>
+<pre><code>:- not p.</code></pre><p>和</p>
+<pre><code>p.</code></pre><p>是否等价？</p>
 <p>答案：不等价。前者表示不允许回答集中没有p，但不保证回答集有可能得到p。</p>
 <p>极端反例：</p>
 <pre><code>{q}.
-:- not p.
-</code></pre>
-<p>没有回答集（unsat）。</p>
+:- not p.</code></pre><p>没有回答集（unsat）。</p>
 <pre><code>{q}.
-p.
-</code></pre>
-<p>有两个回答集：{p,q} 与 {p}</p>
+p.</code></pre><p>有两个回答集：{p,q} 与 {p}</p>
 <p>例4：下一程序回答集？</p>
 <pre><code>{p(1..10)}.
-:- p(2 * X).
-</code></pre>
-<p>实际是奇数枚举 — <code>{p(1;3;5;7;9)}</code>.</p>
+:- p(2 * X).</code></pre><p>实际是奇数枚举 — <code>{p(1;3;5;7;9)}</code>.</p>
 <p>数值比较的约束可转非约束：</p>
 <p>例如：同一个X，只具有唯一的f(X,Y)</p>
 <pre><code>:- f(X, Y1), f(X, Y2), Y1 != Y2.
 %%%等价于%%%
-Y1 = Y2 :- f(X, Y1), f(X, Y2).
-</code></pre>
-<p>如果一个规则的头部是一个数值比较，那么它其实不是一个定义，而是一个伪装的约束</p>
+Y1 = Y2 :- f(X, Y1), f(X, Y2).</code></pre><p>如果一个规则的头部是一个数值比较，那么它其实不是一个定义，而是一个伪装的约束</p>
 <p>Clingo中，匿名变量将被映射称为新谓词，例如<code>p(X,_,Z)</code>–&gt;<code>aux(X,Z)</code>但这个谓词在回答集中是不会被看到的。</p>
-<pre class=" language-language-prolog"><code class="language-language-prolog">p :- not q.
-q :- not p.
-</code></pre>
+<pre class=" language-prolog"><code class="language-prolog">p <span class="token operator">:-</span> <span class="token operator">not</span> q<span class="token operator">.</span>
+q <span class="token operator">:-</span> <span class="token operator">not</span> p<span class="token operator">.</span></code></pre>
 <p>在prolog中会陷入无尽循环（infinite loop）</p>
 <p>关于count的用法</p>
-<pre class=" language-language-prolog"><code class="language-language-prolog">p(1,a).
-p(1,b).
-p(1,c).
-q(a;b).
-r(X) :- X = #count{U,V : p(U,V), q(V)}
-</code></pre>
-<h2 id="座位分配问题">座位分配问题</h2>
-<h3 id="问题描述">问题描述</h3>
-<ul>
+<pre class=" language-prolog"><code class="language-prolog"><span class="token function">p</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token function">p</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token function">p</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token function">q</span><span class="token punctuation">(</span>a<span class="token operator">;</span>b<span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token function">r</span><span class="token punctuation">(</span><span class="token variable">X</span><span class="token punctuation">)</span> <span class="token operator">:-</span> <span class="token variable">X</span> <span class="token operator">=</span> #count<span class="token punctuation">{</span><span class="token variable">U</span><span class="token punctuation">,</span><span class="token variable">V</span> <span class="token operator">:</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token variable">U</span><span class="token punctuation">,</span><span class="token variable">V</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">q</span><span class="token punctuation">(</span><span class="token variable">V</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre>
+<h2 id="座位分配问题"><a href="#座位分配问题" class="headerlink" title="座位分配问题"></a>座位分配问题</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><ul>
 <li>n个座位</li>
 <li>互相不喜欢的人不能连着坐</li>
 <li>互相喜欢的人坐在一起</li>
 </ul>
-<h3 id="个人解法">个人解法</h3>
-<pre class=" language-language-prolog"><code class="language-language-prolog">% prg: seats_arrange.lp
-seat(1..n).
-person(1..n).
+<h3 id="个人解法"><a href="#个人解法" class="headerlink" title="个人解法"></a>个人解法</h3><pre class=" language-prolog"><code class="language-prolog"><span class="token comment" spellcheck="true">% prg: seats_arrange.lp</span>
+<span class="token function">seat</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>n<span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token function">person</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>n<span class="token punctuation">)</span><span class="token operator">.</span>
 
-% 一人一座
-1{sit(P, S) : seat(S)}1 :- person(P).
-P1 = P2 :- sit(P1,S1), sit(P2, S1).
+<span class="token comment" spellcheck="true">% 一人一座</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">,</span> <span class="token variable">S</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">seat</span><span class="token punctuation">(</span><span class="token variable">S</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token number">1</span> <span class="token operator">:-</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token variable">P1</span> <span class="token operator">=</span> <span class="token variable">P2</span> <span class="token operator">:-</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span><span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
-% 喜欢坐一起的两种情况
-|S1 - S2| = 1 |  |S1 - S2| = (n-1) :-  person(P1), person(P2), 
-                                       likes(P1, P2), 
-                                       sit(P1, S1), sit(P2, S2).
-% 不喜欢不坐一起的两种情况之（1）
-|S1 - S2| != 1 :-  person(P1), person(P2), 
-                   dislikes(P1, P2), 
-                   sit(P1, S1), sit(P2, S2).
+<span class="token comment" spellcheck="true">% 喜欢坐一起的两种情况</span>
+<span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">|</span>  <span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">:-</span>  <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                                       <span class="token function">likes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                                       <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token comment" spellcheck="true">% 不喜欢不坐一起的两种情况之（1）</span>
+<span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">!=</span> <span class="token number">1</span> <span class="token operator">:-</span>  <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                   <span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                   <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
 
-% 不喜欢不坐一起的两种情况之（2）
-|S1 - S2| != (n-1) :-  person(P1), person(P2), 
-                       dislikes(P1, P2), 
-                       sit(P1, S1), sit(P2, S2).
+<span class="token comment" spellcheck="true">% 不喜欢不坐一起的两种情况之（2）</span>
+<span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">!=</span> <span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">:-</span>  <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                       <span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                       <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
-% 喜欢具有交换性（错误）
-% likes(P2, P1) :- likes(P1, P2).
-% dislikes(P2, P1) :- dislikes(P1, P2).
+<span class="token comment" spellcheck="true">% 喜欢具有交换性（错误）</span>
+<span class="token comment" spellcheck="true">% likes(P2, P1) :- likes(P1, P2).</span>
+<span class="token comment" spellcheck="true">% dislikes(P2, P1) :- dislikes(P1, P2).</span>
 
-% 事实
-likes(1,2; 3,4). 
-dislikes(2,3; 1,3).
+<span class="token comment" spellcheck="true">% 事实</span>
+<span class="token function">likes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">;</span> <span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">.</span> 
+<span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token operator">;</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
-#show sit/2.
-</code></pre>
+#show <span class="token function">sit/2</span><span class="token operator">.</span></code></pre>
 <p>执行命令</p>
-<pre class=" language-language-bash"><code class="language-language-bash">clingo 0 -c n=6 seats_arrange.lp
-</code></pre>
-<h3 id="需要注意的问题">需要注意的问题</h3>
-<h4 id="关于一人一座的所有情况生成">关于一人一座的所有情况生成</h4>
-<pre class=" language-language-prolog"><code class="language-language-prolog">% 一人一座
-1{sit(P, S) : seat(S)}1 :- person(P).
-P1 = P2 :- sit(P1,S1), sit(P2, S1).
-% 1{sit(P, S) : person(P)}1 :- seat(S).
-</code></pre>
+<pre class=" language-bash"><code class="language-bash">clingo 0 -c n<span class="token operator">=</span>6 seats_arrange.lp</code></pre>
+<h3 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h3><h4 id="关于一人一座的所有情况生成"><a href="#关于一人一座的所有情况生成" class="headerlink" title="关于一人一座的所有情况生成"></a>关于一人一座的所有情况生成</h4><pre class=" language-prolog"><code class="language-prolog"><span class="token comment" spellcheck="true">% 一人一座</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">,</span> <span class="token variable">S</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">seat</span><span class="token punctuation">(</span><span class="token variable">S</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token number">1</span> <span class="token operator">:-</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token variable">P1</span> <span class="token operator">=</span> <span class="token variable">P2</span> <span class="token operator">:-</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span><span class="token variable">S1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token comment" spellcheck="true">% 1{sit(P, S) : person(P)}1 :- seat(S).</span></code></pre>
 <p>除了声明1个person有一个seat之外，还需要限定同一个座位只能有一个person做，即所谓有且仅有。</p>
 <p>其实，这是一个相等空位的双射问题（<strong>bijection</strong>），<code>1{sit(P, S) : seat(S)}1 :- person(P).</code>是<strong>为人分配座位</strong>，如果按照相同的方式，考虑<strong>为座位分配</strong>人，应该写成<code>1{sit(P, S) : person(P)}1 :- seat(S).</code>使用这种写法，同样可以达到<code>P1 = P2 :- sit(P1,S1), sit(P2, S1).</code>的效果，双射问题应当对两个方向都进行描述。</p>
-<h4 id="对于邻座的考虑">对于邻座的考虑</h4>
-<p>邻座的定义实际上是一个简单的分段函数，本来想通过取余等方式使用一个式子定义，但是比较困难。通过定义<code>adj/2</code>，表达两个位置的相邻关系，程序会更简洁。</p>
-<h4 id="对于like-dislike的对称性考虑是否多余？">对于like/dislike的对称性考虑是否多余？</h4>
-<p>是的，而且可能是错误的。</p>
+<h4 id="对于邻座的考虑"><a href="#对于邻座的考虑" class="headerlink" title="对于邻座的考虑"></a>对于邻座的考虑</h4><p>邻座的定义实际上是一个简单的分段函数，本来想通过取余等方式使用一个式子定义，但是比较困难。通过定义<code>adj/2</code>，表达两个位置的相邻关系，程序会更简洁。</p>
+<h4 id="对于like-dislike的对称性考虑是否多余？"><a href="#对于like-dislike的对称性考虑是否多余？" class="headerlink" title="对于like/dislike的对称性考虑是否多余？"></a>对于like/dislike的对称性考虑是否多余？</h4><p>是的，而且可能是错误的。</p>
 <p>考虑违背传递性的极端情况：</p>
 <p>P喜欢Q，此时P和Q相邻，Q和P必然也相邻，<strong>但是我们依然不能说Q喜欢P，或不喜欢P。</strong></p>
-<h3 id="扩展：如果有m个桌子">扩展：如果有m个桌子</h3>
-<p>人数相应变为<img src="https://math.now.sh?inline=m*n" style="display:inline-block;margin: 0;"/>，只需要把<code>sit/2</code>扩展为<code>sit/3</code>，然后对每个桌子进行一次判定即可。</p>
-<pre class=" language-language-prolog"><code class="language-language-prolog">% prg: seats_arrange_ntable.lp
-seat(1..n).
-table(1..m).
-person(1..n*m).
+<h3 id="扩展：如果有m个桌子"><a href="#扩展：如果有m个桌子" class="headerlink" title="扩展：如果有m个桌子"></a>扩展：如果有m个桌子</h3><p>人数相应变为$m*n$，只需要把<code>sit/2</code>扩展为<code>sit/3</code>，然后对每个桌子进行一次判定即可。</p>
+<pre class=" language-prolog"><code class="language-prolog"><span class="token comment" spellcheck="true">% prg: seats_arrange_ntable.lp</span>
+<span class="token function">seat</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>n<span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token function">table</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>m<span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token function">person</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token operator">.</span>n<span class="token operator">*</span>m<span class="token punctuation">)</span><span class="token operator">.</span>
 
-% （一人）<-->（一桌的一座）
-1{sit(P, S, T) : seat(S), table(T)}1 :- person(P).
-1{sit(P, S, T) : person(P)}1 :- seat(S), table(T).
-
-
-% 喜欢坐一起的两种情况
-|S1 - S2| = 1 |  |S1 - S2| = (n-1) :- person(P1),person(P2),likes(P1,P2), 
-                                      sit(P1, S1, T), sit(P2, S2, T).
-
-% 喜欢坐一起的要坐一桌
-T1 = T2 :-  likes(P1, P2), sit(P1, S1, T1), sit(P2, S2, T2).
-    																	 
-% 不喜欢的人在一桌的时候，情况之（1）
-|S1 - S2| != 1 :-  person(P1), person(P2), dislikes(P1, P2), 
-                   sit(P1, S1, T), sit(P2, S2, T).
+<span class="token comment" spellcheck="true">% （一人）&lt;-->（一桌的一座）</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">,</span> <span class="token variable">S</span><span class="token punctuation">,</span> <span class="token variable">T</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">seat</span><span class="token punctuation">(</span><span class="token variable">S</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">table</span><span class="token punctuation">(</span><span class="token variable">T</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token number">1</span> <span class="token operator">:-</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">)</span><span class="token operator">.</span>
+<span class="token number">1</span><span class="token punctuation">{</span><span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">,</span> <span class="token variable">S</span><span class="token punctuation">,</span> <span class="token variable">T</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token number">1</span> <span class="token operator">:-</span> <span class="token function">seat</span><span class="token punctuation">(</span><span class="token variable">S</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">table</span><span class="token punctuation">(</span><span class="token variable">T</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
 
-% 不喜欢的人在一桌的时候，情况之（2）
-|S1 - S2| != (n-1) :-  person(P1), person(P2), 
-                       dislikes(P1, P2), 
-                       sit(P1, S1, T), sit(P2, S2, T).
+<span class="token comment" spellcheck="true">% 喜欢坐一起的两种情况</span>
+<span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">|</span>  <span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">:-</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">likes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                                      <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">,</span> <span class="token variable">T</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">,</span> <span class="token variable">T</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
-% 事实
-likes(1,2; 3,4). 
-dislikes(2,3; 1,3).
+<span class="token comment" spellcheck="true">% 喜欢坐一起的要坐一桌</span>
+<span class="token variable">T1</span> <span class="token operator">=</span> <span class="token variable">T2</span> <span class="token operator">:-</span>  <span class="token function">likes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">,</span> <span class="token variable">T1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">,</span> <span class="token variable">T2</span><span class="token punctuation">)</span><span class="token operator">.</span>
 
-#show sit/3.
-</code></pre>
+<span class="token comment" spellcheck="true">% 不喜欢的人在一桌的时候，情况之（1）</span>
+<span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">!=</span> <span class="token number">1</span> <span class="token operator">:-</span>  <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                   <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">,</span> <span class="token variable">T</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">,</span> <span class="token variable">T</span><span class="token punctuation">)</span><span class="token operator">.</span>
+
+
+<span class="token comment" spellcheck="true">% 不喜欢的人在一桌的时候，情况之（2）</span>
+<span class="token operator">|</span><span class="token variable">S1</span> <span class="token operator">-</span> <span class="token variable">S2</span><span class="token operator">|</span> <span class="token operator">!=</span> <span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">:-</span>  <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                       <span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">P2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                       <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P1</span><span class="token punctuation">,</span> <span class="token variable">S1</span><span class="token punctuation">,</span> <span class="token variable">T</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sit</span><span class="token punctuation">(</span><span class="token variable">P2</span><span class="token punctuation">,</span> <span class="token variable">S2</span><span class="token punctuation">,</span> <span class="token variable">T</span><span class="token punctuation">)</span><span class="token operator">.</span>
+
+<span class="token comment" spellcheck="true">% 事实</span>
+<span class="token function">likes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">;</span> <span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">.</span> 
+<span class="token function">dislikes</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token operator">;</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">.</span>
+
+#show <span class="token function">sit/3</span><span class="token operator">.</span></code></pre>
 
             </div>
             <hr/>
@@ -586,56 +554,6 @@ dislikes(2,3; 1,3).
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/14/ILC-learning-02/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/12.jpg" class="responsive-img" alt="ILC-learning-02">
-                        
-                        <span class="card-title">ILC-learning-02</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            从命题逻辑到回答集程序
-vocabulary
-命题逻辑的vocabulary：原子公式（p,q,r…)
-命题逻辑的公式：原子公式+连接词
-命题逻辑的解释（interpretation）：一个集合，集合元素表示正确的原子公式
-例1：找到一个命
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Bob Hu
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/clingo/">
-                        <span class="chip bg-color">clingo</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2020/04/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/">
                     <div class="card-image">
                         
@@ -648,13 +566,65 @@ vocabulary
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            编译原理（一）
-解释器和编译器
-
+                            编译原理（一）解释器和编译器
 编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）
 解释器：输入是程序代码、数据data，输出是程序执行结果
 
-所以python可以一行一行执行，C语言必须
+所以python可以一行一行执行，C语言必须编译
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Bob Hu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">编译原理</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/06/ILC-learning-01/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/rqhu1995/rqhu1995.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="Input Language of Clingo 学习笔记（1）">
+                        
+                        <span class="card-title">Input Language of Clingo 学习笔记（1）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            变量、集合、约束、选择
+集合划分
+
+{p(X) ; q(X)} = 1 :- X = 1..n.
+将数字1到n，划分进入两个集合之中。
+
+局部变量与全局变量
+
+仅仅出现在大括号内的变量是局部变量，否则是全局变量；
+局部变量的规则实例仅仅是他
                         
                     </div>
                     <div class="publish-info">
@@ -669,11 +639,12 @@ vocabulary
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">编译原理</span>
+                    <a href="/tags/clingo/">
+                        <span class="chip bg-color">clingo</span>
                     </a>
                     
                 </div>
