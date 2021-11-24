@@ -300,63 +300,45 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>Standard Form Linear Programming</h1>
-<ul>
-<li>
-<p>n variables</p>
+                <h1 id="Standard-Form-Linear-Programming"><a href="#Standard-Form-Linear-Programming" class="headerlink" title="Standard Form Linear Programming"></a>Standard Form Linear Programming</h1><ul>
+<li><p>n variables</p>
 </li>
-<li>
-<p>1 objective function</p>
+<li><p>1 objective function</p>
 </li>
-<li>
-<p>m constraints</p>
-<p><img src="https://math.now.sh?inline=%5Cmathbf%7BAx%3Db%7D" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
+<li><p>m constraints</p>
+<p>$\mathbf{Ax=b}$</p>
 </li>
-<li>
-<p>All varibles are Non-negative</p>
+<li><p>All varibles are Non-negative</p>
 </li>
 </ul>
-<h1>Converting to the standard form</h1>
-<p style="filter: opacity(90%);transform:scale(0.85);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Baligned%7D%0A%26%5Ctext%20%7B%20Maximize%20%7D%20%5Cquad%203%20x_%7B1%7D-2%20x_%7B2%7D-4%5Cleft%7Cx_%7B3%7D%5Cright%7C%20%5C%5C%5C%5C%0A%26%5Cbegin%7Baligned%7D%0A%5Ctext%20%7B%20s.%20t.%20%7D%20%5Cquad%20-%26x_%7B1%7D%2B2%20x_%7B2%7D%20%20%5Cleq-5%20%5C%5C%5C%5C%0A%263%20x_%7B2%7D-x_%7B3%7D%20%20%5Cgeq%206%20%5C%5C%5C%5C%0A%262%20x_%7B1%7D%20%2B%20x_%7B3%7D%20%3D12%20%5C%5C%5C%5C%0A%26x_%7B1%7D%2C%20%20x_%7B2%7D%20%20%5Cgeq%200%0A%5Cend%7Baligned%7D%0A%5Cend%7Baligned%7D%0A" /></p><h2 id="Problem-1-Unrestricted-free-variables">Problem 1: Unrestricted free variables</h2>
-<p>Every real number can be viewed as positive part and negative part.</p>
-<p style="filter: opacity(90%);transform:scale(0.85);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Baligned%7D%0A%26x_%7Bi%7D%5E%7B%2B%7D%3D%20%5Cbegin%7Bcases%7Dx_%7Bi%7D%2C%20%26%20%5Ctext%20%7B%20if%20%7D%20x_%7Bi%7D%20%5Cgeq%200%20%5C%5C%5C%5C%0A0%2C%20%26%20%5Ctext%20%7B%20otherwise%20%7D%5Cend%7Bcases%7D%20%5C%5C%5C%5C%0A%26x_%7Bi%7D%5E%7B-%7D%3D%20%5Cbegin%7Bcases%7D0%2C%20%26%20%5Ctext%20%7B%20if%20%7D%20x_%7Bi%7D%20%5Cgeq%200%20%5C%5C%5C%5C%0A-x_%7Bi%7D%2C%20%26%20%5Ctext%20%7B%20otherwise%20%7D%5Cend%7Bcases%7D%0A%5Cend%7Baligned%7D%0A" /></p><p><img src="https://math.now.sh?inline=x_i%3Dx_i%5E%2B%20-%20x_i%5E-" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
-<p>either <img src="https://math.now.sh?inline=x%5E%2B_i" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/> is 0 or either <img src="https://math.now.sh?inline=x%5E-_i" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/> is 0</p>
-<p><img src="https://math.now.sh?inline=%7Cx_i%7C%3Dx%5E%2B_i%2Bx%5E-_i" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
-<p><strong>potential problem: quadratic constraint:</strong> <img src="https://math.now.sh?inline=x%5E%2B_i%5Ccdot%20x%5E-_i%3D0" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
-<h2 id="Problem-2-inequality">Problem 2: inequality</h2>
-<p>adding slack variable for <img src="https://math.now.sh?inline=%5Cle" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/> or minus excess variable for <img src="https://math.now.sh?inline=%5Cge" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
-<h2 id="Problem-3-minimization">Problem 3: minimization</h2>
-<p>Minimize the negative</p>
+<h1 id="Converting-to-the-standard-form"><a href="#Converting-to-the-standard-form" class="headerlink" title="Converting to the standard form"></a>Converting to the standard form</h1><p>$$<br>\begin{aligned}<br>&amp;\text { Maximize } \quad 3 x_{1}-2 x_{2}-4\left|x_{3}\right| \\\<br>&amp;\begin{aligned}<br>\text { s. t. } \quad -&amp;x_{1}+2 x_{2}  \leq-5 \\\<br>&amp;3 x_{2}-x_{3}  \geq 6 \\\<br>&amp;2 x_{1} + x_{3} =12 \\\<br>&amp;x_{1},  x_{2}  \geq 0<br>\end{aligned}<br>\end{aligned}<br>$$</p>
+<h2 id="Problem-1-Unrestricted-free-variables"><a href="#Problem-1-Unrestricted-free-variables" class="headerlink" title="Problem 1: Unrestricted free variables"></a>Problem 1: Unrestricted free variables</h2><p>Every real number can be viewed as positive part and negative part.<br>$$<br>\begin{aligned}<br>&amp;x_{i}^{+}= \begin{cases}x_{i}, &amp; \text { if } x_{i} \geq 0 \\\<br>0, &amp; \text { otherwise }\end{cases} \\\<br>&amp;x_{i}^{-}= \begin{cases}0, &amp; \text { if } x_{i} \geq 0 \\\<br>-x_{i}, &amp; \text { otherwise }\end{cases}<br>\end{aligned}<br>$$<br>$x_i=x_i^+ - x_i^-$</p>
+<p>either $x^+_i$ is 0 or either $x^-_i$ is 0</p>
+<p>$|x_i|=x^+_i+x^-_i$</p>
+<p><strong>potential problem: quadratic constraint:</strong> $x^+_i\cdot x^-_i=0$</p>
+<h2 id="Problem-2-inequality"><a href="#Problem-2-inequality" class="headerlink" title="Problem 2: inequality"></a>Problem 2: inequality</h2><p>adding slack variable for $\le$ or minus excess variable for $\ge$</p>
+<h2 id="Problem-3-minimization"><a href="#Problem-3-minimization" class="headerlink" title="Problem 3: minimization"></a>Problem 3: minimization</h2><p>Minimize the negative</p>
 <p><strong>result</strong>:</p>
-<p>(-)Minimize</p>
-<p style="filter: opacity(90%);transform:scale(0.85);text-align:center;"><img src="https://math.now.sh?from=-3%20x_%7B1%7D%20%5Cquad%2B2%20x_%7B2%7D%20%5Cquad%2B4%20x_%7B3%7D%5E%7B%2B%7D%2B4%20x_%7B3%7D%5E%7B-%7D%0A" /></p><p>subject to</p>
-<p style="filter: opacity(90%);transform:scale(0.85);text-align:center;"><img src="https://math.now.sh?from=%5Cbegin%7Barray%7D%7Brcccc%7D%0A%26-x_%7B1%7D%20%26%2B2%20x_%7B2%7D%20%26%20%26%20%26%2Bx_%7B4%7D%20%26%20%26%3D%26-5%20%5C%5C%5C%5C%0A%26%20%26%5Cquad3%20x_%7B2%7D%26-x_%7B3%7D%5E%7B%2B%7D%26%2Bx_%7B3%7D%5E%7B-%7D%20%26%20%26-x_%7B5%7D%20%26%3D%266%20%5C%5C%5C%5C%0A%262%20x_%7B1%7D%20%26%20%26%2Bx_%7B3%7D%5E%7B%2B%7D%26-x_%7B3%7D%5E%7B-%7D%20%26%26%26%20%20%3D%2612%5C%5C%5C%5C%0A%26x_%7B1%7D%2C%20%26%5Cquad%20x_%7B2%7D%2C%20%26%5Cquad%20x_%7B3%7D%5E%7B%2B%7D%2C%20%26x_%7B3%7D%5E%7B-%7D%2C%26x_%7B4%7D%2C%20%26%5Cquad%20x_%7B5%7D%20%26%5Cgeq%20%260%0A%5Cend%7Barray%7D%0A" /></p><h2 id="Still-problematic：">Still problematic：</h2>
-<ul>
+<p>(-)Minimize<br>$$<br>-3 x_{1} \quad+2 x_{2} \quad+4 x_{3}^{+}+4 x_{3}^{-}<br>$$<br>subject to<br>$$<br>\begin{array}{rcccc}<br>&amp;-x_{1} &amp;+2 x_{2} &amp; &amp; &amp;+x_{4} &amp; &amp;=&amp;-5 \\\<br>&amp; &amp;\quad3 x_{2}&amp;-x_{3}^{+}&amp;+x_{3}^{-} &amp; &amp;-x_{5} &amp;=&amp;6 \\\<br>&amp;2 x_{1} &amp; &amp;+x_{3}^{+}&amp;-x_{3}^{-} &amp;&amp;&amp;  =&amp;12\\\<br>&amp;x_{1}, &amp;\quad x_{2}, &amp;\quad x_{3}^{+}, &amp;x_{3}^{-},&amp;x_{4}, &amp;\quad x_{5} &amp;\geq &amp;0<br>\end{array}<br>$$</p>
+<h2 id="Still-problematic："><a href="#Still-problematic：" class="headerlink" title="Still problematic："></a>Still problematic：</h2><ul>
 <li>Missing the quadratic constraint</li>
 <li>Dimensionality increase</li>
-<li>One orginal solution becomes infinity (<img src="https://math.now.sh?inline=x%5E*%3D5%3D6-1%3D7-2%3D" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/>…)</li>
-<li>Maximize <img src="https://math.now.sh?inline=c%7Cx%7C%20%28c%5Cge0%29" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/>, unable to solve. (maximizing a convex function is impossible)</li>
+<li>One orginal solution becomes infinity ($x^*=5=6-1=7-2=$…)</li>
+<li>Maximize $c|x| (c\ge0)$, unable to solve. (maximizing a convex function is impossible)</li>
 </ul>
-<h1>Geometry of LP</h1>
-<h2 id="Terminologies">Terminologies</h2>
-<ul>
-<li>
-<p>Feasible domain/region: <img src="https://math.now.sh?inline=P%3D%5C%7B%5Cmathbf%7Bx%7D%20%5Cin%20%5Cmathbf%7BR%7D%5En%20%5Cmid%20%5Cmathbf%7BAx%3Db%7D%2C%20%5Cmathbf%7Bx%3E0%7D%5C%7D" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
+<h1 id="Geometry-of-LP"><a href="#Geometry-of-LP" class="headerlink" title="Geometry of LP"></a>Geometry of LP</h1><h2 id="Terminologies"><a href="#Terminologies" class="headerlink" title="Terminologies"></a>Terminologies</h2><ul>
+<li><p>Feasible domain/region: $P=\{\mathbf{x} \in \mathbf{R}^n \mid \mathbf{Ax=b}, \mathbf{x&gt;0}\}$</p>
 </li>
-<li>
-<p>Feasible solution: <img src="https://math.now.sh?inline=x%20%5Cin%20P%20%5Cneq%20%5Cemptyset" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
+<li><p>Feasible solution: $x \in P \neq \emptyset$</p>
 </li>
-<li>
-<p>Consistent: An LP is consistent <img src="https://math.now.sh?inline=%5CLeftrightarrow" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/><img src="https://math.now.sh?inline=P%20%5Cneq%20%5Cemptyset" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/> (Determining this is as hard as solving the LP)</p>
+<li><p>Consistent: An LP is consistent $\Leftrightarrow$$P \neq \emptyset$ (Determining this is as hard as solving the LP)</p>
 </li>
-<li>
-<p>Bounded Feasible Domain/Region: <img src="https://math.now.sh?inline=%5Cforall%20%5Cmathbf%7Bx%7D%20%5Cin%20P%2C%20%5Cexists%20M%20%3E0%2C%20%5Cquad%20s.t.%20%5Cquad%20%7C%7C%5Cmathbf%7Bx%7D%7C%7C%20%5Cle%20M" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
+<li><p>Bounded Feasible Domain/Region: $\forall \mathbf{x} \in P, \exists M &gt;0, \quad s.t. \quad ||\mathbf{x}|| \le M$</p>
 <blockquote>
 <p>Insight: Every solution in the feasible region has limited distance to the origin</p>
 </blockquote>
 </li>
-<li>
-<p>Bounded LP: <img src="https://math.now.sh?inline=%5Cforall%20%5Cmathbf%7Bx%7D%20%5Cin%20P%2C%20%5Cexists%20M%20%5Cin%20R%2C%20%5Cquad%20s.t.%5Cquad%20c%5ET%5Cmathbf%7Bx%7D%20%5Cge%20M" style="filter: opacity(90%);transform:scale(0.85);text-align:center;display:inline-block;margin: 0;"/></p>
+<li><p>Bounded LP: $\forall \mathbf{x} \in P, \exists M \in R, \quad s.t.\quad c^T\mathbf{x} \ge M$</p>
 <blockquote>
 <p>Insight: The feasible region has a lower bound M (Standard LP, minimzation problem)</p>
 </blockquote>
@@ -481,21 +463,14 @@
                     <div class="summary block-with-text">
                         
                             Standard Form Linear Programming
-
-
 n variables
-
 
 1 objective function
 
-
 m constraints
+$\mathbf{Ax=b}$
 
-
-
-All varibles are Non-negative
-
-
+All varibles are Non-
                         
                     </div>
                     <div class="publish-info">
@@ -535,12 +510,10 @@ All varibles are Non-negative
                         
                             Gurobi Cheatsheet
 
-
 read the model
-m = read('&lt;the path of the model&gt;')
+m = read(&#39;&lt;the path of the model&gt;&#39;)
 
-
-view assignment for each decision variabl
+view assignment for each decision v
                         
                     </div>
                     <div class="publish-info">

@@ -441,10 +441,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            TORCH.UNSQUEEZE
-torch.unsqueeze(dim: int)，在dim后加入一个单维度：
+                            TORCH.UNSQUEEZEtorch.unsqueeze(dim: int)，在dim后加入一个单维度：
 tensor = torch.tensor([1, 2, 3, 4])
-tensor.shape # torch.Size([4
+tensor.shape # torch.Size([4]
                         
                     </div>
                     <div class="publish-info">
@@ -482,16 +481,10 @@ tensor.shape # torch.Size([4
                     <div class="summary block-with-text">
                         
                             随机策略
-
 离散情况
 
-其中，是一个打分函数，可能来自线性组合，也可能是一个非线性的神经网络
-
-随机情况：Gaussian-dist
-
-RL策略学习
-数据
-$(s_1, a_1, r_1), (s_2, a_2, r_2), \ldots,
+$$\pi_\theta(a\mid s)=\dfrac{e^{h(s,a;\theta)}}{\sum_{a’}e^{h(s,a’;\theta)}}$$
+其中，$h$是一个打分函数，可能来自$\theta$线性组合
                         
                     </div>
                     <div class="publish-info">
