@@ -408,9 +408,10 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    TORCH.UNSQUEEZEtorch.unsqueeze(dim: int)，在dim后加入一个单维度：
+                                    TORCH.UNSQUEEZE
+torch.unsqueeze(dim: int)，在dim后加入一个单维度：
 tensor = torch.tensor([1, 2, 3, 4])
-tensor.shape # torch.Size([4]
+tensor.shape # torch.Size([4
                                 
                             </div>
                             <div class="publish-info">
@@ -519,10 +520,16 @@ tensor.shape # torch.Size([4]
                             <div class="summary block-with-text">
                                 
                                     随机策略
+
 离散情况
 
-$$\pi_\theta(a\mid s)=\dfrac{e^{h(s,a;\theta)}}{\sum_{a’}e^{h(s,a’;\theta)}}$$
-其中，$h$是一个打分函数，可能来自$\theta$线性组合
+其中，是一个打分函数，可能来自线性组合，也可能是一个非线性的神经网络
+
+随机情况：Gaussian-dist
+
+RL策略学习
+数据
+$(s_1, a_1, r_1), (s_2, a_2, r_2), \ldots,
                                 
                             </div>
                             <div class="publish-info">
@@ -571,11 +578,12 @@ $$\pi_\theta(a\mid s)=\dfrac{e^{h(s,a;\theta)}}{\sum_{a’}e^{h(s,a’;\theta)}}
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    DQN网络目标：找到$Q^\ast(s,a)$函数，之后给定一个$s_i$，就可以得到$\arg\max_\limits{a} Q(s_i,a)$
-Temperal Difference学习（TD learning）例如：
+                                    DQN网络
+目标：找到函数，之后给定一个，就可以得到
+Temperal Difference学习（TD learning）
+例如：
 
-
-出发前首先预
+出发前首先预测A-C之间的时间，1000；走到B，实际用时300，再次使用该模型估计剩余时间，得到的结果6
                                 
                             </div>
                             <div class="publish-info">
@@ -633,11 +641,21 @@ Temperal Difference学习（TD learning）例如：
                             <div class="summary block-with-text">
                                 
                                     基本框架
+
+
 策略迭代
+
 
 step 0：若未达到终止条件，则step 1，否则结束：
 
-step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \in \mathcal{S}$，求解$V_\pi(s)\text{ 和 
+
+step 1：策略评估（策略预测）：给定一个策略，，求解
+
+
+step 2：策略改进：根据计算出来的，找到一个，使得
+
+
+step 3：go to 
                                 
                             </div>
                             <div class="publish-info">
@@ -694,8 +712,14 @@ step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
-马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid 
+                                    背景介绍
+随机过程：
+马尔可夫链/马尔可夫假设：具有Markov性质的随机过程
+状态空间模型：马尔可夫链+观测变量
+
+当前观测值observation只依赖于当前状态，与之前的状态无关。
+马尔可夫回报模型：马尔可夫链+回报
+马尔可夫决策模型
                                 
                             </div>
                             <div class="publish-info">
