@@ -302,40 +302,33 @@
             <div id="articleContent">
                 <p>Gurobi Cheatsheet</p>
 <ul>
-<li>
-<p>read the model</p>
-<p><code>m = read('&lt;the path of the model&gt;')</code></p>
+<li><p>read the model</p>
+<p><code>m = read(&#39;&lt;the path of the model&gt;&#39;)</code></p>
 </li>
-<li>
-<p>view assignment for each decision variable：</p>
-<p><code>m.printAttr('X')</code></p>
+<li><p>view assignment for each decision variable：</p>
+<p><code>m.printAttr(&#39;X&#39;)</code></p>
 </li>
-<li>
-<p>view all variables</p>
+<li><p>view all variables</p>
 <p><code>m.getVars()</code></p>
 </li>
-<li>
-<p>print the variables(name and solution)</p>
+<li><p>print the variables(name and solution)</p>
 <p><code>v[0].varName, v[0].x</code></p>
 </li>
-<li>
-<p>set lower/upper bound(e.g., set lower bound  of v[0] to 10)</p>
+<li><p>set lower/upper bound(e.g., set lower bound  of v[0] to 10)</p>
 <p><code>v[0].lb=10</code></p>
 </li>
-<li>
-<p>回调函数，参数：<code>model, where</code></p>
+<li><p>回调函数，参数：<code>model, where</code></p>
 </li>
 </ul>
-<pre class=" language-language-python"><code class="language-language-python">from gurobipy import *
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> gurobipy <span class="token keyword">import</span> <span class="token operator">*</span>
 
-# 执行过程中，时间大于10s且找到最优解停下
-def mycallback(model, where):
-  if where == GRB.Callback.MIP:
-    time = model.cbGet(GRB.Callback.RUNTIME)
-    best = model.cbGet(GRB.Callback.MIP_OBJBST)
-    if time > 10 and best < GRB.INFINITY:
-      model.terminate()
-</code></pre>
+<span class="token comment" spellcheck="true"># 执行过程中，时间大于10s且找到最优解停下</span>
+<span class="token keyword">def</span> <span class="token function">mycallback</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> where<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">if</span> where <span class="token operator">==</span> GRB<span class="token punctuation">.</span>Callback<span class="token punctuation">.</span>MIP<span class="token punctuation">:</span>
+    time <span class="token operator">=</span> model<span class="token punctuation">.</span>cbGet<span class="token punctuation">(</span>GRB<span class="token punctuation">.</span>Callback<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+    best <span class="token operator">=</span> model<span class="token punctuation">.</span>cbGet<span class="token punctuation">(</span>GRB<span class="token punctuation">.</span>Callback<span class="token punctuation">.</span>MIP_OBJBST<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> time <span class="token operator">></span> <span class="token number">10</span> <span class="token operator">and</span> best <span class="token operator">&lt;</span> GRB<span class="token punctuation">.</span>INFINITY<span class="token punctuation">:</span>
+      model<span class="token punctuation">.</span>terminate<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>回调函数名可以直接作为参数传给optimize函数</p>
 <p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="image-20211012112104705"></p>
 
@@ -456,21 +449,14 @@ def mycallback(model, where):
                     <div class="summary block-with-text">
                         
                             Standard Form Linear Programming
-
-
 n variables
-
 
 1 objective function
 
-
 m constraints
+$\mathbf{Ax=b}$
 
-
-
-All varibles are Non-negative
-
-
+All varibles are Non-
                         
                     </div>
                     <div class="publish-info">
@@ -507,19 +493,12 @@ All varibles are Non-negative
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            当成立时，成立：
-: very large number
+                            当$x=x_i$成立时，$p \ge q$成立：$$p \ge q-M(x-x_i)$$$M$: very large number
 子回路约束消除：
 
+加入时间变量 $t_j \ge t_i-M(1-x_{ij})$
 
-加入时间变量 
-
-
-通过子图，任何一个子图内至少存在一个节点没有连接到这个子图
-等价表达：，子图内所有边数小于顶点数，证明至少有一个边出去了
-
-
-BSS: Ra
+通过子图，任何一个
                         
                     </div>
                     <div class="publish-info">

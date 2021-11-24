@@ -300,20 +300,25 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>随机策略</h1>
-<ul>
+                <h1 id="随机策略"><a href="#随机策略" class="headerlink" title="随机策略"></a>随机策略</h1><ul>
 <li>离散情况</li>
 </ul>
-<p style=""><img src="https://math.now.sh?from=%5Cpi_%5Ctheta%28a%5Cmid%20s%29%3D%5Cdfrac%7Be%5E%7Bh(s%2Ca%3B%5Ctheta)%7D%7D%7B%5Csum_%7Ba'%7De%5E%7Bh(s%2Ca'%3B%5Ctheta)%7D%7D%0A" /></p><p>其中，<img src="https://math.now.sh?inline=h" style="display:inline-block;margin: 0;"/>是一个打分函数，可能来自<img src="https://math.now.sh?inline=%5Ctheta" style="display:inline-block;margin: 0;"/>线性组合，也可能是一个非线性的神经网络</p>
+<p>$$<br>\pi_\theta(a\mid s)=\dfrac{e^{h(s,a;\theta)}}{\sum_{a’}e^{h(s,a’;\theta)}}<br>$$</p>
+<p>其中，$h$是一个打分函数，可能来自$\theta$线性组合，也可能是一个非线性的神经网络</p>
 <ul>
 <li>随机情况：Gaussian-dist</li>
 </ul>
-<p style=""><img src="https://math.now.sh?from=%5Cpi_%5Ctheta%28a%5Cmid%20s%29%3DN(a%20%5Cmid%20%5Cmu(s%3B%5Ctheta)%2C%20%5CSigma(s%3B%20%5Ctheta))%0A" /></p><h1>RL策略学习</h1>
-<p>数据</p>
+<p>$$<br>\pi_\theta(a\mid s)=N(a \mid \mu(s;\theta), \Sigma(s; \theta))<br>$$</p>
+<h1 id="RL策略学习"><a href="#RL策略学习" class="headerlink" title="RL策略学习"></a>RL策略学习</h1><p>数据</p>
 <p>$(s_1, a_1, r_1), (s_2, a_2, r_2), \ldots, $</p>
-<p>目标：</p>
-<p style=""><img src="https://math.now.sh?from=%5Ctheta%5E%5Cast%3D%5Carg%5Cmax_%7B%5Ctheta%7D%5Csum_n%20%5Cgamma%5EnE_%5Ctheta%5Br_n%20%5Cmid%20s_n%2C%20a_n%5D%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Ctheta_%7Bn%2B1%7D%20%5Cleftarrow%20%5Ctheta_n%20%2B%20%5Calpha_n%20%5Cgamma%5EnG_n%5Cnabla_%5Ctheta%20%5Clog%20%5Cpi_%5Ctheta%28a_n%20%5Cmid%20s_n%29%0A" /></p><p>其中，</p>
-<p style=""><img src="https://math.now.sh?from=G_n%3D%5Csum_%7Bt%3D0%7D%5E%7B%5Cinfty%7D%5Cgamma%5Etr_%7Bn%2Bt%7D%0A" /></p><p style=""><img src="https://math.now.sh?from=%5Cnabla%20V_%5Ctheta%20%5Capprox%20%5Cgamma%5En%20G_n%20%5Cnabla%20%5Clog%20%5Cpi_%5Ctheta%20%28a_n%20%5Cmid%20s_n%29%0A" /></p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210711225553.png" alt="image-20210711225548445" style="zoom:50%;" />
+<p>目标：<br>$$<br>\theta^\ast=\arg\max_{\theta}\sum_n \gamma^nE_\theta[r_n \mid s_n, a_n]<br>$$</p>
+<p>$$<br>\theta_{n+1} \leftarrow \theta_n + \alpha_n \gamma^nG_n\nabla_\theta \log \pi_\theta(a_n \mid s_n)<br>$$</p>
+<p>其中，<br>$$<br>G_n=\sum_{t=0}^{\infty}\gamma^tr_{n+t}<br>$$</p>
+<p>$$<br>\nabla V_\theta \approx \gamma^n G_n \nabla \log \pi_\theta (a_n \mid s_n)<br>$$</p>
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210711225553.png" alt="image-20210711225548445" style="zoom:50%;" />
+
+
+
 <p>Alpha Go:</p>
 <ul>
 <li>训练Policy Network (supervised历史对决记录)</li>
@@ -322,7 +327,9 @@
 <li>利用Policy和Value网络搜索</li>
 </ul>
 <img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210711233548768.png" alt="image-20210711233548768" style="zoom:50%;" />
+
 <img src="/Users/hurunqiu/Library/Application Support/typora-user-images/image-20210711233940242.png" alt="image-20210711233940242" style="zoom:50%;" />
+
 <p>替换梯度之后，就是Actor- Critic的方法。</p>
 
             </div>
@@ -494,12 +501,11 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DQN网络
-目标：找到函数，之后给定一个，就可以得到
-Temperal Difference学习（TD learning）
-例如：
+                            DQN网络目标：找到$Q^\ast(s,a)$函数，之后给定一个$s_i$，就可以得到$\arg\max_\limits{a} Q(s_i,a)$
+Temperal Difference学习（TD learning）例如：
 
-出发前首先预测A-C之间的时间，1000；走到B，实际用时300，再次使用该模型估计剩余时间，得到的结果6
+
+出发前首先预
                         
                     </div>
                     <div class="publish-info">

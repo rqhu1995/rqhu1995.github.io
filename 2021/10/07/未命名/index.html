@@ -300,21 +300,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>当<img src="https://math.now.sh?inline=x%3Dx_i" style="display:inline-block;margin: 0;"/>成立时，<img src="https://math.now.sh?inline=p%20%5Cge%20q" style="display:inline-block;margin: 0;"/>成立：</p>
-<p style=""><img src="https://math.now.sh?from=p%20%5Cge%20q-M%28x-x_i%29%0A" /></p><p><img src="https://math.now.sh?inline=M" style="display:inline-block;margin: 0;"/>: very large number</p>
+                <p>当$x=x_i$成立时，$p \ge q$成立：<br>$$<br>p \ge q-M(x-x_i)<br>$$<br>$M$: very large number</p>
 <p>子回路约束消除：</p>
 <ul>
-<li>
-<p>加入时间变量 <img src="https://math.now.sh?inline=t_j%20%5Cge%20t_i-M%281-x_%7Bij%7D%29" style="display:inline-block;margin: 0;"/></p>
+<li><p>加入时间变量 $t_j \ge t_i-M(1-x_{ij})$</p>
 </li>
-<li>
-<p>通过子图，任何一个子图内至少存在一个节点没有连接到这个子图<img src="https://math.now.sh?inline=%5Csum_%7Bi%5Cin%20S'%7D%5Csum_%7Bj%20%5Cnotin%20S'%7Dx_%7Bij%7D%20%5Cge%201%2C%20%5Cforall%20S'%20%5Csubset%20S" style="display:inline-block;margin: 0;"/></p>
-<p>等价表达：<img src="https://math.now.sh?inline=%5Csum_%7Bi%2C%20j%20%5Cin%20S%7D%20x_%7Bi%20j%7D%20%5Cleq%7CS%7C-1%2C%20%5Cforall%20S%20%5Csubseteq%20V%2C%201%3C%7CS%7C%3Cn" style="display:inline-block;margin: 0;"/>，子图内所有边数小于顶点数，证明至少有一个边出去了</p>
+<li><p>通过子图，任何一个子图内至少存在一个节点没有连接到这个子图$\sum_{i\in S’}\sum_{j \notin S’}x_{ij} \ge 1, \forall S’ \subset S$</p>
+<p>等价表达：$\sum_{i, j \in S} x_{i j} \leq|S|-1, \forall S \subseteq V, 1&lt;|S|&lt;n$，子图内所有边数小于顶点数，证明至少有一个边出去了</p>
 </li>
 </ul>
 <p>BSS: Raviv建模要点</p>
-<h2 id="AI（Arc-indexed）">AI（Arc-indexed）</h2>
-<ul>
+<h2 id="AI（Arc-indexed）"><a href="#AI（Arc-indexed）" class="headerlink" title="AI（Arc-indexed）"></a>AI（Arc-indexed）</h2><ul>
 <li>站点车辆数调度前后的更新</li>
 <li>卡车车辆数调度前后的更新</li>
 <li>卡车车载容量限制</li>
@@ -325,12 +321,11 @@
 <li>每辆车的总投放=总回收（站点之间的平衡）</li>
 <li>总时间预算限制</li>
 <li>子回路约束（避免非车场绕圈）</li>
-<li>二元决策变量（<img src="https://math.now.sh?inline=x_%7Bijv%7D" style="display:inline-block;margin: 0;"/>）</li>
+<li>二元决策变量（$x_{ijv}$）</li>
 <li>装卸车辆数：整数变量</li>
 <li>辅助变量正整数</li>
 </ul>
-<h2 id="TI（Time-indexed）">TI（Time-indexed）</h2>
-<p>two-phase method：先定路线，然后优化调度量</p>
+<h2 id="TI（Time-indexed）"><a href="#TI（Time-indexed）" class="headerlink" title="TI（Time-indexed）"></a>TI（Time-indexed）</h2><p>two-phase method：先定路线，然后优化调度量</p>
 
             </div>
             <hr/>
@@ -450,12 +445,10 @@
                         
                             Gurobi Cheatsheet
 
-
 read the model
-m = read('&lt;the path of the model&gt;')
+m = read(&#39;&lt;the path of the model&gt;&#39;)
 
-
-view assignment for each decision variabl
+view assignment for each decision v
                         
                     </div>
                     <div class="publish-info">
@@ -492,10 +485,9 @@ view assignment for each decision variabl
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            TORCH.UNSQUEEZE
-torch.unsqueeze(dim: int)，在dim后加入一个单维度：
+                            TORCH.UNSQUEEZEtorch.unsqueeze(dim: int)，在dim后加入一个单维度：
 tensor = torch.tensor([1, 2, 3, 4])
-tensor.shape # torch.Size([4
+tensor.shape # torch.Size([4]
                         
                     </div>
                     <div class="publish-info">

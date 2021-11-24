@@ -410,12 +410,10 @@
                                 
                                     Gurobi Cheatsheet
 
-
 read the model
-m = read('&lt;the path of the model&gt;')
+m = read(&#39;&lt;the path of the model&gt;&#39;)
 
-
-view assignment for each decision variabl
+view assignment for each decision v
                                 
                             </div>
                             <div class="publish-info">
@@ -464,19 +462,12 @@ view assignment for each decision variabl
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    当成立时，成立：
-: very large number
+                                    当$x=x_i$成立时，$p \ge q$成立：$$p \ge q-M(x-x_i)$$$M$: very large number
 子回路约束消除：
 
+加入时间变量 $t_j \ge t_i-M(1-x_{ij})$
 
-加入时间变量 
-
-
-通过子图，任何一个子图内至少存在一个节点没有连接到这个子图
-等价表达：，子图内所有边数小于顶点数，证明至少有一个边出去了
-
-
-BSS: Ra
+通过子图，任何一个
                                 
                             </div>
                             <div class="publish-info">
