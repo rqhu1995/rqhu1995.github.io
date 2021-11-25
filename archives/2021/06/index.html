@@ -1,63 +1,84 @@
-<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-dark" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>归档 · 2021</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/29/%E9%99%8D%E7%BB%B4/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/29/%E9%99%8D%E7%BB%B4/">降维</a></h2><time class="has-text-grey" datetime="2021-06-29T02:23:55.000Z">2021-06-29</time><p class="is-flex-grow-2 mt-2">
-降维过拟合与维度灾难
+cover
+
+降维
+过拟合与维度灾难
+
 解决过拟合问题的方案
 
 增加数据
 正则化（Lasso、Ridge岭回归）
 降维
 
-
 维度灾难从集合意义上理解
-$n$维超立方体及其内切超球
-立方体体积永远是1，超球体体积$K \times 0.5^n$
-
-
+\(n\)维超立方体及其内切超球
+立方体体积永远是1，超球体体积\(K \times 0.5^n\)
 
 
 随着n的增大，这一球体体积逐渐趋向于0，即说明：在高维空间中，数据将分布在角落，这与三维世界的直觉相距甚远。即中间的内切球随着维度增大逐渐变成空壳，数据大量分布在球与立方体的间隙中，这表示数据实际上非常稀疏（分布在中心表示集中）
 常见的降维方法
-直接降维：特征选择（Lasso，令某些$X_i$的系数为0）
+
+直接降维：特征选择（Lasso，令某些\(X_i\)的系数为0）
 线性降维：PCA，MDS
 非线性降维：流形学习
 
-样本方差与样本均值的矩阵表达样本：$$X=\begin{bmatrix} x_1 \quad x_2 \quad \ldo..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/29/%E9%99%8D%E7%BB%B4/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">线性分类模型</a></h2><time class="has-text-grey" datetime="2021-06-24T05:19:28.000Z">2021-06-24</time><p class="is-flex-grow-2 mt-2">
-线性分类回顾线性回归线性回归的特点
-线性
-属性线性（x的线性组合）。
-不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$
+样本方差与样本均值的矩阵表达
+样本： \[
+X=\begin{bmatrix} x_1 \qua..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/29/%E9%99%8D%E7%BB%B4/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">线性分类模型</a></h2><time class="has-text-grey" datetime="2021-06-24T05:19:28.000Z">2021-06-24</time><p class="is-flex-grow-2 mt-2">
+cover
 
+线性分类
+回顾线性回归
+线性回归的特点
+
+线性
+
+属性线性（x的线性组合）。
+
+不满足的情况：特征转换（多项式回归），\(w_1x_1^2+w_2x_2x_3+...\)
 
 全局线性（激活函数是一个线性函数）。
+
 不满足的情况：激活函数为非线性的线性分类（Sigmoid）
 
-
 系数线性（反过来看，也是w的线性组合）。
+
 不满足的情况：感知机算法训练出的w和初始值、迭代次数有关系，同一组样本训练的w不一定是固定的。（感知机算法同时也是全局非线性的，因为输出有一层激活非线性）
 
 
-
-
 全局性
+
 拟合出来的方程适用于全部的特征空间没有分段进行拟合。
+
 不满足的情况：线性样条回归、决策树（每次选择的一个节点，都是在对特征空间进行划分）
 
 
-
-
 数据未加工
+
 直接对数据进行拟合，不对数据进行任何处理。
-不满足的情况：PCA降维、流形学习
 
-..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/15/matrix-math-cheatsheet/">matrix-math-cheatsheet</a></h2><time class="has-text-grey" datetime="2021-06-15T07:07:27.000Z">2021-06-15</time><p class="is-flex-grow-2 mt-2">Matrix CalculusReference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
-Useful Conclusion（keep updating）eq(69)：$\mathbf{x, a}\in \mathbf{R}^p:$$$\dfrac{\partial \mathbf{x}^T\mathbf{a}}{\partial \mathbf{x}}=\dfrac{\partial \mathbf{a}^T\mathbf{x}}{\partial \mathbf{x}}=\mathbf{a}$$eq(81)：$$\dfrac{\partial \mathbf{x}^T\mathbf{B}\mathbf{x}}{\partial ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/15/matrix-math-cheatsheet/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021842.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021842.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">线性回归</a></h2><time class="has-text-grey" datetime="2021-06-04T12:47:51.000Z">2021-06-04</time><p class="is-flex-grow-2 mt-2">
-线性回归最小二乘法
-$N$个样本：${(x_1, y_1), \ldots (x_n, y_n)}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$$$\newcommand{\bm}[1]{\begin{bmatrix} #1 \end{bmatrix}}$$
-矩阵表示：$$\begin{align}X&amp;amp;=\bm{x_1, x_2, \ldots, x_n}^T=\bm{x_1^T\ x_2^T\ x_3^T\ \ldots \ x_n^T} –&amp;gt; \text{一行一个样本，各维度横着摊开}\\Y&amp;amp;=\bm{y_1\ y_2\ y_3\ \ldots \ y_n}\end{align}$$
+不满足..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/15/matrix-math-cheatsheet/">matrix-math-cheatsheet</a></h2><time class="has-text-grey" datetime="2021-06-15T07:07:27.000Z">2021-06-15</time><p class="is-flex-grow-2 mt-2">Matrix Calculus
+Reference: The Matrix Cookbook
+Useful Conclusion（keep updating）
+eq(69)：\(\mathbf{x, a}\in \mathbf{R}^p:\) \[
+\dfrac{\partial \mathbf{x}^T\mathbf{a}}{\partial \mathbf{x}}=\dfrac{\partial \mathbf{a}^T\mathbf{x}}{\partial \mathbf{x}}=\mathbf{a}
+\] eq(81)： \[
+\dfrac{\partial \mathbf{x}^T\mathbf{B}\mathbf{x}}{\partial \mathbf{x}}=(\mathbf{B+B}^T..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/15/matrix-math-cheatsheet/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021842.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021842.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">线性回归</a></h2><time class="has-text-grey" datetime="2021-06-04T12:47:51.000Z">2021-06-04</time><p class="is-flex-grow-2 mt-2">
+cover
 
+线性回归
+最小二乘法
 
-最小二乘估计：$$\begin{align}L(..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>归档</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+\(N\)个样本：\(\{(x_1, y_1), \ldots (x_n, y_n)\}\), \(x_i \in \mathbb{R}^p, y_i \in \mathbb{R}\) \[
+\newcommand{\bm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\]
+矩阵表示： \[
+\begin{align}
+X&amp;amp;=\bm{x_1, x_2, \ldots, x_n}^T=\bm{x_1^T\\ x_2^T\\ x_3^T\\ \ldots \\ x_n^T} --&amp;gt; \text{一行一个样本，各维度横着摊开}\\\\
+Y&amp;amp;=\bm{y_1\\ y_2\\ y_3\\ \ldots \\ y_n}
+\end..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>归档</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')

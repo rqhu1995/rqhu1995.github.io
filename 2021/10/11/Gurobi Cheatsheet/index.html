@@ -1,44 +1,34 @@
-<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>Gurobi Cheatsheet</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-dark" lang="zh-CN"><head><meta charset="UTF-8"><title>Gurobi Cheatsheet</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Gurobi Cheatsheet
 
 read the model
-m = read(&amp;#39;&amp;lt;the path of the model&amp;gt;&amp;#39;)
-
+m = read('&amp;lt;the path of the model&amp;gt;')
 view assignment for each decision variable：
-m.printAttr(&amp;#39;X&amp;#39;)
-
+m.printAttr('X')
 view all variables
 m.getVars()
-
 print the variables(name and solution)
 v[0].varName, v[0].x
-
-set lower/upper bound(e.g., set lower bound  of v[0] to 10)
+set lower/upper bound(e.g., set lower bound of v[0] to 10)
 v[0].lb=10
-
 回调函数，参数：model, where
 
+from gurobipy import *
 
-from gurobipy i.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+# 执行过程中，时间大于10.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Gurobi Cheatsheet</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Gurobi Cheatsheet</h1><time class="has-text-grey" datetime="2021-10-11T08:19:32.225Z">2021-10-11</time><article class="mt-2 post-content"><p>Gurobi Cheatsheet</p>
 <ul>
 <li><p>read the model</p>
-<p><code>m = read(&#39;&lt;the path of the model&gt;&#39;)</code></p>
-</li>
+<p><code>m = read('&lt;the path of the model&gt;')</code></p></li>
 <li><p>view assignment for each decision variable：</p>
-<p><code>m.printAttr(&#39;X&#39;)</code></p>
-</li>
+<p><code>m.printAttr('X')</code></p></li>
 <li><p>view all variables</p>
-<p><code>m.getVars()</code></p>
-</li>
+<p><code>m.getVars()</code></p></li>
 <li><p>print the variables(name and solution)</p>
-<p><code>v[0].varName, v[0].x</code></p>
-</li>
-<li><p>set lower/upper bound(e.g., set lower bound  of v[0] to 10)</p>
-<p><code>v[0].lb=10</code></p>
-</li>
-<li><p>回调函数，参数：<code>model, where</code></p>
-</li>
+<p><code>v[0].varName, v[0].x</code></p></li>
+<li><p>set lower/upper bound(e.g., set lower bound of v[0] to 10)</p>
+<p><code>v[0].lb=10</code></p></li>
+<li><p>回调函数，参数：<code>model, where</code></p></li>
 </ul>
 <pre><code>from gurobipy import *
 
@@ -48,8 +38,9 @@ def mycallback(model, where):
     time = model.cbGet(GRB.Callback.RUNTIME)
     best = model.cbGet(GRB.Callback.MIP_OBJBST)
     if time &gt; 10 and best &lt; GRB.INFINITY:
-      model.terminate()
-</code></pre>
+      model.terminate()</code></pre>
 <p>回调函数名可以直接作为参数传给optimize函数</p>
-<p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="image-20211012112104705"></p>
+<figure>
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="image-20211012112104705" /><figcaption>image-20211012112104705</figcaption>
+</figure>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2021/11/24/linear-programming/" title="linear-programming"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: linear-programming</span></a><a class="button is-default" href="/2021/07/20/pytorch-cheatsheet/" title="pytorch-cheatsheet"><span class="has-text-weight-semibold">下一页: pytorch-cheatsheet</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/rqhu1995"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com/runqiu_sop/"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><a title="zhihu" target="_blank" rel="noopener nofollow" href="//zhihu.com/people/BobHuNanjing"><i class="iconfont icon-zhihu"></i></a><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/runqiu-hu-ba6171141/"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--></section><p><span>Copyright ©</span><span> Runqiu 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" href="//github.com/haojen" target="_blank" rel="noopener">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" href="https://github.com/haojen/hexo-theme-Claudia" target="_blank" rel="noopener" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

@@ -1,91 +1,76 @@
-<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>编译原理（二）：词法分析</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Token – 一些字符串的集合（可以理解为分词）
+<!DOCTYPE html><html class="appearance-dark" lang="zh-CN"><head><meta charset="UTF-8"><title>编译原理（二）：词法分析</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Token -- 一些字符串的集合（可以理解为分词）
 
 英语中：名词、动词、形：
-
 编程语言中：token class（看作一类）
-
 编程语言中：
 
 Identifier（标识符）：由字母或数字起始，字母或数字组成的一串字符串：A1，Foo，8a
 Integer（整数）：非空数位字符串集合
 Keyword（关键字）：else/if/begin
-WhiteSpace（空格、回车、制表符、换行符…）
+WhiteSpace（空格、回车、制表符、换行符...）
 标点符号每个都自成一类（操作符除外）
-
 
 词法分析的任务：
 
 将程序（看作一个长长的字符串）按照他们的角色分成一个个小的串
 将这些子串与解析部分通信
 
-foo = 42 – [Lexical Analysis] –&amp;gt; &amp;lt;Id, “foo”&amp;gt;, &amp;lt;op, “=”&amp;gt;, &amp;lt;Int, “4.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">编译原理（二）：词法分析</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"></div><div class="column is-9"><header class="my-4"><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">编译原理（二）：词法分析</h1><time class="has-text-grey" datetime="2020-05-03T02:40:14.000Z">2020-05-03</time><article class="mt-2 post-content"><p>Token – 一些字符串的集合（可以理解为分词）</p>
+foo = 42 -- [Lexical Analysis] --&amp;gt; &amp;lt;Id, &amp;quot;foo&amp;quot;&amp;gt;, &amp;lt;op, &amp;quot;=&amp;.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">编译原理（二）：词法分析</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"></div><div class="column is-9"><header class="my-4"><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">编译原理（二）：词法分析</h1><time class="has-text-grey" datetime="2020-05-03T02:40:14.000Z">2020-05-03</time><article class="mt-2 post-content"><p>Token -- 一些字符串的集合（可以理解为分词）</p>
 <ul>
-<li><p>英语中：名词、动词、形：</p>
-</li>
-<li><p>编程语言中：token class（看作一类）</p>
-</li>
+<li><p>英语中：名词、动词、形：</p></li>
+<li><p>编程语言中：token class（看作一类）</p></li>
 <li><p>编程语言中：</p>
 <ul>
 <li>Identifier（标识符）：由字母或数字起始，字母或数字组成的一串字符串：A1，Foo，8a</li>
 <li>Integer（整数）：非空数位字符串集合</li>
 <li>Keyword（关键字）：else/if/begin</li>
-<li>WhiteSpace（空格、回车、制表符、换行符…）</li>
+<li>WhiteSpace（空格、回车、制表符、换行符...）</li>
 <li>标点符号每个都自成一类（操作符除外）</li>
-</ul>
-</li>
+</ul></li>
 <li><p>词法分析的任务：</p>
 <ul>
 <li>将程序（看作一个长长的字符串）按照他们的角色分成一个个小的串</li>
 <li>将这些子串与解析部分通信</li>
 </ul>
-<p>foo = 42 – [Lexical Analysis] –&gt; &lt;Id, “foo”&gt;, &lt;op, “=”&gt;, &lt;Int, “42”&gt;</p>
-<p>把这些集合再送入解析器</p>
-</li>
+<p>foo = 42 -- [Lexical Analysis] --&gt; &lt;Id, &quot;foo&quot;&gt;, &lt;op, &quot;=&quot;&gt;, &lt;Int, &quot;42&quot;&gt;</p>
+<p>把这些集合再送入解析器</p></li>
 <li><p>词法分析实现的要点：</p>
 <ul>
 <li>识别出一个个子串（称为lexeme）</li>
 <li>将每个lexeme在识别到对应的token类</li>
 </ul>
-<p>最终的一个Map实例如&lt;Int, 20&gt;，就是一个token</p>
-</li>
+<p>最终的一个Map实例如&lt;Int, 20&gt;，就是一个token</p></li>
 <li><p>lookahead：向前看</p>
 <p>DO 5 I = 1,25</p>
 <p>DO 5 I = 1.25</p>
 <p>FORTRAN忽略whitespeace，因此前者是25次循环；后者是为变量DO5I赋值为1.25。</p>
 <p>从左向右划线找，识别到DO，并不能确定真的是DO，向前看，看到了“,“后就能够确定是DO而不是某个叫DO5I的变量中的一部分。</p>
-<p>这样的不断向前看（可能会看一个之后还是不确定）使得词法分析变得非常复杂，因而词法分析的一个目标就是尽可能地减少向前看的次数。</p>
-</li>
-<li><p>C++嵌套类型：<code>Foo&lt;Bar&lt;Bar&gt;&gt;</code>中的”&gt;&gt;”和输入流的”&gt;&gt;”的区分（目前的解决方法是在Bar&gt;后的&gt;前面加一个空格：<code>Foo&lt;Bar&lt;Bar&gt; &gt;</code></p>
-</li>
-<li><p>正则表达式的定义：一个作用在$\Sigma$上的正则表达式，是一个最小的表达式集合，包含：</p>
+<p>这样的不断向前看（可能会看一个之后还是不确定）使得词法分析变得非常复杂，因而词法分析的一个目标就是尽可能地减少向前看的次数。</p></li>
+<li><p>C++嵌套类型：<code>Foo&lt;Bar&lt;Bar&gt;&gt;</code>中的&quot;&gt;&gt;&quot;和输入流的&quot;&gt;&gt;&quot;的区分（目前的解决方法是在Bar&gt;后的&gt;前面加一个空格：<code>Foo&lt;Bar&lt;Bar&gt; &gt;</code></p></li>
+<li><p>正则表达式的定义：一个作用在<span class="math inline">\(\Sigma\)</span>上的正则表达式，是一个最小的表达式集合，包含：</p>
 <ul>
-<li>$R = \varepsilon$</li>
-<li>$R = ``c”, c \in \Sigma$</li>
-<li>$R = R + R$</li>
-<li>$R = RR$</li>
-<li>$R = R^*$</li>
+<li><span class="math inline">\(R = \varepsilon\)</span></li>
+<li><span class="math inline">\(R = ``c&quot;, c \in \Sigma\)</span></li>
+<li><span class="math inline">\(R = R + R\)</span></li>
+<li><span class="math inline">\(R = RR\)</span></li>
+<li><span class="math inline">\(R = R^*\)</span></li>
 </ul>
 <p>（+：并集；RR：拼接；*：闭包）</p>
-<p>上述定义称为在一个alphabet（字母表）$\Sigma$上的grammar语法。</p>
-</li>
+<p>上述定义称为在一个alphabet（字母表）<span class="math inline">\(\Sigma\)</span>上的grammar语法。</p></li>
 <li><p>形式语言：Formal Languages</p>
-<p>定义：$\Sigma$是字母的集合，从$\Sigma$中抽取的字符集合称为一个<strong>语言（Language）</strong></p>
-<p>英语字母（Alphabet） – 英语句子（Language）</p>
-<p>ASCII码 – C语言程序</p>
+<p>定义：<span class="math inline">\(\Sigma\)</span>是字母的集合，从<span class="math inline">\(\Sigma\)</span>中抽取的字符集合称为一个<strong>语言（Language）</strong></p>
+<p>英语字母（Alphabet） -- 英语句子（Language）</p>
+<p>ASCII码 -- C语言程序</p>
 <p>Meaning function L：将句法符号（language）映射到语义上</p>
-<p>L((0+ 1)*) = set of 0’s and 1’s</p>
+<p>L((0+ 1)*) = set of 0's and 1's</p>
 <p>这一映射的意义：</p>
 <ul>
-<li><p>区分syntax和semantics</p>
-</li>
-<li><p>允许我们单独考虑符号表达的问题（在不同场景下选用不同的表达方法）</p>
-</li>
+<li><p>区分syntax和semantics</p></li>
+<li><p>允许我们单独考虑符号表达的问题（在不同场景下选用不同的表达方法）</p></li>
 <li><p>表达式和含义不是1-1对应的（多个syntax对应同一个semantics，可以通过等价尝试优化）</p>
-<p>！！注意是多对一，而不是一对多。也不允许一对多，<strong>一对多背后就是歧义</strong>。</p>
-</li>
-</ul>
-</li>
+<p>！！注意是多对一，而不是一对多。也不允许一对多，<strong>一对多背后就是歧义</strong>。</p></li>
+</ul></li>
 </ul>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/" title="编译原理（三）自动机"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: 编译原理（三）自动机</span></a><a class="button is-default" href="/2020/04/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/" title="编译原理（一）"><span class="has-text-weight-semibold">下一页: 编译原理（一）</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/rqhu1995"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com/runqiu_sop/"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><a title="zhihu" target="_blank" rel="noopener nofollow" href="//zhihu.com/people/BobHuNanjing"><i class="iconfont icon-zhihu"></i></a><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/runqiu-hu-ba6171141/"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--></section><p><span>Copyright ©</span><span> Runqiu 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" href="//github.com/haojen" target="_blank" rel="noopener">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" href="https://github.com/haojen/hexo-theme-Claudia" target="_blank" rel="noopener" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
