@@ -1,26 +1,24 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>归档 · 2020</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://math.now.sh?inline=%28t_1%2Ce_1%2Ct_2%2Ce_2%2Cc%29" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/06/14/train_scheduling/"><img class="post-cover-img js-img-fadeIn" src="https://math.now.sh?inline=%28t_1%2Ce_1%2Ct_2%2Ce_2%2Cc%29" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/06/14/train_scheduling/">train_scheduling</a></h2><time class="has-text-grey" datetime="2020-06-14T06:05:59.000Z">2020-06-14</time><p class="is-flex-grow-2 mt-2">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>归档 · 2020</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/06/14/train_scheduling/">train_scheduling</a></h2><time class="has-text-grey" datetime="2020-06-14T06:05:59.000Z">2020-06-14</time><p class="is-flex-grow-2 mt-2">
 N：网络
-
 V，E：网络节点和边
 R：资源
-m：映射：（边到时间）-- 一条边通过的最短时间
-a：映射：（资源到边集）-- 一个资源分配给的边
-b：映射：（资源到时间）-- 一个资源占用需要等待的时间
+m：映射：（边到时间）– 一条边通过的最短时间
+a：映射：（资源到边集）– 一个资源分配给的边
+b：映射：（资源到时间）– 一个资源占用需要等待的时间
 
 
 T：火车
-
 S，L：V，E的一个无环子图–（火车的轨迹）
-e：映射：（节点到时间）-- 火车到节点S的最早时间；
-l：映射：（节点到时间）-- 火车到节点S的最晚时间；
-w：映射：（边到时间）-- 火车在某条边需要等待的时间（等待资源释放）；
+e：映射：（节点到时间）– 火车到节点S的最早时间；
+l：映射：（节点到时间）– 火车到节点S的最晚时间；
+w：映射：（边到时间）– 火车在某条边需要等待的时间（等待资源释放）；
 
 
-C：：存在连接关系（送货、下客）的边，先到的火车t1需要在后者t2来之后至少c秒才能离开轨道（边）
+C：$(t_1,e_1,t_2,e_2,c)$：存在连接关系（送货、下客）的边，先到的火车t1需要在后者t2来之后至少c秒才能离开轨道（边）
 
-问题的解答：，P为一辆火车在网络中的一条路径，A为该火车到达路径每个节点的时间
+问题的解答：$(P, A)$，P为一辆火车在网络中的一条路径，A为该火车到达路径每个节点的时间
 </p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/06/14/train_scheduling/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/06/13/weak%20constraint/">weak constraint</a></h2><time class="has-text-grey" datetime="2020-06-13T12:58:21.000Z">2020-06-13</time><p class="is-flex-grow-2 mt-2">weak constraint:
 :~ F. [Weight@Level]
 Weigt 整型；
@@ -31,6 +29,7 @@ I 被 I’ 支配（dominated），if：
 比L高的等级下，二者惩罚值相同。
 检查方法：从最高级向下找，找到第一个不一样的惩罚。
 不存在被支配者的stable model就是最优化model
+
 
 冒号后成立的前提下，第一个计算结果和为3，第二个为6；原因，成立后，集合变为{3;3}和{3,1,2; 3,2,3}，对前者，实际上是单元素集合（重复不考虑）；后者是双元素集合。计算和的时候，计算的是权重，权重就是第一位数字。
 </p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/06/13/weak%20constraint/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>归档</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">3</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)

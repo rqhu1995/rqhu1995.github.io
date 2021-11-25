@@ -1,126 +1,77 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>归档 · 2021</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021418.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/11/24/linear-programming/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021418.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/11/24/linear-programming/">linear-programming</a></h2><time class="has-text-grey" datetime="2021-11-24T08:50:33.000Z">2021-11-24</time><p class="is-flex-grow-2 mt-2">
 Standard Form Linear Programming
-
-
 n variables
-
 
 1 objective function
 
-
 m constraints
-
-
+$\mathbf{Ax=b}$
 
 All varibles are Non-negative
 
 
-Converting to the standard form
-Problem 1: Unrestricted free variables
-Every real number can be viewed as positive part and negative part.
-
-either  is 0 or either  is 0
-
-potential problem: quadratic constraint: 
-Problem 2: inequality
-ad..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/11/24/linear-programming/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/10/11/Gurobi%20Cheatsheet/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/10/11/Gurobi%20Cheatsheet/">Gurobi Cheatsheet</a></h2><time class="has-text-grey" datetime="2021-10-11T08:19:32.225Z">2021-10-11</time><p class="is-flex-grow-2 mt-2">Gurobi Cheatsheet
-
+Converting to the standard form$$\begin{aligned}&amp;amp;\text { Maximize } \quad 3 x_{1}-2 x_{2}-4\left|x_{3}\right| \\\&amp;amp;\begin{aligned}\text { s. t. } \quad -&amp;amp;x_{1}+2 x_{2}  \leq-5 \\\&amp;amp;3 x_{2}-x_{3}  \geq 6 \\\&amp;amp;2..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/11/24/linear-programming/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/10/11/Gurobi%20Cheatsheet/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/10/11/Gurobi%20Cheatsheet/">Gurobi Cheatsheet</a></h2><time class="has-text-grey" datetime="2021-10-11T08:19:32.225Z">2021-10-11</time><p class="is-flex-grow-2 mt-2">Gurobi Cheatsheet
 
 read the model
-m = read('&amp;lt;the path of the model&amp;gt;')
-
+m = read(&amp;#39;&amp;lt;the path of the model&amp;gt;&amp;#39;)
 
 view assignment for each decision variable：
-m.printAttr('X')
-
+m.printAttr(&amp;#39;X&amp;#39;)
 
 view all variables
 m.getVars()
 
-
 print the variables(name and solution)
 v[0].varName, v[0].x
-
 
 set lower/upper bound(e.g., set lower bound  of v[0] to 10)
 v[0].lb=10
 
-
 回调函数，参数：model, where
 
 
-from gurobipy import *
-
-#..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/10/11/Gurobi%20Cheatsheet/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/20/pytorch-cheatsheet/">pytorch-cheatsheet</a></h2><time class="has-text-grey" datetime="2021-07-20T01:47:16.000Z">2021-07-20</time><p class="is-flex-grow-2 mt-2">TORCH.UNSQUEEZE
-torch.unsqueeze(dim: int)，在dim后加入一个单维度：
+from gurobipy i..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/10/11/Gurobi%20Cheatsheet/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/20/pytorch-cheatsheet/">pytorch-cheatsheet</a></h2><time class="has-text-grey" datetime="2021-07-20T01:47:16.000Z">2021-07-20</time><p class="is-flex-grow-2 mt-2">TORCH.UNSQUEEZEtorch.unsqueeze(dim: int)，在dim后加入一个单维度：
 import torch
 tensor = torch.tensor([1, 2, 3, 4])
 tensor.shape # torch.Size([4])
 tensor_unsqueeze = tensor.unsqueeze(0) # 在第0维度添加一个单维度，值为1
 tensor_unsqueeze.shape # torch.Size([1, 4])
 tensor_unsqueeze = tensor.unsqueeze(1)
-tensor_unsqueeze.shape # torch.Size([4, 1])
-
-</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/20/pytorch-cheatsheet/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022212.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/12/%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022212.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/12/%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5/">随机策略</a></h2><time class="has-text-grey" datetime="2021-07-12T01:21:27.903Z">2021-07-12</time><p class="is-flex-grow-2 mt-2">随机策略
-
+tensor_unsqueeze.shape # torch.Size([4, 1])</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/20/pytorch-cheatsheet/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022212.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/12/%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022212.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/12/%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5/">随机策略</a></h2><time class="has-text-grey" datetime="2021-07-12T01:21:27.903Z">2021-07-12</time><p class="is-flex-grow-2 mt-2">随机策略
 
 离散情况
 
-其中，是一个打分函数，可能来自线性组合，也可能是一个非线性的神经网络
+$$\pi_\theta(a\mid s)=\dfrac{e^{h(s,a;\theta)}}{\sum_{a’}e^{h(s,a’;\theta)}}$$
+其中，$h$是一个打分函数，可能来自$\theta$线性组合，也可能是一个非线性的神经网络
 
 随机情况：Gaussian-dist
 
-RL策略学习
-数据
+$$\pi_\theta(a\mid s)=N(a \mid \mu(s;\theta), \Sigma(s; \theta))$$
+RL策略学习数据
 $(s_1, a_1, r_1), (s_2, a_2, r_2), \ldots, $
-目标：
-其中，
+目标：$$\theta^\ast=\arg\max_{\theta}\sum_n \gamma^nE_\theta[r_n \mid s_n, a_n]$$
+..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/12/%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/07/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-learning%E6%A1%86%E6%9E%B6/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/SS%20Wang"><i class="tag post-item-tag">SS Wang</i></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">深度强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/07/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-learning%E6%A1%86%E6%9E%B6/">深度强化学习-learning框架</a></h2><time class="has-text-grey" datetime="2021-07-07T06:46:42.000Z">2021-07-07</time><p class="is-flex-grow-2 mt-2">
+DQN网络目标：找到$Q^\ast(s,a)$函数，之后给定一个$s_i$，就可以得到$\arg\max_\limits{a} Q(s_i,a)$
+Temperal Difference学习（TD learning）例如：
 
-Alpha Go:
-
-训练Policy Network (supervised历史对决记录)
-训练Policy Network (Monte Carlo+策略梯度)
-训练Value Network（Value Gradient，Q-learning like algorithms）
-利用Policy和Value网络搜索
-
-
-
-替换梯度之后，就是Actor- Critic的方法。
-</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/12/%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/07/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-learning%E6%A1%86%E6%9E%B6/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/SS%20Wang"><i class="tag post-item-tag">SS Wang</i></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">深度强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/07/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-learning%E6%A1%86%E6%9E%B6/">深度强化学习-learning框架</a></h2><time class="has-text-grey" datetime="2021-07-07T06:46:42.000Z">2021-07-07</time><p class="is-flex-grow-2 mt-2">
-DQN网络
-目标：找到函数，之后给定一个，就可以得到
-Temperal Difference学习（TD learning）
-例如：
 
 出发前首先预测A-C之间的时间，1000；走到B，实际用时300，再次使用该模型估计剩余时间，得到的结果600。此时可以更新预测时间：900，900被称为TD target。
 TD error：1000-900=100
-Loss Function：
-梯度下降：
-能够使用TD learning的情况：
-A和C是模型预测结果，B是实际运行结果。
-在深度强化学习中，有：
-Model Free与Model Based的区别：是否知道Transition Table（状态转移表）
-SARSA算法：
-</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/07/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-learning%E6%A1%86%E6%9E%B6/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022359.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022359.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">MDP问题求解</a></h2><time class="has-text-grey" datetime="2021-07-02T01:34:03.000Z">2021-07-02</time><p class="is-flex-grow-2 mt-2">
+Loss Function：$L=\frac{1}{2}(Q(w)-y)^2$
+梯度下降：$\left.w:=w-\alpha\dfrac{\partial L}{\partial w}\right|_{w=w_t}$
+能够使用TD learning的情况：$$A ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/07/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-learning%E6%A1%86%E6%9E%B6/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022359.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022359.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">MDP问题求解</a></h2><time class="has-text-grey" datetime="2021-07-02T01:34:03.000Z">2021-07-02</time><p class="is-flex-grow-2 mt-2">
 基本框架
-
-
 策略迭代
-
 
 step 0：若未达到终止条件，则step 1，否则结束：
 
+step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \in \mathcal{S}$，求解$V_\pi(s)\text{ 和 }q_\pi(s,a)$
 
-step 1：策略评估（策略预测）：给定一个策略，，求解
-
-
-step 2：策略改进：根据计算出来的，找到一个，使得
-
+step 2：策略改进：根据计算出来的$q_\pi(s,a)$，找到一个$\pi’ \neq \pi$，使得$V_\pi(s) &amp;gt; V_{\pi’}(s)$
 
 step 3：go to step 0。
-
 
 
 
@@ -128,61 +79,19 @@ step 3：go to step 0。
 
 
 策略评估
+ 已知一个MDP$(\mathcal{\underset{\underset{状态集}{\downarrow}}{S}, \underset{\underset{动作集}{\downarrow}}{A}, \..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">马尔可夫决策过程</a></h2><time class="has-text-grey" datetime="2021-07-01T01:56:10.000Z">2021-07-01</time><p class="is-flex-grow-2 mt-2">
+背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
+马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid s_t)$$状态空间模型：马尔可夫链+观测变量
 
-已知一个MDP，给定，求
-
-利用Bellman equation：
-解法1：直接求解析解
-将拆解：
-扩展到矩阵：
-解方程可得到：
-计算一个阶矩阵的逆矩阵的复杂度是，此处就是。当状态数较多的时候，这种方式（解析解求法）计算量太大，无法（在有限时间内）得到求解结果。
-解法2：迭代策略评估（数值解）
-整体思想：构造数列，使得
-直接利用贝尔曼公式，设置前后项之间的迭代关系：
-策略改进
-如果判断两个策略之间的优劣？最直观的方式：计..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">马尔可夫决策过程</a></h2><time class="has-text-grey" datetime="2021-07-01T01:56:10.000Z">2021-07-01</time><p class="is-flex-grow-2 mt-2">
-背景介绍
-随机过程：
-马尔可夫链/马尔可夫假设：具有Markov性质的随机过程
-状态空间模型：马尔可夫链+观测变量
 
 当前观测值observation只依赖于当前状态，与之前的状态无关。
 马尔可夫回报模型：马尔可夫链+回报
 马尔可夫决策模型：马尔可夫链+动作+回报
 
-：状态集合，是时刻的状态
-：动作集合，
-：奖励集合，
-
-
-动态特性：概率
-
-
-
-
-状态转移函数
-
-
-
-策略policy ：
-分为确定性策略和随机性策略
-
-确定性策略：，遇到状态就采用动作
-随机性策略：，遇到状态采取的动作服从某种概率分布
-
-
-
-价值函数
-
-回报：
-
-
-一个的值只能反映面对状态所采用的一种动作、该动作产生的一种下一状态所带来的回报（图中的一条路径），但是策略本身是有可能有很多条路径的，如上图有9条，那么真正评估一个策略能够带来的..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/29/%E9%99%8D%E7%BB%B4/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/29/%E9%99%8D%E7%BB%B4/">降维</a></h2><time class="has-text-grey" datetime="2021-06-29T02:23:55.000Z">2021-06-29</time><p class="is-flex-grow-2 mt-2">
-降维
-过拟合与维度灾难
-
-
+$\mathcal{S}$：状态集合，$s_t$是$t$时刻的状态
+$\mathcal{A}$：动作集合，$\forall s \in \mathcal{S}, \mathcal{A}(s) \rightarrow A_t$
+$\mathcal{R}$：奖励集合，$R_t..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/29/%E9%99%8D%E7%BB%B4/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/29/%E9%99%8D%E7%BB%B4/">降维</a></h2><time class="has-text-grey" datetime="2021-06-29T02:23:55.000Z">2021-06-29</time><p class="is-flex-grow-2 mt-2">
+降维过拟合与维度灾难
 解决过拟合问题的方案
 
 增加数据
@@ -190,84 +99,49 @@ step 3：go to step 0。
 降维
 
 
-
 维度灾难从集合意义上理解
-维超立方体及其内切超球
-立方体体积永远是1，超球体体积
+$n$维超立方体及其内切超球
+立方体体积永远是1，超球体体积$K \times 0.5^n$
+
 
 
 
 随着n的增大，这一球体体积逐渐趋向于0，即说明：在高维空间中，数据将分布在角落，这与三维世界的直觉相距甚远。即中间的内切球随着维度增大逐渐变成空壳，数据大量分布在球与立方体的间隙中，这表示数据实际上非常稀疏（分布在中心表示集中）
 常见的降维方法
-
-直接降维：特征选择（Lasso，令某些的系数为0）
+直接降维：特征选择（Lasso，令某些$X_i$的系数为0）
 线性降维：PCA，MDS
 非线性降维：流形学习
 
-样本方差与样本均值的矩阵表达
-样本：
-样本均值（列向量）：
-样本方差矩阵：
-观察性质：
-
-对称性：
-
-
-所以：
-主成分分析（PCA：Principle Compo..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/29/%E9%99%8D%E7%BB%B4/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">线性分类模型</a></h2><time class="has-text-grey" datetime="2021-06-24T05:19:28.000Z">2021-06-24</time><p class="is-flex-grow-2 mt-2">
-线性分类
-回顾线性回归
-线性回归的特点
-
+样本方差与样本均值的矩阵表达样本：$$X=\begin{bmatrix} x_1 \quad x_2 \quad \ldo..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/29/%E9%99%8D%E7%BB%B4/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">线性分类模型</a></h2><time class="has-text-grey" datetime="2021-06-24T05:19:28.000Z">2021-06-24</time><p class="is-flex-grow-2 mt-2">
+线性分类回顾线性回归线性回归的特点
 线性
-
 属性线性（x的线性组合）。
-
-不满足的情况：特征转换（多项式回归），
+不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$
 
 
 全局线性（激活函数是一个线性函数）。
-
 不满足的情况：激活函数为非线性的线性分类（Sigmoid）
 
 
 系数线性（反过来看，也是w的线性组合）。
-
 不满足的情况：感知机算法训练出的w和初始值、迭代次数有关系，同一组样本训练的w不一定是固定的。（感知机算法同时也是全局非线性的，因为输出有一层激活非线性）
 
 
 
 
 全局性
-
 拟合出来的方程适用于全部的特征空间没有分段进行拟合。
-
 不满足的情况：线性样条回归、决策树（每次选择的一个节点，都是在对特征空间进行划分）
 
 
 
 
 数据未加工
-
 直接对数据进行拟合，不对数据进行任何处理。
-
 不满足的情况：PCA降维、流形学习
 
-
-
-
-
-从线性回归到线..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://math.now.sh?inline=%5Cmathbf%7Bx%2C%20a%7D%5Cin%20%5Cmathbf%7BR%7D%5Ep%3A" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/15/matrix-math-cheatsheet/"><img class="post-cover-img js-img-fadeIn" src="https://math.now.sh?inline=%5Cmathbf%7Bx%2C%20a%7D%5Cin%20%5Cmathbf%7BR%7D%5Ep%3A" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/15/matrix-math-cheatsheet/">matrix-math-cheatsheet</a></h2><time class="has-text-grey" datetime="2021-06-15T07:07:27.000Z">2021-06-15</time><p class="is-flex-grow-2 mt-2">Matrix Calculus
-Reference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
-Useful Conclusion（keep updating）
-eq(69)：
-eq(81)：
-eq(61):
-brief proof of eq(61):
-Using the definition of the trace (denoted as ) of a matrix. Given matrix A, B, we have
-Here  is , therefore we have  is a scalar, thus its trace is the value of itself. i.e.,
-So we can write:
-</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/15/matrix-math-cheatsheet/">更多</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><span class="page-number current">1</span><a class="page-number" href="/archives/2021/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/page/2/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>归档</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">3</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/15/matrix-math-cheatsheet/">matrix-math-cheatsheet</a></h2><time class="has-text-grey" datetime="2021-06-15T07:07:27.000Z">2021-06-15</time><p class="is-flex-grow-2 mt-2">Matrix CalculusReference: [The Matrix Cookbook](matrixcookbook.pdf (uwaterloo.ca))
+Useful Conclusion（keep updating）eq(69)：$\mathbf{x, a}\in \mathbf{R}^p:$$$\dfrac{\partial \mathbf{x}^T\mathbf{a}}{\partial \mathbf{x}}=\dfrac{\partial \mathbf{a}^T\mathbf{x}}{\partial \mathbf{x}}=\mathbf{a}$$eq(81)：$$\dfrac{\partial \mathbf{x}^T\mathbf{B}\mathbf{x}}{\partial ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/15/matrix-math-cheatsheet/">更多</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><span class="page-number current">1</span><a class="page-number" href="/archives/2021/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/page/2/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>归档</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">3</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')

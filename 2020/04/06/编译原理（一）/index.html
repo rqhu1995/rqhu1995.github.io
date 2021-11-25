@@ -1,7 +1,5 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>编译原理（一）</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="编译原理（一）
-解释器和编译器
-
+<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>编译原理（一）</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="编译原理（一）解释器和编译器
 编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）
 解释器：输入是程序代码、数据data，输出是程序执行结果
 
@@ -10,10 +8,8 @@
 SpeedCoding：让程序员编程更快。是一个运行在IBM 701上的解释器（John Backus）
 科学计算的要素：浮点计算和数组下标访问（今天再加一个并行）
 SpeedCoding优点：
-允许程序员直接写浮点计算和下标寻址的指令，底层再设计翻译指令到计算机器码的模块，程序员从手工进行科学计算（手工实现科学计算的机器码）中解放出来，提高编程速度。（3.5+4，原来的做法是程序员直接写3.5、4、求和的机器码，现在直接写3.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">编译原理（一）</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">编译原理（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释器和编译器"><span class="toc-text">解释器和编译器</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">编译原理（一）</h1><time class="has-text-grey" datetime="2020-04-06T14:10:41.000Z">2020-04-06</time><article class="mt-2 post-content"><h1>编译原理（一）</h1>
-<h2 id="解释器和编译器">解释器和编译器</h2>
-<ul>
+允许程序员直接写浮点计算和下标寻址的指令，底层再设计翻译指令到计算机器码的模块，程序员从手工进行科学计算（手工实现科学计算的机器码）中解放出来，提高编程速度。（3.5+4，原来的做法是程序员直接写3.5、4、求和的机器码，现在直接写3.5.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">编译原理（一）</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#编译原理（一）"><span class="toc-text">编译原理（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解释器和编译器"><span class="toc-text">解释器和编译器</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">编译原理（一）</h1><time class="has-text-grey" datetime="2020-04-06T14:10:41.000Z">2020-04-06</time><article class="mt-2 post-content"><h1 id="编译原理（一）"><a href="#编译原理（一）" class="headerlink" title="编译原理（一）"></a>编译原理（一）</h1><h2 id="解释器和编译器"><a href="#解释器和编译器" class="headerlink" title="解释器和编译器"></a>解释器和编译器</h2><ul>
 <li>编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）</li>
 <li>解释器：输入是程序代码、数据data，输出是程序执行结果</li>
 </ul>
@@ -33,61 +29,57 @@ SpeedCoding优点：
 </blockquote>
 <p>FORTRAN I的结构，也是当代编译器的结构</p>
 <ul>
-<li>
-<p>词法分析（Lexical Analysis） – syntactic</p>
+<li><p>词法分析（Lexical Analysis） – syntactic</p>
 <p>任务类似于识别一个句子里的各个单词（分词），这里的句子可以理解为一句代码语句。</p>
 <p>token：分割词的时候使用的标记，英语中的空格/标点等</p>
 </li>
-<li>
-<p>解析（Parsing）-- syntactic</p>
+<li><p>解析（Parsing）– syntactic</p>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguk9kjpj32220soq7e.jpg" alt="image-20200502005619541" style="zoom:50%;" />
+
 <p>分析每一个词的词性，进一步向上，得到解析树。</p>
 </li>
-<li>
-<p>语义分析（Semantic Analysis）–type，scope</p>
+<li><p>语义分析（Semantic Analysis）–type，scope</p>
 <p>理解句子的意义。困难！人进行词法分析、解析和机器进行的方式是一致的（分词、找词性、判断关系），但理解句子的意思的部分，对机器过于困难。编译器只能做有限的工作，例如寻找句子里的不一致性。</p>
 <ul>
-<li>
-<p>编译器可以寻找变量的绑定（scope）</p>
+<li><p>编译器可以寻找变量的绑定（scope）</p>
 <p>他说他妈妈找不到她了。他究竟分别是谁？</p>
 <p>在计算机中，类似的问题：打印的Jack是谁？</p>
 </li>
 </ul>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguihlyaj30xg0twwgb.jpg" alt="image-20200502010319257" style="zoom:50%;" />
+
+
+
+</li>
+</ul>
 <ul>
-<li>
-<p>编译器可以寻找类型的不匹配</p>
+<li><p>编译器可以寻找类型的不匹配</p>
 <p><strong>Jack</strong> said <strong>her</strong> mother left home today. Jack与her显然不匹配；</p>
 <p>计算机中<code>int c = 5.8;</code>同样是一个语义错误，从赋值语句的语法来说，没有问题，但int 和 5.8 类型不匹配。</p>
 </li>
 </ul>
-</li>
-<li>
-<p>优化（运行更快，是用更少的内存）</p>
+<ul>
+<li><p>优化（运行更快，是用更少的内存）</p>
 <p><code>X = Y * 0</code>和<code>X=0</code>是一样的（在都是int的情况下）</p>
 <p>在浮点情况下：NAN * 0 = NAN</p>
 </li>
-<li>
-<p>代码生成 – translation</p>
+<li><p>代码生成 – translation</p>
 <p>将高级语言程序，转换为机器码/汇编语言</p>
 </li>
 </ul>
 <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguha2ndj31jo0bmdr7.jpg" alt="image-20200502011346840" style="zoom:50%;" />
+
 <p>Programmer training is the dominant cost for a programming language.</p>
 <ul>
-<li>
-<p>广泛使用的语言发生改变会很慢（教的成本太大）</p>
+<li><p>广泛使用的语言发生改变会很慢（教的成本太大）</p>
 </li>
-<li>
-<p>一个语言的起步是很容易的（没有用户）</p>
+<li><p>一个语言的起步是很容易的（没有用户）</p>
 </li>
-<li>
-<p>新语言更适宜填补现有的空缺</p>
+<li><p>新语言更适宜填补现有的空缺</p>
 </li>
-<li>
-<p>新的语言会趋向于某个老的语言（这样能够减少训练成本）</p>
+<li><p>新的语言会趋向于某个老的语言（这样能够减少训练成本）</p>
 <p>Java – C++</p>
 </li>
 </ul>
 <p>至今没有公认的衡量语言好坏的度量。</p>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2020/04/14/ILC-learning-02/" title="ILC-learning-02"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: ILC-learning-02</span></a><a class="button is-default" href="/2020/04/06/ILC-learning-01/" title="Input Language of Clingo 学习笔记（1）"><span class="has-text-weight-semibold">下一页: Input Language of Clingo 学习笔记（1）</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/rqhu1995"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com/runqiu_sop/"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><a title="zhihu" target="_blank" rel="noopener nofollow" href="//zhihu.com/people/BobHuNanjing"><i class="iconfont icon-zhihu"></i></a><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/runqiu-hu-ba6171141/"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--></section><p><span>Copyright ©</span><span> Runqiu 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" href="//github.com/haojen" target="_blank" rel="noopener">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" href="https://github.com/haojen/hexo-theme-Claudia" target="_blank" rel="noopener" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2020/04/06/ILC-learning-01/" title="Input Language of Clingo 学习笔记（1）"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: Input Language of Clingo 学习笔记（1）</span></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/rqhu1995"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com/runqiu_sop/"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><a title="zhihu" target="_blank" rel="noopener nofollow" href="//zhihu.com/people/BobHuNanjing"><i class="iconfont icon-zhihu"></i></a><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/runqiu-hu-ba6171141/"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--></section><p><span>Copyright ©</span><span> Runqiu 2021</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" href="//github.com/haojen" target="_blank" rel="noopener">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" href="https://github.com/haojen/hexo-theme-Claudia" target="_blank" rel="noopener" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/post.js"></script></body></html>

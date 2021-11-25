@@ -1,9 +1,7 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>标签 · 编译原理</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://math.now.sh?inline=s%20%5Cin%20L%28R%29" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/"><img class="post-cover-img js-img-fadeIn" src="https://math.now.sh?inline=s%20%5Cin%20L%28R%29" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">编译原理（三）自动机</a></h2><time class="has-text-grey" datetime="2020-05-09T07:19:47.000Z">2020-05-09</time><p class="is-flex-grow-2 mt-2">编译原理（三）自动机
-给定一个字符串s，判定，即是否是一个正则表达式的语言。(L将正则表达式映射到语义上)
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>标签 · 编译原理</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemnhei3cjj30jc0cywjt.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/"><img class="post-cover-img js-img-fadeIn" src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gemnhei3cjj30jc0cywjt.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">编译原理（三）自动机</a></h2><time class="has-text-grey" datetime="2020-05-09T07:19:47.000Z">2020-05-09</time><p class="is-flex-grow-2 mt-2">编译原理（三）自动机给定一个字符串s，判定$s \in L(R)$，即$s$是否是一个正则表达式$R$的语言。(L将正则表达式映射到语义上)
 Lexical Specification
-
 
 为每一个token类都写一个正则
 
@@ -12,32 +10,17 @@ R2（letter）：[a-z]
 …
 
 
+构造一个R，能够将每一个lexeme对应到各个token(s)上$$R = R_1+R_2+…$$
 
-构造一个R，能够将每一个lexeme对应到各个token(s)上
+输入：$X_1,..,X_n$，对$i \in [1,n]$，检查：$X_1, X_2,…,X_i$是否属于$L(R)$
+若成功：$X_1, X_2,…,X_i \in L(R_j)$，说明这一字符串在某个token的正则中；
 
-
-输入：，对，检查：是否属于
-若成功：，说明这一字符串在某个token的正则中；
-
-
-剔除，然后回到上一个步骤
-上述算法可能出现的问题：
-
-
-每次选择的子序列可能不唯一。
-对于字符串==，可以选=，也可以选择==。选择哪一个？
-目前的做法：Maximal Munch – 最长匹配
-
-
-应该选择哪一种token呢？
-多个token的定义可能重叠：if/else – 关键词；..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://math.now.sh?inline=%5CSigma" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/05/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/"><img class="post-cover-img js-img-fadeIn" src="https://math.now.sh?inline=%5CSigma" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/05/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">编译原理（二）：词法分析</a></h2><time class="has-text-grey" datetime="2020-05-03T02:40:14.000Z">2020-05-03</time><p class="is-flex-grow-2 mt-2">Token – 一些字符串的集合（可以理解为分词）
-
+剔除$X_1, X_2,…,X_i$，然后回到上一个步骤
+上述算法可能出现的问题..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/05/09/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9C%BA/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/05/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">编译原理（二）：词法分析</a></h2><time class="has-text-grey" datetime="2020-05-03T02:40:14.000Z">2020-05-03</time><p class="is-flex-grow-2 mt-2">Token – 一些字符串的集合（可以理解为分词）
 
 英语中：名词、动词、形：
 
-
 编程语言中：token class（看作一类）
-
 
 编程语言中：
 
@@ -48,15 +31,12 @@ WhiteSpace（空格、回车、制表符、换行符…）
 标点符号每个都自成一类（操作符除外）
 
 
-
 词法分析的任务：
 
 将程序（看作一个长长的字符串）按照他们的角色分成一个个小的串
 将这些子串与解析部分通信
 
-foo = 42 – [Lexical Analysis] --&amp;gt; &amp;lt;Id, “foo”&amp;gt;, &amp;lt;op, “=”&amp;gt;, &amp;lt;In..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/05/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguk9kjpj32220soq7e.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/04/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/"><img class="post-cover-img js-img-fadeIn" src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguk9kjpj32220soq7e.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/04/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/">编译原理（一）</a></h2><time class="has-text-grey" datetime="2020-04-06T14:10:41.000Z">2020-04-06</time><p class="is-flex-grow-2 mt-2">编译原理（一）
-解释器和编译器
-
+foo = 42 – [Lexical Analysis] –&amp;gt; &amp;lt;Id, “foo”&amp;gt;, &amp;lt;op, “=”&amp;gt;, &amp;lt;Int, “4..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/05/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguk9kjpj32220soq7e.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2020/04/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/"><img class="post-cover-img js-img-fadeIn" src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguk9kjpj32220soq7e.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><i class="tag post-item-tag">编译原理</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2020/04/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/">编译原理（一）</a></h2><time class="has-text-grey" datetime="2020-04-06T14:10:41.000Z">2020-04-06</time><p class="is-flex-grow-2 mt-2">编译原理（一）解释器和编译器
 编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）
 解释器：输入是程序代码、数据data，输出是程序执行结果
 
@@ -65,7 +45,7 @@ foo = 42 – [Lexical Analysis] --&amp;gt; &amp;lt;Id, “foo”&amp;gt;, &amp;l
 SpeedCoding：让程序员编程更快。是一个运行在IBM 701上的解释器（John Backus）
 科学计算的要素：浮点计算和数组下标访问（今天再加一个并行）
 SpeedCoding优点：
-允许程序员直接写浮点计算和下标寻址的指令，底层再设计翻译指令到计算机器码的模块，程序员从手工进行科学计算（手工实现科学计算的机器码）中解放出来，提高编程速度。（3.5+4，原来的做法是程序员直接写3.5、4、求和的机器码，现在直接写3..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/04/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>标签</h3><section><a href="/tags/clingo"><span class="tag post-item-tag" style="margin-bottom: 5px;">clingo</span></a><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><span class="tag post-item-tag" style="margin-bottom: 5px;">白板推导笔记</span></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">强化学习</span></a><a href="/tags/SS%20Wang"><span class="tag post-item-tag" style="margin-bottom: 5px;">SS Wang</span></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">深度强化学习</span></a><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="tag post-item-tag" style="margin-bottom: 5px;">编译原理</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+允许程序员直接写浮点计算和下标寻址的指令，底层再设计翻译指令到计算机器码的模块，程序员从手工进行科学计算（手工实现科学计算的机器码）中解放出来，提高编程速度。（3.5+4，原来的做法是程序员直接写3.5、4、求和的机器码，现在直接写3.5..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2020/04/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>标签</h3><section><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><span class="tag post-item-tag" style="margin-bottom: 5px;">白板推导笔记</span></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">强化学习</span></a><a href="/tags/clingo"><span class="tag post-item-tag" style="margin-bottom: 5px;">clingo</span></a><a href="/tags/SS%20Wang"><span class="tag post-item-tag" style="margin-bottom: 5px;">SS Wang</span></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">深度强化学习</span></a><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="tag post-item-tag" style="margin-bottom: 5px;">编译原理</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')

@@ -1,23 +1,16 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>标签 · 强化学习</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022359.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022359.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">MDP问题求解</a></h2><time class="has-text-grey" datetime="2021-07-02T01:34:03.000Z">2021-07-02</time><p class="is-flex-grow-2 mt-2">
 基本框架
-
-
 策略迭代
-
 
 step 0：若未达到终止条件，则step 1，否则结束：
 
+step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \in \mathcal{S}$，求解$V_\pi(s)\text{ 和 }q_\pi(s,a)$
 
-step 1：策略评估（策略预测）：给定一个策略，，求解
-
-
-step 2：策略改进：根据计算出来的，找到一个，使得
-
+step 2：策略改进：根据计算出来的$q_\pi(s,a)$，找到一个$\pi’ \neq \pi$，使得$V_\pi(s) &amp;gt; V_{\pi’}(s)$
 
 step 3：go to step 0。
-
 
 
 
@@ -25,57 +18,18 @@ step 3：go to step 0。
 
 
 策略评估
+ 已知一个MDP$(\mathcal{\underset{\underset{状态集}{\downarrow}}{S}, \underset{\underset{动作集}{\downarrow}}{A}, \..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">马尔可夫决策过程</a></h2><time class="has-text-grey" datetime="2021-07-01T01:56:10.000Z">2021-07-01</time><p class="is-flex-grow-2 mt-2">
+背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
+马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid s_t)$$状态空间模型：马尔可夫链+观测变量
 
-已知一个MDP，给定，求
-
-利用Bellman equation：
-解法1：直接求解析解
-将拆解：
-扩展到矩阵：
-解方程可得到：
-计算一个阶矩阵的逆矩阵的复杂度是，此处就是。当状态数较多的时候，这种方式（解析解求法）计算量太大，无法（在有限时间内）得到求解结果。
-解法2：迭代策略评估（数值解）
-整体思想：构造数列，使得
-直接利用贝尔曼公式，设置前后项之间的迭代关系：
-策略改进
-如果判断两个策略之间的优劣？最直观的方式：计..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">马尔可夫决策过程</a></h2><time class="has-text-grey" datetime="2021-07-01T01:56:10.000Z">2021-07-01</time><p class="is-flex-grow-2 mt-2">
-背景介绍
-随机过程：
-马尔可夫链/马尔可夫假设：具有Markov性质的随机过程
-状态空间模型：马尔可夫链+观测变量
 
 当前观测值observation只依赖于当前状态，与之前的状态无关。
 马尔可夫回报模型：马尔可夫链+回报
 马尔可夫决策模型：马尔可夫链+动作+回报
 
-：状态集合，是时刻的状态
-：动作集合，
-：奖励集合，
-
-
-动态特性：概率
-
-
-
-
-状态转移函数
-
-
-
-策略policy ：
-分为确定性策略和随机性策略
-
-确定性策略：，遇到状态就采用动作
-随机性策略：，遇到状态采取的动作服从某种概率分布
-
-
-
-价值函数
-
-回报：
-
-
-一个的值只能反映面对状态所采用的一种动作、该动作产生的一种下一状态所带来的回报（图中的一条路径），但是策略本身是有可能有很多条路径的，如上图有9条，那么真正评估一个策略能够带来的..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>标签</h3><section><a href="/tags/clingo"><span class="tag post-item-tag" style="margin-bottom: 5px;">clingo</span></a><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><span class="tag post-item-tag" style="margin-bottom: 5px;">白板推导笔记</span></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">强化学习</span></a><a href="/tags/SS%20Wang"><span class="tag post-item-tag" style="margin-bottom: 5px;">SS Wang</span></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">深度强化学习</span></a><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="tag post-item-tag" style="margin-bottom: 5px;">编译原理</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+$\mathcal{S}$：状态集合，$s_t$是$t$时刻的状态
+$\mathcal{A}$：动作集合，$\forall s \in \mathcal{S}, \mathcal{A}(s) \rightarrow A_t$
+$\mathcal{R}$：奖励集合，$R_t..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>标签</h3><section><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><span class="tag post-item-tag" style="margin-bottom: 5px;">白板推导笔记</span></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">强化学习</span></a><a href="/tags/clingo"><span class="tag post-item-tag" style="margin-bottom: 5px;">clingo</span></a><a href="/tags/SS%20Wang"><span class="tag post-item-tag" style="margin-bottom: 5px;">SS Wang</span></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">深度强化学习</span></a><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="tag post-item-tag" style="margin-bottom: 5px;">编译原理</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')

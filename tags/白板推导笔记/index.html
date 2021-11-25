@@ -1,23 +1,16 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>Runqiu's blog</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/widget-post-list.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>标签 · 白板推导笔记</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022359.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022359.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">MDP问题求解</a></h2><time class="has-text-grey" datetime="2021-07-02T01:34:03.000Z">2021-07-02</time><p class="is-flex-grow-2 mt-2">
 基本框架
-
-
 策略迭代
-
 
 step 0：若未达到终止条件，则step 1，否则结束：
 
+step 1：策略评估（策略预测）：给定一个策略$\pi$，$\forall s \in \mathcal{S}$，求解$V_\pi(s)\text{ 和 }q_\pi(s,a)$
 
-step 1：策略评估（策略预测）：给定一个策略，，求解
-
-
-step 2：策略改进：根据计算出来的，找到一个，使得
-
+step 2：策略改进：根据计算出来的$q_\pi(s,a)$，找到一个$\pi’ \neq \pi$，使得$V_\pi(s) &amp;gt; V_{\pi’}(s)$
 
 step 3：go to step 0。
-
 
 
 
@@ -25,61 +18,19 @@ step 3：go to step 0。
 
 
 策略评估
+ 已知一个MDP$(\mathcal{\underset{\underset{状态集}{\downarrow}}{S}, \underset{\underset{动作集}{\downarrow}}{A}, \..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">马尔可夫决策过程</a></h2><time class="has-text-grey" datetime="2021-07-01T01:56:10.000Z">2021-07-01</time><p class="is-flex-grow-2 mt-2">
+背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
+马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid s_t)$$状态空间模型：马尔可夫链+观测变量
 
-已知一个MDP，给定，求
-
-利用Bellman equation：
-解法1：直接求解析解
-将拆解：
-扩展到矩阵：
-解方程可得到：
-计算一个阶矩阵的逆矩阵的复杂度是，此处就是。当状态数较多的时候，这种方式（解析解求法）计算量太大，无法（在有限时间内）得到求解结果。
-解法2：迭代策略评估（数值解）
-整体思想：构造数列，使得
-直接利用贝尔曼公式，设置前后项之间的迭代关系：
-策略改进
-如果判断两个策略之间的优劣？最直观的方式：计..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/02/MDP%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">马尔可夫决策过程</a></h2><time class="has-text-grey" datetime="2021-07-01T01:56:10.000Z">2021-07-01</time><p class="is-flex-grow-2 mt-2">
-背景介绍
-随机过程：
-马尔可夫链/马尔可夫假设：具有Markov性质的随机过程
-状态空间模型：马尔可夫链+观测变量
 
 当前观测值observation只依赖于当前状态，与之前的状态无关。
 马尔可夫回报模型：马尔可夫链+回报
 马尔可夫决策模型：马尔可夫链+动作+回报
 
-：状态集合，是时刻的状态
-：动作集合，
-：奖励集合，
-
-
-动态特性：概率
-
-
-
-
-状态转移函数
-
-
-
-策略policy ：
-分为确定性策略和随机性策略
-
-确定性策略：，遇到状态就采用动作
-随机性策略：，遇到状态采取的动作服从某种概率分布
-
-
-
-价值函数
-
-回报：
-
-
-一个的值只能反映面对状态所采用的一种动作、该动作产生的一种下一状态所带来的回报（图中的一条路径），但是策略本身是有可能有很多条路径的，如上图有9条，那么真正评估一个策略能够带来的..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/29/%E9%99%8D%E7%BB%B4/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/29/%E9%99%8D%E7%BB%B4/">降维</a></h2><time class="has-text-grey" datetime="2021-06-29T02:23:55.000Z">2021-06-29</time><p class="is-flex-grow-2 mt-2">
-降维
-过拟合与维度灾难
-
-
+$\mathcal{S}$：状态集合，$s_t$是$t$时刻的状态
+$\mathcal{A}$：动作集合，$\forall s \in \mathcal{S}, \mathcal{A}(s) \rightarrow A_t$
+$\mathcal{R}$：奖励集合，$R_t..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/07/01/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/29/%E9%99%8D%E7%BB%B4/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021924.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/29/%E9%99%8D%E7%BB%B4/">降维</a></h2><time class="has-text-grey" datetime="2021-06-29T02:23:55.000Z">2021-06-29</time><p class="is-flex-grow-2 mt-2">
+降维过拟合与维度灾难
 解决过拟合问题的方案
 
 增加数据
@@ -87,140 +38,54 @@ step 3：go to step 0。
 降维
 
 
-
 维度灾难从集合意义上理解
-维超立方体及其内切超球
-立方体体积永远是1，超球体体积
+$n$维超立方体及其内切超球
+立方体体积永远是1，超球体体积$K \times 0.5^n$
+
 
 
 
 随着n的增大，这一球体体积逐渐趋向于0，即说明：在高维空间中，数据将分布在角落，这与三维世界的直觉相距甚远。即中间的内切球随着维度增大逐渐变成空壳，数据大量分布在球与立方体的间隙中，这表示数据实际上非常稀疏（分布在中心表示集中）
 常见的降维方法
-
-直接降维：特征选择（Lasso，令某些的系数为0）
+直接降维：特征选择（Lasso，令某些$X_i$的系数为0）
 线性降维：PCA，MDS
 非线性降维：流形学习
 
-样本方差与样本均值的矩阵表达
-样本：
-样本均值（列向量）：
-样本方差矩阵：
-观察性质：
-
-对称性：
-
-
-所以：
-主成分分析（PCA：Principle Compo..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/29/%E9%99%8D%E7%BB%B4/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">线性分类模型</a></h2><time class="has-text-grey" datetime="2021-06-24T05:19:28.000Z">2021-06-24</time><p class="is-flex-grow-2 mt-2">
-线性分类
-回顾线性回归
-线性回归的特点
-
+样本方差与样本均值的矩阵表达样本：$$X=\begin{bmatrix} x_1 \quad x_2 \quad \ldo..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/29/%E9%99%8D%E7%BB%B4/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021744.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">线性分类模型</a></h2><time class="has-text-grey" datetime="2021-06-24T05:19:28.000Z">2021-06-24</time><p class="is-flex-grow-2 mt-2">
+线性分类回顾线性回归线性回归的特点
 线性
-
 属性线性（x的线性组合）。
-
-不满足的情况：特征转换（多项式回归），
+不满足的情况：特征转换（多项式回归），$w_1x_1^2+w_2x_2x_3+…$
 
 
 全局线性（激活函数是一个线性函数）。
-
 不满足的情况：激活函数为非线性的线性分类（Sigmoid）
 
 
 系数线性（反过来看，也是w的线性组合）。
-
 不满足的情况：感知机算法训练出的w和初始值、迭代次数有关系，同一组样本训练的w不一定是固定的。（感知机算法同时也是全局非线性的，因为输出有一层激活非线性）
 
 
 
 
 全局性
-
 拟合出来的方程适用于全部的特征空间没有分段进行拟合。
-
 不满足的情况：线性样条回归、决策树（每次选择的一个节点，都是在对特征空间进行划分）
 
 
 
 
 数据未加工
-
 直接对数据进行拟合，不对数据进行任何处理。
-
 不满足的情况：PCA降维、流形学习
 
+..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021842.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021842.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">线性回归</a></h2><time class="has-text-grey" datetime="2021-06-04T12:47:51.000Z">2021-06-04</time><p class="is-flex-grow-2 mt-2">
+线性回归最小二乘法
+$N$个样本：$\{(x_1, y_1), \ldots (x_n, y_n)\}$, $x_i \in \mathbb{R}^p, y_i \in \mathbb{R}$$$\newcommand{\bm}[1]{\begin{bmatrix} #1 \end{bmatrix}}$$
 
-
-
-
-从线性回归到线..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/24/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021842.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"><img class="post-cover-img js-img-fadeIn" src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021842.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">线性回归</a></h2><time class="has-text-grey" datetime="2021-06-04T12:47:51.000Z">2021-06-04</time><p class="is-flex-grow-2 mt-2">
-线性回归
-最小二乘法
-
-
-个样本：, 
-矩阵表示：
-
-
-最小二乘估计：
-
-
-$$
-X^TY-X^TX\beta=0, \beta=(X^TX)^{-1}X^TY
-$$
-各样本点线性组合（通过$\beta$），得到N个值($X\beta$)，（$N$维向量），要使得这向量与标签向量$Y$之间的距离最近，则这个向量应当是标签值向量在该面上的投影，误差被分散到各个维度上。
-概率视角下的线性回归
-假设样本在拟合的方程下的值的偏差存在噪声，即和真实值存在的偏差，服从正态分布，则
-
-此处把看成常数，噪声是随机变量，所以：
-
-从极大似然估计的角度来估计这个参数（常数）：
-这与上面的最小二乘法推导出的结论相同，即最小二乘法求出的就是噪声服从于高斯分布的极大似然估计下的
-
-结论：最小二乘估计  数据噪声服从于高斯分布的极大..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://math.now.sh?inline=p" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/05/19/machine-learning-math-basic-1/"><img class="post-cover-img js-img-fadeIn" src="https://math.now.sh?inline=p" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/05/19/machine-learning-math-basic-1/">机器学习-数学基础</a></h2><time class="has-text-grey" datetime="2021-05-19T09:13:22.000Z">2021-05-19</time><p class="is-flex-grow-2 mt-2">高斯分布
-概率密度
-假设为研究的维度，为均值向量，为协方差矩阵（）
-一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）
-当时，
-
-先求，
-
-令，则
-
-接着求，
-
-令，则
-关于两个估计的无偏性
-
-
-计算：
-
-
-计算：
-
-首先对做一个化简：
-
-
-接着求其期望：
-
-
-
-
-发现，因此作为的估计是无偏的，作为的估计是有偏的。
-
-多维度的情况
-观察指数部分，记为D：
-是一个样本向量：。
-注意这部分的结果是一个标量（维度：（1,p)-(p,p)-(p,1)-&amp;gt;(1,1)）
-实际上，D是一个马氏距离，是向量与向量之间的马氏距离。
-而
-(与互逆)
-求逆：
-马氏距离表示为：
-
-得到马氏距离为：
-当维度为2时，可以看作是一个以和为直角坐标系下的椭圆（的方向与一致，因为是在上..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/05/19/machine-learning-math-basic-1/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>标签</h3><section><a href="/tags/clingo"><span class="tag post-item-tag" style="margin-bottom: 5px;">clingo</span></a><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><span class="tag post-item-tag" style="margin-bottom: 5px;">白板推导笔记</span></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">强化学习</span></a><a href="/tags/SS%20Wang"><span class="tag post-item-tag" style="margin-bottom: 5px;">SS Wang</span></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">深度强化学习</span></a><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="tag post-item-tag" style="margin-bottom: 5px;">编译原理</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+  矩阵表示：  $$  \begin{align}  X&amp;amp;=\bm{x_1, x_2, \ldots, x_n}^T=\bm{x_1^T\\ x_2^T\\ x_3^T\\ \ldots \\ x_n^T} –&amp;gt; \text{一行一个样本，各维度横着摊开}\\\  Y&amp;amp;=\bm{y_1\\ y_2\\ y_3\\ \ldots \\ y_n}  \end{align}  $$
+..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/06/04/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr2qy9seaaj311a06gmxr.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2021/05/19/machine-learning-math-basic-1/"><img class="post-cover-img js-img-fadeIn" src="https://tva1.sinaimg.cn/large/008i3skNgy1gr2qy9seaaj311a06gmxr.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2021/05/19/machine-learning-math-basic-1/">机器学习-数学基础</a></h2><time class="has-text-grey" datetime="2021-05-19T09:13:22.000Z">2021-05-19</time><p class="is-flex-grow-2 mt-2">高斯分布概率密度假设$p$为研究的维度，$\mu$为均值向量，$\Sigma$为协方差矩阵（$p\times p$）$$X \sim N(\mu, \Sigma)=\dfrac{1}{(2\pi)^{\frac{p}{2} }|\Sigma|^{\frac{1}{2} }}exp^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}$$
+一维的情况下的两个极大似然估计（Maximum Likelihood Estimation，MLE）当$p=1$时，$p(X=x)=\dfrac{e^{-\frac{(x-\mu)^2}{2\Sigma} }}{\sqrt{2\pi\Sigma} }$$$\theta_{MLE}=\underset{\theta=\{\mu, \Sigma\}..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2021/05/19/machine-learning-math-basic-1/">更多</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>标签</h3><section><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><span class="tag post-item-tag" style="margin-bottom: 5px;">白板推导笔记</span></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">强化学习</span></a><a href="/tags/clingo"><span class="tag post-item-tag" style="margin-bottom: 5px;">clingo</span></a><a href="/tags/SS%20Wang"><span class="tag post-item-tag" style="margin-bottom: 5px;">SS Wang</span></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="tag post-item-tag" style="margin-bottom: 5px;">深度强化学习</span></a><a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="tag post-item-tag" style="margin-bottom: 5px;">编译原理</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')
