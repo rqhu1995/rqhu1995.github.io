@@ -11,7 +11,7 @@ $\mathbf{Ax=b}$
 All varibles are Non-negative
 
 
-Converting to the standard form$$\begin{aligned}&amp;amp;\text { Maximize } \quad 3 x_{1}-2 x_{2}-4\left|x_{3}\right| \\\&amp;amp;\begin{aligned}\text { s. t. } \quad -&amp;amp;x_{1}+2 x_{2}  \leq-5 \\\&amp;amp;3 x_{2}-x_{3}  \geq 6 \\\&amp;amp;2.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+Converting to the standard form$$\begin{aligned}&amp;amp;\text { Maximize } \quad 3 x_{1}-2 x_{2}-4\left|x_{3}\right| \\&amp;amp;\begin{aligned}\text { s. t. } \quad -&amp;amp;x_{1}+2 x_{2}  \leq-5 \\&amp;amp;3 x_{2}-x_{3}  \geq 6 \\&amp;amp;2 x_.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">linear-programming</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Standard-Form-Linear-Programming"><span class="toc-text">Standard Form Linear Programming</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Converting-to-the-standard-form"><span class="toc-text">Converting to the standard form</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-1-Unrestricted-free-variables"><span class="toc-text">Problem 1: Unrestricted free variables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-2-inequality"><span class="toc-text">Problem 2: inequality</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-3-minimization"><span class="toc-text">Problem 3: minimization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Still-problematic："><span class="toc-text">Still problematic：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Geometry-of-LP"><span class="toc-text">Geometry of LP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Terminologies"><span class="toc-text">Terminologies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hyperplane"><span class="toc-text">Hyperplane</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">linear-programming</h1><time class="has-text-grey" datetime="2021-11-24T08:50:33.000Z">2021-11-24</time><article class="mt-2 post-content"><p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125021418.png" alt="cover"></p>
 <h1 id="Standard-Form-Linear-Programming"><a href="#Standard-Form-Linear-Programming" class="headerlink" title="Standard Form Linear Programming"></a>Standard Form Linear Programming</h1><ul>
 <li><p>n variables</p>
@@ -24,15 +24,15 @@ Converting to the standard form$$\begin{aligned}&amp;amp;\text { Maximize } \qua
 <li><p>All varibles are Non-negative</p>
 </li>
 </ul>
-<h1 id="Converting-to-the-standard-form"><a href="#Converting-to-the-standard-form" class="headerlink" title="Converting to the standard form"></a>Converting to the standard form</h1><p>$$<br>\begin{aligned}<br>&amp;\text { Maximize } \quad 3 x_{1}-2 x_{2}-4\left|x_{3}\right| \\\<br>&amp;\begin{aligned}<br>\text { s. t. } \quad -&amp;x_{1}+2 x_{2}  \leq-5 \\\<br>&amp;3 x_{2}-x_{3}  \geq 6 \\\<br>&amp;2 x_{1} + x_{3} =12 \\\<br>&amp;x_{1},  x_{2}  \geq 0<br>\end{aligned}<br>\end{aligned}<br>$$</p>
-<h2 id="Problem-1-Unrestricted-free-variables"><a href="#Problem-1-Unrestricted-free-variables" class="headerlink" title="Problem 1: Unrestricted free variables"></a>Problem 1: Unrestricted free variables</h2><p>Every real number can be viewed as positive part and negative part.<br>$$<br>\begin{aligned}<br>&amp;x_{i}^{+}= \begin{cases}x_{i}, &amp; \text { if } x_{i} \geq 0 \\\<br>0, &amp; \text { otherwise }\end{cases} \\\<br>&amp;x_{i}^{-}= \begin{cases}0, &amp; \text { if } x_{i} \geq 0 \\\<br>-x_{i}, &amp; \text { otherwise }\end{cases}<br>\end{aligned}<br>$$<br>$x_i=x_i^+ - x_i^-$</p>
+<h1 id="Converting-to-the-standard-form"><a href="#Converting-to-the-standard-form" class="headerlink" title="Converting to the standard form"></a>Converting to the standard form</h1><p>$$<br>\begin{aligned}<br>&amp;\text { Maximize } \quad 3 x_{1}-2 x_{2}-4\left|x_{3}\right| \\<br>&amp;\begin{aligned}<br>\text { s. t. } \quad -&amp;x_{1}+2 x_{2}  \leq-5 \\<br>&amp;3 x_{2}-x_{3}  \geq 6 \\<br>&amp;2 x_{1} + x_{3} =12 \\<br>&amp;x_{1},  x_{2}  \geq 0<br>\end{aligned}<br>\end{aligned}<br>$$</p>
+<h2 id="Problem-1-Unrestricted-free-variables"><a href="#Problem-1-Unrestricted-free-variables" class="headerlink" title="Problem 1: Unrestricted free variables"></a>Problem 1: Unrestricted free variables</h2><p>Every real number can be viewed as positive part and negative part.<br>$$<br>\begin{aligned}<br>&amp;x_{i}^{+}= \begin{cases}x_{i}, &amp; \text { if } x_{i} \geq 0 \\<br>0, &amp; \text { otherwise }\end{cases} \\<br>&amp;x_{i}^{-}= \begin{cases}0, &amp; \text { if } x_{i} \geq 0 \\<br>-x_{i}, &amp; \text { otherwise }\end{cases}<br>\end{aligned}<br>$$<br>$x_i=x_i^+ - x_i^-$</p>
 <p>either $x^+_i$ is 0 or either $x^-_i$ is 0</p>
 <p>$|x_i|=x^+_i+x^-_i$</p>
 <p><strong>potential problem: quadratic constraint:</strong> $x^+_i\cdot x^-_i=0$</p>
 <h2 id="Problem-2-inequality"><a href="#Problem-2-inequality" class="headerlink" title="Problem 2: inequality"></a>Problem 2: inequality</h2><p>adding slack variable for $\le$ or minus excess variable for $\ge$</p>
 <h2 id="Problem-3-minimization"><a href="#Problem-3-minimization" class="headerlink" title="Problem 3: minimization"></a>Problem 3: minimization</h2><p>Minimize the negative</p>
 <p><strong>result</strong>:</p>
-<p>(-)Minimize<br>$$<br>-3 x_{1} \quad+2 x_{2} \quad+4 x_{3}^{+}+4 x_{3}^{-}<br>$$<br>subject to<br>$$<br>\begin{array}{rcccc}<br>&amp;-x_{1} &amp;+2 x_{2} &amp; &amp; &amp;+x_{4} &amp; &amp;=&amp;-5 \\\<br>&amp; &amp;\quad3 x_{2}&amp;-x_{3}^{+}&amp;+x_{3}^{-} &amp; &amp;-x_{5} &amp;=&amp;6 \\\<br>&amp;2 x_{1} &amp; &amp;+x_{3}^{+}&amp;-x_{3}^{-} &amp;&amp;&amp;  =&amp;12\\\<br>&amp;x_{1}, &amp;\quad x_{2}, &amp;\quad x_{3}^{+}, &amp;x_{3}^{-},&amp;x_{4}, &amp;\quad x_{5} &amp;\geq &amp;0<br>\end{array}<br>$$</p>
+<p>(-)Minimize<br>$$<br>-3 x_{1} \quad+2 x_{2} \quad+4 x_{3}^{+}+4 x_{3}^{-}<br>$$<br>subject to<br>$$<br>\begin{array}{rcccc}<br>&amp;-x_{1} &amp;+2 x_{2} &amp; &amp; &amp;+x_{4} &amp; &amp;=&amp;-5 \\<br>&amp; &amp;\quad3 x_{2}&amp;-x_{3}^{+}&amp;+x_{3}^{-} &amp; &amp;-x_{5} &amp;=&amp;6 \\<br>&amp;2 x_{1} &amp; &amp;+x_{3}^{+}&amp;-x_{3}^{-} &amp;&amp;&amp;  =&amp;12\\<br>&amp;x_{1}, &amp;\quad x_{2}, &amp;\quad x_{3}^{+}, &amp;x_{3}^{-},&amp;x_{4}, &amp;\quad x_{5} &amp;\geq &amp;0<br>\end{array}<br>$$</p>
 <h2 id="Still-problematic："><a href="#Still-problematic：" class="headerlink" title="Still problematic："></a>Still problematic：</h2><ul>
 <li>Missing the quadratic constraint</li>
 <li>Dimensionality increase</li>
@@ -40,7 +40,7 @@ Converting to the standard form$$\begin{aligned}&amp;amp;\text { Maximize } \qua
 <li>Maximize $c|x| (c\ge0)$, unable to solve. (maximizing a convex function is impossible)</li>
 </ul>
 <h1 id="Geometry-of-LP"><a href="#Geometry-of-LP" class="headerlink" title="Geometry of LP"></a>Geometry of LP</h1><h2 id="Terminologies"><a href="#Terminologies" class="headerlink" title="Terminologies"></a>Terminologies</h2><ul>
-<li><p>Feasible domain/region: $P=\{\mathbf{x} \in \mathbf{R}^n \mid \mathbf{Ax=b}, \mathbf{x&gt;0}\}$</p>
+<li><p>Feasible domain/region: $P={\mathbf{x} \in \mathbf{R}^n \mid \mathbf{Ax=b}, \mathbf{x&gt;0}}$</p>
 </li>
 <li><p>Feasible solution: $x \in P \neq \emptyset$</p>
 </li>
@@ -69,13 +69,13 @@ Converting to the standard form$$\begin{aligned}&amp;amp;\text { Maximize } \qua
 <p>But obviously unbounded region</p>
 </blockquote>
 </li>
-<li><p>Optimal solution: $\mathbf{x}^<em> \in P, \mathbf{c}^T\mathbf{x}^</em>=\underset{x\in P}{\min}\mathbf{c}^T\mathbf{x}$</p>
+<li><p>Optimal solution: $\mathbf{x}^* \in P, \mathbf{c}^T\mathbf{x}^*=\underset{x\in P}{\min}\mathbf{c}^T\mathbf{x}$</p>
 </li>
-<li><p>Optimal solution set: $\{\mathbf{x}^<em> \mid \mathbf{x}^</em>\text{ is an optimal solution}\}$. If $\mathbf{x}^<em> \in P^</em>$, $\mathbf{x}^*$ solves LP.</p>
+<li><p>Optimal solution set: ${\mathbf{x}^* \mid \mathbf{x}^<em>\text{ is an optimal solution}}$. If $\mathbf{x}^</em> \in P^*$, $\mathbf{x}^*$ solves LP.</p>
 </li>
 </ul>
-<h2 id="Hyperplane"><a href="#Hyperplane" class="headerlink" title="Hyperplane"></a>Hyperplane</h2><p>$H=\{\mathbf{x} \in \mathbf{R^n} \mid \mathbf{a^T x=}\beta\}$ is a hyperplane, which has an upper and a lower plane. </p>
-<p>The upper $H_U=\{\mathbf{x} \in \mathbf{R^n} \mid \mathbf{a^T x\ge}\beta\}$, the lower $H_L=\{\mathbf{x} \in \mathbf{R^n} \mid \mathbf{a^T x\le}\beta\}$.</p>
+<h2 id="Hyperplane"><a href="#Hyperplane" class="headerlink" title="Hyperplane"></a>Hyperplane</h2><p>$H={\mathbf{x} \in \mathbf{R^n} \mid \mathbf{a^T x=}\beta}$ is a hyperplane, which has an upper and a lower plane. </p>
+<p>The upper $H_U={\mathbf{x} \in \mathbf{R^n} \mid \mathbf{a^T x\ge}\beta}$, the lower $H_L={\mathbf{x} \in \mathbf{R^n} \mid \mathbf{a^T x\le}\beta}$.</p>
 <ul>
 <li><p>$\mathbf{a}$ is the normal vector of $H$, </p>
 <blockquote>
@@ -84,19 +84,17 @@ Converting to the standard form$$\begin{aligned}&amp;amp;\text { Maximize } \qua
 </li>
 <li><p>and $\mathbf{a}$ points to the upper.</p>
 <blockquote>
-<p><em><em>Proof: </em></em>Find any $\mathbf{m} \in H, \mathbf{n} \in H_L \setminus H,$ then $\mathbf{n-m}$ is a vector pointing  to the lower half space. Then we have $\mathbf{a^T(n-m)=\underbrace{a^T n}_{&lt;\beta}}{-\underbrace{a^T m}_{=\beta}}&lt;0$, which indicates the angle between the normal vector and the lower half space vector $\mathbf{m-n}$ is over $90^\circ$, which proves that the normal vector is pointing to a opposite half, i.e., upper half.</p>
+<p>**Proof: **Find any $\mathbf{m} \in H, \mathbf{n} \in H_L \setminus H,$ then $\mathbf{n-m}$ is a vector pointing  to the lower half space. Then we have $\mathbf{a^T(n-m)=\underbrace{a^T n}<em>{&lt;\beta}}{-\underbrace{a^T m}</em>{=\beta}}&lt;0$, which indicates the angle between the normal vector and the lower half space vector $\mathbf{m-n}$ is over $90^\circ$, which proves that the normal vector is pointing to a opposite half, i.e., upper half.</p>
 </blockquote>
 </li>
-<li><p>Polyhedral set: set of intersections of finite number of a closed half spaces. If it is non-empty and bounded, it is a polytope. $P=\{\mathbf{x} \in \mathbf{R}^n \mid \mathbf{Ax=b}, \mathbf{x&gt;0}\}$ is a polyhedral set. </p>
+<li><p>Polyhedral set: set of intersections of finite number of a closed half spaces. If it is non-empty and bounded, it is a polytope. $P={\mathbf{x} \in \mathbf{R}^n \mid \mathbf{Ax=b}, \mathbf{x&gt;0}}$ is a polyhedral set. </p>
 <blockquote>
 <p><strong>Proof</strong>: Because $\mathbf{Ax=b}$, the n equality constraints, can be seen as intersections of 2n half spaces, and $\mathbf{x&gt;0}$, are corresponding to m half spaces. Then $P$ is formed by intersection of $2n+m$ closed half spaces, so it is a Pollyhedral set. </p>
 </blockquote>
 </li>
-<li><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211124220553.png" alt="propoerty illustration" style="zoom:50%;" />
-
-</li>
+<li><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211124220553.png" alt="propoerty illustration" style="zoom:50%;" /></li>
 </ul>
-<p>If $P \neq \emptyset$ and $\exists \beta \in R$  such that<br>$$<br>P \subset H_{L}:=\left\{x \in R^{n} \mid-c^{T} x \leq \beta\right\} \tag{1}<br>$$<br>then $\underset{x \in P}{\operatorname{\min}} \mathbf{c}^{\mathbf{T}} \mathbf{x} \geq-\beta$<br>Moreover, if $x^{<em>} \in P \bigcap H$ then $x^{</em>} \in P^{*}$.</p>
+<p>If $P \neq \emptyset$ and $\exists \beta \in R$  such that<br>$$<br>P \subset H_{L}:=\left{x \in R^{n} \mid-c^{T} x \leq \beta\right} \tag{1}<br>$$<br>then $\underset{x \in P}{\operatorname{\min}} \mathbf{c}^{\mathbf{T}} \mathbf{x} \geq-\beta$<br>Moreover, if $x^{<em>} \in P \bigcap H$ then $x^{</em>} \in P^{*}$.</p>
 <blockquote>
 <p>First, $-c^{T} x$ forms a hyper plane. (1) means the feasible region $P$ is in its lower half, which means $\forall x \in P$, $-c^Tx \le \beta$, i.e., $c^Tx \ge -\beta$. Then we know the minimum case also holds, i.e.,  $\min_{x\in P} c^Tx \ge -\beta$. That is, a lower bound of the objective is $-\beta$. </p>
 </blockquote>

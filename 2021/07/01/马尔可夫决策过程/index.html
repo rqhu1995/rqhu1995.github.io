@@ -1,6 +1,6 @@
 <!DOCTYPE html><html class="appearance-light" lang="zh-CN"><head><meta charset="UTF-8"><title>马尔可夫决策过程</title><meta name="description" content="Logic &amp; Skills &amp; Life"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.png"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
-背景介绍随机过程：$\{s_t\}^{\infty}_{t=1}$
+背景介绍随机过程：${s_t}^{\infty}_{t=1}$
 马尔可夫链/马尔可夫假设：具有Markov性质的随机过程$$p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid s_t)$$状态空间模型：马尔可夫链+观测变量
 
 
@@ -10,9 +10,9 @@
 
 $\mathcal{S}$：状态集合，$s_t$是$t$时刻的状态
 $\mathcal{A}$：动作集合，$\forall s \in \mathcal{S}, \mathcal{A}(s) \rightarrow A_t$
-$\mathcal{R}$：奖励集合，$R_t.."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+$\mathcal{R}$：奖励集合，$R_t, .."><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Runqiu's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">马尔可夫决策过程</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景介绍"><span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态特性：概率-mathcal-P"><span class="toc-text">动态特性：概率$\mathcal{P}$</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#价值函数"><span class="toc-text">价值函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贝尔曼期望方程"><span class="toc-text">贝尔曼期望方程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贝尔曼最优方程"><span class="toc-text">贝尔曼最优方程</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E7%99%BD%E6%9D%BF%E6%8E%A8%E5%AF%BC%E7%AC%94%E8%AE%B0"><i class="tag post-item-tag">白板推导笔记</i></a><a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="tag post-item-tag">强化学习</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">马尔可夫决策过程</h1><time class="has-text-grey" datetime="2021-07-01T01:56:10.000Z">2021-07-01</time><article class="mt-2 post-content"><p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211125022452.png" alt="cover"></p>
-<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>随机过程：$\{s_t\}^{\infty}_{t=1}$</p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>随机过程：${s_t}^{\infty}_{t=1}$</p>
 <p>马尔可夫链/马尔可夫假设：具有Markov性质的随机过程<br>$$<br>p(s_{t+1} \mid s_t, s_{t-1}, \ldots s_1)=p(s_{t+1} \mid s_t)<br>$$<br>状态空间模型：马尔可夫链+观测变量</p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701101506.png" alt="马尔可夫状态空间模型" style="zoom:50%;" />
 
@@ -44,13 +44,11 @@ $\mathcal{R}$：奖励集合，$R_t.."><meta name="generator" content="Hexo 4.2.
 </li>
 </ul>
 <h2 id="价值函数"><a href="#价值函数" class="headerlink" title="价值函数"></a>价值函数</h2><ul>
-<li>回报$G_t$：<br>$$<br>G_t=R_{t+1}+\gamma R_{t+2}+\ldots+ \gamma^{T-t-1} R_{t+T}=\sum_{i=0}^{T}\gamma^{i}R_{t+i}<br>$$<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701145114.png" alt="3种状态，3种动作的回报示意图" style="zoom:33%;" />
-
-</li>
+<li>回报$G_t$：<br>$$<br>G_t=R_{t+1}+\gamma R_{t+2}+\ldots+ \gamma^{T-t-1} R_{t+T}=\sum_{i=0}^{T}\gamma^{i}R_{t+i}<br>$$<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701145114.png" alt="3种状态，3种动作的回报示意图" style="zoom:33%;" /></li>
 </ul>
 <p>一个$G_t$的值只能反映面对状态$s_t$所采用的<strong>一种</strong>动作、该动作产生的<strong>一种</strong>下一状态所带来的回报（图中的一条路径），但是策略本身是有可能有很多条路径的，如上图有9条，那么真正评估一个策略能够带来的回报，就需要将9条路径按照概率进行加权平均，这时候就定义了价值函数：</p>
 <ul>
-<li>价值函数$\begin{cases}V_{\pi}(s)=E_{\pi}[G_t \mid s_t=s]\\\\q_{\pi}(s,a)=E_{\pi}[G_t \mid s_t=s, a_t=a]\end{cases}$<ul>
+<li>价值函数$\begin{cases}V_{\pi}(s)=E_{\pi}[G_t \mid s_t=s]\\q_{\pi}(s,a)=E_{\pi}[G_t \mid s_t=s, a_t=a]\end{cases}$<ul>
 <li>$V_{\pi}(s)$中，$\pi$影响到$s$下的所采用的$a$（如上图）；</li>
 <li>但$q_{\pi}(s,a)$仅仅评价一个确定的状态+一个确定的动作的价值，$s$和$a$二者是任取的，不受$\pi$的制约。</li>
 </ul>
@@ -60,14 +58,14 @@ $\mathcal{R}$：奖励集合，$R_t.."><meta name="generator" content="Hexo 4.2.
 <h2 id="贝尔曼期望方程"><a href="#贝尔曼期望方程" class="headerlink" title="贝尔曼期望方程"></a>贝尔曼期望方程</h2><p>选中一个动作之后，实际上产生的由状态$s_t$和动作$a_t$产生的价值$r_{t+1}$本身也是有随机性的，图中绿色结点反映了这种随机性，对每一个动作结点都适用。</p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701213447.png" alt="" style="zoom:50%;" />
 
-<p>于是，借助$V_\pi(s)$与$q_\pi(s,a)$之间的关系，可以找到$V_\pi(s)$与$V_\pi(s’)$的关系，即：<br>$$<br>\begin{align}<br>V_\pi(s)&amp;=\sum_{a \in \mathcal{A}(s)}\pi(a \mid s)q_\pi(s,a)\\\<br>&amp;=\sum_{a \in \mathcal{A}(s)}\pi(a \mid s)\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma V_\pi(s’))<br>\end{align}<br>$$<br>同理，也可找到$q_\pi(s,a)$与$q_\pi(s’,a’)$的关系，<br>$$<br>\begin{align}<br>q_\pi(s,a)&amp;=\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma V_\pi(s’))\\\<br>&amp;=\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma \sum_{a’\in \mathcal{A(s’)}}\pi(a’ \mid s’)q_\pi(s’,a’))<br>\end{align}<br>$$</p>
+<p>于是，借助$V_\pi(s)$与$q_\pi(s,a)$之间的关系，可以找到$V_\pi(s)$与$V_\pi(s’)$的关系，即：<br>$$<br>\begin{align}<br>V_\pi(s)&amp;=\sum_{a \in \mathcal{A}(s)}\pi(a \mid s)q_\pi(s,a)\\<br>&amp;=\sum_{a \in \mathcal{A}(s)}\pi(a \mid s)\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma V_\pi(s’))<br>\end{align}<br>$$<br>同理，也可找到$q_\pi(s,a)$与$q_\pi(s’,a’)$的关系，<br>$$<br>\begin{align}<br>q_\pi(s,a)&amp;=\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma V_\pi(s’))\\<br>&amp;=\sum_{s’\in S}\sum_{r \in R_t}p(s_{t+1}=s’, r_{t+1}=r \mid s_t=s, a_t=a)(r+\gamma \sum_{a’\in \mathcal{A(s’)}}\pi(a’ \mid s’)q_\pi(s’,a’))<br>\end{align}<br>$$</p>
 <p><strong>贝尔曼期望方程（Bellman Equation）：</strong></p>
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701213500.png" alt="" style="zoom:50%;" />
 
 <img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210701213503.png" alt="" style="zoom:50%;" />
 
-<h2 id="贝尔曼最优方程"><a href="#贝尔曼最优方程" class="headerlink" title="贝尔曼最优方程"></a>贝尔曼最优方程</h2><p>$$<br>\begin{cases}<br>V_\star(s) =\max\limits_{\pi}V_{\pi}(s)\\\<br>q_\star(s, a) =\max\limits_{\pi}q_{\pi}(s,a)<br>\end{cases}<br>$$</p>
-<p>记$\pi_{\star}=\arg\max\limits_{\pi} V_\pi(s)=\arg\max\limits_{\pi} q_\pi(s,a)$，那么<br>$$<br>V_{\star}(s)=\max_\pi V_\pi(s)=V_{\pi_\star}(s)\\\\ q_{\star}(s,a)=\max_\pi q_\pi(s, a)=q_{\pi_\star}(s,a)<br>$$</p>
+<h2 id="贝尔曼最优方程"><a href="#贝尔曼最优方程" class="headerlink" title="贝尔曼最优方程"></a>贝尔曼最优方程</h2><p>$$<br>\begin{cases}<br>V_\star(s) =\max\limits_{\pi}V_{\pi}(s)\\<br>q_\star(s, a) =\max\limits_{\pi}q_{\pi}(s,a)<br>\end{cases}<br>$$</p>
+<p>记$\pi_{\star}=\arg\max\limits_{\pi} V_\pi(s)=\arg\max\limits_{\pi} q_\pi(s,a)$，那么<br>$$<br>V_{\star}(s)=\max_\pi V_\pi(s)=V_{\pi_\star}(s)\\ q_{\star}(s,a)=\max_\pi q_\pi(s, a)=q_{\pi_\star}(s,a)<br>$$</p>
 <blockquote>
 <p> <strong>Notice:</strong></p>
 <p>虽然上述等式成立，但是：</p>
