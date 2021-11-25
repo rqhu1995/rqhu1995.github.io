@@ -21,12 +21,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"rqhu1995.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="N：网络  V，E：网络节点和边 R：资源 m：映射：（边到时间）-- 一条边通过的最短时间 a：映射：（资源到边集）-- 一个资源分配给的边 b：映射：（资源到时间）-- 一个资源占用需要等待的时间   T：火车  S，L：V，E的一个无环子图–（火车的轨迹） e：映射：（节点到时间）-- 火车到节点S的最早时间； l：映射：（节点到时间）-- 火车到节点S的最晚时间； w：映射：（边到时间）">
+<meta name="description" content="N：网络  V，E：网络节点和边 R：资源 m：映射：（边到时间）-- 一条边通过的最短时间 a：映射：（资源到边集）-- 一个资源分配给的边 b：映射：（资源到时间）-- 一个资源占用需要等待的时间  T：火车  S，L：V，E的一个无环子图--（火车的轨迹） e：映射：（节点到时间）-- 火车到节点S的最早时间； l：映射：（节点到时间）-- 火车到节点S的最晚时间； w：映射：（边到时间）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bonjour">
 <meta property="og:url" content="https://rqhu1995.github.io/2020/06/14/train_scheduling/index.html">
 <meta property="og:site_name" content="Bonjour">
-<meta property="og:description" content="N：网络  V，E：网络节点和边 R：资源 m：映射：（边到时间）-- 一条边通过的最短时间 a：映射：（资源到边集）-- 一个资源分配给的边 b：映射：（资源到时间）-- 一个资源占用需要等待的时间   T：火车  S，L：V，E的一个无环子图–（火车的轨迹） e：映射：（节点到时间）-- 火车到节点S的最早时间； l：映射：（节点到时间）-- 火车到节点S的最晚时间； w：映射：（边到时间）">
+<meta property="og:description" content="N：网络  V，E：网络节点和边 R：资源 m：映射：（边到时间）-- 一条边通过的最短时间 a：映射：（资源到边集）-- 一个资源分配给的边 b：映射：（资源到时间）-- 一个资源占用需要等待的时间  T：火车  S，L：V，E的一个无环子图--（火车的轨迹） e：映射：（节点到时间）-- 火车到节点S的最早时间； l：映射：（节点到时间）-- 火车到节点S的最晚时间； w：映射：（边到时间）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-14T06:05:59.000Z">
 <meta property="article:modified_time" content="2020-06-14T06:05:59.000Z">
@@ -212,19 +212,17 @@
 <li>m：映射：（边到时间）-- 一条边通过的最短时间</li>
 <li>a：映射：（资源到边集）-- 一个资源分配给的边</li>
 <li>b：映射：（资源到时间）-- 一个资源占用需要等待的时间</li>
-</ul>
-</li>
+</ul></li>
 <li>T：火车
 <ul>
-<li>S，L：V，E的一个无环子图–（火车的轨迹）</li>
+<li>S，L：V，E的一个无环子图--（火车的轨迹）</li>
 <li>e：映射：（节点到时间）-- 火车到节点S的最早时间；</li>
 <li>l：映射：（节点到时间）-- 火车到节点S的最晚时间；</li>
 <li>w：映射：（边到时间）-- 火车在某条边需要等待的时间（等待资源释放）；</li>
+</ul></li>
+<li>C：<span class="math inline">\((t_1,e_1,t_2,e_2,c)\)</span>：存在连接关系（送货、下客）的边，先到的火车t1需要在后者t2来之后至少c秒才能离开轨道（边）</li>
 </ul>
-</li>
-<li>C：$(t_1,e_1,t_2,e_2,c)$：存在连接关系（送货、下客）的边，先到的火车t1需要在后者t2来之后至少c秒才能离开轨道（边）</li>
-</ul>
-<p>问题的解答：$(P, A)$，P为一辆火车在网络中的一条路径，A为该火车到达路径每个节点的时间</p>
+<p>问题的解答：<span class="math inline">\((P, A)\)</span>，P为一辆火车在网络中的一条路径，A为该火车到达路径每个节点的时间</p>
 
     </div>
 
