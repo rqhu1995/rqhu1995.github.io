@@ -156,23 +156,33 @@
         <div class="post-content">
             <p>Gurobi Cheatsheet</p>
 <ul>
-<li><p>read the model</p>
-<p><code>m = read('&lt;the path of the model&gt;')</code></p></li>
-<li><p>view assignment for each decision variable：</p>
-<p><code>m.printAttr('X')</code></p></li>
-<li><p>view all variables</p>
-<p><code>m.getVars()</code></p></li>
-<li><p>print the variables(name and solution)</p>
-<p><code>v[0].varName, v[0].x</code></p></li>
-<li><p>set lower/upper bound(e.g., set lower bound of v[0] to 10)</p>
-<p><code>v[0].lb=10</code></p></li>
-<li><p>回调函数，参数：<code>model, where</code></p></li>
+<li>
+<p>read the model</p>
+<p><code>m = read('&lt;the path of the model&gt;')</code></p>
+</li>
+<li>
+<p>view assignment for each decision variable：</p>
+<p><code>m.printAttr('X')</code></p>
+</li>
+<li>
+<p>view all variables</p>
+<p><code>m.getVars()</code></p>
+</li>
+<li>
+<p>print the variables(name and solution)</p>
+<p><code>v[0].varName, v[0].x</code></p>
+</li>
+<li>
+<p>set lower/upper bound(e.g., set lower bound  of v[0] to 10)</p>
+<p><code>v[0].lb=10</code></p>
+</li>
+<li>
+<p>回调函数，参数：<code>model, where</code></p>
+</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gurobipy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行过程中，时间大于10s且找到最优解停下</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mycallback</span>(<span class="params">model, where</span>):</span></span><br><span class="line">  <span class="keyword">if</span> where == GRB.Callback.MIP:</span><br><span class="line">    time = model.cbGet(GRB.Callback.RUNTIME)</span><br><span class="line">    best = model.cbGet(GRB.Callback.MIP_OBJBST)</span><br><span class="line">    <span class="keyword">if</span> time &gt; <span class="number">10</span> <span class="keyword">and</span> best &lt; GRB.INFINITY:</span><br><span class="line">      model.terminate()</span><br></pre></td></tr></table></figure>
 <p>回调函数名可以直接作为参数传给optimize函数</p>
-<figure>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="image-20211012112104705" /><figcaption>image-20211012112104705</figcaption>
-</figure>
+<p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20211012112106.png" alt="image-20211012112104705"></p>
 
         </div>
 
@@ -220,7 +230,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/11/24/linear-programming/">linear-programming</a>
+                <a class="prev" rel="prev" href="/2021/11/24/linear-programming/">Linear-programming</a>
             
             
             <a class="next" rel="next" href="/2021/07/24/%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5/">随机策略</a>
