@@ -461,12 +461,17 @@ input[type="radio"]:not(:checked) + label:after {
   content: "\e88d";
 }
 
-
+.icon-researchgate:before {
+    content: "\e601";
+  }  
 @font-face {
   font-family: "iconfont"; /* Project id 2977825 */
-  src: url('iconfont.woff2?t=1638275086412') format('woff2'),
-       url('iconfont.woff?t=1638275086412') format('woff'),
-       url('iconfont.ttf?t=1638275086412') format('truetype');
+  src: url('../fonts/iconfont2/iconfont.eot'); /* IE9 */
+  src: url('../fonts/iconfont2/iconfont.eot') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/iconfont2/iconfont.woff2') format('woff2'),
+       url('../fonts/iconfont2/iconfont.woff') format('woff'),
+       url('../fonts/iconfont2/iconfont.ttf') format('truetype'),
+       url('../fonts/iconfont2/iconfont.svg') format('svg');
 }
 
 .iconfont {
@@ -478,7 +483,7 @@ input[type="radio"]:not(:checked) + label:after {
 }
 
 .icon-researchgate:before {
-  content: "\f223";
+  content: "\e602";
 }
 
 

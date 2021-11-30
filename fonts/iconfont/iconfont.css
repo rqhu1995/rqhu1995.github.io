@@ -123,3 +123,6 @@
   content: "\e88d";
 }
 
+.icon-researchgate:before {
+    content: "\e601";
+  }  
