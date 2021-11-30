@@ -199,8 +199,8 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-</head>
+</style><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 <body>
     <script>
@@ -370,7 +370,7 @@ mjx-container[display="true"] + br {
         </header>
 
         <div class="post-content">
-            <h1 id="torch.unsqueeze">TORCH.UNSQUEEZE</h1>
+            <h1>TORCH.UNSQUEEZE</h1>
 <p><code>torch.unsqueeze(dim: int)</code>，在dim后加入一个单维度：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">tensor = torch.tensor([1, 2, 3, 4])</span><br><span class="line">tensor.shape # torch.Size([4])</span><br><span class="line">tensor_unsqueeze = tensor.unsqueeze(0) # 在第0维度添加一个单维度，值为1</span><br><span class="line">tensor_unsqueeze.shape # torch.Size([1, 4])</span><br><span class="line">tensor_unsqueeze = tensor.unsqueeze(1)</span><br><span class="line">tensor_unsqueeze.shape # torch.Size([4, 1])</span><br></pre></td></tr></table></figure>
 

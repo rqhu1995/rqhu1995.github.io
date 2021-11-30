@@ -48,8 +48,8 @@
     
 
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 <body>
     <script>
@@ -219,7 +219,7 @@
         </header>
 
         <div class="post-content">
-            <h1 id="编译原理一">编译原理（一）</h1>
+            <h1>编译原理（一）</h1>
 <h2 id="解释器和编译器">解释器和编译器</h2>
 <ul>
 <li>编译器：输入是程序代码，输出是可执行文件（从代码的角度，输出是可以执行的机器码，例如Java字节码）</li>
@@ -237,43 +237,65 @@
 <p>进一步研究出FORTRAN I——Formula Translation Program</p>
 <p>John Backus认为之前慢的原因是，公式是被解释（Interpreted）的。</p>
 <p>如果公式能够先被翻译成机器能够理解的机器码，速度会变快。（不放弃程序员写highlevel程序）</p>
-<p>FORTRAN I -- 第一个编译器</p>
+<p>FORTRAN I – 第一个编译器</p>
 </blockquote>
 <p>FORTRAN I的结构，也是当代编译器的结构</p>
 <ul>
-<li><p>词法分析（Lexical Analysis） -- syntactic</p>
+<li>
+<p>词法分析（Lexical Analysis） – syntactic</p>
 <p>任务类似于识别一个句子里的各个单词（分词），这里的句子可以理解为一句代码语句。</p>
-<p>token：分割词的时候使用的标记，英语中的空格/标点等</p></li>
-<li><p>解析（Parsing）-- syntactic</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguk9kjpj32220soq7e.jpg" alt="image-20200502005619541" style="zoom:50%;" /></p>
-<p>分析每一个词的词性，进一步向上，得到解析树。</p></li>
-<li><p>语义分析（Semantic Analysis）--type，scope</p>
+<p>token：分割词的时候使用的标记，英语中的空格/标点等</p>
+</li>
+<li>
+<p>解析（Parsing）-- syntactic</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguk9kjpj32220soq7e.jpg" alt="image-20200502005619541" style="zoom:50%;" />
+<p>分析每一个词的词性，进一步向上，得到解析树。</p>
+</li>
+<li>
+<p>语义分析（Semantic Analysis）–type，scope</p>
 <p>理解句子的意义。困难！人进行词法分析、解析和机器进行的方式是一致的（分词、找词性、判断关系），但理解句子的意思的部分，对机器过于困难。编译器只能做有限的工作，例如寻找句子里的不一致性。</p>
 <ul>
-<li><p>编译器可以寻找变量的绑定（scope）</p>
+<li>
+<p>编译器可以寻找变量的绑定（scope）</p>
 <p>他说他妈妈找不到她了。他究竟分别是谁？</p>
-<p>在计算机中，类似的问题：打印的Jack是谁？</p></li>
+<p>在计算机中，类似的问题：打印的Jack是谁？</p>
+</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguihlyaj30xg0twwgb.jpg" alt="image-20200502010319257" style="zoom:50%;" /></p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguihlyaj30xg0twwgb.jpg" alt="image-20200502010319257" style="zoom:50%;" />
 <ul>
-<li><p>编译器可以寻找类型的不匹配</p>
+<li>
+<p>编译器可以寻找类型的不匹配</p>
 <p><strong>Jack</strong> said <strong>her</strong> mother left home today. Jack与her显然不匹配；</p>
-<p>计算机中<code>int c = 5.8;</code>同样是一个语义错误，从赋值语句的语法来说，没有问题，但int 和 5.8 类型不匹配。</p></li>
-</ul></li>
-<li><p>优化（运行更快，是用更少的内存）</p>
-<p><code>X = Y * 0</code>和<code>X=0</code>是一样的（在都是int的情况下）</p>
-<p>在浮点情况下：NAN * 0 = NAN</p></li>
-<li><p>代码生成 -- translation</p>
-<p>将高级语言程序，转换为机器码/汇编语言</p></li>
+<p>计算机中<code>int c = 5.8;</code>同样是一个语义错误，从赋值语句的语法来说，没有问题，但int 和 5.8 类型不匹配。</p>
+</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguha2ndj31jo0bmdr7.jpg" alt="image-20200502011346840" style="zoom:50%;" /></p>
+</li>
+<li>
+<p>优化（运行更快，是用更少的内存）</p>
+<p><code>X = Y * 0</code>和<code>X=0</code>是一样的（在都是int的情况下）</p>
+<p>在浮点情况下：NAN * 0 = NAN</p>
+</li>
+<li>
+<p>代码生成 – translation</p>
+<p>将高级语言程序，转换为机器码/汇编语言</p>
+</li>
+</ul>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gedguha2ndj31jo0bmdr7.jpg" alt="image-20200502011346840" style="zoom:50%;" />
 <p>Programmer training is the dominant cost for a programming language.</p>
 <ul>
-<li><p>广泛使用的语言发生改变会很慢（教的成本太大）</p></li>
-<li><p>一个语言的起步是很容易的（没有用户）</p></li>
-<li><p>新语言更适宜填补现有的空缺</p></li>
-<li><p>新的语言会趋向于某个老的语言（这样能够减少训练成本）</p>
-<p>Java -- C++</p></li>
+<li>
+<p>广泛使用的语言发生改变会很慢（教的成本太大）</p>
+</li>
+<li>
+<p>一个语言的起步是很容易的（没有用户）</p>
+</li>
+<li>
+<p>新语言更适宜填补现有的空缺</p>
+</li>
+<li>
+<p>新的语言会趋向于某个老的语言（这样能够减少训练成本）</p>
+<p>Java – C++</p>
+</li>
 </ul>
 <p>至今没有公认的衡量语言好坏的度量。</p>
 

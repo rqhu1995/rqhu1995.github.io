@@ -48,8 +48,8 @@
     
 
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Bonjour" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 <body>
     <script>
@@ -219,24 +219,26 @@
         </header>
 
         <div class="post-content">
-            <figure>
-<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="cover" /><figcaption>cover</figcaption>
-</figure>
-<h1 id="dqn网络">DQN网络</h1>
-<p>目标：找到<span class="math inline">\(Q^\ast(s,a)\)</span>函数，之后给定一个<span class="math inline">\(s_i\)</span>，就可以得到<span class="math inline">\(\arg\max_\limits{a} Q(s_i,a)\)</span></p>
-<h2 id="temperal-difference学习td-learning">Temperal Difference学习（TD learning）</h2>
+            <p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="cover"></p>
+<h1>DQN网络</h1>
+<p>目标：找到$Q^\ast(s,a)$函数，之后给定一个$s_i$，就可以得到$\arg\max_\limits{a} Q(s_i,a)$</p>
+<h2 id="Temperal-Difference学习（TD-learning）">Temperal Difference学习（TD learning）</h2>
 <p>例如：</p>
-<p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="image-20210707173757889" style="zoom:50%;" /></p>
+<img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/20210707173807.png" alt="image-20210707173757889" style="zoom:50%;" />
 <p>出发前首先预测A-C之间的时间，1000；走到B，实际用时300，再次使用该模型估计剩余时间，得到的结果600。此时可以更新预测时间：900，900被称为TD target。</p>
 <p>TD error：1000-900=100</p>
-<p>Loss Function：<span class="math inline">\(L=\frac{1}{2}(Q(w)-y)^2\)</span></p>
-<p>梯度下降：<span class="math inline">\(\left.w:=w-\alpha\dfrac{\partial L}{\partial w}\right|_{w=w_t}\)</span></p>
-<p>能够使用TD learning的情况： <span class="math display">\[
-A \approx B + C
-\]</span> A和C是模型预测结果，B是实际运行结果。</p>
-<p>在深度强化学习中，有： <span class="math display">\[
-Q(s_t, a_t; \mathbf{w}) \approx r_t + \gamma \cdot Q(s_{t+1}, a_{t+1}; \mathbf{w})
-\]</span> Model Free与Model Based的区别：是否知道Transition Table（状态转移表）</p>
+<p>Loss Function：$L=\frac{1}{2}(Q(w)-y)^2$</p>
+<p>梯度下降：$\left.w:=w-\alpha\dfrac{\partial L}{\partial w}\right|_{w=w_t}$</p>
+<p>能够使用TD learning的情况：<br>
+$$<br>
+A \approx B + C<br>
+$$<br>
+A和C是模型预测结果，B是实际运行结果。</p>
+<p>在深度强化学习中，有：<br>
+$$<br>
+Q(s_t, a_t; \mathbf{w}) \approx r_t + \gamma \cdot Q(s_{t+1}, a_{t+1}; \mathbf{w})<br>
+$$<br>
+Model Free与Model Based的区别：是否知道Transition Table（状态转移表）</p>
 <p>SARSA算法：</p>
 
         </div>
