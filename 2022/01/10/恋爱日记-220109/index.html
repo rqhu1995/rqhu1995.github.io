@@ -135,6 +135,68 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -148,7 +210,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">一月 9, 2022&nbsp;&nbsp;23:04:04</a>
+                        Date: <a href="#">一月 10, 2022&nbsp;&nbsp;2:38:04</a>
                         </span>
                     
                     
@@ -164,7 +226,56 @@
         </header>
 
         <div class="post-content">
-            
+            <h1 id="今天开始记日记">今天开始记日记📒</h1>
+<p>不知不觉，和老田认识快要两个月了。</p>
+<p>两个月发生了很多事情，又好像什么都没发生。</p>
+<p>无法拥抱，无法亲吻，26岁的我开始了一段异地恋。</p>
+<p>不想写长篇大论去回忆两个月的喜怒哀乐，今天只想记录两个感受：</p>
+<ul>
+<li>为什么开这个日记？</li>
+<li>为什么我开始坚信老田是值得的？</li>
+</ul>
+<h1 id="为什么开这个日记">为什么开这个日记</h1>
+<p>其实想记日记很久了。来香港后的4个月转瞬即逝，我总觉得每天过得毫无内容。学习-吃饭-贵-继续学习，循环往复。时常有一些小感悟，但似乎从硕士开始就无人倾听了。</p>
+<p>朋友圈、Ins上总是营业一些美好，焦急地想告诉别人自己活得很开心。以至于现在这个地方，可以敞开心扉写「真情实感」，却不知写什么。每天写一点，就不会忘了吧。</p>
+<p>当然，想起日记，也是因为老田前几天提到「仪式感」。其实从这个词流行起来的那天起，我一直认为它已经离我很远了。虽然我其实非常想要富有仪式感的生活，也在不经意间体会到仪式的快乐。记日记本身，就是一种仪式。</p>
+<h1 id="为什么老田是值得的">为什么老田是值得的</h1>
+<p>老田觉得我对恋爱过分理性。其实不光他觉得，我自己也觉得。</p>
+<p>其实这背后是有原因的。这是我性格上的一个缺陷：狡猾地逃避。不光是恋爱，日常社交、学习，只要涉及到与人打交道，我几乎从不主动出击，我习惯了「<strong>只做肯定正确的事</strong>」。</p>
+<p>这在科研、学习和工作中影响并不大，有时候还因为「严格遵守要求」，做出很完美的结果。</p>
+<p>但恋爱和社交却不是这样，特别是恋爱。这种「害怕出错，想要正确答案，却得不到答案」的痛苦，让我在感情中变得非常被动。更纠结的是，因为我喜欢他，我想做些什么，但我不知道他喜欢什么。</p>
+<p>当然，在刚开始，你一定会说：「那你问他不就好了？」</p>
+<p>而我的脑子里，总是在盘算「直接问他好吗？万一问的这个他正好很不喜欢呢？」</p>
+<p>然后，我退缩了。我选择每天只问好，问吃饭没，问学习了吗。我甚至怕我说想他说太多，他会烦，但我又在想他可能反而是希望听到我多说。在这种时候，我开始放弃。至少永远被动，就永远不会做错。</p>
+<p>在恋爱关系中，这样的行为一旦持续，无论对方是怎样的态度，感情最好的结局只会是「拖着」。</p>
+<p>老田的一次小爆发，却让我想明白好多，更让我觉得他太值得了。</p>
+<p>他太<strong>真实</strong>了。</p>
+<p>他有什么都会说，内心的想法，好的坏的，他会直接说「烦死了」，又会直接说「我好开心啊」。</p>
+<p>他说没有这个意思的时候，都不是在解释，他就真的没有这个意思。</p>
+<p>当我第一次接受到这些情绪的时候，我是有些错愕的。因为不加掩饰的想一个人表达情绪，很容易被理解为「幼稚」、「任性」。</p>
+<p>可其实，他可能已经想把我当成最亲密的人了，亲密到那个可以发泄内心深处最柔软最脆弱地方的人。而我呢，还端着理性的外表，思考「该说什么话能让他开心呢」，然后无动于衷。</p>
+<p><strong>😱我好恐怖🤯</strong></p>
+<p>其实他想要的太简单了：感情的交换。</p>
+<p>而长期以来的被动状态下，他好像一个远处互换的人，始终听不到我的回音。</p>
+<p>「把我的不开心藏起来，不要让他承受这些，以免不开心和冲突发生」。</p>
+<p>我自以为是地觉得自己这么做很伟大，然而老田其实也在准备和我分担这些。</p>
+<p>一个不累的事情，被我做得很累。</p>
+<hr />
+<p><img src="https://runqiuhu-1301738355.cos.ap-nanjing.myqcloud.com/202201100333091.jpg" alt="IMG_1570" style="zoom:33%;" /></p>
+<p>昨天看到这些，真的忍不住想要抱抱他。</p>
+<p>我开始懂他，开始理解曾经和他的两次冲突。</p>
+<p>我心里有很多话想说，想说我的理解，想说我之前的抱歉，</p>
+<p>但我更想见到他之后给他一个拥抱，</p>
+<p>想用我们以后时光慢慢慰藉他这一段不愉快的日子，想做他说的和他分享的那个人。</p>
+<p>当然，我知道，我也可以和他分享我的一切。</p>
+<hr />
+<p>老田为什么值得？因为他真实。</p>
+<p>当你可以无条件相信屏幕那头发来的每一个字，</p>
+<p>你真的觉得很安心。</p>
+<p>当然，你也没有理由厚颜无耻地在屏幕这头说谎。</p>
+<p>举案齐眉，坦诚相见。</p>
+<p>这样的感情，我想我有理由奔赴。</p>
+<p>爱你。</p>
 
         </div>
 
