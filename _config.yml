@@ -21,7 +21,7 @@ repository               : "rqhu1995/rqhu1995.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "avatar.png"
   name             : "Your Sidebar Name"
   location         : "Hong Kong"
   employer         : "The University of Hong Kong"
