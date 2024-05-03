@@ -23,12 +23,10 @@ author:
   # Biographic information
   avatar           : "avatar.png"
   name             : "Runqiu Hu"
-  employer         : "The University of Hong Kong"
   email            : "runqiuhu@connect.hku.hk" 
 
   # Academic websites
   googlescholar    : "https://scholar.google.com/citations?user=CidSagwAAAAJ"
-  orcid            : "https://orcid.org/0000-0002-6277-1770"
   researchgate     : "https://www.researchgate.net/profile/Runqiu-Hu"
 
   # Repositories and software development
@@ -36,7 +34,6 @@ author:
   
   # Social media
   instagram        : "runqiu_sop"
-  weibo            : "闰冬秋拾"
   zhihu            : "https://www.zhihu.com/people/BobHuNanjing"
 
 
