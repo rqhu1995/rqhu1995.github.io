@@ -8,11 +8,11 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "Runqiu Hu"
 title_separator          : "-"
 name                     : &name "Runqiu Hu"
 description              : &description "personal description"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "rqhu1995.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "rqhu1995/rqhu1995.github.io"
 
@@ -25,8 +25,7 @@ author:
   name             : "Your Sidebar Name"
   location         : "Hong Kong"
   employer         : "The University of Hong Kong"
-  uri              : # URL
-  email            : "none@example.org" 
+  email            : "runqiuhu@connect.hku.hk" 
 
   # Academic websites
   googlescholar    : "https://scholar.google.com/citations?user=CidSagwAAAAJ"
