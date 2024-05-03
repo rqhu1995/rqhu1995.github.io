@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am currently a Ph.D. student supervised by [Prof. Wai Yuen Szeto](https://www.civil.hku.hk/) at [Department of Civil Engineering](https://www.civil.hku.hk/), The University of Hong Kong. I graduated with a master's degree in Computer Technology in the [School of Computer science and engineering](https://cse.seu.edu.cn/), Southeast University (China) in year 2021. 
+I am currently a Ph.D. student supervised by [Prof. Wai Yuen Szeto](https://www.civil.hku.hk/ceszeto/) at [Department of Civil Engineering](https://www.civil.hku.hk/), The University of Hong Kong. I graduated with a master's degree in Computer Technology in the [School of Computer science and engineering](https://cse.seu.edu.cn/), Southeast University (China) in year 2021. 
 
 Research interests
 ======
@@ -17,7 +17,7 @@ My current research interests lie in the intersection of artificial intelligence
 
 Disciplines
 ======
-Shared Mobility $\cdot$ Artificial Intelligence $\cdot$ Operations Research
+Shared Mobility · Artificial Intelligence · Operations Research
 
 Skills and expertise
 ======
