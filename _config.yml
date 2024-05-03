@@ -12,16 +12,16 @@ title                    : "Runqiu Hu"
 title_separator          : "-"
 name                     : &name "Runqiu Hu"
 description              : &description "personal description"
-url                      : "rqhu1995.github.io"
+url                      : "https://rqhu1995.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "rqhu1995/rqhu1995.github.io"
+repository               : "https://rqhu1995/rqhu1995.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "avatar.png"
   name             : "Runqiu Hu"
   employer         : "The University of Hong Kong"
   email            : "runqiuhu@connect.hku.hk" 
