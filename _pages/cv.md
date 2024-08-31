@@ -9,14 +9,12 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
+## Education
 * Ph.D in Traffic Engineering, The University of Hong Kong, 2025 (expected)
 * M.S. in Computer Technology, Southest University (China), 2021
 * B.S. in Information Security, Nanjing Univerisity of Posts and Telecommunications, 2018
 
-Publications
-======
+## Publications
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
