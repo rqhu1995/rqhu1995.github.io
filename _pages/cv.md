@@ -10,7 +10,7 @@ redirect_from:
 {% include base_path %}
 
 ## Education
-* Ph.D in Traffic Engineering, The University of Hong Kong, 2025 (expected)
+* Ph.D in Traffic Engineering, The University of Hong Kong, 2026 (expected)
 * M.S. in Computer Technology, Southest University (China), 2021
 * B.S. in Information Security, Nanjing Univerisity of Posts and Telecommunications, 2018
 
