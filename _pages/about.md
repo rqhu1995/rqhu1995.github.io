@@ -5,9 +5,9 @@ homepage: true
 lang: en
 title: "Runqiu Hu"
 seo_title: "Runqiu Hu (胡闰秋) | Personal Homepage"
-description: "Personal homepage of Runqiu Hu (胡闰秋). I work on optimization and AI for transportation, including shared mobility and vehicle routing."
-lead: "I study how people and vehicles move."
-summary: "I use optimization and AI to study transportation problems, from where to move shared bikes to how people get to hospitals."
+description: "Personal homepage of Runqiu Hu (胡闰秋), Dispatch Algorithm Engineer at Robonets. My research applies optimization and AI to transportation."
+lead: "Dispatch Algorithm Engineer at Robonets"
+summary: "My research applies optimization and AI to transportation problems, from rebalancing shared bikes to understanding how people get to hospitals."
 redirect_from:
   - /about/
   - /about.html
