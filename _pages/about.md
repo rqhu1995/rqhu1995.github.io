@@ -1,56 +1,16 @@
 ---
+layout: profile-home
 permalink: /
-title: "About me"
-author_profile: true
-redirect_from: 
+homepage: true
+lang: en
+title: "Runqiu Hu"
+seo_title: "Runqiu Hu (胡闰秋) | Personal Homepage"
+description: "Personal homepage of Runqiu Hu (胡闰秋). I work on optimization and AI for transportation, including shared mobility and vehicle routing."
+lead: "I study how people and vehicles move."
+summary: "I use optimization and AI to study transportation problems, from where to move shared bikes to how people get to hospitals."
+redirect_from:
   - /about/
   - /about.html
 ---
 
-I am currently a Ph.D. student supervised by [Prof. Wai Yuen Szeto](https://www.civil.hku.hk/ceszeto/) at [Department of Civil Engineering](https://www.civil.hku.hk/), The University of Hong Kong. I completed my Ph.D. defense on October 21, 2026. I graduated with a master's degree in Computer Technology in the [School of Computer Science and Engineering](https://cse.seu.edu.cn/), Southeast University (China) in year 2021.
-
-Research interests
-======
-During my master's study, I gained some background in knowledge representation and reasoning in AI, especially in the application of non-monotonic reasoning for decision support systems using answer set programming, and finding reasoning paths as the explanation for decision. 
-
-My current research interests lie in the intersection of artificial intelligence, transportation engineering, and operations research. I am particularly interested in the application of multiobjective optimization in shared mobility systems, such as bike-sharing systems. 
-
-Disciplines
-======
-Shared Mobility · Artificial Intelligence · Operations Research
-
-Skills and expertise
-======
-- Research skills
-  - Mixed Integer Linear Programming
-  - Multiobjective Optimization
-  - Constraint Programming
-  - Answer Set Programming
-- Programming Languages
-  - Python
-  - C++
-  - Java
-- Tools & Softwares
-  - Neo4j 
-  - Gurobi
-  - IBM CPLEX
-  - MiniZinc
-
-Publications
-======
-
-
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
-{% include base_path %}
-
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
-{% endfor %}
-
-
-
-
-
+I completed my Ph.D. defense in traffic engineering at the [University of Hong Kong](https://www.civil.hku.hk/) in October 2026, under the supervision of [Wai Yuen Szeto](https://www.civil.hku.hk/ceszeto/). Before HKU, I earned a master's in computer technology at [Southeast University](https://cse.seu.edu.cn/) and worked on explaining decisions made by AI systems.

@@ -1,0 +1,24 @@
+name_zh: "胡闰秋"
+portrait: /images/portrait.webp
+work:
+  - venue: Transportation Research Part E
+    year: 2025
+    doi: https://doi.org/10.1016/j.tre.2025.104155
+    title: Where should broken shared bikes be repaired?
+    summary: A routing model that decides which bikes to repair on site and how to rebalance the fleet on the same trip.
+    title_zh: 共享单车坏了，在哪里修？
+    summary_zh: 把车辆调度和现场维修放进同一个路径规划模型，决定沿途修哪些车、补哪些站。
+  - venue: Transportation Research Part D
+    year: 2025
+    doi: https://doi.org/10.1016/j.trd.2025.104837
+    title: What drives EV range anxiety?
+    summary: A study using real-world driving data to measure range anxiety and investigate the factors behind it.
+    title_zh: 电动车的续航焦虑从何而来？
+    summary_zh: 用真实行驶数据量化电动车续航焦虑，并分析哪些因素与它有关。
+  - venue: Transportation Research Part A
+    year: 2026
+    doi: https://doi.org/10.1016/j.tra.2026.105124
+    title: How do people use ride-hailing to reach hospitals?
+    summary: An analysis of ride-hailing trips to hospitals, comparing travel patterns across hospital tiers.
+    title_zh: 人们如何打车去医院？
+    summary_zh: 从网约车订单中识别就医出行，对比不同等级医院的到访规律。

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'en' }}">
+{% assign chinese = false %}
+{% if page.lang == 'zh-Hans' %}{% assign chinese = true %}{% endif %}
+{% assign home = '/' %}
+{% if chinese %}{% assign home = '/zh/' %}{% endif %}
+{% assign canonical = page.url | absolute_url %}
+{% assign portrait = site.data.profile.portrait | absolute_url %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <title>{{ page.seo_title | default: page.title | escape }}</title>
+  <meta name="description" content="{{ page.description | escape }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/profile.css' | relative_url }}">
+  <meta property="og:title" content="{{ page.seo_title | default: page.title | escape }}">
+  <meta property="og:description" content="{{ page.description | escape }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:type" content="{% if page.homepage %}profile{% else %}website{% endif %}">
+  <meta property="og:image" content="{{ portrait }}">
+  {% if site.google_site_verification %}
+  <meta name="google-site-verification" content="{{ site.google_site_verification | escape }}">
+  {% endif %}
+  {% if site.bing_site_verification %}
+  <meta name="msvalidate.01" content="{{ site.bing_site_verification | escape }}">
+  {% endif %}
+  {% if page.homepage %}
+  <link rel="alternate" hreflang="en" href="{{ '/' | absolute_url }}">
+  <link rel="alternate" hreflang="zh-Hans" href="{{ '/zh/' | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": {{ canonical | jsonify }},
+      "inLanguage": {{ page.lang | jsonify }},
+      "mainEntity": {
+        "@type": "Person",
+        "@id": {{ '/' | absolute_url | append: '#runqiu-hu' | jsonify }},
+        "name": {{ site.author.name | jsonify }},
+        "alternateName": {{ site.data.profile.name_zh | jsonify }},
+        "url": {{ '/' | absolute_url | jsonify }},
+        "image": {{ portrait | jsonify }},
+        "sameAs": [
+          {{ site.author.github | prepend: 'https://github.com/' | jsonify }},
+          {{ site.author.googlescholar | jsonify }},
+          {{ site.author.researchgate | jsonify }}
+        ]
+      }
+    }
+  </script>
+  {% endif %}
+</head>
+<body>
+  <a class="skip-link" href="#main">{% if chinese %}跳到正文{% else %}Skip to content{% endif %}</a>
+  <header class="site-header">
+    <div class="frame site-header-inner">
+      <a class="site-name" href="{{ home | relative_url }}"{% if page.homepage %} aria-current="page"{% endif %}>
+        {% if chinese %}{{ site.data.profile.name_zh }}{% else %}{{ site.author.name }}{% endif %}
+      </a>
+      <nav aria-label="{% if chinese %}主导航{% else %}Main navigation{% endif %}">
+        <a href="{{ home | relative_url }}#work">{% if chinese %}代表作品{% else %}Work{% endif %}</a>
+        <a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>{% if chinese %}论文{% else %}Publications{% endif %}</a>
+        <a href="{{ '/cv/' | relative_url }}"{% if page.url == '/cv/' %} aria-current="page"{% endif %}>{% if chinese %}履历{% else %}CV{% endif %}</a>
+        {% if chinese %}
+        <a class="language-link" href="{{ '/' | relative_url }}" lang="en" hreflang="en">English</a>
+        {% else %}
+        <a class="language-link" href="{{ '/zh/' | relative_url }}" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    {% if page.homepage %}
+    {{ content }}
+    {% else %}
+    <div class="frame document">
+      <h1>{{ page.title }}</h1>
+      {{ content }}
+    </div>
+    {% endif %}
+  </main>
+  <footer class="site-footer">
+    <div class="frame site-footer-inner">
+      <span>{% if chinese %}{{ site.data.profile.name_zh }}{% else %}{{ site.author.name }}{% endif %}</span>
+      <div class="footer-links">
+        <a href="mailto:{{ site.author.email }}">{% if chinese %}邮件{% else %}Email{% endif %}</a>
+        <a href="{{ site.author.researchgate }}">ResearchGate</a>
+        <a href="https://www.instagram.com/{{ site.author.instagram }}/">Instagram</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

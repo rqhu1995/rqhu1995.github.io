@@ -1,0 +1,58 @@
+---
+layout: profile
+---
+{% assign chinese = false %}
+{% if page.lang == 'zh-Hans' %}{% assign chinese = true %}{% endif %}
+<section class="hero">
+  <div class="frame hero-inner">
+    <div class="hero-copy">
+      {% if chinese %}
+      <h1>{{ site.data.profile.name_zh }}</h1>
+      <p class="hero-name" lang="en">{{ site.author.name }}</p>
+      {% else %}
+      <h1>{{ site.author.name }}</h1>
+      <p class="hero-name" lang="zh-Hans">{{ site.data.profile.name_zh }}</p>
+      {% endif %}
+      <p class="hero-lead">{{ page.lead }}</p>
+      <p class="hero-summary">{{ page.summary }}</p>
+      <div class="hero-links">
+        <a class="contact-link" href="mailto:{{ site.author.email }}">{% if chinese %}联系我{% else %}Get in touch{% endif %}</a>
+        <a href="https://github.com/{{ site.author.github }}">GitHub</a>
+        <a href="{{ site.author.googlescholar }}">{% if chinese %}谷歌学术{% else %}Google Scholar{% endif %}</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="{{ site.data.profile.portrait | relative_url }}" width="850" height="1067" fetchpriority="high"
+        alt="{% if chinese %}街头的胡闰秋{% else %}Runqiu Hu on a city street{% endif %}">
+    </div>
+  </div>
+</section>
+
+<section class="work-section" id="work">
+  <div class="frame">
+    <div class="section-heading">
+      <h2>{% if chinese %}代表作品{% else %}Selected work{% endif %}</h2>
+      <a href="{{ '/publications/' | relative_url }}">{% if chinese %}全部论文{% else %}All publications{% endif %}</a>
+    </div>
+    <div class="work-grid">
+      {% for project in site.data.profile.work %}
+      <article class="work-item">
+        <p class="work-venue" lang="en">{{ project.venue }} <span aria-hidden="true">·</span> {{ project.year }}</p>
+        <h3>{% if chinese %}{{ project.title_zh }}{% else %}{{ project.title }}{% endif %}</h3>
+        <p>{% if chinese %}{{ project.summary_zh }}{% else %}{{ project.summary }}{% endif %}</p>
+        <a href="{{ project.doi }}" aria-label="{% if chinese %}阅读论文：{{ project.title_zh }}{% else %}Read the paper: {{ project.title }}{% endif %}">{% if chinese %}阅读论文{% else %}Read the paper{% endif %}</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="bio-section">
+  <div class="frame bio-inner">
+    <h2>{% if chinese %}关于我{% else %}Background{% endif %}</h2>
+    <div>
+      {{ content }}
+      <a href="{{ '/cv/' | relative_url }}">{% if chinese %}查看履历{% else %}View CV{% endif %}</a>
+    </div>
+  </div>
+</section>

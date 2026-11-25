@@ -1,16 +1,18 @@
 ---
-layout: archive
+layout: profile
 title: "Publications"
+seo_title: "Publications | Runqiu Hu (胡闰秋)"
+description: "Publications by Runqiu Hu (胡闰秋) on transportation, shared mobility, and operations research."
 permalink: /publications/
-author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
+<p class="document-intro">Also available on <a href="{{ site.author.googlescholar }}">Google Scholar</a>.</p>
 
-{% include base_path %}
-
+<div class="publication-list">
 {% for post in site.publications reversed %}
-  {% include archive-single.html %}
+  <article class="publication-item">
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+    {{ post.content | markdownify }}
+  </article>
 {% endfor %}
+</div>
